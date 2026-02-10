@@ -55,11 +55,58 @@ Vilken roll brukar varje gruppmedlem ta på sig i ett grupparbete? Vilken roll h
 - **Pepparen:** Positiv, empatisk, skapar god stämning.
 - **Dörrvakten/Processledaren:** Säkerställer deltagande, hanterar diskussionen.
 
+Jennie; 
+- Köttar på, glömmer bort att ta pauser.
+- Fokusera nästa steg tydligt. 
+- Doer, matar på.
+
+Roll i grupparbete:
+- **Innovatören/Idésprutan
+- **Djävulens advokat:**
+- **Pepparen:**
+
+Markus;
+
+- Fastnar lätt vid stress
+- Försöker få alla att må bra/komma överens
+
+Roll i grupparbetet;
+**Ledaren:**
+**Lagspelaren/Samordnaren:** 
+
+Sandra; 
+Fastnar lätt om jag tycker det är roligt. 
+Men kanske skjuter upp det jag tycker tråkigt. 
+
+Roll i grupparbete: 
+**Innovatören/Idésprutan:**
+**Informationssökaren:** 
+
+Alex;
+- Tunnelseende vid stress när jag gör en arbetsuppgift som är roligt.
+- Blir uppgiftsorienterad vid stress och vill gärna bli klar med den.
+
+
+Roll i grupparbetet;
+- **Informationssökaren:** Nyfiken, faktabaserad, samlar data
+- **Granskaren/Utvärderaren:** Kritisk, strategisk, objektiv, logisk.
+- **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
+
+
+
+Mohammed;
+- En eftertänkare 
+- laser foucosed 
+Roll i grupparbetet:
+ **Lagspelaren/Samordnaren**
+ **Slutföraren/Kvalitetssäkraren:**
+
 ## Uppgiftsfördelning
-- Hur fördelas uppgifter?
-- Hur kommunicerar man när man tar på sig en uppgift utanför daily standupen, eller ska man vänta till standupen?
-- Vad är definitionen på "klar"?
-- Hur granskar vi varandras kod?
+
+- Under sprint, Daily Stand Up på måndagar går vi igenom vem som gör vad. Vi kommer överens om vilka uppgifter som varje person ska göra. 
+- Vi inväntar till Daily Stand Up för att ta på sig nya uppgifter. 
+- Uppgiften är klar när den är genomförd, testad och validerad.
+- När man granskar varandras kod så validerar vi koden. Minst två personer granskar koden innan den är OK:ad.
 
 ## Övriga förväntningar
 - Vilken ambitionsnivå har vi?
