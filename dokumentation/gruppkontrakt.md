@@ -155,15 +155,23 @@ Mohammed;
 - Den som ansvarar över Daily Stand Ups är även Scrum Master den veckan. 
 
 ## Kodstandard
-- 
+- Vi använder Copilot för att commita meddelanden. (I meddelanderutan för commit, tryck på två stjärnor till vänster)
+- Vi kör två mellanslag för vår identeringsstruktur. 
+- Vi kör engelska i vår kod. 
+- /* använder vi när vi skriver vår kod. Tex: 
 
-- Hur skriver vi våra commit-meddelanden? Ska vi följa någon särskild standard (t.ex. Conventional Commits eller använda gitmoji).
-- Hur indenterar vi vår kod?
-- Vilket språk använder vi i vår kod, för t.ex. CSS-selektorer?
-- Hur kommenterar vi vår kod?
+/*
+ * Data som beskriver ett pussel i spelet.
+ */
+
 
 ## Övrigt
-Om ni vill ta upp någonting utöver det fördefinierade. Skriv gärna en egen rubrik.
+
 
 ## Underskrifter
+- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
 - [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
