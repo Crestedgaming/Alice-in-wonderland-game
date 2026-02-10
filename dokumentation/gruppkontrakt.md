@@ -23,13 +23,14 @@
 - Alla är i svensk tidzon.
 
 ## Kommunikation
-- Via vilka kanaler kommunicerar vi?
-- Vilka tider kommunicerar vi?
-- Inom vilken tidsfrist kan man förvänta sig svar/återkoppling?
-- Hur meddelar man förhinder? I hur god tid meddelar man förhinder?
-- Överväg att dela er mail/telefonnummer så att ni faktiskt kan nå varandra.
-- Hur föredrar vi att jobba? Live-koda tillsammans? På egen hand? Ska vi göra kod-merges ihop?
-- Vem ansvarar för att dokumentera daily standup i repot? (Rotera gärna denna roll med någon frekvens så att inte en person gör det enbart).
+
+- Teams.
+- Mellan 09:00 - 17:00. Efter det är det bara brådskande ärenden.
+- Om man skriver mellan 09:00 - 17:00 så bör man få svar inom en timme. 
+- En vecka innan ska det meddelas. Teams och under daily stand up. 
+- Om någon missar ett möte så spelar vi in dem så att personen som missar kan ta del av mötet i efterhand. Vi laddar upp den i vår gemensamma one-drive mapp. 
+- Vi kodar var för sig med ett eget rum, men synkar ihop oss så vi tänker lika och stöttar varandra om man skulle fastna. 
+- Vi delar upp det en varsin vecka så att en person ansvarar för att dokumentera Daily Stand up varje vecka. 
 
 ## Personlighetstyp
 > Det kan kännas obekvämt att diskutera följande, men det är en grund för ett bra samarbete att dels ha lite självinsikt, men också förståelse för hur ens gruppmedlemmar fungerar i olika situationer.
