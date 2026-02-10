@@ -169,9 +169,9 @@ Mohammed;
 
 
 ## Underskrifter
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Jennie Modd](https://github.com/jenniemodd)
+- [Sandra Hellström](https://github.com/Saandrah)
+- [Marku Jönsson](https://github.com/Crestedgaming)
+- [Alex Truong](https://github.com/alexminhtruong)
+- [Mohammed Yasin](https://github.com/Mohammed-FE2025)
 - [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
