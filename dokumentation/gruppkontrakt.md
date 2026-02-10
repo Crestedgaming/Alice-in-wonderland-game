@@ -7,14 +7,12 @@
 - Inte förberedd på det vi ska göra (Inte visar tillräckligt med engangemang)
 
 ## Mötestider
-Vilka dagar och tider jobbar vi gemensamt?
 
-Ni ska planera in:
+- Daily Stand Up: 09:00 varje vardag.
+- Måndag kör vi backlog, sprint. Samma tid som Daily stand up.
+- Fredag kör vi retroperspektiv. Samma tid som Daily stand up.
+- Eftermiddagarna kör vi eget. Om det är lektion så pratar vi ihop oss dagen innan som en bra tid som passar alla. 
 
-- Daily standup _varje vardag_. Det får gärna vara samma tid så att det är lätt att komma ihåg, men det är upp till gruppen att bestämma. Ni ska fylla i en loggbok dagligen med er daily.
-- Tid för backlog refining varje vecka (cirka 1 h).
-- Tid för sprint planning varje vecka (cirka 1-2 h).
-- Tid för retrospektiv varje vecka (cirka 1 h).
 
 ## Möteskanaler & format
 - Hur träffas vi? Discord, Teams, på någon fysisk plats…
