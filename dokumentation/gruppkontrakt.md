@@ -116,12 +116,47 @@ Roll i grupparbetet:
 - Vad är du sämre på?
 - Finns det något du rent tekniskt vill träna extra på? HTMl, CSS, git? Projektledning?
 
-## Scrum master
-Fördela dagarna så jämt det går i gruppen och kom överens om vem som är scrum master.
+- Vi satsar på godkänt på uppgiften och ta fram en färdig produkt utifrån kravspecikationen. 
+- Man ska vara aktiv varje dag. Vid sjukdom/arbete och annat är det såklart okej att inte närvara så länge det kommuniceras. 
+- Vi försöker kontakta personen under två dagar. Har vi inte fått någon kontakt under två dagar så kontaktar vi lärare.
 
-T.ex. om ni är 4 personer i gruppen så kan en person vara scrum master i 3 dagar, och sedan går turen över till nästa person.
+Jennie; 
+- Bättre på: Komma på ideér, design, CSS, UX-tänk.
+- Sämre på: Kan logiken i Javascript, sämre på att genomföra, hitta rätt kod till vad och struktur. 
+- Träna mer på Javascript. 
+
+
+Markus;
+
+- Bättre på: problemlösning, html, struktur.
+- Sämre på: Javaskript struktur, 
+. Träna på: Hur man strukturera ett javaskript dokument.ad
+
+Sandra; 
+- Bättre på: Design, färg, grafisk formgivning, Html 
+- Sämre på strukturen i Javascript. Struktur och planering. 
+- Träna på: Javascript 
+
+Alex;
+- Bättre på: Html och CSS, problemlösning och hitta information.
+- Sämre på: Javascript och hur man ska skriva och organisera koden.
+* Träna på att skriva Javascript och förstå strukturen.
+
+
+
+Mohammed;
+ - Bättre på: Html och CSS
+ - Sämre på Javascript
+ - vill träna mer på Javascript och merging 
+
+ 
+## Scrum master
+
+- Den som ansvarar över Daily Stand Ups är även Scrum Master den veckan. 
 
 ## Kodstandard
+- 
+
 - Hur skriver vi våra commit-meddelanden? Ska vi följa någon särskild standard (t.ex. Conventional Commits eller använda gitmoji).
 - Hur indenterar vi vår kod?
 - Vilket språk använder vi i vår kod, för t.ex. CSS-selektorer?
