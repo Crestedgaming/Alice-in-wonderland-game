@@ -15,11 +15,12 @@
 
 
 ## Möteskanaler & format
-- Hur träffas vi? Discord, Teams, på någon fysisk plats…
-- Kamera av/på?
-- Ska man komma förberedd eller går vi gemensamt igenom vad som ska göras på mötet?
-- Definiera vad som är "brådskande", och hur man kommunicerar om något är brådskande. SMS? Telefonsamtal?
-- Befinner vi oss alla i samma tidszon?
+
+- Vi använder oss utav Teams.
+- Kamera på. Behöver man ha kamera av någon dag, så är det såklart helt okej. 
+- Skriv ner funderingar/tankar så att man kommer ihåg dem till möten. Övrigt så inga större förberedelser.
+- Alla laddar ner teams till sin mobil så att man är nåbar. (Notiser på). 
+- Alla är i svensk tidzon.
 
 ## Kommunikation
 - Via vilka kanaler kommunicerar vi?
