@@ -101,6 +101,17 @@ Roll i grupparbetet:
  **Lagspelaren/Samordnaren**
  **Slutföraren/Kvalitetssäkraren:**
 
+
+
+ Amanda;
+ - Effektiv och fokuserad vid stress om uppgiften är rolig. 
+ - Svårare att hålla fokus vid stress i mindre roliga uppgifter.
+
+ Roll i grupparbetet;
+ - **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
+ - **Innovatören/Idésprutan:** Kreativ, fantasifull, ser nya lösningar.
+
+
 ## Uppgiftsfördelning
 
 - Under sprint, Daily Stand Up på måndagar går vi igenom vem som gör vad. Vi kommer överens om vilka uppgifter som varje person ska göra. 
@@ -149,6 +160,11 @@ Mohammed;
  - Sämre på Javascript
  - vill träna mer på Javascript och merging 
 
+
+Amanda;
+- Bättre på: Html, css, design.
+- Sämre på: Javascript, särskilt logik och kodstruktur.
+- Träna på: Javascript.
  
 ## Scrum master
 
@@ -174,4 +190,4 @@ Mohammed;
 - [Marku Jönsson](https://github.com/Crestedgaming)
 - [Alex Truong](https://github.com/alexminhtruong)
 - [Mohammed Yasin](https://github.com/Mohammed-FE2025)
-- [Förnamn Efternamn](https://github.com/ditt-github-användarnamn)
+- [Amanda Andersson](https://github.com/amanda-andersson)
