@@ -5,16 +5,15 @@ Project board:
 Dagens scrum master: Markus Jönsson
 
 ## Namn: Sandra Hellström
-
+Närvarande
 ## Namn: Alex Truong
-
+Närvarande
 ## Namn: Amanda Andersson
-
+Närvarande
 ## Namn: Mohammed Yasin
 Frånvarande
-
 ## Namn: Jennie Modd
-
+Närvarande
 
 
 ## Vad utförde vi igår:

@@ -101,16 +101,13 @@ Roll i grupparbetet:
  **Lagspelaren/Samordnaren**
  **Slutföraren/Kvalitetssäkraren:**
 
+Amanda;
+- Effektiv och fokuserad vid stress om uppgiften är rolig.
+- Svårare att hålla fokus vid stress i mindre roliga uppgifter.
 
-
- Amanda;
- - Effektiv och fokuserad vid stress om uppgiften är rolig. 
- - Svårare att hålla fokus vid stress i mindre roliga uppgifter.
-
- Roll i grupparbetet;
- - **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
- - **Innovatören/Idésprutan:** Kreativ, fantasifull, ser nya lösningar.
-
+Roll i grupparbetet;
+- **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
+- **Innovatören/Idésprutan:** Kreativ, fantasifull, ser nya lösningar.
 
 ## Uppgiftsfördelning
 
@@ -158,7 +155,13 @@ Alex;
 Mohammed;
  - Bättre på: Html och CSS
  - Sämre på Javascript
- - vill träna mer på Javascript och merging 
+ - vill träna mer på Javascript och merging
+
+
+Amanda;
+- Bättre på: Html, css, design.
+- Sämre på: Javascript, särskilt logik och kodstruktur.
+- Träna på: Javascript.
 
 
 Amanda;
