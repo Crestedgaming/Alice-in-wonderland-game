@@ -8,7 +8,7 @@
 
 ## Mötestider
 
-- Daily Stand Up: 09:00 varje vardag.
+- Daily Stand Up: 09:15 varje vardag.
 - Måndag kör vi backlog, sprint. Samma tid som Daily stand up.
 - Fredag kör vi retroperspektiv. Samma tid som Daily stand up.
 - Eftermiddagarna kör vi eget. Om det är lektion så pratar vi ihop oss dagen innan som en bra tid som passar alla. 
