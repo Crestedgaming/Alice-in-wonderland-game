@@ -1,0 +1,22 @@
+/* base */
+@use "./base/reset";
+@use "./base/variables";
+@use "./base/typography";
+@use "./base/accessibility";
+
+/* layout */
+@use "./layout/game";
+@use "./layout/ui";
+
+/* components */
+@use "./components/dialogue";
+@use "./components/inventory";
+@use "./components/progressbar";
+
+/* rooms */
+@use "./rooms/room1";
+@use "./rooms/room2";
+@use "./rooms/room3";
+@use "./rooms/room4";
+@use "./rooms/room5";
+@use "./rooms/room6";
