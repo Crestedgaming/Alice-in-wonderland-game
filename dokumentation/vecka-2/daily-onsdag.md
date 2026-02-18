@@ -36,4 +36,11 @@ Påbörjar projectet i guthub dvs skapar det nödvändliga dokumenten.
 
 Skapa wireframe till varsitt rum som slumpas och en pseudokod till de olika rummen.
 
+Rum 1 - Alex
+Rum 2 - Amanda
+Rum 3 - Markus
+Rum 4 - Sandra
+Rum 5 - Jennie
+Rum 6 - Mohammed
+
 Påbörja koden för de saker som finns i alla rum och Vite och ESLint.
