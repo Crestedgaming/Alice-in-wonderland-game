@@ -25,8 +25,75 @@ när spelaren trycker Enter på katten:
     när spelaren klickar på katten:
     registrera träff
 
-när spelaren registrerar en träff:
-
-
+/* Syfte med rummet
+Fånga katten 3 eller 5 gånger i rad.
+Om rummet klaras: spelaren får en bokstav och går vidare.
 */
+
+/*START
+
+1. INITIERA
+   antalTräffarFörVinst = 3 eller 5
+   antalTräffar = 0
+   poäng = 0
+   running = false
+   paused = false
+   speed = "medium"
+   earnedLetter = "A"
+
+2. SÄTT TID
+   om speed == "lätt":   timeVisible = 2000 ms
+   om speed == "medium": timeVisible = 1200 ms
+   om speed == "svår":   timeVisible = 700 ms
+
+3. STARTA SPEL
+   när spelaren klickar Start:
+      running = true
+      paused = false
+      kör showCatLoop()
+
+4. FUNKTION showCatLoop()
+   om paused == true: return
+   visa katten
+   spela ljud + visa visuell signal
+   vänta timeVisible
+   göm katten
+   om antalTräffar < antalTräffarFörVinst:
+       vänta kort paus
+       showCatLoop() igen
+   annars:
+       avsluta spelet
+
+5. FOKUSERA KATTEN MED SPACE
+   när spelaren trycker Space (och katten är synlig):
+       sätt fokus på katten
+
+6. NÄR SPELAREN FÅNGAR KATTEN
+   vid klick på katten ELLER Enter på katten:
+       öka antalet träffar med 1
+       poäng = poäng + beräknaPoäng(speed, reaktionstid)
+       visa text "Du fångade katten!" (aria-live)
+       göm katten
+       om antalTräffar == antalTräffarFörVinst:
+           avsluta spelet
+           ge bokstav = earnedLetter
+           visa "Du fick bokstaven: A"
+           aktivera "Gå vidare"
+
+7. PAUS / FORTSÄTT
+   när spelaren klickar Paus:
+       paused = true
+       stoppa timer
+
+   när spelaren klickar Fortsätt:
+       paused = false
+       showCatLoop()
+
+SLUT*/ 
+
+
+
+
+
+
 
