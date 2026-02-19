@@ -80,6 +80,12 @@ body > div > div {
   z-index: 1;
 }
 
+.nycklar img:hover {
+      transform: scale(1.5);
+      outline: 1px solid goldenrod;
+      border-radius: 50%;
+    }
+
 .key-hole {
   position: absolute;
   width: 70px;
