@@ -1,17 +1,42 @@
+@import "reset";
+
+html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
   background-color: black;
 }
+
+img {
+  display: block;
+}
+
+body > div {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
+body > div > div {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
+
 .background-image {
   width: 100%;
   height: fit-content;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
 }
 
 .alice-faller {
   position: sticky;
   left: 520px;
-  top: 610px;
-  z-index: 4;
+  top: 60px;
+  z-index: 2;
 }
 
 .nyckel1 {
@@ -19,36 +44,49 @@ body {
   position: absolute;
   left: 250px;
   top: 1025px;
-  cursor: wait;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
 }
+
 .nyckel2 {
   animation-duration: 3s;
   scale: 0.1;
   position: absolute;
   left: 550px;
   top: 1200px;
-  cursor: wait;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
 }
+
 .nyckel3 {
   scale: 0.1;
   position: absolute;
   left: 250px;
   top: 1300px;
-  cursor: wait;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
 }
+
 .nyckel4 {
   scale: 0.1;
   position: absolute;
   left: 550px;
   top: 1500px;
-  cursor: wait;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .key-hole {
   position: absolute;
   width: 70px;
   height: 70px;
-  left: 675px;
-  top: 2535px;
+  left: 735px;
+  top: 2710px;
   cursor: pointer;
+  pointer-events: auto;
+  z-index: 1;
 }
