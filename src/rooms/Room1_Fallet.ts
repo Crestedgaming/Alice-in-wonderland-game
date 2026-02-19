@@ -58,7 +58,7 @@ nyckelhal.addEventListener("click", () => {
  * <div class="fallet-container hidden">
         <div>
             <img class="alice-faller" src="/public/alice-faller.png" alt="Alice faller">
-            <img class="background-image" src="/public/bakgrund.webp" alt="Alice ramlar ner i kaninhålet">
+            <img class="background-image" src="/public/bakgrund.webp" alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål">
         </div>
         <div id="nycklar" class="nycklar">
             <img id="nyckel1" class="nyckel1" src="/public/nyckel_1.gif"
