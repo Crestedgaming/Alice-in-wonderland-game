@@ -18,40 +18,61 @@
 
 // if (inloggning === true) {
 // 	document.querySelector(".fallet-container").classList.remove("hidden");
-/** 
-const nyckel1: HTMLImageElement | null = document.getElementById("nyckel1");
-const nyckel2: HTMLImageElement | null = document.getElementById("nyckel2");
-const nyckel3: HTMLImageElement | null = document.getElementById("nyckel3");
-const nyckel4: HTMLImageElement | null = document.getElementById("nyckel4");
-const nyckelhal: HTMLImageElement | null = document.getElementById("nyckelhal");
-const nyckelBokstav: [string] = ["L", "E", "V", "A"];
+// Hämta nyckelelementen från HTML
+/**
+const keyIds = ["nyckel1", "nyckel2", "nyckel3", "nyckel4"];
+const keyElements = keyIds.map((id) => document.getElementById(id));
+const doorElement = document.getElementById("key-hole");
 
-if (!nyckel1 || !nyckel2 || !nyckel3 || !nyckel4 || !nyckelhal) {
-    throw new Error("Kunde inte hitta alla några nycklar.");
-}
+const timerElement = document.getElementById("timer");
+let seconds = 0;
 
-const nyckelBokstav: string[] = ["L", "E", "V", "A"];
-let valdNyckel = "";
+const timer = setInterval(() => {
+  seconds++;
+  if (timerElement) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    timerElement.textContent = `${mins}:${secs.toString().padStart(2, "0")}`;
+  }
+}, 1000);
 
-function nyckelKlick(nyckel: HTMLImageElement, bokstav: string): void {
-    nyckel.addEventListener("click", () => {
-        valdNyckel = bokstav;
-        nyckelhal.classList.add("clickable");
-    });
-}
+// Skapa meddelandeelement
+const messageElement = document.createElement("div");
+messageElement.classList.add("message");
+messageElement.style.cssText =
+  "position: fixed; top: 5px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); color: white; padding: 20px; border-radius: 8px; font-size: 18px; z-index: 1000;";
+document.body.appendChild(messageElement);
 
-// Nu används nyckelBokstav => ingen 'never read'-varning
-[nyckel1, nyckel2, nyckel3, nyckel4].forEach((nyckel, index) => {
-    nyckelKlick(nyckel, nyckelBokstav[index]);
+messageElement.textContent = `Fort, välj en nyckel innan du landar!`;
+
+let selectedKey: string | null = null;
+
+keyElements.forEach((keyElement, index) => {
+  if (!keyElement) {
+    console.error(`Du har inte valt någon nyckel "${keyIds[index]}"`);
+    return;
+  }
+  keyElement.style.cursor = "pointer";
+  keyElement.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectedKey = String(index + 1);
+    messageElement.textContent = `Du har valt nyckeln ${selectedKey}`;
+  });
 });
 
-nyckelhal.addEventListener("click", () => {
-    if (!valdNyckel) {
-        console.log("Du måste välja en nyckel först.");
-        return;
+if (doorElement) {
+  doorElement.addEventListener("click", () => {
+    if (selectedKey) {
+      messageElement.textContent = `Du har låst upp dörren med nyckel ${selectedKey}!`;
+      clearInterval(timer); // Stoppa timern när dörren låses upp
+    } else {
+      messageElement.textContent =
+        "Du måste välja en nyckel för att låsa upp dörren!";
     }
-    console.log(`Du fick bokstaven: ${valdNyckel}`);
-});
+  });
+} else {
+  console.error("Du har inte valt någon nyckel");
+}
 */
 
 /**
