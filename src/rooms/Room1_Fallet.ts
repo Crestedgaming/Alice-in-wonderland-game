@@ -20,7 +20,7 @@
 // 	document.querySelector(".fallet-container").classList.remove("hidden");
 // Hämta nyckelelementen från HTML
 /**
-const keyIds = ["nyckel1", "nyckel2", "nyckel3", "nyckel4"];
+const keyIds = ["nyckeln-L", "nyckeln-E", "nyckeln-V", "nyckeln-A"];
 const keyElements = keyIds.map((id) => document.getElementById(id));
 const doorElement = document.getElementById("key-hole");
 
@@ -32,7 +32,7 @@ const timer = setInterval(() => {
   if (timerElement) {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    timerElement.textContent = `${mins}:${secs.toString().padStart(2, "0")}`;
+    timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
   }
 }, 1000);
 
@@ -55,15 +55,15 @@ keyElements.forEach((keyElement, index) => {
   keyElement.style.cursor = "pointer";
   keyElement.addEventListener("click", (e) => {
     e.stopPropagation();
-    selectedKey = String(index + 1);
-    messageElement.textContent = `Du har valt nyckeln ${selectedKey}`;
+    selectedKey = keyIds[index];
+    messageElement.textContent = `Du har valt ${selectedKey.replace("nyckel-", "nyckel ")}`;
   });
 });
 
 if (doorElement) {
   doorElement.addEventListener("click", () => {
     if (selectedKey) {
-      messageElement.textContent = `Du har låst upp dörren med nyckel ${selectedKey}!`;
+      messageElement.textContent = `Du har låst upp dörren med ${selectedKey.replace("nyckel-", "nyckel ")}!`;
       clearInterval(timer); // Stoppa timern när dörren låses upp
     } else {
       messageElement.textContent =
