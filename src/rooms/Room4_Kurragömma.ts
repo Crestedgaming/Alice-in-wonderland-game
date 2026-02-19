@@ -1,4 +1,5 @@
 /* Syfte med rummet
+
 Fånga katten 3 eller 5 gånger i rad genom att klicka på den när den dyker upp på skärmen. */ 
 
 /* Tillgänglighet 
