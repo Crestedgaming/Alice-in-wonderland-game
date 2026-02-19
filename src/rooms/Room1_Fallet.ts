@@ -60,17 +60,16 @@ nyckelhal.addEventListener("click", () => {
             <img class="alice-faller" src="/public/alice-faller.png" alt="Alice faller">
             <img class="background-image" src="/public/bakgrund.webp" alt="Alice ramlar ner i kaninhålet">
         </div>
-        <div id="nycklar">
+        <div id="nycklar" class="nycklar">
             <img id="nyckel1" class="nyckel1" src="/public/nyckel_1.gif"
                 alt="En guldnyckel med en topp som snurrar i lila färg" />
             <img id="nyckel2" class="nyckel2" src="/public/nyckel_2.gif"
                 alt="En ljusblå nyckel med toppen som är formad som en klöver" />
             <img id="nyckel3" class="nyckel3" src="/public/nyckel_3.gif" alt="En guldnyckel med en krona i toppen." />
             <img id="nyckel4" class="nyckel4" src="/public/nyckel_4.gif" alt="En guldnyckel med en stjärna i toppen." />
-        </div>
-        <div id="key-hole-container">
             <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
                 alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" />
+        </div>
         </div>
     </div>
  */
