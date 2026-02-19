@@ -1,98 +1,84 @@
-@import "reset";
+@media only screen and (min-width: 1044px) {
+  /* Scrollable background image container */
+  .background-scroll {
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    width: 100vw;
+  }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: black;
-}
+  .background-image {
+    width: 100vw;
+    height: auto;
+    display: block;
+  }
 
-img {
-  display: block;
-}
+  .alice-faller {
+    width: 300px;
+    position: absolute;
+    top: 54%;
+    left: 40%;
+    z-index: 8;
+    overflow: hidden;
+  }
 
-body > div {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}
+  .nyckel1 {
+    position: fixed;
+    left: 38vw;
+    top: 40vh;
+    width: 50px;
+    z-index: 10;
+  }
+  .nyckel2 {
+    position: fixed;
+    left: 38vw;
+    top: 50vh;
+    width: 50px;
+    z-index: 10;
+  }
+  .nyckel3 {
+    position: fixed;
+    left: 62vw;
+    top: 40vh;
+    width: 50px;
+    z-index: 10;
+  }
+  .nyckel4 {
+    position: fixed;
+    left: 62vw;
+    top: 50vh;
+    width: 50px;
+    z-index: 10;
+  }
 
-body > div > div {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
-}
+  .nycklar-container img:hover {
+    transform: scale(1.5);
+    border: 1px solid goldenrod;
+    box-shadow: inset 2px 8px 20px goldenrod;
+    border-radius: 50%;
+    pointer-events: auto;
+    padding: 2px;
+  }
 
-.background-image {
-  width: 100%;
-  height: fit-content;
-  margin: 0;
-  padding: 0;
-  vertical-align: top;
-}
+  .key-hole {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 6;
+    bottom: -78.5vh;
+    left: 59.7vh;
+    padding: 0;
+    margin: 0;
+  }
 
-.alice-faller {
-  position: sticky;
-  left: 520px;
-  top: 60px;
-  z-index: 2;
-}
-
-.nyckel1 {
-  scale: 0.1;
-  position: absolute;
-  left: 250px;
-  top: 1025px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.nyckel2 {
-  animation-duration: 3s;
-  scale: 0.1;
-  position: absolute;
-  left: 550px;
-  top: 1200px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.nyckel3 {
-  scale: 0.1;
-  position: absolute;
-  left: 250px;
-  top: 1300px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.nyckel4 {
-  scale: 0.1;
-  position: absolute;
-  left: 550px;
-  top: 1500px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.nycklar img:hover {
-      transform: scale(1.5);
-      outline: 1px solid goldenrod;
-      border-radius: 50%;
-    }
-
-.key-hole {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  left: 735px;
-  top: 2710px;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 1;
+  .key-hole:hover {
+    transform: scale(1.3);
+    border: 1px solid goldenrod;
+    box-shadow: inset 2px 8px 20px goldenrod;
+    border-radius: 50%;
+    pointer-events: auto;
+    padding: 2px;
+  }
 }
