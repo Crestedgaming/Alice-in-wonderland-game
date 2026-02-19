@@ -7,7 +7,6 @@
  * Detta måste användaren göra så fort som möjligt för att få minst poäng som baseras på tid.
  */
 
-
 /**
  * När spelaren har klickat på börja spela tas classen hidden bort från kod-blocket.
  * Hämta alla html-element för nycklarna och nyckelhålet.
@@ -16,7 +15,6 @@
  * När nyckelhålet är klickad visas vilken bokstav spelaren har samlat på sig(artefakt).
  * Skulle användaren inte ha klickat på en nyckel kommer en text att visas som säger att spelaren måste välja en nyckel.
  */
-
 
 // if (inloggning === true) {
 // 	document.querySelector(".fallet-container").classList.remove("hidden");
@@ -55,8 +53,6 @@ nyckelhal.addEventListener("click", () => {
     console.log(`Du fick bokstaven: ${valdNyckel}`);
 });
 */
-
-
 
 /**
  * <div class="fallet-container hidden">
