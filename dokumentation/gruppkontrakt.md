@@ -55,6 +55,7 @@ Vilken roll brukar varje gruppmedlem ta på sig i ett grupparbete? Vilken roll h
 - **Pepparen:** Positiv, empatisk, skapar god stämning.
 - **Dörrvakten/Processledaren:** Säkerställer deltagande, hanterar diskussionen.
 
+
 Jennie; 
 - Köttar på, glömmer bort att ta pauser.
 - Fokusera nästa steg tydligt. 
@@ -65,8 +66,9 @@ Roll i grupparbete:
 - **Djävulens advokat:**
 - **Pepparen:**
 
-Markus;
 
+
+Markus;
 - Fastnar lätt vid stress
 - Försöker få alla att må bra/komma överens
 
@@ -74,21 +76,24 @@ Roll i grupparbetet;
 **Ledaren:**
 **Lagspelaren/Samordnaren:** 
 
+
+
 Sandra; 
-Fastnar lätt om jag tycker det är roligt. 
-Men kanske skjuter upp det jag tycker tråkigt. 
+- Fastnar lätt om jag tycker det är roligt. 
+- Men kanske skjuter upp det jag tycker tråkigt. 
 
 Roll i grupparbete: 
 **Innovatören/Idésprutan:**
 **Informationssökaren:** 
 
+
+
 Alex;
 - Tunnelseende vid stress när jag gör en arbetsuppgift som är roligt.
 - Blir uppgiftsorienterad vid stress och vill gärna bli klar med den.
 
-
 Roll i grupparbetet;
-- **Informationssökaren:** Nyfiken, faktabaserad, samlar data
+- **Informationssökaren:** Nyfiken, faktabaserad, samlar data.
 - **Granskaren/Utvärderaren:** Kritisk, strategisk, objektiv, logisk.
 - **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
 
@@ -96,11 +101,13 @@ Roll i grupparbetet;
 
 Mohammed;
 - En eftertänkare 
-- laser foucosed 
+- laser focused 
+
 Roll i grupparbetet:
  **Lagspelaren/Samordnaren**
  **Slutföraren/Kvalitetssäkraren:**
 
+<<<<<<< HEAD
 Amanda;
 - Effektiv och fokuserad vid stress om uppgiften är rolig.
 - Svårare att hålla fokus vid stress i mindre roliga uppgifter.
@@ -108,6 +115,9 @@ Amanda;
 Roll i grupparbetet;
 - **Lagspelaren/Samordnaren:** Samarbetsvillig, diplomatisk, stöttande.
 - **Innovatören/Idésprutan:** Kreativ, fantasifull, ser nya lösningar.
+=======
+
+>>>>>>> 12dfed5 (Uppdaterat gruppkontrakt med roller och ansvarsområden för gruppmedlemmar samt korrigeringar av stavfel.)
 
 ## Uppgiftsfördelning
 
@@ -131,19 +141,20 @@ Roll i grupparbetet;
 Jennie; 
 - Bättre på: Komma på ideér, design, CSS, UX-tänk.
 - Sämre på: Kan logiken i Javascript, sämre på att genomföra, hitta rätt kod till vad och struktur. 
-- Träna mer på Javascript. 
+* Träna mer på Javascript. 
 
 
 Markus;
-
 - Bättre på: problemlösning, html, struktur.
 - Sämre på: Javaskript struktur, 
-. Träna på: Hur man strukturera ett javaskript dokument.ad
+* Träna på: Hur man strukturera ett javaskript dokument.ad
+
 
 Sandra; 
 - Bättre på: Design, färg, grafisk formgivning, Html 
 - Sämre på strukturen i Javascript. Struktur och planering. 
-- Träna på: Javascript 
+* Träna på: Javascript 
+
 
 Alex;
 - Bättre på: Html och CSS, problemlösning och hitta information.
@@ -151,11 +162,17 @@ Alex;
 * Träna på att skriva Javascript och förstå strukturen.
 
 
-
 Mohammed;
  - Bättre på: Html och CSS
  - Sämre på Javascript
+<<<<<<< HEAD
  - vill träna mer på Javascript och merging
+=======
+ * vill träna mer på Javascript och merging 
+
+
+Amanda;
+>>>>>>> 12dfed5 (Uppdaterat gruppkontrakt med roller och ansvarsområden för gruppmedlemmar samt korrigeringar av stavfel.)
 
 
 Amanda;
