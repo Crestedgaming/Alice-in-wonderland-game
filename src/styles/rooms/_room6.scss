@@ -1,0 +1,94 @@
+$primary-color: #c4761d;
+$background-color: #f3e8ff;
+$danger-color: #df2f2f;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Henny Penny", system-ui;
+    font-weight: 400;
+    font-style: normal;
+
+    .puzzle {
+        display: grid;
+        grid-template-columns: repeat(5, 60px);
+        gap: 25px;
+        margin-bottom: 20px;
+    }
+
+    .letter {
+        width: 60px;
+        height: 60px;
+        font-size: 36px;
+        text-align: center;
+        border: 3px solid #9333ea;
+        text-transform: uppercase;
+        font-weight: bold;
+        outline: none;
+        border-radius: 5px;
+        background-color: $background-color;
+        transition: all 0.2s ease;
+    }
+
+    .letter:hover {
+        transform: scale(1.1);
+        border-color: darken($primary-color, 50%);
+    }
+
+    #app {
+        background-color: rgba(243, 232, 255, 0.9);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        align-content: center;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+            color: $primary-color;
+            margin-bottom: 30px;
+        }
+
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 4px solid #ddd;
+        }
+
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background-color: $primary-color;
+            color: white;
+            font-family: "Henny Penny", system-ui;
+            font-weight: bold;
+
+
+
+        }
+
+
+    }
+}
