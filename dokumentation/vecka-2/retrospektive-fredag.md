@@ -1,6 +1,6 @@
 # Retrospektive: Fredag 2026-02-20
 
-Project board:![alt text](https://file%2B.vscode-resource.vscode-cdn.net/var/folders/_8/6wdlwm613hx7n2g11ncqjfdc0000gn/T/TemporaryItems/NSIRD_screencaptureui_gCib41/Ska%CC%88rmavbild%202026-02-20%20kl.%2010.02.53.png?version%3D1771578178842)
+Project board:![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/alex/Desktop/board-2026-02-20.png?version%3D1771578218058)
 
 Dagens scrum master: Alex
 
