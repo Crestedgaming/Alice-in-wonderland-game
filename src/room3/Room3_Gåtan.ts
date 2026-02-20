@@ -41,6 +41,13 @@ export class Room3 {
     * När spelaren har svarat på den tredje gåtan så visas en text som säger att spelaren har klarat rummet och att den får en artifact.
     * När spelaren har klarat rummet så kan den klicka på "nästa" för att gå vidare till nästa rum.
     *
+    *
+    * start() {
+    *   const app = document.getElementById("app")!;
+    *  app.innerHTML = `
+    *      <h1>Puzzle</h1>
+    *      <button id="solve">Solve</button>
+    *  `;
     * //if (svaret är rätt) {
     //  visa nästa gåta
     //} else {
