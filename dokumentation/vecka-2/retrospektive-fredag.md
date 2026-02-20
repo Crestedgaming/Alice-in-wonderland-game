@@ -26,7 +26,7 @@ Dagens scrum master: Alex
 
 
 ### Vad ska vi göra idag:
-
+- Alla går in i boarden och assigna sig själva på respektive uppgifter som man arbetar på.
 
 
 ###### Käslan just nu?
