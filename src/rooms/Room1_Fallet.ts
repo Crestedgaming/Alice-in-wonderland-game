@@ -20,7 +20,7 @@
 // 	document.querySelector(".fallet-container").classList.remove("hidden");
 // Hämta nyckelelementen från HTML
 /**
-const keyIds = ["nyckel1", "nyckel2", "nyckel3", "nyckel4"];
+const keyIds = ["nyckeln-L", "nyckeln-E", "nyckeln-V", "nyckeln-A"];
 const keyElements = keyIds.map((id) => document.getElementById(id));
 const doorElement = document.getElementById("key-hole");
 
@@ -32,7 +32,7 @@ const timer = setInterval(() => {
   if (timerElement) {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    timerElement.textContent = `${mins}:${secs.toString().padStart(2, "0")}`;
+    timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
   }
 }, 1000);
 
@@ -55,15 +55,15 @@ keyElements.forEach((keyElement, index) => {
   keyElement.style.cursor = "pointer";
   keyElement.addEventListener("click", (e) => {
     e.stopPropagation();
-    selectedKey = String(index + 1);
-    messageElement.textContent = `Du har valt nyckeln ${selectedKey}`;
+    selectedKey = keyIds[index];
+    messageElement.textContent = `Du har valt ${selectedKey.replace("nyckel-", "nyckel ")}`;
   });
 });
 
 if (doorElement) {
   doorElement.addEventListener("click", () => {
     if (selectedKey) {
-      messageElement.textContent = `Du har låst upp dörren med nyckel ${selectedKey}!`;
+      messageElement.textContent = `Du har låst upp dörren med ${selectedKey.replace("nyckel-", "nyckel ")}!`;
       clearInterval(timer); // Stoppa timern när dörren låses upp
     } else {
       messageElement.textContent =
@@ -77,20 +77,30 @@ if (doorElement) {
 
 /**
  * <div class="fallet-container hidden">
-        <div>
-            <img class="alice-faller" src="/public/alice-faller.png" alt="Alice faller">
-            <img class="background-image" src="/public/bakgrund.webp" alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål">
+        <header>
+            <div id="timer" class="timer"></div>
+        </header>
+        <div class="background-scroll">
+            <img class="background-image" src="/public/bakgrund.webp"
+                alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål">
+            <div class="nyckelhal-container">
+                <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
+                    alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" />
+            </div>
         </div>
-        <div id="nycklar" class="nycklar">
-            <img id="nyckel1" class="nyckel1" src="/public/nyckel_1.gif"
-                alt="En guldnyckel med en topp som snurrar i lila färg" />
-            <img id="nyckel2" class="nyckel2" src="/public/nyckel_2.gif"
-                alt="En ljusblå nyckel med toppen som är formad som en klöver" />
-            <img id="nyckel3" class="nyckel3" src="/public/nyckel_3.gif" alt="En guldnyckel med en krona i toppen." />
-            <img id="nyckel4" class="nyckel4" src="/public/nyckel_4.gif" alt="En guldnyckel med en stjärna i toppen." />
-            <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
-                alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" />
+        <div class="alice-faller">
+            <img src="/public/alice-faller.png" alt="Alice faller">
         </div>
-        </div>
+    </div>
+    <div id="nycklar" class="nycklar-container">
+        <img id="nyckeln-L" class="nyckel1" src="/public/nyckel_1.gif"
+            alt="En guldnyckel med en topp som snurrar i lila färg" />
+        <img id="nyckeln-E" class="nyckel2" src="/public/nyckel_2.gif"
+            alt="En ljusblå nyckel med toppen som är formad som en klöver" />
+        <img id="nyckeln-V" class="nyckel3" src="/public/nyckel_3.gif" alt="En guldnyckel med en krona i toppen." />
+        <img id="nyckeln-A" class="nyckel4" src="/public/nyckel_4.gif" alt="En guldnyckel med en stjärna i toppen." />
+    </div>
+
+    </div>
     </div>
  */
