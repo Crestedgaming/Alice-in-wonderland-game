@@ -1,27 +1,22 @@
 # Daily Standup: Torsdag 2026-02-19
 
-Project board:![alt text](https://file%2B.vscode-resource.vscode-cdn.net/var/folders/_8/6wdlwm613hx7n2g11ncqjfdc0000gn/T/TemporaryItems/NSIRD_screencaptureui_0xLztX/Ska%CC%88rmavbild%202026-02-19%20kl.%2011.57.27.png?version%3D1771498659890)
+Project board:![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/alex/Desktop/daily-stand-up-2026-02-19.png?version%3D1771570648272)
 
 Dagens scrum master: Alex
 
-## Namn: Markus Jönsson
-
-- Närvarande: Ja
-
-## Namn: Mohammed Amin Yasin
-
+## Namn: Amanda Andersson
 - Närvarande: Ja
 
 ## Namn: Jennie Modd
-
 - Närvarande: Ja
 
-## Namn: Amanda Andersson
+## Namn: Markus Jönsson
+- Närvarande: Ja
 
+## Namn: Mohammed Amin Yasin
 - Närvarande: Ja
 
 ## Namn: Sandra Hellström
-
 - Närvarande: Ja
 
 ### Vad utförde vi igår:
