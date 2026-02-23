@@ -33,4 +33,4 @@ Dagens scrum master: Alex
 - Fortsatt eget arbete efter att punkterna ovan är klara. 
 
 ## Morgondagens Todo
-- 
+- Imorgon kommer vi att se över hur vi kan lägga in HTML + CSS i det gemensamma dokumentet och arbeta med Visual Hidden. 
