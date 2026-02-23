@@ -1,17 +1,13 @@
 /* base */
 @use "./base/reset";
 @use "./base/variables";
-@use "./base/typography";
 @use "./base/accessibility";
 
-/* layout */
-@use "./layout/game";
-@use "./layout/ui";
+/* shared_UI */
+@use "./Shared_UI/dialogue";
+@use "./Shared_UI/inventory";
+@use "./Shared_UI/progressbar";
 
-/* components */
-@use "./components/dialogue";
-@use "./components/inventory";
-@use "./components/progressbar";
 
 /* rooms */
 @use "./rooms/room1";
