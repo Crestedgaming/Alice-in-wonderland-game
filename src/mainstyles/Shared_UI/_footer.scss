@@ -17,7 +17,7 @@ footer {
 	font-family: "Henny Penny", system-ui;
 	font-weight: 400;
 	font-style: normal;
-		border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
 
 	ul {
 		display: flex;
@@ -26,9 +26,8 @@ footer {
 		align-items: center;
 		height: 100%;
 		margin: 10px;
-		text-shadow: 5px 5px 10px #4b1f1f;
 	}
-	
+
 	li {
 		border: 2px inset #f2e6ce;
 		border-radius: 50%;
@@ -39,6 +38,7 @@ footer {
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 30px;
-		
+		text-shadow: 5px 5px 4px #4b1f1f;
+		box-shadow: 5px 5px 4px #4b1f1f;
 	}
 }
