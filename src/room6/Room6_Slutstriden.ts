@@ -59,8 +59,7 @@ export function renderRoom6() {
       <p id="message" class="message"></p>
     </div>
   `;
-}
-const submitButton = document.getElementById("submit");
+  const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", checkWord);
 
@@ -76,7 +75,7 @@ function checkWord() {
     word += (input as HTMLInputElement).value;
   });
 
-  if (word === "MAGIC") {
+  if (word === "VAKNA") {
     message.textContent = "Grattis! Du klarade det!";
     message.classList.remove("error");
     message.classList.add("success");
@@ -98,3 +97,4 @@ inputs.forEach((input) => {
   }
 });
 });
+}
