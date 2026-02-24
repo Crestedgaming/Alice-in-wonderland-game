@@ -37,3 +37,64 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
+
+export function renderRoom6() {
+  const app = document.getElementById("app") as HTMLDivElement;
+
+  app.innerHTML = `
+    <div class="room--final">
+      <h1>Room 6 - Word Puzzle</h1>
+
+      <div class="puzzle">
+        <input type="text" maxlength="1" class="letter" />
+        <input type="text" maxlength="1" class="letter" />
+        <input type="text" maxlength="1" class="letter" />
+        <input type="text" maxlength="1" class="letter" />
+        <input type="text" maxlength="1" class="letter" />
+      </div>
+
+      <button class="hint-button" disabled>Hint</button>
+         <button class="submit" id="submit">Submit</button>
+
+      <p id="message" class="message"></p>
+    </div>
+  `;
+}
+const submitButton = document.getElementById("submit");
+
+submitButton?.addEventListener("click", checkWord);
+
+
+
+function checkWord() {
+  const message = document.querySelector(".message") as HTMLParagraphElement;
+  const inputs = document.querySelectorAll(".letter");
+
+  let word = "";
+
+  inputs.forEach((input) => {
+    word += (input as HTMLInputElement).value;
+  });
+
+  if (word === "MAGIC") {
+    message.textContent = "Grattis! Du klarade det!";
+    message.classList.remove("error");
+    message.classList.add("success");
+  } else {
+    message.textContent = "Fel ord! Du måste tillbaka.";
+    message.classList.remove("success");
+    message.classList.add("error");
+  }
+}
+
+const inputs = document.querySelectorAll(".letter");
+
+inputs.forEach((input) => {
+  input.addEventListener("keydown", (event) => {
+  const keyEvent = event as KeyboardEvent;
+
+  if (keyEvent.key === "Enter") {
+    checkWord();
+  }
+});
+});
