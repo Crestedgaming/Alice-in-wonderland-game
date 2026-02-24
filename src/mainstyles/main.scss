@@ -17,3 +17,11 @@
 @use "../room4/room4";
 @use "../room5/room5";
 @use "../room6/room6";
+
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+    color: white;
+}
