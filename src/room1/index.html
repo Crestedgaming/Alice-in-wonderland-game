@@ -14,23 +14,25 @@
     <title>Alice i underlandet</title>
     <link rel="icon" type="image/x-icon" href="/favicon-2.ico">
 </head>
-<header>
-    <div>
-        <nav id="falletNavBar" class="falletNavBar">
-            <label>
-                <button id="resetGameBtn" class="resetGameBtn">Börja om</button>
-            </label>
-            <h1 id="rumID" class="navBarElement">Fallet</h1>
-            <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
-            <span id="falletTimer" class="navBarElement"></span>
-            <label>
-                <button id="goBackBtn" class="goBackBtn">Gå tillbaka</button>
-            </label>
-    </div>
-</header>
+
 
 <body>
-
+    <header>
+        <div>
+            <nav id="falletNavBar" class="falletNavBar">
+                <label>
+                    <button id="resetGameBtn" class="resetGameBtn">Börja om</button>
+                </label>
+                <h1 id="rumID" class="navBarElement">Fallet</h1>
+                <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
+                <span id="falletTimer" class="navBarElement"></span>
+                <label>
+                    <button id="goBackBtn" class="goBackBtn">Gå tillbaka</button>
+                </label>
+            </nav>
+        </div>
+    </header>
+<main>
     <div class="fallet-container hidden">
 
         <div class="background-scroll">
@@ -40,28 +42,28 @@
                 <span tabindex="0">
                     <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
                         alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
-                        aria-label="Lås upp dörren" />
+                        aria-label="Lås upp dörren" >
                 </span>
             </div>
             <div id="nycklar" class="nycklar-container">
                 <span tabindex="0">
                     <img id="nyckeln-L" class="nyckel1" src="/public/nyckel_1.gif"
                         alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-                        aria-label="Välj nyckel L" /></span>
+                        aria-label="Välj nyckel L" ></span>
                 <span tabindex="0">
                     <img id="nyckeln-E" class="nyckel2" src="/public/nyckel_2.gif"
                         alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
-                        aria-label="Välj nyckel E" />
+                        aria-label="Välj nyckel E" >
                 </span>
                 <span tabindex="0">
                     <img id="nyckeln-V" class="nyckel3" src="/public/nyckel_3.gif"
                         alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
-                        aria-label="Välj nyckel V" />
+                        aria-label="Välj nyckel V" >
                 </span>
                 <span tabindex="0">
                     <img id="nyckeln-A" class="nyckel4" src="/public/nyckel_4.gif"
                         alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
-                        aria-label="Välj nyckel A" />
+                        aria-label="Välj nyckel A" >
                 </span>
             </div>
         </div>
@@ -70,19 +72,19 @@
         </div>
 
     </div>
-</body>
-<footer>
-    <div id="visaArtifakter" class="visaArtifakter">
-        <ul>
-            <li id="artifakt1" class="artifakter"><span>V</span></li>
-            <li id="artifakt2" class="artifakter"><span>A</span></li>
-            <li id="artifakt3" class="artifakter"><span>K</span></li>
-            <li id="artifakt4" class="artifakter"><span>N</span></li>
-            <li id="artifakt5" class="artifakter"><span>A</span></li>
-        </ul>
-    </div>
-
-</footer>
+    </main>
+    <footer>
+        <div id="visaArtifakter" class="visaArtifakter">
+            <ul>
+                <li id="artifakt1" class="artifakter"><span>V</span></li>
+                <li id="artifakt2" class="artifakter"><span>A</span></li>
+                <li id="artifakt3" class="artifakter"><span>K</span></li>
+                <li id="artifakt4" class="artifakter"><span>N</span></li>
+                <li id="artifakt5" class="artifakter"><span>A</span></li>
+            </ul>
+        </div>
+    
+    </footer>
 <script type="module" src="./src/main.ts"></script>
 </body>
 
