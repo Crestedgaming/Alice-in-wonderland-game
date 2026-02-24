@@ -1,6 +1,6 @@
 # Daily Stand Up/Sprint Planning: Måndag 2026-02-23
 
-Project board:![Project board](https://file%2B.vscode-resource.vscode-cdn.net/Users/alex/Documents/medieinstitutet/fed25d/kurs-2-j…)
+Project board:![Project board](/dokumentation/vecka-3/assets/project_boardv3.png)
 
 Dagens scrum master: Jennie
 
