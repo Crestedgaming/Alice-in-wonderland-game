@@ -1,5 +1,4 @@
-import { GameState } from "../engine/GameState";
-import { completeRoom } from "../engine/GameManager";
+
 
 
 export class Room3 {
