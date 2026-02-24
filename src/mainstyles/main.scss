@@ -18,6 +18,10 @@
 @use "../room5/room5";
 @use "../room6/room6";
 
+body {
+    background-color: black;
+}
+
 main {
     display: grid;
     grid-template-rows: 1fr;
