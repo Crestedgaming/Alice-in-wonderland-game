@@ -1,8 +1,8 @@
-/\* Syfte med rummet
+##Syfte med rummet
 
-Fånga katten 3 eller 5 gånger i rad genom att klicka på den när den dyker upp på skärmen. \*/
+Fånga katten 3 eller 5 gånger i rad genom att klicka på den när den dyker upp på skärmen.
 
-/\* Tillgänglighet
+##Tillgänglighet
 
 - Visuella och ljudindikationer när katten dyker upp och när den fångas.
 - Kunna fånga katten genom att trycka på en specifik tangent på tagentbordet. Katten alltid i fokus.
@@ -23,12 +23,7 @@ registrera träff
     när spelaren klickar på katten:
     registrera träff
 
-/_ Syfte med rummet
-Fånga katten 3 eller 5 gånger i rad.
-Om rummet klaras: spelaren får en bokstav och går vidare.
-_/
-
-/\*START
+#START
 
 1. INITIERA
    antalTräffarFörVinst = 3 eller 5
@@ -82,4 +77,4 @@ _/
    paused = false
    showCatLoop()
 
-SLUT\*/
+SLUT
