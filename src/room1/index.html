@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/style.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Henny+Penny&display=swap"
         rel="stylesheet">
     <title>Alice i underlandet</title>
-    <link rel="icon" type="image/x-icon" href="/favicon-2.ico">
 </head>
 
 
@@ -27,51 +25,51 @@
                 <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
                 <span id="falletTimer" class="navBarElement"></span>
                 <label>
-                    <button id="goBackBtn" class="goBackBtn"><span>Gå tillbaka</span></button>
+                    <button id="goBackBtn" class="goBackBtn">Gå tillbaka</button>
                 </label>
             </nav>
         </div>
     </header>
-    <main>
-        <div class="fallet-container hidden">
+<main>
+    <div class="fallet-container hidden">
 
-            <div class="background-scroll">
-                <img class="background-image" src="/public/bakgrund.webp"
-                    alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål">
-                <div class="nyckelhal-container">
-                    <span tabindex="0">
-                        <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
-                            alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0"
-                            role="button" aria-label="Lås upp dörren">
-                    </span>
-                </div>
-                <div id="nycklar" class="nycklar-container">
-                    <span tabindex="0">
-                        <img id="nyckeln-L" class="nyckel1" src="/public/nyckel_1.gif"
-                            alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-                            aria-label="Välj nyckel L"></span>
-                    <span tabindex="0">
-                        <img id="nyckeln-E" class="nyckel2" src="/public/nyckel_2.gif"
-                            alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
-                            aria-label="Välj nyckel E">
-                    </span>
-                    <span tabindex="0">
-                        <img id="nyckeln-V" class="nyckel3" src="/public/nyckel_3.gif"
-                            alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
-                            aria-label="Välj nyckel V">
-                    </span>
-                    <span tabindex="0">
-                        <img id="nyckeln-A" class="nyckel4" src="/public/nyckel_4.gif"
-                            alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
-                            aria-label="Välj nyckel A">
-                    </span>
-                </div>
+        <div class="background-scroll">
+            <img class="background-image" src="/public/bakgrund.webp"
+                alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål">
+            <div class="nyckelhal-container">
+                <span tabindex="0">
+                    <img id="key-hole" class="key-hole" src="/public/nyckelhalet.gif"
+                        alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
+                        aria-label="Lås upp dörren" >
+                </span>
             </div>
-            <div class="alice-faller">
-                <img src="/public/alice-faller.png" alt="Alice faller">
+            <div id="nycklar" class="nycklar-container">
+                <span tabindex="0">
+                    <img id="nyckeln-L" class="nyckel1" src="/public/nyckel_1.gif"
+                        alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
+                        aria-label="Välj nyckel L" ></span>
+                <span tabindex="0">
+                    <img id="nyckeln-E" class="nyckel2" src="/public/nyckel_2.gif"
+                        alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
+                        aria-label="Välj nyckel E" >
+                </span>
+                <span tabindex="0">
+                    <img id="nyckeln-V" class="nyckel3" src="/public/nyckel_3.gif"
+                        alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
+                        aria-label="Välj nyckel V" >
+                </span>
+                <span tabindex="0">
+                    <img id="nyckeln-A" class="nyckel4" src="/public/nyckel_4.gif"
+                        alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
+                        aria-label="Välj nyckel A" >
+                </span>
             </div>
-
         </div>
+        <div class="alice-faller">
+            <img src="/public/alice-faller.png" alt="Alice faller">
+        </div>
+
+    </div>
     </main>
     <footer>
         <div id="visaArtifakter" class="visaArtifakter">
@@ -84,7 +82,7 @@
             </ul>
         </div>
     </footer>
-    <script type="module" src="./src/main.ts"></script>
+<script type="module" src="./src/main.ts"></script>
 </body>
 
 </html>
