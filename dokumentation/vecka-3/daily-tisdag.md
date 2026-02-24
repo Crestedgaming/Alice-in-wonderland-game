@@ -1,6 +1,6 @@
-# Daily Stand Up/Sprint Planning: Måndag 2026-02-24
+# Daily Stand Up/Sprint Planning: Tisdag 2026-02-24
 
-Project board:![Project board](dokumentation/vecka-3/assets/project_boardv3.png)
+Project board:![Project board](/dokumentation/vecka-3/assets/project_boardv3.png)
 
 Dagens scrum master: Jennie
 
