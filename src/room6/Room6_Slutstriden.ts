@@ -46,12 +46,19 @@ export function renderRoom6() {
       <h1>Room 6 - Word Puzzle</h1>
 
       <div class="puzzle">
-        <input type="text" maxlength="1" class="letter" />
-        <input type="text" maxlength="1" class="letter" />
-        <input type="text" maxlength="1" class="letter" />
-        <input type="text" maxlength="1" class="letter" />
-        <input type="text" maxlength="1" class="letter" />
+       <div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
       </div>
+      <div class="letters">
+  <button class="letter-btn">V</button>
+  <button class="letter-btn">A</button>
+  <button class="letter-btn">K</button>
+  <button class="letter-btn">N</button>
+  <button class="letter-btn">A</button>
+</div>
 
       <button class="hint-button" disabled>Hint</button>
          <button class="submit" id="submit">Submit</button>
@@ -67,13 +74,14 @@ submitButton?.addEventListener("click", checkWord);
 
 function checkWord() {
   const message = document.querySelector(".message") as HTMLParagraphElement;
-  const inputs = document.querySelectorAll(".letter");
 
-  let word = "";
+const boxes = document.querySelectorAll(".box");
+ let word = "";
+boxes.forEach((box) => {
+  word += box.textContent;
+});
+ 
 
-  inputs.forEach((input) => {
-    word += (input as HTMLInputElement).value;
-  });
 
   if (word === "VAKNA") {
     message.textContent = "Grattis! Du klarade det!";
@@ -85,16 +93,21 @@ function checkWord() {
     message.classList.add("error");
   }
 }
+const boxes = document.querySelectorAll(".box");
+const letters = document.querySelectorAll(".letter-btn");
 
-const inputs = document.querySelectorAll(".letter");
+let currentIndex = 0;
 
-inputs.forEach((input) => {
-  input.addEventListener("keydown", (event) => {
-  const keyEvent = event as KeyboardEvent;
+letters.forEach((letter) => {
+  letter.addEventListener("click", () => {
+    if (currentIndex < boxes.length) {
+      boxes[currentIndex].textContent = letter.textContent;
+      currentIndex++;
 
-  if (keyEvent.key === "Enter") {
-    checkWord();
-  }
+      // valfri men bra:
+      (letter as HTMLButtonElement).disabled = true;
+    }
+  });
 });
-});
+
 }

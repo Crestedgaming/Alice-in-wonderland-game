@@ -39,7 +39,7 @@
 
 .room--final {
 
-    .letter {
+    .box {
         width: 70px;
         height: 70px;
         font-size: 2rem;
@@ -54,7 +54,7 @@
         transition: all 0.2s ease;
     }
 
-    .letter:focus {
+    .letter-btn:focus {
         outline: none;
         border-color: gold;
         transform: scale(1.1);
