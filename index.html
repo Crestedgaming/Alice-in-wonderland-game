@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>escape-room-game</title>
@@ -15,13 +16,14 @@
     <div>
       <nav id="falletNavBar" class="falletNavBar">
         <label>
-          <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">Börja om</button>
+          <button id="resetAndStartGameBtn" class="resetAndStartGameBtn" style='font-size:24px'>Börja om<i class='fas fa-redo-alt'></i></button>
         </label>
         <h1 id="rumID" class="navBarElement">Titel</h1>
         <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
-        <span id="falletTimer" class="navBarElement"></span>
+        <span id="falletTimer" class="navBarElement">Din tid: 00.00</span>
         <label>
-          <button id="goBackBtn" class="goBackBtn">Gå tillbaka</button>
+          <button id="goBackBtn" class="goBackBtn">Gå tillbaka<i class='fas fa-long-arrow-alt-left'
+              style='font-size:48px;color:red'></i></button>
         </label>
       </nav>
     </div>
