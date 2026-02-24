@@ -30,6 +30,7 @@ header {
 		font-style: normal;
 		letter-spacing: 1px;
 		font-size: 1rem;
+		box-shadow: 5px 5px 10px #4b1f1f;
 
 		&:hover {
 			background: #f2e6ce;
@@ -49,6 +50,7 @@ header {
 
 .falletNavBar h1 {
 	padding-top: 15px;
+	text-shadow: 5px 5px 10px #4b1f1f;
 }
 
 .navBarElement {
@@ -56,4 +58,5 @@ header {
 	font-weight: 400;
 	font-style: normal;
 	letter-spacing: 1px;
+	text-shadow: 5px 5px 10px #4b1f1f;
 }
