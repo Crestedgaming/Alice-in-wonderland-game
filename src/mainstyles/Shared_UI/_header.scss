@@ -1,5 +1,5 @@
 .falletNavBar {
-	width: 100%;
+	width: 100vw;
 	height: 50px;
 	position: sticky;
 	display: flex;
@@ -8,21 +8,16 @@
 	background: #732f2f;
 	opacity: 0.95;
 	color: #f2e6ce;
-	padding: 10px;
+	padding-block: 10px;
 	font-size: 1.6rem;
 	z-index: 1000;
-	font-family: "Bricolage Grotesque", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-	font-variation-settings: "wdth" 100;
 
 	button {
 		background: transparent;
 		border: 2px solid #f2e6ce;
 		color: #f2e6ce;
 		padding: 15px 25px;
-		border-radius: 81% 19% 85% 15% / 70% 23% 77% 30% ;
+		border-radius: 50px 0px 50px 0;
 		cursor: pointer;
 		font-family: "Bricolage Grotesque", sans-serif;
 		font-optical-sizing: auto;
@@ -38,7 +33,7 @@
 			transition: transform 0.3s ease-in-out;
 		}
 	}
-	p {
+	p, span {
 		font-family: "Bricolage Grotesque", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
