@@ -1,6 +1,6 @@
 # Daily Stand Up/Sprint Planning: Måndag 2026-02-23
 
-Project board:![alt text](https://file%2B.vscode-resource.vscode-cdn.net/Users/alex/Desktop/board-2026-02-20.png?version%3D1771578218058)
+Project board:!![The San Juan Mountains are beautiful](/assets/project_boardv3.png)
 
 Dagens scrum master: Alex
 
