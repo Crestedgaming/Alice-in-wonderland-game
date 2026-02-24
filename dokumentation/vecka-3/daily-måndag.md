@@ -1,8 +1,8 @@
 # Daily Stand Up/Sprint Planning: Måndag 2026-02-23
 
-Project board:![Project board](vecka-3/assets/project_boardv3.png)
+Project board:![Project board](dokumentation/vecka-3/assets/project_boardv3.png)
 
-Dagens scrum master: Alex
+Dagens scrum master: Jennie
 
 ## Namn: Amanda Andersson
 - Närvarande: Nej, meddelat oss detta i förhand. 
