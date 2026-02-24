@@ -25,6 +25,11 @@
 		font-style: normal;
 		font-variation-settings: "wdth" 100;
 
+		span {
+			font-size: 1.2rem;
+		}
+
+
 		&:hover {
 			background: #f2e6ce;
 			color: #732f2f;
@@ -33,7 +38,8 @@
 			transition: transform 0.3s ease-in-out;
 		}
 	}
-	p, span {
+
+	p {
 		font-family: "Bricolage Grotesque", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 400;
