@@ -1,6 +1,6 @@
 # Daily Standup: veckodag 2026-02-17
 
-!(Dailyboardonsdag.png)
+Project board:![Project board](/dokumentation/vecka-2/assets/dailyboardonsdag.png)
 Dagens scrum master: Sandra Hellström
 
 ## Namn: Sandra Hellström
