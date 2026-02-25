@@ -1,5 +1,8 @@
 import "./mainstyles/main.scss";
-import "./room4/Room4_Kurragömma";
+
+import { startGame } from "./engine/GameManager";
+import { gameState } from "./engine/GameState";
+
 
 /*
  * ============================================================
