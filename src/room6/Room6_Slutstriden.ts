@@ -38,34 +38,7 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 */
 
-export function renderRoom6() {
-  const app = document.getElementById("app") as HTMLDivElement;
 
-  app.innerHTML = `
-    <div class="room--final">
-      <h1>Room 6 - Word Puzzle</h1>
-
-      <div class="puzzle">
-       <div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
-<div class="box"></div>
-      </div>
-      <div class="letters">
-  <button class="letter-btn">V</button>
-  <button class="letter-btn">A</button>
-  <button class="letter-btn">K</button>
-  <button class="letter-btn">N</button>
-  <button class="letter-btn">A</button>
-</div>
-
-      <button class="hint-button" disabled>Hint</button>
-         <button class="submit" id="submit">Submit</button>
-
-      <p id="message" class="message"></p>
-    </div>
-  `;
   const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", checkWord);
@@ -104,10 +77,10 @@ letters.forEach((letter) => {
       boxes[currentIndex].textContent = letter.textContent;
       currentIndex++;
 
-      // valfri men bra:
+    
       (letter as HTMLButtonElement).disabled = true;
     }
   });
 });
 
-}
+

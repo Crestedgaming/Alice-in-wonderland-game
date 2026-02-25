@@ -1,32 +1,24 @@
 .room--final {
+    background-image: url("/Room6_bilder/QUEEN ROOM EL FINALE.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
     padding: 2rem;
+    min-width: 100vw;
 }
 
-.room--final {
-    background: url("/images/final-room.png") no-repeat center center;
-    background-size: cover;
-    position: relative;
-    color: white;
-}
 
-.room--final::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-}
 
-.room--final>* {
-    position: relative;
-    z-index: 1;
-}
+
+
 
 .room--final {
 
@@ -76,15 +68,7 @@
         transition: all 0.3s ease;
     }
 
-    .hint-button:not(:disabled) {
-        background-color: gold;
-        color: black;
-        cursor: pointer;
-    }
 
-    .hint-button:not(:disabled):hover {
-        transform: scale(1.05);
-    }
 }
 
 .room--final {
@@ -97,13 +81,11 @@
 
         background-color: gray;
         color: white;
-        cursor: not-allowed;
 
         transition: all 0.3s ease;
     }
 
     .submit:not(:disabled) {
-        background-color: gray;
         color: black;
         cursor: pointer;
     }
