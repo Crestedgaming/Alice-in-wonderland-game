@@ -108,8 +108,8 @@
 			cursor: pointer;
 			pointer-events: auto;
 			z-index: 4;
-			bottom: -480px;
-			left: 50.6%;
+			bottom: min(-480px);
+			left: min(735px);
 			padding: 0;
 			margin: 0;
 		}
