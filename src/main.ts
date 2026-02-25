@@ -1,6 +1,6 @@
 import "./mainstyles/main.scss";
-/* import { startGame } from "./engine/GameManager";
-import { gameState } from "./engine/GameState"; */
+import { startGame } from "./engine/GameManager";
+import { gameState } from "./engine/GameState";
 
 /*
  * ============================================================
