@@ -8,21 +8,41 @@
  */
 
 .room--teaparty {
+  position: relative;
+
   padding: 2rem;
   min-height: 100vh;
-  color: black;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  background-image: url("../public/room5_bilder/teaparty_backgroundpic.jpg");
-  background-size: 100% auto;
-  background-position: center bottom;
-  background-repeat: no-repeat;
 }
 
+.teaparty-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.teaparty__background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teaparty-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+}
 /* 
    TEXT
  */
@@ -55,7 +75,7 @@
   align-items: center;
   width: fit-content;
   margin: 2rem auto 0 auto;
-  margin-top: -2rem;
+  margin-top: 3rem;
 }
 
 /* 
