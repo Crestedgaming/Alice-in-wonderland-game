@@ -1,4 +1,5 @@
-@media (min-width: 1044px) {
+/************************** Styling for desktop view of room 1 **************************/
+@media (min-width: 1440px) {
 	.fallet-container {
 		.background-scroll {
 			position: relative;
@@ -107,7 +108,7 @@
 			cursor: pointer;
 			pointer-events: auto;
 			z-index: 4;
-			bottom: -36.5%;
+			bottom: -480px;
 			left: 50.6%;
 			padding: 0;
 			margin: 0;
@@ -131,3 +132,9 @@
 		}
 	}
 }
+
+/************************** Styling for mobile view of room 1 **************************/
+
+/************************* Styling for tablets iew of room 1 *************************/
+
+
