@@ -19,23 +19,26 @@
 @use "../room6/room6";
 
 body {
-    background-color: black;
+	background-color: black;
+	// Utility class for hiding elements
+	.hidden {
+		display: none !important;
+	}
 }
 
 main {
-    display: grid;
-    grid-template-rows: 1fr;
-    width: 100vw;
-    justify-content: center;
-    text-align: center;
-    background-color: #732f2f;
+	display: grid;
+	grid-template-rows: 1fr;
+	width: 100vw;
+	justify-content: center;
+	text-align: center;
+	background-color: #732f2f;
 
-    h2 {
-        color: black;
-    }
+	h2 {
+		color: black;
+	}
 
-    p {
-        color: black;
-    }
-
+	p {
+		color: black;
+	}
 }
