@@ -1,6 +1,7 @@
 header {
 	position: sticky;
 	top: 0;
+	z-index: 1000;
 }
 
 .falletNavBar {
@@ -15,7 +16,6 @@ header {
 	color: #f2e6ce;
 	padding-block: 10px;
 	font-size: 1.6rem;
-	z-index: 1000;
 	border-radius: 10px 10px 0 0;
 
 	button {

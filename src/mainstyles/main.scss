@@ -20,17 +20,16 @@
 
 body {
     background-color: black;
+    height: 100vh;
 }
 
 main {
     display: grid;
     grid-template-rows: 1fr;
     width: 100vw;
-    gap: 30px;
     justify-content: center;
     text-align: center;
     background-color: #732f2f;
-    padding-bottom: 20px;
 
 	h2 {
 		color: black;
@@ -40,10 +39,4 @@ main {
 		color: black;
 	}
 
-    .room {
-        width: 95vw;
-        height: 100vh;
-        border: 3px ridge #301313;
-        background-color: #F2E6CE;
-    }
 }
