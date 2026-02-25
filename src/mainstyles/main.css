@@ -146,23 +146,23 @@ footer {
     font-variation-settings: "wdth" 100;
   }
   .fallet-container .alice-faller {
-    transform: scale(0.7vw);
+    transform: scale(1);
     position: absolute;
-    top: 64%;
+    top: 65%;
     left: 39%;
     z-index: 5;
     overflow: hidden;
   }
   .fallet-container .nyckel1 {
     position: absolute;
-    left: 50%;
+    left: 40%;
     top: 50%;
     width: 50px;
     z-index: 10;
   }
   .fallet-container .nyckel2 {
     position: absolute;
-    left: 50%;
+    left: 40%;
     top: 60%;
     width: 50px;
     z-index: 10;
@@ -182,7 +182,15 @@ footer {
     z-index: 10;
   }
   .fallet-container .nycklar-container img:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
+    border: 1px solid goldenrod;
+    box-shadow: inset 2px 8px 20px goldenrod;
+    border-radius: 50%;
+    pointer-events: auto;
+    padding: 2px;
+  }
+  .fallet-container .nycklar-container img:focus {
+    transform: scale(1.5);
     border: 1px solid goldenrod;
     box-shadow: inset 2px 8px 20px goldenrod;
     border-radius: 50%;
@@ -196,13 +204,21 @@ footer {
     cursor: pointer;
     pointer-events: auto;
     z-index: 4;
-    bottom: -17%;
-    left: 49.3%;
+    bottom: -36.5%;
+    left: 50.6%;
     padding: 0;
     margin: 0;
   }
   .fallet-container .nyckelhalet:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
+    border: 1px solid goldenrod;
+    box-shadow: inset 2px 8px 20px goldenrod;
+    border-radius: 50%;
+    pointer-events: auto;
+    padding: 2px;
+  }
+  .fallet-container .nyckelhalet:focus {
+    transform: scale(1.5);
     border: 1px solid goldenrod;
     box-shadow: inset 2px 8px 20px goldenrod;
     border-radius: 50%;
