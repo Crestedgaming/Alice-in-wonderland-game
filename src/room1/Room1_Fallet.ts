@@ -1,4 +1,3 @@
-// import "./styles/style.scss";
 /**
  * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
  * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
@@ -81,3 +80,5 @@ if (doorElement) {
 } else {
 	console.error("Du har inte valt någon nyckel");
 }
+
+
