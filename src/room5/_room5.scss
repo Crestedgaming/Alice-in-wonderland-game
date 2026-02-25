@@ -1,0 +1,143 @@
+:root {
+  font-family: 'Henny Penny', cursive, sans-serif;
+  background-color: #fdf2e3;
+}
+
+/* 
+   ROOM LAYOUT
+ */
+
+.room--teaparty {
+  padding: 2rem;
+  min-height: 100vh;
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background-image: url("../public/room5_bilder/teaparty_backgroundpic.jpg");
+  background-size: 100% auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+/* 
+   TEXT
+ */
+
+.teaparty__headline {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.teaparty__description {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.teaparty__total {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+/* 
+   CUPS CONTAINER
+*/
+
+.teaparty__cups {
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 2rem auto 0 auto;
+  margin-top: -2rem;
+}
+
+/* 
+   EACH CUP
+*/
+
+.cup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 
+   TEAPOT BUTTON
+ */
+
+.cup__teapot {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.1rem;
+}
+
+.cup__teapot img {
+  width: 130px;
+}
+
+
+.cup__visual  {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 150px;
+  height: 45px;
+}
+
+/* FYLLNING KOPP */
+.cup__liquid {
+  position: absolute;
+  bottom: 40px;
+  left: 44px;
+  width: 50px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 0px 0px 23px 23px;
+}
+
+/* Själva teet */
+.cup__fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to top, #6b3e26, #8b5a3c);
+  transition: height 0.3s ease;
+}
+
+/* Koppbilden ovanpå */
+.cup__visual img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.cup__percent {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ===============================
+   MESSAGE
+================================ */
+
+.teaparty__message {
+  margin-top: 1rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+}
