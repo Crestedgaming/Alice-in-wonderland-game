@@ -1,4 +1,3 @@
-// import "./styles/style.scss";
 /**
  * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
  * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
@@ -30,54 +29,38 @@ const timer = setInterval(() => {
 
 // Skapa meddelandeelement
 
-const messageElement = document.createElement("div");
-messageElement.classList.add("falletMeddelande");
-document.body.appendChild(messageElement);
+const messageElement = document.getElementById("falletMeddelande");
+if (messageElement?.classList.contains("falletMeddelande")) {
+	messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+}
+const room1 = document.getElementById("rum1");
 
-messageElement.innerHTML = `<p>Fort, välj en nyckel innan du landar!</p>`;
 
-let selectedKey: string | null = null;
-
+// When a key is clicked, update the message
 keyElements.forEach((keyElement, index) => {
-	if (!keyElement) {
-		console.error(`Du har inte valt någon nyckel "${keyIds[index]}"`);
-		return;
-	}
-	keyElement.style.cursor = "pointer";
-	// Mouse click
-	keyElement.addEventListener("click", (e) => {
-		e.stopPropagation();
-		selectedKey = keyIds[index];
-		messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${selectedKey}!</p>`;
-	});
-	// Keyboard accessibility: Enter/Space
-	keyElement.addEventListener("keydown", (e) => {
-		if (e.key === "Enter" || e.key === " ") {
-			e.preventDefault();
-			selectedKey = keyIds[index];
+	if (!keyElement) return;
+	keyElement.addEventListener("click", () => {
+		selectedKey = keyIds[index]; // <-- This sets the global variable!
+		if (room1 && !room1.classList.contains("hidden") && messageElement) {
 			messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${selectedKey}!</p>`;
-			// Optionally, visually indicate selection
-			keyElement.classList.add("selected-key");
 		}
 	});
 });
 
+// When the door is clicked, update the message
+// ...existing code...
+let selectedKey: string | null = null;
+// ...existing code...
 if (doorElement) {
 	doorElement.addEventListener("click", () => {
-		if (selectedKey) {
-			messageElement.innerHTML = `<p>Du har låst upp dörren med ${selectedKey}!</p>`;
-			clearInterval(timer); // Stoppa timern när dörren låses upp
-		} else {
-			messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!</p>`;
+		if (room1 && !room1.classList.contains("hidden") && messageElement) {
+			if (selectedKey) {
+				messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
+				clearInterval(timer); // Stop the timer when door is unlocked
+			} else {
+				messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!</p>`;
+			}
 		}
 	});
-	// Keyboard accessibility: Enter/Space
-	doorElement.addEventListener("keydown", (e) => {
-		if (e.key === "Enter" || e.key === " ") {
-			e.preventDefault();
-			doorElement.click();
-		}
-	});
-} else {
-	console.error("Du har inte valt någon nyckel");
 }
+

@@ -1,46 +1,64 @@
-import { GameState } from "./GameState";
-import { renderRoom } from "./UIManager";
+import { gameState } from './GameState';
 
 export function startGame() {
-    GameState.isGameActive = true;
-    GameState.currentRoom = 1;
-    GameState.artifacts = [];
-    GameState.score = 0;
-    GameState.timer = 0;
-    renderRoom(GameState.currentRoom);
+    gameState.isGameActive = true;
+    gameState.currentRoom = 1;
+    gameState.artifacts = [];
+    gameState.score = 0;
+    gameState.timer = 0;
+    gameState.roomTimes = {};
+    gameState.currentRoomStartTime = Date.now();
+    showRoom(gameState.currentRoom);
     startGlobalTimer();
+}
 
-    // Add any additional initialization logic here (e.g., load assets, set up event listeners)
+function showRoom(roomId: number) {
+    const roomMap: Record<number, string> = {
+        1: 'rum1',
+        2: 'rum2',
+        3: 'rum3',
+        4: 'rum4',
+        5: 'rum5',
+        6: 'rum6',
+    };
+    (window as any).showRoom(roomMap[roomId]);
 }
 
 export function completeRoom(roomId: number, letter: string) {
-    GameState.artifacts.push(letter);
-    GameState.score += 100; // Example scoring logic, can be adjusted based on room difficulty
-    GameState.currentRoom = roomId + 1;
-    if (GameState.currentRoom > 6) {
+    if (gameState.currentRoomStartTime !== null) {
+        const duration = Math.floor((Date.now() - gameState.currentRoomStartTime) / 1000);
+        gameState.roomTimes[roomId] = duration;
+    }
+    gameState.artifacts.push(letter);
+    gameState.score += 100;
+    gameState.currentRoom = roomId + 1;
+    if (gameState.currentRoom > 6) {
         endGame();
     } else {
-        renderRoom(GameState.currentRoom);
+        gameState.currentRoomStartTime = Date.now();
+        showRoom(gameState.currentRoom);
     }
 }
 
 export function startGlobalTimer() {
     setInterval(() => {
-        if (GameState.isGameActive) {
-            GameState.timer++;
-            // Update timer display if needed
+        if (gameState.isGameActive) {
+            gameState.timer++;
+            updateTimerDisplay();
         }
     }, 1000);
 }
 
+function updateTimerDisplay() {
+    const timerEl = document.getElementById('falletTimer');
+    if (timerEl) {
+        const minutes = Math.floor(gameState.timer / 60);
+        const seconds = gameState.timer % 60;
+        timerEl.textContent = `Din tid: ${String(minutes).padStart(2, '0')}.${String(seconds).padStart(2, '0')}`;
+    }
+}
+
 export function endGame() {
-    GameState.isGameActive = false;
-    // Show final score and collected artifacts
-    const app = document.getElementById("app")!;
-    app.innerHTML = `
-        <h1>Game Over</h1>
-        <p>Your Score: ${GameState.score}</p>
-        <p>Artifacts Collected: ${GameState.artifacts.join(", ")}</p>
-        <button id="restart">Restart Game</button>
-    `;
+    gameState.isGameActive = false;
+    console.log('Game Over!', gameState.roomTimes);
 }

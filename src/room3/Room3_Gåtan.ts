@@ -1,3 +1,6 @@
+import { gameState } from "../engine/GameState";
+import { completeRoom } from "../engine/GameManager";
+
 
 
 
@@ -16,8 +19,8 @@ export class Room3 {
     }
 
     finish() {
-        GameState.artifacts.push("artifact3");
-        GameState.score += 100;
+        gameState.artifacts.push("artifact3");
+        gameState.score += 100;
 
         completeRoom();
     }
@@ -37,7 +40,7 @@ export class Room3 {
  * När spelaren klickar på "starta" så tas classen hidden bort från kod-blocket och den första gåtan visas på skärmen.
     * När spelaren har svarat på den första gåtan så visas den andra gåtan på skärmen.
     * När spelaren har svarat på den andra gåtan så visas den tredje gåtan på skärmen.
-    * När spelaren har svarat på den tredje gåtan så visas en text som säger att spelaren har klarat rummet och att den får en artifact.
+    * När spelaren har svarat på den tredje gåtan så visas en text som säger att spelaren har klarat rummet och att den får en artifact (spelaren ska kunna få en felaktigt artifact).
     * När spelaren har klarat rummet så kan den klicka på "nästa" för att gå vidare till nästa rum.
     *
     *
@@ -48,7 +51,7 @@ export class Room3 {
     *      <button id="solve">Solve</button>
     *  `;
     * //if (svaret är rätt) {
-    //  visa nästa gåta
+    //  visa nästa gåta a
     //} else {
     //  visa att svaret är fel och att spelaren måste försöka igen
     //}

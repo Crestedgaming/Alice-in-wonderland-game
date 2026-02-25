@@ -1,4 +1,4 @@
-import './style.scss'
+import "../mainstyles/main.scss";
 
 let catCaughtCount = 0;
 let gameInterval: any;

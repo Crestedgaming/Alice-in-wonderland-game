@@ -4,10 +4,6 @@
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script
-      src="https://kit.fontawesome.com/yourcode.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -53,10 +49,11 @@
 
       <!-- rum1 -->
       <div id="rum1" class="fallet-container hidden">
+        <div id="falletMeddelande" class="falletMeddelande"></div>
         <div class="background-scroll">
           <img
             class="background-image"
-            src="/public/images/Room1_bilder/bakgrund.webp"
+            src="/images/Room1_bilder/bakgrund.webp"
             alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål"
           />
           <div class="nyckelhal-container">
@@ -64,65 +61,62 @@
               <img
                 id="nyckelhalet"
                 class="nyckelhalet"
-                src="/public/images/Room1_bilder/nyckelhalet.gif"
+                src="/images/Room1_bilder/nyckelhalet.gif"
                 alt="Ett nyckelhål till en dörr som blir stor och liten i en loop"
                 tabindex="0"
                 role="button"
-                aria-label="Lås upp dörren"
+                aria-label="Lås upp dörren med rätt nyckel"
               />
             </span>
           </div>
           <div id="nycklar" class="nycklar-container">
-            <span tabindex="0">
+            <span>
               <img
                 id="nyckeln-L"
                 class="nyckel1"
-                src="/public/images/Room1_bilder/nyckel_1.gif"
+                src="/images/Room1_bilder/nyckel_1.gif"
                 alt="En guldnyckel med en topp som snurrar i lila färg"
                 tabindex="0"
                 role="button"
-                aria-label="Välj nyckel L"
+                aria-label="Välj guldnyckel med lila topp, bokstav L"
             /></span>
-            <span tabindex="0">
+            <span>
               <img
                 id="nyckeln-E"
                 class="nyckel2"
-                src="/public/images/Room1_bilder/nyckel_2.gif"
+                src="/images/Room1_bilder/nyckel_2.gif"
                 alt="En ljusblå nyckel med toppen som är formad som en klöver"
                 tabindex="0"
                 role="button"
-                aria-label="Välj nyckel E"
+                aria-label="Välj ljusblå nyckel med klöver, bokstav E"
               />
             </span>
-            <span tabindex="0">
+            <span>
               <img
                 id="nyckeln-V"
                 class="nyckel3"
-                src="/public/images/Room1_bilder/nyckel_3.gif"
+                src="/images/Room1_bilder/nyckel_3.gif"
                 alt="En guldnyckel med en krona i toppen."
                 tabindex="0"
                 role="button"
-                aria-label="Välj nyckel V"
+                aria-label="Välj guldnyckel med krona, bokstav V"
               />
             </span>
-            <span tabindex="0">
+            <span>
               <img
                 id="nyckeln-A"
                 class="nyckel4"
-                src="/public/images/Room1_bilder/nyckel_4.gif"
+                src="/images/Room1_bilder/nyckel_4.gif"
                 alt="En guldnyckel med en stjärna i toppen."
                 tabindex="0"
                 role="button"
-                aria-label="Välj nyckel A"
+                aria-label="Välj guldnyckel med stjärna, bokstav A"
               />
             </span>
           </div>
         </div>
         <div class="alice-faller">
-          <img
-            src="/public/images/Room1_bilder/alice-faller.png"
-            alt="Alice faller"
-          />
+          <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
         </div>
       </div>
       <!-- rum2 -->
@@ -185,6 +179,7 @@
         <p>Välkommen till rum 5!</p>
       </div>
       <!-- rum6 -->
+
       <div id="rum6" class="room hidden">
         <button onclick="goToStart()">Tillbaka</button>
         <h2>Rum 6</h2>
@@ -221,11 +216,11 @@
     <footer>
       <div id="visaArtefakter" class="visaArtefakter">
         <ul>
-          <li id="artefakt1" class="artefakter"><span>V</span></li>
-          <li id="artefakt2" class="artefakter"><span>A</span></li>
-          <li id="artefakt3" class="artefakter"><span>K</span></li>
-          <li id="artefakt4" class="artefakter"><span>N</span></li>
-          <li id="artefakt5" class="artefakter"><span>A</span></li>
+          <li id="artefakt1" class="artefakter"><span>I</span></li>
+          <li id="artefakt2" class="artefakter"><span>II</span></li>
+          <li id="artefakt3" class="artefakter"><span>III</span></li>
+          <li id="artefakt4" class="artefakter"><span>IV</span></li>
+          <li id="artefakt5" class="artefakter"><span>V</span></li>
         </ul>
       </div>
     </footer>

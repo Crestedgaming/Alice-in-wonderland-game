@@ -14,6 +14,32 @@
     <title>Room 3 Gåtan</title>
     <link rel="icon" type="image/x-icon" href="/favicon-2.ico">
     <script src="Room3_Gåtan.ts" defer></script>
+</head>
 
+<body>
+    <div id="rum3" class="gåtan-container hidden">
+        <h1 class="room3-title">Rummet med gåtan</h1>
+        <p class="room3-description">Du har nu kommit till det tredje rummet, rummet med gåtan. För att klara detta rum
+            så måste du svara på tre gåtor. Lycka till!</p>
+        <button id="start-button" class="start-button">Starta</button>
+        <div id="riddle-container" class="riddle-container hidden">
+            <div id="riddle1" class="riddle">
+                <p>Gåta 1: Vad är det som har fyra ben på morgonen, två ben på dagen och tre ben på kvällen?</p>
+                <input type="text" id="answer1" class="answer-input" placeholder="Skriv ditt svar här">
+                <button id="submit1" class="submit-button">Skicka</button>
+            </div>
+            <div id="riddle2" class="riddle hidden">
+                <p>Gåta 2: Vem går upp varje morgon utan att ha sovit en blund?</p>
+                <input type="text" id="answer2" class="answer-input" placeholder="Skriv ditt svar här">
+                <button id="submit2" class="submit-button">Skicka</button>
+            </div>
+            <div id="riddle3" class="riddle hidden">
+                <p>Gåta 3: Vilken råtta äter inte ost?</p>
+                <input type="text" id="answer3" class="answer-input" placeholder="Skriv ditt svar här">
+                <button id="submit3" class="submit-button">Skicka</button>
+            </div>
+        </div>
+    </div>
+</body>
 
 </html>

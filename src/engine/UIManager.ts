@@ -4,7 +4,7 @@ export async function renderRoom(roomId: number) {
     const app = document.getElementById('app') as HTMLElement;
     try {
         const roomModule = await import(`./room${roomId}/Room${roomId}_${getRoomName(roomId)}.ts`);
-        roomModule.renderRoom${ roomId } (); // Assumes each room exports a render function
+        roomModule.renderRoom$; { roomId } (); // Assumes each room exports a render function
     } catch (error) {
         app.innerHTML = `<p>Error loading room ${roomId}.</p>`;
     }
