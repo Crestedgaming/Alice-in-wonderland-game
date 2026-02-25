@@ -38,9 +38,9 @@
 
 .fallet-container {
 	.alice-faller {
-    transform: scale(0.9);
+    transform: scale(0.8);
 		position: absolute;
-		top: 55%;
+		top: 64%;
 		left: 39%;
 		z-index: 5; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
 		overflow: hidden;
@@ -48,14 +48,14 @@
 
 	.nyckel1 {
 		position: absolute;
-		left: 40%;
+		left: 50%;
 		top: 50%;
 		width: 50px;
 		z-index: 10;
 	}
 	.nyckel2 {
 		position: absolute;
-		left: 40%;
+		left: 50%;
 		top: 60%;
 		width: 50px;
 		z-index: 10;
@@ -96,8 +96,8 @@
 		cursor: pointer;
 		pointer-events: auto;
 		z-index: 4;
-		bottom: 9%;
-		left: 49.9%;
+		bottom: -17%;
+		left: 49.3%;
 		padding: 0;
 		margin: 0;
 	}
