@@ -51,7 +51,7 @@ export class Room3 {
     *      <button id="solve">Solve</button>
     *  `;
     * //if (svaret är rätt) {
-    //  visa nästa gåta
+    //  visa nästa gåta a
     //} else {
     //  visa att svaret är fel och att spelaren måste försöka igen
     //}
