@@ -24,10 +24,20 @@ export function initRoom1() {
 		}
 	}, 1000);
 
-	const messageElement = document.getElementById("falletMeddelande");
-	if (messageElement?.classList.contains("falletMeddelande")) {
-		messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+	function setStartMessage(retries = 5) {
+		const messageElement = document.getElementById("falletMeddelande");
+		if (messageElement?.classList.contains("falletMeddelande")) {
+			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+			console.log("Start message set.");
+		} else if (retries > 0) {
+			// Try again after a short delay if the element isn't found yet
+			setTimeout(() => setStartMessage(retries - 1), 50);
+			console.log("Retrying setStartMessage, attempts left:", retries - 1);
+		} else {
+			console.warn("falletMeddelande element not found after retries.");
+		}
 	}
+
 	const room1 = document.getElementById("rum1");
 	let selectedKey: string | null = null;
 
@@ -35,6 +45,7 @@ export function initRoom1() {
 		if (!keyElement) return;
 		keyElement.addEventListener("click", () => {
 			selectedKey = keyIds[index];
+			const messageElement = document.getElementById("falletMeddelande");
 			if (room1 && !room1.classList.contains("hidden") && messageElement) {
 				messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${selectedKey}!</p>`;
 			}
@@ -52,15 +63,19 @@ export function initRoom1() {
 
 	if (doorElement) {
 		doorElement.addEventListener("click", () => {
+			const messageElement = document.getElementById("falletMeddelande");
 			if (room1 && !room1.classList.contains("hidden") && messageElement) {
 				if (selectedKey) {
-					messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
+					messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
 					clearInterval(timer);
 					onDoorUnlocked(selectedKey);
 				} else {
-					messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!</p>`;
+					messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!<\/p>`;
 				}
 			}
 		});
 	}
+
+	// Set the start message after all listeners are set up and DOM is ready
+	setStartMessage();
 }
