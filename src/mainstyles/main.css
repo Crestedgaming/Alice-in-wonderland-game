@@ -129,13 +129,14 @@ footer {
     position: fixed;
     top: 100px;
     left: 50%;
-    width: 600px;
+    min-width: 300px;
+    max-width: -moz-max-content;
+    max-width: max-content;
     display: flex;
     justify-content: center;
     transform: translateX(-50%);
     opacity: 0.5;
     background: #000000;
-    color: white;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 1.6rem;
@@ -145,6 +146,10 @@ footer {
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+  }
+  .falletMeddelande p {
+    color: #f2e6ce;
+    margin: 0;
   }
   .fallet-container .alice-faller {
     transform: scale(1);

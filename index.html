@@ -1,203 +1,149 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>escape-room-game</title>
-  </head>
 
-  <body>
-    <header>
-      <div>
-        <nav id="falletNavBar" class="falletNavBar">
-          <label>
-            <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
-              <span>Börja om</span>
-            </button>
-          </label>
-          <h1 id="rumID" class="navBarElement">Titel</h1>
-          <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
-          <span id="falletTimer" class="navBarElement">Din tid: 00.00</span>
-          <label>
-            <button onclick="goToStart()"><span>Gå tillbaka</span></button>
-          </label>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <!-- Startsida -->
-      <div id="start">
-        <button onclick="showRoom('rum1')">Rum 1</button>
-        <button onclick="showRoom('rum2')">Rum 2</button>
-        <button onclick="showRoom('rum3')">Rum 3</button>
-        <button onclick="showRoom('rum4')">Rum 4</button>
-        <button onclick="showRoom('rum5')">Rum 5</button>
-        <button onclick="showRoom('rum6')">Rum 6</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>escape-room-game</title>
+</head>
 
-      <div id="app"></div>
-
-      <!-- rum1 -->
-      <div id="rum1" class="fallet-container hidden">
-        <div class="background-scroll">
-          <img
-            class="background-image"
-            src="/images/Room1_bilder/bakgrund.webp"
-            alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål"
-          />
-          <div class="nyckelhal-container">
-            <span tabindex="0">
-              <img
-                id="nyckelhalet"
-                class="nyckelhalet"
-                src="/images/Room1_bilder/nyckelhalet.gif"
-                alt="Ett nyckelhål till en dörr som blir stor och liten i en loop"
-                tabindex="0"
-                role="button"
-                aria-label="Lås upp dörren med rätt nyckel"
-              />
-            </span>
-          </div>
-          <div id="nycklar" class="nycklar-container">
-            <span>
-              <img
-                id="nyckeln-L"
-                class="nyckel1"
-                src="/images/Room1_bilder/nyckel_1.gif"
-                alt="En guldnyckel med en topp som snurrar i lila färg"
-                tabindex="0"
-                role="button"
-                aria-label="Välj guldnyckel med lila topp, bokstav L"
-            /></span>
-            <span>
-              <img
-                id="nyckeln-E"
-                class="nyckel2"
-                src="/images/Room1_bilder/nyckel_2.gif"
-                alt="En ljusblå nyckel med toppen som är formad som en klöver"
-                tabindex="0"
-                role="button"
-                aria-label="Välj ljusblå nyckel med klöver, bokstav E"
-              />
-            </span>
-            <span>
-              <img
-                id="nyckeln-V"
-                class="nyckel3"
-                src="/images/Room1_bilder/nyckel_3.gif"
-                alt="En guldnyckel med en krona i toppen."
-                tabindex="0"
-                role="button"
-                aria-label="Välj guldnyckel med krona, bokstav V"
-              />
-            </span>
-            <span>
-              <img
-                id="nyckeln-A"
-                class="nyckel4"
-                src="/images/Room1_bilder/nyckel_4.gif"
-                alt="En guldnyckel med en stjärna i toppen."
-                tabindex="0"
-                role="button"
-                aria-label="Välj guldnyckel med stjärna, bokstav A"
-              />
-            </span>
-          </div>
-        </div>
-        <div class="alice-faller">
-          <img
-            src="/images/Room1_bilder/alice-faller.png"
-            alt="Alice faller"
-          />
-        </div>
-      </div>
-      <!-- rum2 -->
-      <div id="rum2" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2>Rum 2</h2>
-        <p>Välkommen till rum 2!</p>
-      </div>
-      <!-- rum3 -->
-      <div id="rum3" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2>Rum 3</h2>
-        <p>Välkommen till rum 3!</p>
-      </div>
-      <!-- rum4 -->
-      <div id="rum4" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2 class="game-title">Kurrgömma</h2>
-        <div class="game-container">
-          <img
-            src="public/room4_bilder/cat.png"
-            alt="Cat Image 1"
-            id="cat-image-1"
-          />
-
-          <p id="instructions">
-            Klicka på knappen för att starta spelet och fånga katten minst fem
-            gånger. Klicka på katten när den dyker upp för att fånga den. Lycka
-            till! Om du inte kan använda musen, tryck på space för att fokusera
-            på katten när du ser den och tryck sedan enter för att fånga den.
-          </p>
-          <button id="start-button" aria-label="börja spelet, fånga katten">
-            Starta spelet
+<body>
+  <header>
+    <div>
+      <nav id="falletNavBar" class="falletNavBar">
+        <label>
+          <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
+            <span>Börja om</span>
           </button>
+        </label>
+        <h1 id="rumID" class="navBarElement">Titel</h1>
+        <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
+        <span id="falletTimer" class="navBarElement">Din tid: 00.00</span>
+        <label>
+          <button onclick="goToStart()"><span>Gå tillbaka</span></button>
+        </label>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <!-- Startsida -->
+    <div id="start">
+      <button onclick="showRoom('rum1')">Rum 1</button>
+      <button onclick="showRoom('rum2')">Rum 2</button>
+      <button onclick="showRoom('rum3')">Rum 3</button>
+      <button onclick="showRoom('rum4')">Rum 4</button>
+      <button onclick="showRoom('rum5')">Rum 5</button>
+      <button onclick="showRoom('rum6')">Rum 6</button>
+    </div>
 
-          <p id="game-status" aria-live="polite"></p>
+    <div id="app"></div>
 
-          <div id="backgroundimg">
-            <img
-              src="public/room4_bilder/background.jpg"
-              alt=""
-              id="background-image"
-              aria-hidden="true"
-            />
-            <img
-              src="public/room4_bilder/cat.png"
-              alt="Fånga katten"
-              id="cat-image"
-              role="button"
-              tabindex="0"
-              aria-label="Fånga katten"
-            />
-          </div>
+    <!-- rum1 -->
+    <div id="rum1" class="fallet-container hidden">
+      <div id="falletMeddelande" class="falletMeddelande"></div>
+      <div class="background-scroll">
+        <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
+          alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
+        <div class="nyckelhal-container">
+          <span tabindex="0">
+            <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
+              alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
+              aria-label="Lås upp dörren med rätt nyckel" />
+          </span>
+        </div>
+        <div id="nycklar" class="nycklar-container">
+          <span>
+            <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
+              alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
+              aria-label="Välj guldnyckel med lila topp, bokstav L" /></span>
+          <span>
+            <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
+              alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
+              aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
+          </span>
+          <span>
+            <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
+              alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
+              aria-label="Välj guldnyckel med krona, bokstav V" />
+          </span>
+          <span>
+            <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
+              alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
+              aria-label="Välj guldnyckel med stjärna, bokstav A" />
+          </span>
         </div>
       </div>
-      <!-- rum5 -->
-      <div id="rum5" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2>Rum 5</h2>
-        <p>Välkommen till rum 5!</p>
+      <div class="alice-faller">
+        <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
       </div>
-      <!-- rum6 -->
-      <div id="rum6" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2>Rum 6</h2>
-        <p>Välkommen till rum 6!</p>
+    </div>
+    <!-- rum2 -->
+    <div id="rum2" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2>Rum 2</h2>
+      <p>Välkommen till rum 2!</p>
+    </div>
+    <!-- rum3 -->
+    <div id="rum3" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2>Rum 3</h2>
+      <p>Välkommen till rum 3!</p>
+    </div>
+    <!-- rum4 -->
+    <div id="rum4" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2 class="game-title">Kurrgömma</h2>
+      <div class="game-container">
+        <img src="public/room4_bilder/cat.png" alt="Cat Image 1" id="cat-image-1" />
+
+        <p id="instructions">
+          Klicka på knappen för att starta spelet och fånga katten minst fem
+          gånger. Klicka på katten när den dyker upp för att fånga den. Lycka
+          till! Om du inte kan använda musen, tryck på space för att fokusera
+          på katten när du ser den och tryck sedan enter för att fånga den.
+        </p>
+        <button id="start-button" aria-label="börja spelet, fånga katten">
+          Starta spelet
+        </button>
+
+        <p id="game-status" aria-live="polite"></p>
+
+        <div id="backgroundimg">
+          <img src="public/room4_bilder/background.jpg" alt="" id="background-image" aria-hidden="true" />
+          <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" role="button" tabindex="0"
+            aria-label="Fånga katten" />
+        </div>
       </div>
-    </main>
-    <footer>
-      <div id="visaArtefakter" class="visaArtefakter">
-        <ul>
-          <li id="artefakt1" class="artefakter"><span>I</span></li>
-          <li id="artefakt2" class="artefakter"><span>II</span></li>
-          <li id="artefakt3" class="artefakter"><span>III</span></li>
-          <li id="artefakt4" class="artefakter"><span>IV</span></li>
-          <li id="artefakt5" class="artefakter"><span>V</span></li>
-        </ul>
-      </div>
-    </footer>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    </div>
+    <!-- rum5 -->
+    <div id="rum5" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2>Rum 5</h2>
+      <p>Välkommen till rum 5!</p>
+    </div>
+    <!-- rum6 -->
+    <div id="rum6" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2>Rum 6</h2>
+      <p>Välkommen till rum 6!</p>
+    </div>
+  </main>
+  <footer>
+    <div id="visaArtefakter" class="visaArtefakter">
+      <ul>
+        <li id="artefakt1" class="artefakter"><span>I</span></li>
+        <li id="artefakt2" class="artefakter"><span>II</span></li>
+        <li id="artefakt3" class="artefakter"><span>III</span></li>
+        <li id="artefakt4" class="artefakter"><span>IV</span></li>
+        <li id="artefakt5" class="artefakter"><span>V</span></li>
+      </ul>
+    </div>
+  </footer>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
