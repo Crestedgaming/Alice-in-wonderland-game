@@ -1,113 +1,116 @@
-.fallet-container {
-	.background-scroll {
-		position: relative;
-		height: 100vh;
-		overflow-y: auto;
-		width: 100vw;
+@media (min-width: 1044px) {
+	.fallet-container {
+		.background-scroll {
+			position: relative;
+			height: 100vh;
+			overflow-y: auto;
+			width: 100vw;
+		}
+
+		.background-image {
+			width: 100vw;
+			height: fit-content;
+			display: block;
+			margin: 0;
+			z-index: -1;
+		}
 	}
 
-	.background-image {
-		width: 100vw;
-		height: fit-content;
-		display: block;
-    margin: 0;
-	}
-}
-
-.falletMeddelande {
-	position: fixed;
-	top: 100px;
-	left: 50%;
-	width: 600px;
-	display: flex;
-	justify-content: center;
-	transform: translateX(-50%);
-	opacity: 0.5;
-	background: #000000;
-	color: white;
-	padding: 10px 20px;
-	border-radius: 8px;
-	font-size: 1.6rem;
-	z-index: 1000;
-	font-family: "Bricolage Grotesque", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 400;
-	font-style: normal;
-	font-variation-settings: "wdth" 100;
-}
-
-.fallet-container {
-	.alice-faller {
-    transform: scale(0.8);
-		position: absolute;
-		top: 64%;
-		left: 39%;
-		z-index: 5; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
-		overflow: hidden;
-	}
-
-	.nyckel1 {
-		position: absolute;
+	.falletMeddelande {
+		position: fixed;
+		top: 100px;
 		left: 50%;
-		top: 50%;
-		width: 50px;
-		z-index: 10;
-	}
-	.nyckel2 {
-		position: absolute;
-		left: 50%;
-		top: 60%;
-		width: 50px;
-		z-index: 10;
-	}
-}
-
-.fallet-container {
-	.nyckel3 {
-		position: absolute;
-		left: 60%;
-		top: 55%;
-		width: 50px;
-		z-index: 10;
-	}
-	.nyckel4 {
-		position: absolute;
-		left: 60%;
-		top: 65%;
-		width: 50px;
-		z-index: 10;
+		width: 600px;
+		display: flex;
+		justify-content: center;
+		transform: translateX(-50%);
+		opacity: 0.5;
+		background: #000000;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 8px;
+		font-size: 1.6rem;
+		z-index: 1000;
+		font-family: "Bricolage Grotesque", sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 400;
+		font-style: normal;
+		font-variation-settings: "wdth" 100;
 	}
 
-	.nycklar-container img:hover {
-		transform: scale(1.2);
-		border: 1px solid goldenrod;
-		box-shadow: inset 2px 8px 20px goldenrod;
-		border-radius: 50%;
-		pointer-events: auto;
-		padding: 2px;
-	}
-}
+	.fallet-container {
+		.alice-faller {
+			transform: scale(0.7vw);
+			position: absolute;
+			top: 64%;
+			left: 39%;
+			z-index: 5; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
+			overflow: hidden;
+		}
 
-.fallet-container {
-	.nyckelhalet {
-		position: absolute;
-		width: 70px;
-		height: 70px;
-		cursor: pointer;
-		pointer-events: auto;
-		z-index: 4;
-		bottom: -17%;
-		left: 49.3%;
-		padding: 0;
-		margin: 0;
+		.nyckel1 {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			width: 50px;
+			z-index: 10;
+		}
+		.nyckel2 {
+			position: absolute;
+			left: 50%;
+			top: 60%;
+			width: 50px;
+			z-index: 10;
+		}
 	}
 
-	.nyckelhalet:hover {
-		transform: scale(1.2);
-		border: 1px solid goldenrod;
-		box-shadow: inset 2px 8px 20px goldenrod;
-		border-radius: 50%;
-		pointer-events: auto;
-		padding: 2px;
+	.fallet-container {
+		.nyckel3 {
+			position: absolute;
+			left: 60%;
+			top: 55%;
+			width: 50px;
+			z-index: 10;
+		}
+		.nyckel4 {
+			position: absolute;
+			left: 60%;
+			top: 65%;
+			width: 50px;
+			z-index: 10;
+		}
+
+		.nycklar-container img:hover {
+			transform: scale(1.2);
+			border: 1px solid goldenrod;
+			box-shadow: inset 2px 8px 20px goldenrod;
+			border-radius: 50%;
+			pointer-events: auto;
+			padding: 2px;
+		}
+	}
+
+	.fallet-container {
+		.nyckelhalet {
+			position: absolute;
+			width: 70px;
+			height: 70px;
+			cursor: pointer;
+			pointer-events: auto;
+			z-index: 4;
+			bottom: -17%;
+			left: 49.3%;
+			padding: 0;
+			margin: 0;
+		}
+
+		.nyckelhalet:hover {
+			transform: scale(1.2);
+			border: 1px solid goldenrod;
+			box-shadow: inset 2px 8px 20px goldenrod;
+			border-radius: 50%;
+			pointer-events: auto;
+			padding: 2px;
+		}
 	}
 }
