@@ -139,3 +139,106 @@
  *
  * ============================================================
  */
+
+// Hämta alla koppar
+const cups = document.querySelectorAll<HTMLDivElement>(".cup");
+
+// Hämta total-displayen
+const totalDisplay = document.getElementById("total-percent");
+
+// Hämta meddelande-rutan
+const messageElement = document.querySelector<HTMLDivElement>(".teaparty__message");
+
+// State – hur mycket te varje kopp har
+let cupValues: number[] = [0, 0, 0];
+
+const FILL_AMOUNT = 25;
+const TARGET_TOTAL = 125;
+
+// Koppla klick på varje tekanna
+cups.forEach((cup) => {
+  const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
+
+  button?.addEventListener("click", () => {
+    const index = Number(cup.dataset.cup);
+    fillCup(index);
+  });
+});
+
+// Fyll en kopp
+function fillCup(index: number) {
+  // Stoppa om koppen redan är full
+  if (cupValues[index] >= 100) return;
+
+  cupValues[index] += FILL_AMOUNT;
+
+  updateUI();
+  checkGame();
+}
+
+// Uppdatera det man ser på skärmen
+function updateUI() {
+  cups.forEach((cup, index) => {
+    const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
+    const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+
+    if (fillElement) {
+      fillElement.style.height = cupValues[index] + "%";
+    }
+
+    if (percentText) {
+      percentText.textContent = cupValues[index] + "%";
+    }
+  });
+
+  const total = calculateTotal();
+  if (totalDisplay) {
+    totalDisplay.textContent = total.toString();
+  }
+}
+
+// Räkna ut totalsumman
+function calculateTotal(): number {
+  return cupValues.reduce((sum, value) => sum + value, 0);
+}
+
+// Kolla om man vunnit eller förlorat
+function checkGame() {
+  const total = calculateTotal();
+
+  // Kolla om alla koppar har mer än 0
+  const allCupsHaveTea = cupValues.every((value) => value > 0);
+
+  if (total === TARGET_TOTAL && allCupsHaveTea) {
+    if (messageElement) {
+      messageElement.textContent =
+        "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te! 🎉";
+    }
+  }
+
+  // Om total är rätt men någon kopp är 0
+  else if (total === TARGET_TOTAL && !allCupsHaveTea) {
+    if (messageElement) {
+      messageElement.textContent =
+        "Alla koppar måste få lite te!";
+    }
+  }
+
+  if (total > TARGET_TOTAL) {
+    resetGame();
+  }
+}
+
+// Återställ spelet
+function resetGame() {
+  cupValues = [0, 0, 0];
+
+  if (messageElement) {
+    messageElement.textContent =
+      "Ops, nu rann det över! Börja om och fyll tekopparna igen";
+  }
+
+  updateUI();
+}
+
+console.log("TEAPARTY LOADED");
