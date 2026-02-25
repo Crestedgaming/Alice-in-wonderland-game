@@ -144,9 +144,91 @@
     <!-- rum5 -->
     <div id="rum5" class="room hidden">
       <button onclick="goToStart()">Tillbaka</button>
-      <h2>Rum 5</h2>
-      <p>Välkommen till rum 5!</p>
-    </div>
+      
+       <h2 class="teaparty__headline">
+        Välkommen till Tebjudningen!
+      </h2>
+
+      <p class="teaparty__description">
+        Fyll tekopparna genom att klicka på tekannorna så att totalsumman blir exakt 125 %.
+      </p>
+
+      <!-- TOTAL DISPLAY -->
+      <div class="teaparty__total">
+        Totalt: <span id="total-percent">0</span>%
+      </div>
+
+      <!-- CUPS CONTAINER -->
+
+      <!-- CUP 1 -->
+      <div class="teaparty__cups">
+
+        <!-- CUP 1 -->
+        <div class="cup" data-cup="0">
+
+          <button class="cup__teapot">
+            <img src="teapot.png" alt="Tekanna">
+          </button>
+
+          <div class="cup__visual">
+
+            <div class="cup__liquid">
+              <div class="cup__fill"></div>
+            </div>
+
+            <img src="teacup_outline.png" alt="Tekopp">
+
+          </div>
+
+          <p class="cup__percent">0%</p>
+
+        </div>
+        <!-- CUP 2 -->
+        <div class="cup" data-cup="1">
+
+          <button class="cup__teapot">
+            <img src="teapot.png" alt="Tekanna">
+          </button>
+
+          <div class="cup__visual">
+
+            <div class="cup__liquid">
+              <div class="cup__fill"></div>
+            </div>
+
+            <img src="teacup_outline.png" alt="Tekopp">
+
+          </div>
+
+          <p class="cup__percent">0%</p>
+
+        </div>
+
+        <!-- CUP 3 -->
+        <div class="cup" data-cup="2">
+
+          <button class="cup__teapot">
+            <img src="teapot.png" alt="Tekanna">
+          </button>
+
+          <div class="cup__visual">
+
+            <div class="cup__liquid">
+              <div class="cup__fill"></div>
+            </div>
+
+            <img src="teacup_outline.png" alt="Tekopp">
+
+          </div>
+
+          <p class="cup__percent">0%</p>
+
+        </div>
+
+      </div>
+      <div class="teaparty__message"></div>
+
+    </section>
     <!-- rum6 -->
 
     <div id="rum6" class="room hidden">
