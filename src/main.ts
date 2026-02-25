@@ -3,6 +3,7 @@ import { startGame } from "./engine/GameManager";
 import { gameState } from "./engine/GameState";
 
 import "./room4/Room4_Kurragömma";
+import "./room3/Room3_Gåtan";
 
 /*
  * ============================================================
