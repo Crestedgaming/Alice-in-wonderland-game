@@ -82,6 +82,24 @@ body {
   color: #f2e6ce;
   cursor: pointer;
 }
+/* Mindre pulserar */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.20);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 1s infinite;
+  color: #f8cd6f; 
+    display: inline-block;   
+}
 
 /* bakgrundsplatta bakom texten */
 
