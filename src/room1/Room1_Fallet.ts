@@ -28,6 +28,26 @@ export function initRoom1() {
 }
 
 // All logik för själva spelet i Rum 1
+function smoothScrollTo(
+	element: HTMLElement,
+	target: number,
+	duration: number,
+) {
+	const start = element.scrollTop;
+	const change = target - start;
+	const startTime = performance.now();
+
+	function animateScroll(currentTime: number) {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+		element.scrollTop = start + change * progress;
+		if (progress < 1) {
+			requestAnimationFrame(animateScroll);
+		}
+	}
+	requestAnimationFrame(animateScroll);
+}
+
 function startRoom1GameLogic() {
 	// Lista med bokstäver för varje nyckel
 	const keyIds = ["L", "E", "V", "A"];
@@ -41,6 +61,15 @@ function startRoom1GameLogic() {
 	const timerElement = document.getElementById("falletTimer");
 	// Hämta elementet för hela rummet
 	const room1 = document.getElementById("room1");
+
+	// --- AUTOMATISK SCROLLNING MED ANPASSAD HASTIGHET ---
+	const scrollContainer = document.querySelector(
+		"#rum1 .background-scroll",
+	) as HTMLElement;
+	if (scrollContainer) {
+		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, 2000); // 2 sekunder
+	}
+
 	// Starta en timer som räknar sekunder
 	let seconds = 0;
 	let timer = setInterval(() => {
