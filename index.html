@@ -43,7 +43,21 @@
     <div id="app"></div>
 
     <!-- rum1 -->
+    <div id="room1-modal" class="modal hidden">
+      <div class="modal-content">
+        <p>Instruktioner för Rum 1. Klicka på start för att börja!</p>
+        <button id="room1-modal-start">Starta</button>
+      </div>
+    </div>
+
     <div id="rum1" class="room fallet-container hidden">
+      <!-- Modal popup for instructions -->
+      <div id="room1-modal" class="modal hidden">
+        <div class="modal-content">
+          <p>Instruktioner för Rum 1. Klicka på start för att börja!</p>
+          <button id="room1-modal-start">Starta</button>
+        </div>
+      </div>
       <div id="falletMeddelande" class="falletMeddelande"></div>
       <div class="background-scroll">
         <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
@@ -78,7 +92,7 @@
         </div>
       </div>
       <div class="alice-faller">
-        <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+        <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" aria-label="Alice faller ner i kaninhålet" />
       </div>
     </div>
     <!-- rum2 -->

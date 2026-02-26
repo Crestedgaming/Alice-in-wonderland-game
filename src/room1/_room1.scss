@@ -1,5 +1,51 @@
+// Modal popup for Room 1 instructions
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2000;
+}
+.modal.hidden {
+	display: none;
+}
+.modal-content {
+	background: #fff;
+	padding: 2rem 3rem;
+	border-radius: 16px;
+	text-align: center;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
 /************************** Styling for desktop view of room 1 **************************/
 @media (min-width: 1440px) {
+	.modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.6);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 2000;
+	}
+	.modal.hidden {
+		display: none;
+	}
+	.modal-content {
+		background: #fff;
+		padding: 2rem 3rem;
+		border-radius: 16px;
+		text-align: center;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+	}
+
 	.fallet-container {
 		.background-scroll {
 			position: relative;
@@ -16,7 +62,7 @@
 			z-index: -1;
 		}
 	}
-		
+
 	.falletMeddelande {
 		position: fixed;
 		top: 100px;
@@ -96,14 +142,14 @@
 		}
 	}
 
-  .fallet-container .nycklar-container img:focus {
-    transform: scale(1.5);
-    border: 1px solid goldenrod;
-    box-shadow: inset 2px 8px 20px goldenrod;
-    border-radius: 50%;
-    pointer-events: auto;
-    padding: 2px;
-  }
+	.fallet-container .nycklar-container img:focus {
+		transform: scale(1.5);
+		border: 1px solid goldenrod;
+		box-shadow: inset 2px 8px 20px goldenrod;
+		border-radius: 50%;
+		pointer-events: auto;
+		padding: 2px;
+	}
 
 	.fallet-container {
 		.nyckelhalet {
@@ -127,7 +173,7 @@
 			pointer-events: auto;
 			padding: 2px;
 		}
-    .nyckelhalet:focus {
+		.nyckelhalet:focus {
 			transform: scale(1.5);
 			border: 1px solid goldenrod;
 			box-shadow: inset 2px 8px 20px goldenrod;
@@ -141,5 +187,3 @@
 /************************** Styling for mobile view of room 1 **************************/
 
 /************************* Styling for tablets iew of room 1 *************************/
-
-

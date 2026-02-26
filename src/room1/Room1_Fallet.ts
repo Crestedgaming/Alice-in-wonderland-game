@@ -7,27 +7,24 @@
  * Detta måste användaren göra under 1 min, annars måste användaren börja om från början.
  */
 
-
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
 export function initRoom1() {
-    // Hämta landningssidan och huvud-innehållet
-    const landing = document.getElementById("room1-landing");
-    const mainContent = document.getElementById("room1-main-content");
-    if (landing && mainContent) {
-        landing.style.display = "";
-        mainContent.style.display = "none";
-        const startBtn = document.getElementById("room1-start-btn");
-        if (startBtn) {
-            startBtn.onclick = () => {
-                landing.style.display = "none";
-                mainContent.style.display = "";
-                startRoom1GameLogic();
-            };
-        }
-    } else {
-        // Om landningssidan inte finns, starta spelet direkt (bakåtkompatibilitet)
-        startRoom1GameLogic();
-    }
+	// Show modal popup when Room 1 is shown
+	const modal = document.getElementById("room1-modal");
+	const mainContent = document.getElementById("rum1");
+	if (modal && mainContent) {
+		modal.classList.remove("hidden");
+		const startBtn = document.getElementById("room1-modal-start");
+		if (startBtn) {
+			startBtn.onclick = () => {
+				modal.classList.add("hidden");
+				startRoom1GameLogic();
+			};
+		}
+	} else {
+		// Fallback: start game logic directly
+		startRoom1GameLogic();
+	}
 }
 
 // All logik för själva spelet i Rum 1
@@ -111,4 +108,3 @@ function startRoom1GameLogic() {
 	// Visa startmeddelandet när allt är klart
 	setStartMessage();
 }
-
