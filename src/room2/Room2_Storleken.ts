@@ -162,9 +162,8 @@ vaggord.forEach((ord) => {
     );
 
     if (remaining.length === 0 && mindre) {
-      mindre.style.fontSize = "2rem";
-      mindre.style.fontWeight = "700";
-    }
+  mindre.classList.add("pulse");
+}
   });
 });
 
