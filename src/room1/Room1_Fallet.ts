@@ -1,22 +1,16 @@
-// Attach all Room 1 event listeners when content is shown
+/**
+ * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
+ * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
+ * Varje nyckel har en unik utseende.
+ * Varje nyckel generera en unik bostav som visas på skärmen efter att man har låst upp dörren.
+ * Det finns inget krav på vilken nyckel det är som spelaren väljer, så det är upp till spelaren att välja vilken nyckel den vill ha.
+ * Detta måste användaren göra under 1 min, annars måste användaren börja om från början.
+ */
+
+// Attach key and keyhole event listeners after room content is shown
 function attachRoom1Listeners() {
 	const room1 = document.getElementById("room1");
-	const landing = document.getElementById("room1-landing");
-	const content = document.getElementById("room1-content");
-	const startBtn = document.getElementById("room1-start-btn");
-	const doorElement = document.getElementById("nyckelhalet");
 	const keyIds = ["L", "E", "V", "A"];
-
-	// Start button
-	if (startBtn && landing && content) {
-		startBtn.onclick = () => {
-			landing.classList.add("hidden");
-			content.classList.remove("hidden");
-			startRoom1GameLogic();
-		};
-	}
-
-	// Keys
 	keyIds.forEach((id) => {
 		const keyElement = document.getElementById(`nyckeln-${id}`);
 		if (keyElement && room1) {
@@ -29,13 +23,12 @@ function attachRoom1Listeners() {
 			};
 		}
 	});
-
-	// Keyhole
+	const doorElement = document.getElementById("nyckelhalet");
 	if (doorElement && room1) {
 		doorElement.onclick = () => {
 			const messageElement = document.getElementById("falletMeddelande");
-			const selectedKey = (window as any).selectedKey || null;
 			if (room1 && !room1.classList.contains("hidden") && messageElement) {
+				const selectedKey = (window as any).selectedKey || null;
 				if (selectedKey) {
 					messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
 					const artefaktSpan = document.querySelector("#artefakt1 span");
@@ -49,18 +42,51 @@ function attachRoom1Listeners() {
 		};
 	}
 }
+// ...existing code...
+// MutationObserver to always attach onboarding logic after DOM changes
+function observeRoom1Landing() {
+	const observer = new MutationObserver(() => {
+		const startBtn = document.getElementById("room1-start-btn");
+		const landing = document.getElementById("room1-landing");
+		const content = document.getElementById("room1-content");
+		// Only attach if not already attached
+		if (
+			startBtn &&
+			landing &&
+			content &&
+			!startBtn.hasAttribute("data-onboarding-attached")
+		) {
+			startBtn.setAttribute("data-onboarding-attached", "true");
+			startBtn.addEventListener("click", () => {
+				landing.classList.add("hidden");
+				content.classList.remove("hidden");
+				startRoom1GameLogic();
+			});
+		}
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeRoom1Landing);
+} else {
+	observeRoom1Landing();
+}
 // Visa och göm landningssida och spelinnehåll för Rum 1
 export function setupRoom1Landing() {
-	attachRoom1Listeners();
+	const landing = document.getElementById("room1-landing");
+	const content = document.getElementById("room1-content");
+	const startBtn = document.getElementById("room1-start-btn");
+	if (landing && content && startBtn) {
+		startBtn.addEventListener("click", () => {
+			landing.classList.add("hidden");
+			content.classList.remove("hidden");
+			attachRoom1Listeners();
+			startRoom1GameLogic();
+		});
+	}
 }
-/**
- * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
- * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
- * Varje nyckel har en unik utseende.
- * Varje nyckel generera en unik bostav som visas på skärmen efter att man har låst upp dörren.
- * Det finns inget krav på vilken nyckel det är som spelaren väljer, så det är upp till spelaren att välja vilken nyckel den vill ha.
- * Detta måste användaren göra under 1 min, annars måste användaren börja om från början.
- */
 
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
 export function initRoom1() {
@@ -71,6 +97,7 @@ export function initRoom1() {
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
+	// Setup landing logic for Room 1 (no navigation)
 	setupRoom1Landing();
 }
 
@@ -96,47 +123,15 @@ function smoothScrollTo(
 }
 
 function startRoom1GameLogic() {
-	// Lista med bokstäver för varje nyckel
-	const keyIds = ["L", "E", "V", "A"];
-	// Hämta HTML-elementen för varje nyckel
-	const keyElements = keyIds.map((id) =>
-		document.getElementById(`nyckeln-${id}`),
-	);
-	// Hämta dörr-elementet
-	const doorElement = document.getElementById("nyckelhalet");
-	// Hämta elementet som visar tiden
-	const timerElement = document.getElementById("falletTimer");
-	// Hämta elementet för hela rummet
-	const room1 = document.getElementById("room1");
+	// ...existing code...
 
 	// --- AUTOMATISK SCROLLNING MED ANPASSAD HASTIGHET ---
 	const scrollContainer = document.querySelector(
 		"#rum1 .background-scroll",
 	) as HTMLElement;
 	if (scrollContainer) {
-		const SECONDS = 10 * 1000; // Total tid i sekunder för att scrolla hela vägen
+		const SECONDS = 15 * 1000; // Total tid i sekunder för att scrolla hela vägen
 		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, SECONDS); // 9 sekunder
-	}
-
-	// Starta en timer som räknar sekunder
-	let seconds = 0;
-	let timer = setInterval(() => {
-		seconds++;
-		if (timerElement) {
-			const mins = Math.floor(seconds / 60);
-			const secs = seconds % 60;
-			// Visa tiden på sidan
-			timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
-		}
-	}, 1000);
-	// Key selection and unlocking logic handled by MutationObservers using global selectedKey
-	// No duplicate event listeners here
-	function onDoorUnlocked(collectedChar: string) {
-		const artefaktSpan = document.querySelector("#artefakt1 span");
-		if (artefaktSpan) {
-			artefaktSpan.textContent = collectedChar;
-		}
-		// Här kan du lägga till mer logik om du vill
 	}
 
 	// Visar startmeddelandet till spelaren
