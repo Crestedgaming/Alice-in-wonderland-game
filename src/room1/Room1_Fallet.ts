@@ -3,17 +3,10 @@ function observeKeys() {
 	const keyIds = ["L", "E", "V", "A"];
 	const observer = new MutationObserver(() => {
 		const room1 = document.getElementById("room1");
-		keyIds.forEach((id, index) => {
+		keyIds.forEach((id) => {
 			const keyElement = document.getElementById(`nyckeln-${id}`);
-			// Only attach if not already attached
-			if (
-				keyElement &&
-				room1 &&
-				!keyElement.hasAttribute("data-key-attached")
-			) {
-				keyElement.setAttribute("data-key-attached", "true");
+			if (keyElement && room1) {
 				keyElement.addEventListener("click", () => {
-					// Save selected key globally
 					(window as any).selectedKey = id;
 					const messageElement = document.getElementById("falletMeddelande");
 					if (room1 && !room1.classList.contains("hidden") && messageElement) {
@@ -37,22 +30,13 @@ function observeKeyhole() {
 	const observer = new MutationObserver(() => {
 		const doorElement = document.getElementById("nyckelhalet");
 		const room1 = document.getElementById("room1");
-		// Only attach if not already attached
-		if (
-			doorElement &&
-			room1 &&
-			!doorElement.hasAttribute("data-keyhole-attached")
-		) {
-			doorElement.setAttribute("data-keyhole-attached", "true");
+		if (doorElement && room1) {
 			doorElement.addEventListener("click", () => {
 				const messageElement = document.getElementById("falletMeddelande");
-				// Kontrollera att rummet är synligt och att meddelande-elementet finns
 				if (room1 && !room1.classList.contains("hidden") && messageElement) {
-					// Use selectedKey from window scope
 					const selectedKey = (window as any).selectedKey || null;
 					if (selectedKey) {
 						messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
-						// Optionally clear timer and update artefact
 						const artefaktSpan = document.querySelector("#artefakt1 span");
 						if (artefaktSpan) {
 							artefaktSpan.textContent = selectedKey;

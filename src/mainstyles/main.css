@@ -55,6 +55,7 @@ header {
 .falletNavBar h1 {
   padding-top: 15px;
   text-shadow: 5px 5px 10px #4b1f1f;
+  font-size: 1.7rem;
 }
 
 .navBarElement {
@@ -432,11 +433,6 @@ body {
 }
 
 /* ===== ORD PÅ VÄGGEN ===== */
-.storleken-vaggord {
-  /* innehåller bara orden – position styrs på .vaggord--* */
-}
-
-/* gemensam stil */
 .vaggord {
   position: absolute;
   z-index: 3;
@@ -494,13 +490,15 @@ body {
   z-index: 2;
 }
 
-.room3-background-image {
-  display: block;
-  pointer-events: none;
-  width: 100vw;
+#rum3 {
+  background-image: url("/public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png");
+  background-size: cover;
+  background-position: center;
   height: 100vh;
-  -o-object-fit: cover;
-     object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .room3-description {
