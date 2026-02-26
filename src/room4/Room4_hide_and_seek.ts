@@ -78,7 +78,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 ///////////-Funktion-////////////////
-//*Slumpmässig position inom bakgrunder*///
+//*Slumpmässig position inom bakgrunden*///
 //////////////////////////////////////////
 
 function showCatRandom() {
