@@ -1,57 +1,105 @@
-// Attach all Room 1 event listeners when content is shown
-function attachRoom1Listeners() {
-	const room1 = document.getElementById("room1");
-	const landing = document.getElementById("room1-landing");
-	const content = document.getElementById("room1-content");
-	const startBtn = document.getElementById("room1-start-btn");
-	const doorElement = document.getElementById("nyckelhalet");
+// MutationObserver to always attach key event listeners after DOM changes
+function observeKeys() {
 	const keyIds = ["L", "E", "V", "A"];
+	const observer = new MutationObserver(() => {
+		const room1 = document.getElementById("room1");
+		keyIds.forEach((id) => {
+			const keyElement = document.getElementById(`nyckeln-${id}`);
+			if (keyElement && room1) {
+				keyElement.addEventListener("click", () => {
+					(window as any).selectedKey = id;
+					const messageElement = document.getElementById("falletMeddelande");
+					if (room1 && !room1.classList.contains("hidden") && messageElement) {
+						messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${id}!</p>`;
+					}
+				});
+			}
+		});
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
 
-	// Start button
-	if (startBtn && landing && content) {
-		startBtn.onclick = () => {
-			landing.classList.add("hidden");
-			content.classList.remove("hidden");
-			startRoom1GameLogic();
-		};
-	}
-
-	// Keys
-	keyIds.forEach((id) => {
-		const keyElement = document.getElementById(`nyckeln-${id}`);
-		if (keyElement && room1) {
-			keyElement.onclick = () => {
-				(window as any).selectedKey = id;
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeKeys);
+} else {
+	observeKeys();
+}
+// MutationObserver to always attach keyhole event listener after DOM changes
+function observeKeyhole() {
+	const observer = new MutationObserver(() => {
+		const doorElement = document.getElementById("nyckelhalet");
+		const room1 = document.getElementById("room1");
+		if (doorElement && room1) {
+			doorElement.addEventListener("click", () => {
 				const messageElement = document.getElementById("falletMeddelande");
 				if (room1 && !room1.classList.contains("hidden") && messageElement) {
-					messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${id}!</p>`;
+					const selectedKey = (window as any).selectedKey || null;
+					if (selectedKey) {
+						messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
+						const artefaktSpan = document.querySelector("#artefakt1 span");
+						if (artefaktSpan) {
+							artefaktSpan.textContent = selectedKey;
+						}
+					} else {
+						messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!<\/p>`;
+					}
 				}
-			};
+			});
 		}
 	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
 
-	// Keyhole
-	if (doorElement && room1) {
-		doorElement.onclick = () => {
-			const messageElement = document.getElementById("falletMeddelande");
-			const selectedKey = (window as any).selectedKey || null;
-			if (room1 && !room1.classList.contains("hidden") && messageElement) {
-				if (selectedKey) {
-					messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
-					const artefaktSpan = document.querySelector("#artefakt1 span");
-					if (artefaktSpan) {
-						artefaktSpan.textContent = selectedKey;
-					}
-				} else {
-					messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!<\/p>`;
-				}
-			}
-		};
-	}
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeKeyhole);
+} else {
+	observeKeyhole();
+}
+// MutationObserver to always attach onboarding logic after DOM changes
+function observeRoom1Landing() {
+	const observer = new MutationObserver(() => {
+		const startBtn = document.getElementById("room1-start-btn");
+		const landing = document.getElementById("room1-landing");
+		const content = document.getElementById("room1-content");
+		// Only attach if not already attached
+		if (
+			startBtn &&
+			landing &&
+			content &&
+			!startBtn.hasAttribute("data-onboarding-attached")
+		) {
+			startBtn.setAttribute("data-onboarding-attached", "true");
+			startBtn.addEventListener("click", () => {
+				landing.classList.add("hidden");
+				content.classList.remove("hidden");
+				startRoom1GameLogic();
+			});
+		}
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeRoom1Landing);
+} else {
+	observeRoom1Landing();
 }
 // Visa och göm landningssida och spelinnehåll för Rum 1
 export function setupRoom1Landing() {
-	attachRoom1Listeners();
+	const landing = document.getElementById("room1-landing");
+	const content = document.getElementById("room1-content");
+	const startBtn = document.getElementById("room1-start-btn");
+	if (landing && content && startBtn) {
+		startBtn.addEventListener("click", () => {
+			// Only toggle landing/content, do NOT touch room container
+			landing.classList.add("hidden");
+			content.classList.remove("hidden");
+			startRoom1GameLogic();
+		});
+	}
 }
 /**
  * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
@@ -71,6 +119,7 @@ export function initRoom1() {
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
+	// Setup landing logic for Room 1 (no navigation)
 	setupRoom1Landing();
 }
 
