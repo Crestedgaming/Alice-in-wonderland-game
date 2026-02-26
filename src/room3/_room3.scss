@@ -1,10 +1,12 @@
-.room3-background-image {
-    display: block;
-    pointer-events: none;
-    width: 100vw;
+#rum3 {
+    background-image: url("/public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png");
+    background-size: cover;
+    background-position: center;
     height: 100vh;
-    object-fit: cover;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .room3-description {
