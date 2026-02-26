@@ -135,7 +135,8 @@ footer {
   box-shadow: 5px 5px 10px #4b1f1f;
   border: 2px inset #f2e6ce;
 }
-.fallet-container .room-landing .room1-landing-content h2, .fallet-container .room-landing .room1-landing-content p {
+.fallet-container .room-landing .room1-landing-content h2,
+.fallet-container .room-landing .room1-landing-content p {
   margin: 10px 20px;
   text-shadow: 5px 5px 10px #4b1f1f;
   color: #f2e6ce;
@@ -262,7 +263,7 @@ footer {
   position: absolute;
   left: 38vw;
   top: 59vh;
-  z-index: 13;
+  z-index: 9;
   overflow: hidden;
   transition: left 0.3s, top 0.3s;
 }
@@ -508,6 +509,33 @@ body {
   max-width: 600px;
   margin: 20px auto;
   text-align: center;
+}
+
+.start-button-rum3 {
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #f2e6ce;
+  background: #732F2F;
+  border: dotted 8px #f2e6ce;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.start-button-rum3:hover {
+  background-color: #f2e6ce;
+  color: #732F2F;
+}
+
+.room3-welcome {
+  font-family: "Henny Penny", cursive;
+  font-size: 24px;
+  color: #732F2F;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .game-title {
