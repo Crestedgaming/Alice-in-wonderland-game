@@ -2,7 +2,11 @@ import { gameState } from "../engine/GameState";
 import { completeRoom } from "../engine/GameManager";
 
 
-
+const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
+const riddleText = document.getElementById("riddle-text") as HTMLParagraphElement;
+const answerInput = document.getElementById("answer-input") as HTMLInputElement;
+const submitButton = document.getElementById("submit-button") as HTMLButtonElement;
+const nextButton = document.getElementById("next-button") as HTMLButtonElement;
 
 
 /**
