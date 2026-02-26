@@ -2,7 +2,7 @@ import "./mainstyles/main.scss";
 import { startGame } from "./engine/GameManager";
 import { gameState } from "./engine/GameState";
 
-import "./room4/Room4_Kurragömma";
+import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_Gåtan";
 import "./room1/Room1_Fallet";
 import "./room6/Room6_Slutstriden";
