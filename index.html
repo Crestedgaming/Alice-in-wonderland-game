@@ -44,33 +44,46 @@
     <div id="app"></div>
 
     <!-- rum1 -->
+
     <div id="rum1" class="room fallet-container hidden">
-      <div id="falletMeddelande" class="falletMeddelande"></div>
-      <div class="background-scroll">
-        <div class="background-container">
-          <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
-            alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-          <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
-            alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
-            aria-label="Lås upp dörren med rätt nyckel" />
-          <div id="nycklar" class="nycklar-container">
-            <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
-              alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-              aria-label="Välj guldnyckel med lila topp, bokstav L" />
-            <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
-              alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
-              aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
-            <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
-              alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
-              aria-label="Välj guldnyckel med krona, bokstav V" />
-            <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
-              alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
-              aria-label="Välj guldnyckel med stjärna, bokstav A" />
+      <div id="room1-landing" class="room-landing">
+        <h2>Välkommen till Rum 1!</h2>
+        <p>Instruktioner: Spelet går ut på innan man landar på marken välja en nyckel för att låsa upp dörren till nästa
+          rum.
+          Varje nyckel har en bokstav som hjälper dig att lösa slutgiltiga hemligheten.
+        <p>
+        <p>Klicka på <b>Starta spelet</b> för att börja.</p>
+        <button id="room1-start-btn">Starta spelet</button>
+      </div>
+
+      <div id="room1-content" class="hidden">
+        <div id="falletMeddelande" class="falletMeddelande"></div>
+        <div class="background-scroll">
+          <div class="background-container">
+            <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
+              alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
+            <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
+              alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
+              aria-label="Lås upp dörren med rätt nyckel" />
+            <div id="nycklar" class="nycklar-container">
+              <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
+                alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
+                aria-label="Välj guldnyckel med lila topp, bokstav L" />
+              <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
+                alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
+                aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
+              <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
+                alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
+                aria-label="Välj guldnyckel med krona, bokstav V" />
+              <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
+                alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
+                aria-label="Välj guldnyckel med stjärna, bokstav A" />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="alice-faller">
-        <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+        <div class="alice-faller">
+          <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+        </div>
       </div>
     </div>
 

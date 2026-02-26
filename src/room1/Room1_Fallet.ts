@@ -1,3 +1,42 @@
+// MutationObserver to always attach onboarding logic after DOM changes
+function observeRoom1Landing() {
+	const observer = new MutationObserver(() => {
+		const startBtn = document.getElementById("room1-start-btn");
+		const landing = document.getElementById("room1-landing");
+		const content = document.getElementById("room1-content");
+		// Only attach if not already attached
+		if (startBtn && landing && content && !startBtn.hasAttribute("data-onboarding-attached")) {
+			startBtn.setAttribute("data-onboarding-attached", "true");
+			startBtn.addEventListener("click", () => {
+				landing.classList.add("hidden");
+				content.classList.remove("hidden");
+				startRoom1GameLogic();
+			});
+		}
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeRoom1Landing);
+} else {
+	observeRoom1Landing();
+}
+// Visa och göm landningssida och spelinnehåll för Rum 1
+export function setupRoom1Landing() {
+	const landing = document.getElementById("room1-landing");
+	const content = document.getElementById("room1-content");
+	const startBtn = document.getElementById("room1-start-btn");
+	if (landing && content && startBtn) {
+		startBtn.addEventListener("click", () => {
+			// Only toggle landing/content, do NOT touch room container
+			landing.classList.add("hidden");
+			content.classList.remove("hidden");
+			startRoom1GameLogic();
+		});
+	}
+}
 /**
  * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
  * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
@@ -9,22 +48,15 @@
 
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
 export function initRoom1() {
-	// Show modal popup when Room 1 is shown
-	const modal = document.getElementById("room1-modal");
-	const mainContent = document.getElementById("rum1");
-	if (modal && mainContent) {
-		modal.classList.remove("hidden");
-		const startBtn = document.getElementById("room1-modal-start");
-		if (startBtn) {
-			startBtn.onclick = () => {
-				modal.classList.add("hidden");
-				startRoom1GameLogic();
-			};
-		}
-	} else {
-		// Fallback: start game logic directly
-		startRoom1GameLogic();
+	// Always show landing and hide content when Room 1 is loaded
+	const landing = document.getElementById("room1-landing");
+	const content = document.getElementById("room1-content");
+	if (landing && content) {
+		landing.classList.remove("hidden");
+		content.classList.add("hidden");
 	}
+	// Setup landing logic for Room 1 (no navigation)
+	setupRoom1Landing();
 }
 
 // All logik för själva spelet i Rum 1
@@ -67,7 +99,7 @@ function startRoom1GameLogic() {
 		"#rum1 .background-scroll",
 	) as HTMLElement;
 	if (scrollContainer) {
-		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, 2000); // 2 sekunder
+		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, 9000); // 9 sekunder
 	}
 
 	// Starta en timer som räknar sekunder
