@@ -52,17 +52,12 @@ header {
   border-color: #732f2e;
 }
 
-.falletNavBar h1 {
-  padding-top: 15px;
-  text-shadow: 5px 5px 10px #4b1f1f;
-}
-
-.navBarElement {
+.navBarTitle, .navBarProgress, .navBarTimer {
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
-  font-style: normal;
-  letter-spacing: 1px;
+  padding-top: 10px;
   text-shadow: 5px 5px 10px #4b1f1f;
+  font-size: 1.7rem;
 }
 
 footer {
@@ -111,29 +106,79 @@ footer {
 
 /* rooms */
 /************************** Styling for desktop view of room 1 **************************/
-.modal {
-  position: fixed;
-  top: 0;
+.fallet-container .room-landing {
+  position: absolute;
+  top: 120px;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+  background-image: url(/public/images/Room1_bilder/bakgrund.webp);
+  border: 50% solid transparent;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  align-content: center;
+  justify-items: center;
 }
-
-.modal.hidden {
-  display: none;
+.fallet-container .room-landing .room1-landing-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-content: center;
+  justify-items: center;
+  background-color: #732f2f;
+  border-radius: 100px;
+  padding: 10px;
+  color: #f2e6ce;
+  box-shadow: 5px 5px 10px #4b1f1f;
+  border: 2px inset #f2e6ce;
 }
-
-.modal-content {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 16px;
+.fallet-container .room-landing .room1-landing-content h2,
+.fallet-container .room-landing .room1-landing-content p {
+  margin: 10px 20px;
+  text-shadow: 5px 5px 10px #4b1f1f;
+  color: #f2e6ce;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  justify-items: center;
+  align-content: center;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+  text-shadow: 5px 5px 10px #4b1f1f;
+  color: #f2e6ce;
+  margin: 10px 20px;
+  text-align: center;
+  justify-items: center;
+  align-content: center;
+}
+.fallet-container .room-landing button {
+  position: absolute;
+  top: 85%;
+  left: 45%;
+  background: #732f2f;
+  border: 2px inset #f2e6ce;
+  color: #f2e6ce;
+  padding: 5px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  box-shadow: 5px 5px 10px #4b1f1f;
+  padding: 10px 20px;
+}
+.fallet-container .room-landing button:hover {
+  background: #f2e6ce;
+  color: #732f2f;
+  border-color: #732f2f;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
 }
 
 .fallet-container .background-scroll {
@@ -165,7 +210,7 @@ footer {
   transform: translate(-50%, -50%);
   width: 7%; /* Responsive width */
   height: auto;
-  z-index: 4;
+  z-index: 2;
 }
 .fallet-container .nycklar-container {
   position: absolute;
@@ -173,11 +218,11 @@ footer {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 1;
   /* No flex, so children can be absolutely positioned */
 }
 .fallet-container .nycklar-container img {
-  width: 7%;
+  width: 5%;
   height: auto;
   position: absolute;
   transition: all 0.3s;
@@ -218,7 +263,7 @@ footer {
   position: absolute;
   left: 38vw;
   top: 59vh;
-  z-index: 13;
+  z-index: 5;
   overflow: hidden;
   transition: left 0.3s, top 0.3s;
 }
@@ -226,34 +271,34 @@ footer {
   position: absolute;
   left: 40%;
   top: 20%;
-  width: 7%;
+  width: 5%;
   height: auto;
-  z-index: 11;
+  z-index: 1;
 }
 .fallet-container .nyckel2 {
   position: absolute;
   left: 42%;
   top: 30%;
-  width: 7%;
+  width: 5%;
   height: auto;
-  z-index: 11;
+  z-index: 1;
 }
 
 .fallet-container .nyckel3 {
   position: absolute;
   left: 60%;
   top: 25%;
-  width: 7%;
+  width: 5%;
   height: auto;
-  z-index: 11;
+  z-index: 1;
 }
 .fallet-container .nyckel4 {
   position: absolute;
   left: 60%;
   top: 35%;
-  width: 7%;
+  width: 5%;
   height: auto;
-  z-index: 11;
+  z-index: 1;
 }
 .fallet-container .nycklar-container img:hover {
   transform: scale(1.5);
@@ -276,13 +321,13 @@ footer {
 
 .fallet-container .nyckelhalet {
   position: absolute;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   pointer-events: auto;
-  z-index: 12;
+  z-index: 3;
   top: 77%;
-  left: 53%;
+  left: 53.2%;
   padding: 0;
   margin: 0;
 }
@@ -296,8 +341,6 @@ footer {
   padding: 2px;
 }
 
-/************************** Styling for mobile view of room 1 **************************/
-/************************* Styling for tablets iew of room 1 *************************/
 * {
   box-sizing: border-box;
 }
@@ -383,11 +426,6 @@ body {
 }
 
 /* ===== ORD PÅ VÄGGEN ===== */
-.storleken-vaggord {
-  /* innehåller bara orden – position styrs på .vaggord--* */
-}
-
-/* gemensam stil */
 .vaggord {
   position: absolute;
   z-index: 3;
@@ -445,13 +483,15 @@ body {
   z-index: 2;
 }
 
-.room3-background-image {
-  display: block;
-  pointer-events: none;
-  width: 100vw;
+#rum3 {
+  background-image: url("/public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png");
+  background-size: cover;
+  background-position: center;
   height: 100vh;
-  -o-object-fit: cover;
-     object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .room3-description {
@@ -467,6 +507,33 @@ body {
   max-width: 600px;
   margin: 20px auto;
   text-align: center;
+}
+
+.start-button-rum3 {
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  color: #f2e6ce;
+  background: #732F2F;
+  border: dotted 8px #f2e6ce;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.start-button-rum3:hover {
+  background-color: #f2e6ce;
+  color: #732F2F;
+}
+
+.room3-welcome {
+  font-family: "Henny Penny", cursive;
+  font-size: 24px;
+  color: #732F2F;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .game-title {
@@ -611,8 +678,10 @@ body {
    TEXT
  */
 .teaparty__headline {
-  font-size: 3rem;
+  font-size: 4rem;
   margin-bottom: 0.5rem;
+  font-family: "henny penny", cursive, sans-serif;
+  margin-top: -1rem;
 }
 
 .teaparty__description {
@@ -625,6 +694,7 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1rem 0;
+  font-family: "henny penny", cursive, sans-serif;
 }
 
 /* 
@@ -638,7 +708,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   margin: 2rem auto 0 auto;
-  margin-top: 3rem;
+  margin-top: -1rem;
 }
 
 /* 
@@ -708,6 +778,7 @@ body {
   margin-top: 0.5rem;
   font-weight: bold;
   text-align: center;
+  font-family: "henny penny", cursive, sans-serif;
 }
 
 /* ===============================
@@ -719,6 +790,8 @@ body {
   text-align: center;
   width: 100%;
   max-width: 600px;
+  font-family: "henny penny", cursive, sans-serif;
+  font-size: 1.2rem;
 }
 
 .room--final {

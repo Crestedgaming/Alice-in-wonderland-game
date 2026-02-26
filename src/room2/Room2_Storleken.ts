@@ -155,6 +155,16 @@ const vaggord = document.querySelectorAll(".vaggord");
 vaggord.forEach((ord) => {
   ord.addEventListener("click", () => {
     (ord as HTMLElement).style.display = "none";
+
+    // kolla hur många som är kvar
+    const remaining = document.querySelectorAll(
+      ".vaggord:not([style*='display: none'])"
+    );
+
+    if (remaining.length === 0 && mindre) {
+      mindre.style.fontSize = "2rem";
+      mindre.style.fontWeight = "700";
+    }
   });
 });
 

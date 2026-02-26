@@ -1,27 +1,84 @@
 /************************** Styling for desktop view of room 1 **************************/
-.modal {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.6);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 2000;
-}
-.modal.hidden {
-	display: none;
-}
-.modal-content {
-	background: #fff;
-	padding: 2rem 3rem;
-	border-radius: 16px;
-	text-align: center;
-	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-}
+.fallet-container {
+	.room-landing {
+		position: absolute;
+		top: 120px;
+		left: 0;
+		width: 100%;
+		height: 50%;
+		z-index: 1;
+		background-image: url(/public/images/Room1_bilder/bakgrund.webp);
+		border: 50% solid transparent;
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		align-content: center;
+		justify-items: center;
 
+		.room1-landing-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			align-content: center;
+			justify-items: center;
+			background-color: #732f2f;
+			border-radius: 100px;
+			padding: 10px;
+			color: #f2e6ce;
+			box-shadow: 5px 5px 10px #4b1f1f;
+			border: 2px inset #f2e6ce;
+
+			h2,
+			p {
+				margin: 10px 20px;
+				text-shadow: 5px 5px 10px #4b1f1f;
+				color: #f2e6ce;
+				text-align: center;
+				justify-items: center;
+				align-content: center;
+				font-family: "Henny Penny", system-ui;
+				font-weight: 400;
+				font-style: normal;
+				letter-spacing: 1px;
+				font-size: 1.2em;
+				text-shadow: 5px 5px 10px #4b1f1f;
+				color: #f2e6ce;
+				margin: 10px 20px;
+				text-align: center;
+				justify-items: center;
+				align-content: center;
+			}
+		}
+
+		button {
+			position: absolute;
+			top: 85%;
+			left: 45%;
+			background: #732f2f;
+			border: 2px inset #f2e6ce;
+			color: #f2e6ce;
+			padding: 5px 18px;
+			border-radius: 50%;
+			cursor: pointer;
+			font-family: "Henny Penny", system-ui;
+			font-weight: 400;
+			font-style: normal;
+			letter-spacing: 1px;
+			font-size: 1rem;
+			box-shadow: 5px 5px 10px #4b1f1f;
+			padding: 10px 20px;
+
+			&:hover {
+				background: #f2e6ce;
+				color: #732f2f;
+				border-color: #732f2f;
+				transform: scale(1.2);
+				transition: transform 0.3s ease-in-out;
+			}
+		}
+	}
+}
 .fallet-container {
 	.background-scroll {
 		position: relative;
@@ -58,7 +115,7 @@
 		transform: translate(-50%, -50%);
 		width: 7%; /* Responsive width */
 		height: auto;
-		z-index: 4;
+		z-index: 2;
 	}
 
 	.nycklar-container {
@@ -67,12 +124,12 @@
 		height: 100%;
 		top: 0;
 		left: 0;
-		z-index: 10;
+		z-index: 1;
 		/* No flex, so children can be absolutely positioned */
 	}
 
 	.nycklar-container img {
-		width: 7%;
+		width: 5%;
 		height: auto;
 		position: absolute;
 		transition: all 0.3s;
@@ -116,7 +173,7 @@
 		position: absolute;
 		left: 38vw;
 		top: 59vh;
-		z-index: 13; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
+		z-index: 5; // In front of keyhole (z-index: 8), behind keys (z-index: 11)
 		overflow: hidden;
 		transition:
 			left 0.3s,
@@ -127,18 +184,18 @@
 		position: absolute;
 		left: 40%;
 		top: 20%;
-		width: 7%;
+		width: 5%;
 		height: auto;
-		z-index: 11;
+		z-index: 1;
 	}
 
 	.nyckel2 {
 		position: absolute;
 		left: 42%;
 		top: 30%;
-		width: 7%;
+		width: 5%;
 		height: auto;
-		z-index: 11;
+		z-index: 1;
 	}
 }
 
@@ -147,18 +204,18 @@
 		position: absolute;
 		left: 60%;
 		top: 25%;
-		width: 7%;
+		width: 5%;
 		height: auto;
-		z-index: 11;
+		z-index: 1;
 	}
 
 	.nyckel4 {
 		position: absolute;
 		left: 60%;
 		top: 35%;
-		width: 7%;
+		width: 5%;
 		height: auto;
-		z-index: 11;
+		z-index: 1;
 	}
 
 	.nycklar-container img:hover {
@@ -184,13 +241,13 @@
 .fallet-container {
 	.nyckelhalet {
 		position: absolute;
-		width: 70px;
-		height: 70px;
+		width: 60px;
+		height: 60px;
 		cursor: pointer;
 		pointer-events: auto;
-		z-index: 12;
+		z-index: 3;
 		top: 77%;
-		left: 53%;
+		left: 53.2%;
 		padding: 0;
 		margin: 0;
 	}
@@ -205,7 +262,3 @@
 		padding: 2px;
 	}
 }
-
-/************************** Styling for mobile view of room 1 **************************/
-
-/************************* Styling for tablets iew of room 1 *************************/
