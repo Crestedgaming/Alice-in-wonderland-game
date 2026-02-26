@@ -22,6 +22,35 @@ import "./room2/Room2_Storleken";
 	});
 
 	document.getElementById(roomId)!.classList.remove("hidden");
+
+	// Set navBarTitle to current room's title
+	const navTitle = document.getElementById("rumID");
+	if (navTitle) {
+		let title = "";
+		switch (roomId) {
+			case "rum1":
+				title = "Fallet";
+				break;
+			case "rum2":
+				title = "Storleken";
+				break;
+			case "rum3":
+				title = "Gåtan";
+				break;
+			case "rum4":
+				title = "Kurragömma";
+				break;
+			case "rum5":
+				title = "Tebjudningen";
+				break;
+			case "rum6":
+				title = "Slutstriden";
+				break;
+			default:
+				title = "Escape Room";
+		}
+		navTitle.textContent = title;
+	}
 };
 
 // --- Room reset logic ---
