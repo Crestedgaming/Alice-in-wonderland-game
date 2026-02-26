@@ -7,6 +7,7 @@ import "./room3/Room3_Gåtan";
 import "./room1/Room1_Fallet";
 import "./room6/Room6_Slutstriden";
 import "./room5/Room5_Tebjudningen";
+import "./room2/Room2_Storleken";
 
 /*
  * ============================================================

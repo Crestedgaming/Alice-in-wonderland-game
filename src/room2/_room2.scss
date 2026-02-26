@@ -14,6 +14,7 @@ body {
   font-family: "Bricolage Grotesque", sans-serif;
 }
 
+/* Göm-element-klass */
 .hidden {
   display: none;
 }
@@ -29,13 +30,13 @@ body {
 
 /* Bakgrundsbilden */
 
-.storleken-bg {
+.room2-background-image {
   position: absolute;
   inset: 0;
-  background-image: url("/images/Rum2bakgrund.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 /* ===== ALICE ===== */
@@ -44,6 +45,7 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 1;
   transition:
     height 0.4s ease-out,
     left 0.4s ease-out;
@@ -72,6 +74,8 @@ body {
   text-shadow:
     0 3px 6px rgba(0, 0, 0, 0.8),
     0 0 4px rgba(0, 0, 0, 0.5);
+
+  z-index: 2;
 }
 
 .storleken-text__mindre {
@@ -84,11 +88,11 @@ body {
 .storleken-text::before {
   content: "";
   position: absolute;
-  inset: -4px;
+  inset: -1px;
   background: linear-gradient(
-    rgba(102, 46, 32, 0.7),
-    rgba(88, 30, 13, 0.9)
-  );
+  rgba(84, 15, 15, 0.7),
+  rgba(141, 65, 65, 0.503)
+);
   border-radius: 18px;
   z-index: -1;
   box-shadow:
@@ -99,7 +103,7 @@ body {
 /* ===== ORD PÅ VÄGGEN ===== */
 
 .storleken-vaggord {
-  
+  /* innehåller bara orden – position styrs på .vaggord--* */
 }
 
 /* gemensam stil */
@@ -128,7 +132,7 @@ body {
 
 /* STOR */
 
-.vaggord--mindre {
+.vaggord--stor {
   top: 26%;
   left: 11%;
   font-size: 3rem;
@@ -140,7 +144,7 @@ body {
 
 /* MELLAN */
 
-.vaggord--minst {
+.vaggord--mellan {
   top: 10%;
   left: 29%;
   font-size: 1.6rem;
@@ -174,6 +178,8 @@ body {
   font-size: 1.8rem;
   text-align: center;
 
-  color: #F2E6CE;
-  text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+  color: #f2e6ce;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
+
+  z-index: 2;
 }
