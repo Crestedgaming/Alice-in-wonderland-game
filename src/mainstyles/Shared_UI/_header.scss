@@ -48,16 +48,10 @@ header {
 	}
 }
 
-.falletNavBar h1 {
+.navBarTitle, .navBarProgress, .navBarTimer {
+	font-family: "Henny Penny", system-ui;
+	font-weight: 400;
 	padding-top: 10px;
 	text-shadow: 5px 5px 10px #4b1f1f;
 	font-size: 1.7rem;
-}
-
-.navBarElement {
-	font-family: "Henny Penny", system-ui;
-	font-weight: 400;
-	font-style: normal;
-	letter-spacing: 1px;
-	text-shadow: 5px 5px 10px #4b1f1f;
 }
