@@ -7,10 +7,31 @@
  * Detta måste användaren göra under 1 min, annars måste användaren börja om från början.
  */
 
+
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
-
-
 export function initRoom1() {
+    // Hämta landningssidan och huvud-innehållet
+    const landing = document.getElementById("room1-landing");
+    const mainContent = document.getElementById("room1-main-content");
+    if (landing && mainContent) {
+        landing.style.display = "";
+        mainContent.style.display = "none";
+        const startBtn = document.getElementById("room1-start-btn");
+        if (startBtn) {
+            startBtn.onclick = () => {
+                landing.style.display = "none";
+                mainContent.style.display = "";
+                startRoom1GameLogic();
+            };
+        }
+    } else {
+        // Om landningssidan inte finns, starta spelet direkt (bakåtkompatibilitet)
+        startRoom1GameLogic();
+    }
+}
+
+// All logik för själva spelet i Rum 1
+function startRoom1GameLogic() {
 	// Lista med bokstäver för varje nyckel
 	const keyIds = ["L", "E", "V", "A"];
 	// Hämta HTML-elementen för varje nyckel
@@ -21,6 +42,8 @@ export function initRoom1() {
 	const doorElement = document.getElementById("nyckelhalet");
 	// Hämta elementet som visar tiden
 	const timerElement = document.getElementById("falletTimer");
+	// Hämta elementet för hela rummet
+	const room1 = document.getElementById("room1");
 	// Starta en timer som räknar sekunder
 	let seconds = 0;
 	let timer = setInterval(() => {
@@ -32,28 +55,6 @@ export function initRoom1() {
 			timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
 		}
 	}, 1000);
-
-	// Visar startmeddelandet till spelaren
-	function setStartMessage(retries = 5) {
-		const messageElement = document.getElementById("falletMeddelande");
-		if (messageElement?.classList.contains("falletMeddelande")) {
-			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-			// Loggar till konsolen för felsökning
-			console.log("Startmeddelande visas.");
-		} else if (retries > 0) {
-			// Försök igen efter en kort stund om elementet inte finns än
-			setTimeout(() => setStartMessage(retries - 1), 50);
-			console.log("Försöker visa startmeddelande, försök kvar:", retries - 1);
-		} else {
-			console.warn(
-				"falletMeddelande-elementet hittades inte efter flera försök.",
-			);
-		}
-	}
-
-	// Hämta elementet för hela rummet
-	const room1 = document.getElementById("rum1");
-	// Här sparas vilken nyckel spelaren har valt
 	let selectedKey: string | null = null;
 
 	// När spelaren klickar på en nyckel
@@ -79,7 +80,6 @@ export function initRoom1() {
 		}
 		// Här kan du lägga till mer logik om du vill
 	}
-
 	// När spelaren klickar på dörren
 	if (doorElement) {
 		doorElement.addEventListener("click", () => {
@@ -99,6 +99,15 @@ export function initRoom1() {
 		});
 	}
 
+	// Visar startmeddelandet till spelaren
+	function setStartMessage(retries = 5) {
+		const messageElement = document.getElementById("falletMeddelande");
+		if (messageElement?.classList.contains("falletMeddelande")) {
+			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+		} else if (retries > 0) {
+			setTimeout(() => setStartMessage(retries - 1), 50);
+		}
+	}
 	// Visa startmeddelandet när allt är klart
 	setStartMessage();
 }
