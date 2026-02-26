@@ -13,7 +13,7 @@ const startGame = () => {
   gameRunning = true;
 
 
-    const startButton = document.getElementById('start-button');
+    const startButton = document.getElementById('start-button-cat');
     const instructions = document.getElementById('instructions');
     const catImage1 = document.getElementById('cat-image-1');
 
