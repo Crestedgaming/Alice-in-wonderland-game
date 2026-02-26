@@ -16,6 +16,7 @@
 
 #background-image {
   display: block;
+pointer-events: none;
   width: 100vw;
   height: 100vh;
  object-fit: cover;
@@ -34,7 +35,7 @@
   display: none;
   width: 310px;
   height: auto;
-  z-index: 10;
+  z-index: 20;
 }
 
 

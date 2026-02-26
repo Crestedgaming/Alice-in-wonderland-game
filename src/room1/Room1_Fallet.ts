@@ -7,60 +7,96 @@
  * Detta måste användaren göra under 1 min, annars måste användaren börja om från början.
  */
 
-// Hämta nyckelelementen från HTML
+// Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
+export function initRoom1() {
+	// Lista med bokstäver för varje nyckel
+	const keyIds = ["L", "E", "V", "A"];
+	// Hämta HTML-elementen för varje nyckel
+	const keyElements = keyIds.map((id) =>
+		document.getElementById(`nyckeln-${id}`),
+	);
+	// Hämta dörr-elementet
+	const doorElement = document.getElementById("nyckelhalet");
+	// Hämta elementet som visar tiden
+	const timerElement = document.getElementById("falletTimer");
+	// Starta en timer som räknar sekunder
+	let seconds = 0;
+	let timer = setInterval(() => {
+		seconds++;
+		if (timerElement) {
+			const mins = Math.floor(seconds / 60);
+			const secs = seconds % 60;
+			// Visa tiden på sidan
+			timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
+		}
+	}, 1000);
 
-const keyIds = ["L", "E", "V", "A"];
-const keyElements = keyIds.map((id) =>
-	document.getElementById(`nyckeln-${id}`),
-);
-const doorElement = document.getElementById("nyckelhalet");
-
-const timerElement = document.getElementById("falletTimer");
-let seconds = 0;
-
-const timer = setInterval(() => {
-	seconds++;
-	if (timerElement) {
-		const mins = Math.floor(seconds / 60);
-		const secs = seconds % 60;
-		timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
+	// Visar startmeddelandet till spelaren
+	function setStartMessage(retries = 5) {
+		const messageElement = document.getElementById("falletMeddelande");
+		if (messageElement?.classList.contains("falletMeddelande")) {
+			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+			// Loggar till konsolen för felsökning
+			console.log("Startmeddelande visas.");
+		} else if (retries > 0) {
+			// Försök igen efter en kort stund om elementet inte finns än
+			setTimeout(() => setStartMessage(retries - 1), 50);
+			console.log("Försöker visa startmeddelande, försök kvar:", retries - 1);
+		} else {
+			console.warn(
+				"falletMeddelande-elementet hittades inte efter flera försök.",
+			);
+		}
 	}
-}, 1000);
 
-// Skapa meddelandeelement
+	// Hämta elementet för hela rummet
+	const room1 = document.getElementById("rum1");
+	// Här sparas vilken nyckel spelaren har valt
+	let selectedKey: string | null = null;
 
-const messageElement = document.getElementById("falletMeddelande");
-if (messageElement?.classList.contains("falletMeddelande")) {
-	messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-}
-const room1 = document.getElementById("rum1");
-
-
-// When a key is clicked, update the message
-keyElements.forEach((keyElement, index) => {
-	if (!keyElement) return;
-	keyElement.addEventListener("click", () => {
-		selectedKey = keyIds[index]; // <-- This sets the global variable!
-		if (room1 && !room1.classList.contains("hidden") && messageElement) {
-			messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${selectedKey}!</p>`;
-		}
-	});
-});
-
-// When the door is clicked, update the message
-// ...existing code...
-let selectedKey: string | null = null;
-// ...existing code...
-if (doorElement) {
-	doorElement.addEventListener("click", () => {
-		if (room1 && !room1.classList.contains("hidden") && messageElement) {
-			if (selectedKey) {
-				messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				clearInterval(timer); // Stop the timer when door is unlocked
-			} else {
-				messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!</p>`;
+	// När spelaren klickar på en nyckel
+	keyElements.forEach((keyElement, index) => {
+		if (!keyElement) return;
+		keyElement.addEventListener("click", () => {
+			// Spara vilken nyckel som valts
+			selectedKey = keyIds[index];
+			const messageElement = document.getElementById("falletMeddelande");
+			// Visa meddelande om vilken nyckel som valts
+			if (room1 && !room1.classList.contains("hidden") && messageElement) {
+				messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${selectedKey}!</p>`;
 			}
-		}
+		});
 	});
-}
 
+	// Den här funktionen körs när dörren har låsts upp
+	function onDoorUnlocked(collectedChar: string) {
+		// Uppdatera bokstaven i artefaktlistan
+		const artefaktSpan = document.querySelector("#artefakt1 span");
+		if (artefaktSpan) {
+			artefaktSpan.textContent = collectedChar;
+		}
+		// Här kan du lägga till mer logik om du vill
+	}
+
+	// När spelaren klickar på dörren
+	if (doorElement) {
+		doorElement.addEventListener("click", () => {
+			const messageElement = document.getElementById("falletMeddelande");
+			// Kontrollera att rummet är synligt och att meddelande-elementet finns
+			if (room1 && !room1.classList.contains("hidden") && messageElement) {
+				if (selectedKey) {
+					// Om en nyckel är vald, visa meddelande och uppdatera artefakt
+					messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
+					clearInterval(timer);
+					onDoorUnlocked(selectedKey);
+				} else {
+					// Om ingen nyckel är vald, visa felmeddelande
+					messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!<\/p>`;
+				}
+			}
+		});
+	}
+
+	// Visa startmeddelandet när allt är klart
+	setStartMessage();
+}
