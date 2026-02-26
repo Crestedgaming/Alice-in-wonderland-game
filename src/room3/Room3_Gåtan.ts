@@ -4,27 +4,7 @@ import { completeRoom } from "../engine/GameManager";
 
 
 
-export class Room3 {
 
-    start() {
-        const app = document.getElementById("app")!;
-
-        app.innerHTML = `
-            <h1>Puzzle</h1>
-            <button id="solve">Solve</button>
-        `;
-
-        document.getElementById("solve")!
-            .addEventListener("click", () => this.finish());
-    }
-
-    finish() {
-        gameState.artifacts.push("artifact3");
-        gameState.score += 100;
-
-        completeRoom();
-    }
-}
 /**
  * Spelaren kommer ut på en stor äng med blommor och svampa, men något är inte som det ska vara,
  * allt är mycket större än vanligt.
