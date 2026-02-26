@@ -1,0 +1,179 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== RUMMET ===== */
+
+.room--storleken {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Bakgrundsbilden */
+
+.storleken-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("/images/Rum2bakgrund.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== ALICE ===== */
+
+.storleken-alice {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition:
+    height 0.4s ease-out,
+    left 0.4s ease-out;
+}
+
+/* ===== TEXTEN TILL HÖGER ===== */
+
+.storleken-text {
+  position: absolute;
+  right: 13.5%;
+  top: 21%;
+  max-width: 540px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.7rem;
+  text-align: center;
+  line-height: 1.25;
+  letter-spacing: 1px;
+  font-weight: 500;
+
+  color: #f2e6ce;
+
+  border-radius: 12px;
+  transform: rotate(2.5deg);
+
+  text-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.8),
+    0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.storleken-text__mindre {
+  color: #f2e6ce;
+  cursor: pointer;
+}
+
+/* bakgrundsplatta bakom texten */
+
+.storleken-text::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(
+    rgba(102, 46, 32, 0.7),
+    rgba(88, 30, 13, 0.9)
+  );
+  border-radius: 18px;
+  z-index: -1;
+  box-shadow:
+    inset 0 0 8px rgba(0, 0, 0, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== ORD PÅ VÄGGEN ===== */
+
+.storleken-vaggord {
+  
+}
+
+/* gemensam stil */
+
+.vaggord {
+  position: absolute;
+  z-index: 3;
+  cursor: pointer;
+
+  font-family: "Henny Penny", cursive;
+
+  color: #f2e6ce;
+  opacity: 0.75;
+
+  text-shadow: 0 2px 3px #611b11;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.vaggord:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* STOR */
+
+.vaggord--mindre {
+  top: 26%;
+  left: 11%;
+  font-size: 3rem;
+  transform: rotate(-8deg);
+  text-shadow:
+    0 22px 4px rgba(0, 0, 0, 0.7),
+    0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+/* MELLAN */
+
+.vaggord--minst {
+  top: 10%;
+  left: 29%;
+  font-size: 1.6rem;
+  text-shadow:
+    0 22px 4px rgba(0, 0, 0, 0.7),
+    0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+/* LITEN */
+
+.vaggord--liten {
+  top: 8%;
+  right: 41%;
+  font-size: 2.2rem;
+  transform: rotate(-8deg);
+  text-shadow:
+    0 22px 4px rgba(0, 0, 0, 0.7),
+    0 0 6px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== KLART-TEXT ===== */
+
+.storleken-success {
+  position: absolute;
+  top: 24%;
+  left: 36.5%;
+  transform: translateX(-50%);
+  max-width: 500px;
+
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+
+  color: #F2E6CE;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.8);
+}

@@ -44,82 +44,76 @@
 
     <!-- rum1 -->
     <div id="rum1" class="room fallet-container hidden">
-      <div id="room1-landing" class="room-landing">
-        <h2>Välkommen till Rum 1!</h2>
-        <p>Här börjar ditt äventyr. Klicka på knappen för att starta rummet.</p>
-        <button id="room1-start-btn">Starta rummet</button>
-      </div>
-      <div id="room1-main-content" style="display:none;">
-        <div id="falletMeddelande" class="falletMeddelande"></div>
-        <div class="background-scroll">
-          <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
-            alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-          <div class="nyckelhal-container">
-            <span tabindex="0">
-              <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
-                alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
-                aria-label="Lås upp dörren med rätt nyckel" />
-            </span>
-          </div>
-          <div id="nycklar" class="nycklar-container">
-            <span>
-              <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
-                alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-                aria-label="Välj guldnyckel med lila topp, bokstav L" /></span>
-            <span>
-              <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
-                alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
-                aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
-            </span>
-            <span>
-              <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
-                alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
-                aria-label="Välj guldnyckel med krona, bokstav V" />
-            </span>
-            <span>
-              <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
-                alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
-                aria-label="Välj guldnyckel med stjärna, bokstav A" />
-            </span>
-          </div>
+      <div id="falletMeddelande" class="falletMeddelande"></div>
+      <div class="background-scroll">
+        <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
+          alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
+        <div class="nyckelhal-container">
+          <span tabindex="0">
+            <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
+              alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
+              aria-label="Lås upp dörren med rätt nyckel" />
+          </span>
         </div>
-        <div class="alice-faller">
-          <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+        <div id="nycklar" class="nycklar-container">
+          <span>
+            <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
+              alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
+              aria-label="Välj guldnyckel med lila topp, bokstav L" /></span>
+          <span>
+            <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
+              alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
+              aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
+          </span>
+          <span>
+            <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
+              alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
+              aria-label="Välj guldnyckel med krona, bokstav V" />
+          </span>
+          <span>
+            <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
+              alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
+              aria-label="Välj guldnyckel med stjärna, bokstav A" />
+          </span>
         </div>
       </div>
-      <!-- rum2 -->
-      <div id="rum2" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
-        <h2>Rum 2</h2>
-        <p>Välkommen till rum 2!</p>
+      <div class="alice-faller">
+        <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
       </div>
-      <!-- rum3 -->
-      <div id="rum3" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
+    </div>
+    <!-- rum2 -->
+    <div id="rum2" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
+      <h2>Rum 2</h2>
+      <p>Välkommen till rum 2!</p>
+    </div>
+    <!-- rum3 -->
+    <div id="rum3" class="room hidden">
+      <button onclick="goToStart()">Tillbaka</button>
 
-        <h2>Rum 3</h2>
-        <p>Välkommen till rum 3!</p>
-        <p class="room3-description">Framför dig står en stor fet larv på en svamp, han ser på dig med nyfikna ögon. "Om
-          du vill gå vidare måste du lösa mina 3 gåtor," säger larven.</p>
-        <button id="rum3-start-button" class="start-button-rum3">Starta</button>
-        <div id="riddle-container" class="riddle-container hidden">
-          <div id="riddle1" class="riddle">
-            <p>Gåta 1: Vad är det som har fyra ben på morgonen, två ben på dagen och tre ben på kvällen?</p>
-            <input type="text" id="answer1" class="answer-input" placeholder="Skriv ditt svar här">
-            <button id="submit1" class="submit-button">Skicka</button>
-          </div>
-          <div id="riddle2" class="riddle hidden">
-            <p>Gåta 2: Vem går upp varje morgon utan att ha sovit en blund?</p>
-            <input type="text" id="answer2" class="answer-input" placeholder="Skriv ditt svar här">
-            <button id="submit2" class="submit-button">Skicka</button>
-          </div>
-          <div id="riddle3" class="riddle hidden">
-            <p>Gåta 3: Vilken råtta äter inte ost?</p>
-            <input type="text" id="answer3" class="answer-input" placeholder="Skriv ditt svar här">
-            <button id="submit3" class="submit-button">Skicka</button>
-          </div>
+      <h2>Rum 3</h2>
+      <p>Välkommen till rum 3!</p>
+      <p class="room3-description">Framför dig står en stor fet larv på en svamp, han ser på dig med nyfikna ögon. "Om
+        du vill gå vidare måste du lösa mina 3 gåtor," säger larven.</p>
+      <button id="rum3-start-button" class="start-button-rum3">Starta</button>
+      <div id="riddle-container" class="riddle-container hidden">
+        <div id="riddle1" class="riddle">
+          <p>Gåta 1: Vad är det som har fyra ben på morgonen, två ben på dagen och tre ben på kvällen?</p>
+          <input type="text" id="answer1" class="answer-input" placeholder="Skriv ditt svar här">
+          <button id="submit1" class="submit-button">Skicka</button>
+        </div>
+        <div id="riddle2" class="riddle hidden">
+          <p>Gåta 2: Vem går upp varje morgon utan att ha sovit en blund?</p>
+          <input type="text" id="answer2" class="answer-input" placeholder="Skriv ditt svar här">
+          <button id="submit2" class="submit-button">Skicka</button>
+        </div>
+        <div id="riddle3" class="riddle hidden">
+          <p>Gåta 3: Vilken råtta äter inte ost?</p>
+          <input type="text" id="answer3" class="answer-input" placeholder="Skriv ditt svar här">
+          <button id="submit3" class="submit-button">Skicka</button>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- rum4 -->

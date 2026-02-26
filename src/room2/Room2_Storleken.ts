@@ -97,3 +97,66 @@
  * ============================
  *
  */
+
+const alice = document.querySelector(
+  ".storleken-alice"
+) as HTMLElement | null;
+
+const mindre = document.querySelector(
+  ".storleken-text__mindre"
+) as HTMLElement | null;
+
+const successText = document.querySelector(
+  ".storleken-success"
+) as HTMLElement | null;
+
+// 3 = jättestor, 0 = lagom
+let sizeLevel = 3;
+let step = 0;
+
+function updateSize() {
+  if (!alice || !successText) return;
+
+  // göm success-text som standard
+  successText.classList.add("hidden");
+
+  let height = 90;
+
+  if (sizeLevel === 3) height = 95;
+  if (sizeLevel === 2) height = 75;
+  if (sizeLevel === 1) height = 65;
+  if (sizeLevel === 0) height = 45;
+
+  const offset = 10 + step * 12;
+
+  alice.style.height = `${height}vh`;
+  alice.style.left = `${offset}vw`;
+
+  if (sizeLevel === 0) {
+    console.log("Alice är lagom!");
+    successText.classList.remove("hidden");
+  }
+}
+
+// klick på ordet "mindre"
+if (mindre) {
+  mindre.addEventListener("click", () => {
+    if (sizeLevel > 0) {
+      sizeLevel--;
+      step++;
+      updateSize();
+    }
+  });
+}
+
+// väggord försvinner när man klickar
+const vaggord = document.querySelectorAll(".vaggord");
+
+vaggord.forEach((ord) => {
+  ord.addEventListener("click", () => {
+    (ord as HTMLElement).style.display = "none";
+  });
+});
+
+// startläge
+updateSize();
