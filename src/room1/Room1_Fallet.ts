@@ -1,3 +1,4 @@
+// ...existing code...
 /**
  * Spelaren måste scrolla ned längst sidan för att kunna hitta dörren som leder till nästa nivå.
  * På vägen ner måste spelaren välja en av de fyra nycklarna för att kunna öppna dörren.
@@ -43,36 +44,7 @@ function attachRoom1Listeners() {
 	}
 }
 // ...existing code...
-// MutationObserver to always attach onboarding logic after DOM changes
-function observeRoom1Landing() {
-	const observer = new MutationObserver(() => {
-		const startBtn = document.getElementById("room1-start-btn");
-		const landing = document.getElementById("room1-landing");
-		const content = document.getElementById("room1-content");
-		// Only attach if not already attached
-		if (
-			startBtn &&
-			landing &&
-			content &&
-			!startBtn.hasAttribute("data-onboarding-attached")
-		) {
-			startBtn.setAttribute("data-onboarding-attached", "true");
-			startBtn.addEventListener("click", () => {
-				landing.classList.add("hidden");
-				content.classList.remove("hidden");
-				startRoom1GameLogic();
-			});
-		}
-	});
-	observer.observe(document.body, { childList: true, subtree: true });
-}
-
-// Start observing as soon as script loads
-if (document.readyState === "loading") {
-	document.addEventListener("DOMContentLoaded", observeRoom1Landing);
-} else {
-	observeRoom1Landing();
-}
+// ...existing code...
 // Visa och göm landningssida och spelinnehåll för Rum 1
 export function setupRoom1Landing() {
 	const landing = document.getElementById("room1-landing");
@@ -99,7 +71,12 @@ export function initRoom1() {
 	}
 	// Setup landing logic for Room 1 (no navigation)
 	setupRoom1Landing();
-}
+	}
+
+	// Ensure initRoom1 is available on window for main.ts
+	// @ts-ignore
+	window.initRoom1 = initRoom1;
+
 
 // All logik för själva spelet i Rum 1
 function smoothScrollTo(

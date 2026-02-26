@@ -23,6 +23,17 @@ import "./room2/Room2_Storleken";
 
 	document.getElementById(roomId)!.classList.remove("hidden");
 
+	// Initialize Room 1 logic and listeners when showing Room 1
+	if (roomId === "rum1") {
+		// Import is already done at top, so just call the function
+		// @ts-ignore
+		if (typeof window.initRoom1 === "function") {
+			window.initRoom1();
+		} else if (typeof (window as any).initRoom1 === "function") {
+			(window as any).initRoom1();
+		}
+	}
+
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
 	if (navTitle) {
