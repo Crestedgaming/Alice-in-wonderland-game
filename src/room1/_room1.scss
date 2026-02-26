@@ -1,125 +1,161 @@
 /************************** Styling for desktop view of room 1 **************************/
-@media (min-width: 1440px) {
-	.modal {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: rgba(0, 0, 0, 0.6);
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.6);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2000;
+}
+.modal.hidden {
+	display: none;
+}
+.modal-content {
+	background: #fff;
+	padding: 2rem 3rem;
+	border-radius: 16px;
+	text-align: center;
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.fallet-container {
+	.background-scroll {
+		position: relative;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		z-index: 2000;
-	}
-	.modal.hidden {
-		display: none;
-	}
-	.modal-content {
-		background: #fff;
-		padding: 2rem 3rem;
-		border-radius: 16px;
-		text-align: center;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+		flex-direction: column;
+		align-items: center; // or flex-start, flex-end, etc.
+		width: 100vw;
+		height: 90vh;
+		overflow: auto;
 	}
 
-	.fallet-container {
-		.background-scroll {
-			position: relative;
-			height: 100vh;
-			overflow-y: auto;
-			width: 100vw;
-		}
-
-		.background-image {
-			width: 100vw;
-			height: fit-content;
-			display: block;
-			margin: 0;
-			z-index: -1;
-		}
+	.background-image {
+		width: 100vw; // or 100vw for full width
+		max-width: 100%;
+		height: auto;
+		transition:
+			width 0.3s,
+			left 0.3s,
+			top 0.3s; // smooth resize
+		position: relative; // or absolute if you want to animate position
 	}
 
-	.falletMeddelande {
-		position: fixed;
-		top: 100px;
-		left: 50%;
-		min-width: 300px;
-		max-width: max-content;
-		display: flex;
-		justify-content: center;
-		transform: translateX(-50%);
-		opacity: 0.5;
-		background: #000000;
-		padding: 10px 20px;
-		border-radius: 8px;
-		font-size: 1.6rem;
-		z-index: 1000;
-		font-family: "Bricolage Grotesque", sans-serif;
-		font-optical-sizing: auto;
-		font-weight: 400;
-		font-style: normal;
-		font-variation-settings: "wdth" 100;
+	img {
+		transition: all 0.3s;
+	}
+}
 
-		p {
-			color: #f2e6ce;
-			margin: 0;
-		}
+.falletMeddelande {
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	min-width: 300px;
+	max-width: max-content;
+	display: flex;
+	justify-content: center;
+	transform: translateX(-50%);
+	opacity: 0.5;
+	background: #000000;
+	padding: 10px 20px;
+	border-radius: 8px;
+	font-size: 1.6rem;
+	z-index: 1000;
+	font-family: "Bricolage Grotesque", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+
+	p {
+		color: #f2e6ce;
+		margin: 0;
+	}
+}
+
+.fallet-container {
+	.alice-faller {
+		transform: scale(1);
+		position: absolute;
+		left: 38vw;
+		top: 59vh;
+		z-index: 5; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
+		overflow: hidden;
+		transition:
+			left 0.3s,
+			top 0.3s;
 	}
 
-	.fallet-container {
-		.alice-faller {
-			transform: scale(1);
-			position: absolute;
-			top: 65%;
-			left: 39%;
-			z-index: 5; // In front of key-hole (z-index: 3), behind keys (z-index: 10)
-			overflow: hidden;
-		}
+	.nyckel1 {
+		position: absolute;
+		left: 40vw;
+		top: 40vh;
+		width: 70px;
+		z-index: 10;
+	}
+	.nyckel2 {
+		position: absolute;
+		left: 40vw;
+		top: 50vh;
+		width: 70px;
+		z-index: 10;
+	}
+}
 
-		.nyckel1 {
-			position: absolute;
-			left: 40%;
-			top: 50%;
-			width: 70px;
-			z-index: 10;
-		}
-		.nyckel2 {
-			position: absolute;
-			left: 40%;
-			top: 60%;
-			width: 70px;
-			z-index: 10;
-		}
+.fallet-container {
+	.nyckel3 {
+		position: absolute;
+		left: 60vw;
+		top: 35vh;
+		width: 70px;
+		z-index: 10;
+	}
+	.nyckel4 {
+		position: absolute;
+		left: 60vw;
+		top: 45vh;
+		width: 70px;
+		z-index: 10;
 	}
 
-	.fallet-container {
-		.nyckel3 {
-			position: absolute;
-			left: 60%;
-			top: 55%;
-			width: 70px;
-			z-index: 10;
-		}
-		.nyckel4 {
-			position: absolute;
-			left: 60%;
-			top: 65%;
-			width: 70px;
-			z-index: 10;
-		}
+	.nycklar-container img:hover {
+		transform: scale(1.5);
+		border: 1px solid goldenrod;
+		box-shadow: inset 2px 8px 20px goldenrod;
+		border-radius: 50%;
+		pointer-events: auto;
+		padding: 2px;
+		cursor: pointer;
+	}
+}
 
-		.nycklar-container img:hover {
-			transform: scale(1.5);
-			border: 1px solid goldenrod;
-			box-shadow: inset 2px 8px 20px goldenrod;
-			border-radius: 50%;
-			pointer-events: auto;
-			padding: 2px;
-		}
+.fallet-container .nycklar-container img:focus {
+	transform: scale(1.5);
+	border: 1px solid goldenrod;
+	box-shadow: inset 2px 8px 20px goldenrod;
+	border-radius: 50%;
+	pointer-events: auto;
+	padding: 2px;
+}
+
+.fallet-container {
+	.nyckelhalet {
+		position: absolute;
+		width: 70px;
+		height: 70px;
+		cursor: pointer;
+		pointer-events: auto;
+		z-index: 4;
+		top: 112vh;
+		left: 50.2vw;
+		padding: 0;
+		margin: 0;
 	}
 
-	.fallet-container .nycklar-container img:focus {
+	.nyckelhalet:hover {
 		transform: scale(1.5);
 		border: 1px solid goldenrod;
 		box-shadow: inset 2px 8px 20px goldenrod;
@@ -127,37 +163,13 @@
 		pointer-events: auto;
 		padding: 2px;
 	}
-
-	.fallet-container {
-		.nyckelhalet {
-			position: absolute;
-			width: 70px;
-			height: 70px;
-			cursor: pointer;
-			pointer-events: auto;
-			z-index: 4;
-			bottom: min(-480px);
-			left: min(735px);
-			padding: 0;
-			margin: 0;
-		}
-
-		.nyckelhalet:hover {
-			transform: scale(1.5);
-			border: 1px solid goldenrod;
-			box-shadow: inset 2px 8px 20px goldenrod;
-			border-radius: 50%;
-			pointer-events: auto;
-			padding: 2px;
-		}
-		.nyckelhalet:focus {
-			transform: scale(1.5);
-			border: 1px solid goldenrod;
-			box-shadow: inset 2px 8px 20px goldenrod;
-			border-radius: 50%;
-			pointer-events: auto;
-			padding: 2px;
-		}
+	.nyckelhalet:focus {
+		transform: scale(1.5);
+		border: 1px solid goldenrod;
+		box-shadow: inset 2px 8px 20px goldenrod;
+		border-radius: 50%;
+		pointer-events: auto;
+		padding: 2px;
 	}
 }
 
