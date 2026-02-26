@@ -9,6 +9,46 @@
 
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
 export function initRoom1() {
+	// Show modal popup when Room 1 is shown
+	const modal = document.getElementById("room1-modal");
+	const mainContent = document.getElementById("rum1");
+	if (modal && mainContent) {
+		modal.classList.remove("hidden");
+		const startBtn = document.getElementById("room1-modal-start");
+		if (startBtn) {
+			startBtn.onclick = () => {
+				modal.classList.add("hidden");
+				startRoom1GameLogic();
+			};
+		}
+	} else {
+		// Fallback: start game logic directly
+		startRoom1GameLogic();
+	}
+}
+
+// All logik för själva spelet i Rum 1
+function smoothScrollTo(
+	element: HTMLElement,
+	target: number,
+	duration: number,
+) {
+	const start = element.scrollTop;
+	const change = target - start;
+	const startTime = performance.now();
+
+	function animateScroll(currentTime: number) {
+		const elapsed = currentTime - startTime;
+		const progress = Math.min(elapsed / duration, 1);
+		element.scrollTop = start + change * progress;
+		if (progress < 1) {
+			requestAnimationFrame(animateScroll);
+		}
+	}
+	requestAnimationFrame(animateScroll);
+}
+
+function startRoom1GameLogic() {
 	// Lista med bokstäver för varje nyckel
 	const keyIds = ["L", "E", "V", "A"];
 	// Hämta HTML-elementen för varje nyckel
@@ -19,6 +59,17 @@ export function initRoom1() {
 	const doorElement = document.getElementById("nyckelhalet");
 	// Hämta elementet som visar tiden
 	const timerElement = document.getElementById("falletTimer");
+	// Hämta elementet för hela rummet
+	const room1 = document.getElementById("room1");
+
+	// --- AUTOMATISK SCROLLNING MED ANPASSAD HASTIGHET ---
+	const scrollContainer = document.querySelector(
+		"#rum1 .background-scroll",
+	) as HTMLElement;
+	if (scrollContainer) {
+		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, 2000); // 2 sekunder
+	}
+
 	// Starta en timer som räknar sekunder
 	let seconds = 0;
 	let timer = setInterval(() => {
@@ -30,28 +81,6 @@ export function initRoom1() {
 			timerElement.innerHTML = `<h2>${mins}:${secs.toString().padStart(2, "0")}</h2>`;
 		}
 	}, 1000);
-
-	// Visar startmeddelandet till spelaren
-	function setStartMessage(retries = 5) {
-		const messageElement = document.getElementById("falletMeddelande");
-		if (messageElement?.classList.contains("falletMeddelande")) {
-			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-			// Loggar till konsolen för felsökning
-			console.log("Startmeddelande visas.");
-		} else if (retries > 0) {
-			// Försök igen efter en kort stund om elementet inte finns än
-			setTimeout(() => setStartMessage(retries - 1), 50);
-			console.log("Försöker visa startmeddelande, försök kvar:", retries - 1);
-		} else {
-			console.warn(
-				"falletMeddelande-elementet hittades inte efter flera försök.",
-			);
-		}
-	}
-
-	// Hämta elementet för hela rummet
-	const room1 = document.getElementById("rum1");
-	// Här sparas vilken nyckel spelaren har valt
 	let selectedKey: string | null = null;
 
 	// När spelaren klickar på en nyckel
@@ -77,7 +106,6 @@ export function initRoom1() {
 		}
 		// Här kan du lägga till mer logik om du vill
 	}
-
 	// När spelaren klickar på dörren
 	if (doorElement) {
 		doorElement.addEventListener("click", () => {
@@ -97,6 +125,15 @@ export function initRoom1() {
 		});
 	}
 
+	// Visar startmeddelandet till spelaren
+	function setStartMessage(retries = 5) {
+		const messageElement = document.getElementById("falletMeddelande");
+		if (messageElement?.classList.contains("falletMeddelande")) {
+			messageElement.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+		} else if (retries > 0) {
+			setTimeout(() => setStartMessage(retries - 1), 50);
+		}
+	}
 	// Visa startmeddelandet när allt är klart
 	setStartMessage();
 }

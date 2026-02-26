@@ -2,7 +2,7 @@ import "./mainstyles/main.scss";
 import { startGame } from "./engine/GameManager";
 import { gameState } from "./engine/GameState";
 
-import "./room4/Room4_hide_and_seek";
+import "./room4/Room4_Kurragömma";
 import "./room3/Room3_Gåtan";
 import "./room1/Room1_Fallet";
 import "./room6/Room6_Slutstriden";
@@ -45,12 +45,6 @@ if (resetBtn) {
 			const roomElem = document.getElementById(currentRoomId);
 			if (roomElem) {
 				roomElem.innerHTML = roomOriginalHTML[currentRoomId];
-				// Re-initialize logic for the current room if needed
-				if (currentRoomId === "rum1") {
-					import("./room1/Room1_Fallet").then((mod) => {
-						mod.initRoom1();
-					});
-				}
 			}
 		}
 	});

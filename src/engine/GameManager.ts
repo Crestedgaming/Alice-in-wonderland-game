@@ -1,6 +1,24 @@
 import { gameState } from './GameState';
 
-export function startGame() {
+/**
+ * Room ID to room element ID mapping for display
+ */
+const ROOM_MAP: Record<number, string> = {
+    1: 'rum1',
+    2: 'rum2',
+    3: 'rum3',
+    4: 'rum4',
+    5: 'rum5',
+    6: 'rum6',
+};
+
+const TOTAL_ROOMS = 6;
+
+/**
+ * Initialize and start the game
+ * Resets all game state and begins room 1
+ */
+export function startGame(): void {
     gameState.isGameActive = true;
     gameState.currentRoom = 1;
     gameState.artifacts = [];
@@ -8,31 +26,46 @@ export function startGame() {
     gameState.timer = 0;
     gameState.roomTimes = {};
     gameState.currentRoomStartTime = Date.now();
+
     showRoom(gameState.currentRoom);
     startGlobalTimer();
 }
 
-function showRoom(roomId: number) {
-    const roomMap: Record<number, string> = {
-        1: 'rum1',
-        2: 'rum2',
-        3: 'rum3',
-        4: 'rum4',
-        5: 'rum5',
-        6: 'rum6',
-    };
-    (window as any).showRoom(roomMap[roomId]);
+/**
+ * Display the specified room by ID
+ * Uses the global showRoom function defined in main.ts
+ */
+function showRoom(roomId: number): void {
+    const roomElementId = ROOM_MAP[roomId];
+    if (!roomElementId) {
+        console.error(`Invalid room ID: ${roomId}`);
+        return;
+    }
+    (window as any).showRoom(roomElementId);
 }
 
-export function completeRoom(roomId: number, letter: string) {
+/**
+ * Mark a room as complete and register the artifact
+ * Tracks room completion time and advances to next room
+ * 
+ * @param roomId - The ID of the completed room
+ * @param artifactId - The artifact letter/identifier to register
+ */
+export function completeRoom(roomId: number, artifactId: string): void {
+    // Record the time spent in this room
     if (gameState.currentRoomStartTime !== null) {
         const duration = Math.floor((Date.now() - gameState.currentRoomStartTime) / 1000);
         gameState.roomTimes[roomId] = duration;
     }
-    gameState.artifacts.push(letter);
+
+    // Register artifact and update score
+    gameState.artifacts.push(artifactId);
     gameState.score += 100;
+
+    // Advance to next room or end game
     gameState.currentRoom = roomId + 1;
-    if (gameState.currentRoom > 6) {
+
+    if (gameState.currentRoom > TOTAL_ROOMS) {
         endGame();
     } else {
         gameState.currentRoomStartTime = Date.now();
@@ -40,7 +73,11 @@ export function completeRoom(roomId: number, letter: string) {
     }
 }
 
-export function startGlobalTimer() {
+/**
+ * Start the global game timer that runs every second
+ * Updates the timer display while the game is active
+ */
+export function startGlobalTimer(): void {
     setInterval(() => {
         if (gameState.isGameActive) {
             gameState.timer++;
@@ -49,12 +86,16 @@ export function startGlobalTimer() {
     }, 1000);
 }
 
-function updateTimerDisplay() {
+/**
+ * Update the timer display on the page
+ * Formats time as MM:SS
+ */
+function updateTimerDisplay(): void {
     const timerEl = document.getElementById('falletTimer');
     if (timerEl) {
         const minutes = Math.floor(gameState.timer / 60);
         const seconds = gameState.timer % 60;
-        timerEl.textContent = `Din tid: ${String(minutes).padStart(2, '0')}.${String(seconds).padStart(2, '0')}`;
+        timerEl.textContent = `Din tid: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
 }
 
