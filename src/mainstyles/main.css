@@ -111,29 +111,78 @@ footer {
 
 /* rooms */
 /************************** Styling for desktop view of room 1 **************************/
-.modal {
-  position: fixed;
-  top: 0;
+.fallet-container .room-landing {
+  position: absolute;
+  top: 120px;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
+  width: 100%;
+  height: 50%;
+  z-index: 1;
+  background-image: url(/public/images/Room1_bilder/bakgrund.webp);
+  border: 50% solid transparent;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  align-content: center;
+  justify-items: center;
 }
-
-.modal.hidden {
-  display: none;
+.fallet-container .room-landing .room1-landing-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-content: center;
+  justify-items: center;
+  background-color: #732f2f;
+  border-radius: 100px;
+  padding: 10px;
+  color: #f2e6ce;
+  box-shadow: 5px 5px 10px #4b1f1f;
+  border: 2px inset #f2e6ce;
 }
-
-.modal-content {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 16px;
+.fallet-container .room-landing .room1-landing-content h2, .fallet-container .room-landing .room1-landing-content p {
+  margin: 10px 20px;
+  text-shadow: 5px 5px 10px #4b1f1f;
+  color: #f2e6ce;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  justify-items: center;
+  align-content: center;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+  text-shadow: 5px 5px 10px #4b1f1f;
+  color: #f2e6ce;
+  margin: 10px 20px;
+  text-align: center;
+  justify-items: center;
+  align-content: center;
+}
+.fallet-container .room-landing button {
+  position: absolute;
+  top: 85%;
+  left: 45%;
+  background: #732f2f;
+  border: 2px inset #f2e6ce;
+  color: #f2e6ce;
+  padding: 5px 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  box-shadow: 5px 5px 10px #4b1f1f;
+  padding: 10px 20px;
+}
+.fallet-container .room-landing button:hover {
+  background: #f2e6ce;
+  color: #732f2f;
+  border-color: #732f2f;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
 }
 
 .fallet-container .background-scroll {
