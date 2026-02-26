@@ -34,4 +34,4 @@ Detta är det vi pratat om idag:
 Plannen för imorgon:
 
 ** Vi beräknar vara färdiga med alla spelrummen och att de är korrekt kopplat till main HTML-filen.
-Retorperkstiv möte.
+** Retorperkstiv möte.
