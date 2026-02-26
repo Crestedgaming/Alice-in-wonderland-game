@@ -8,6 +8,8 @@
  */
 
 // Den här funktionen startar logiken för Rum 1 när sidan laddas eller när rummet återställs
+
+
 export function initRoom1() {
 	// Lista med bokstäver för varje nyckel
 	const keyIds = ["L", "E", "V", "A"];
@@ -100,3 +102,4 @@ export function initRoom1() {
 	// Visa startmeddelandet när allt är klart
 	setStartMessage();
 }
+
