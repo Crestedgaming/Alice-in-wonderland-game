@@ -47,35 +47,26 @@
     <div id="rum1" class="room fallet-container hidden">
       <div id="falletMeddelande" class="falletMeddelande"></div>
       <div class="background-scroll">
-        <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
-          alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-        <div class="nyckelhal-container">
-          <span tabindex="0">
-            <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
-              alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
-              aria-label="Lås upp dörren med rätt nyckel" />
-          </span>
-        </div>
-        <div id="nycklar" class="nycklar-container">
-          <span>
+        <div class="background-container">
+          <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
+            alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
+          <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
+            alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
+            aria-label="Lås upp dörren med rätt nyckel" />
+          <div id="nycklar" class="nycklar-container">
             <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
               alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-              aria-label="Välj guldnyckel med lila topp, bokstav L" /></span>
-          <span>
+              aria-label="Välj guldnyckel med lila topp, bokstav L" />
             <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
               alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
               aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
-          </span>
-          <span>
             <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
               alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
               aria-label="Välj guldnyckel med krona, bokstav V" />
-          </span>
-          <span>
             <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
               alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
               aria-label="Välj guldnyckel med stjärna, bokstav A" />
-          </span>
+          </div>
         </div>
       </div>
       <div class="alice-faller">
@@ -85,45 +76,36 @@
 
 
     <!-- rum2 -->
-<div id="rum2" class="room hidden room--storleken">
-  <button onclick="goToStart()">Tillbaka</button>
+    <div id="rum2" class="room hidden room--storleken">
+      <button onclick="goToStart()">Tillbaka</button>
 
-  <!-- Bakgrundsbild -->
-  <img
-    src="images/Room2_bilder/Rum2bakgrund.jpg"
-    alt=""
-    class="room2-background-image"
-    aria-hidden="true"
-  />
+      <!-- Bakgrundsbild -->
+      <img src="images/Room2_bilder/Rum2bakgrund.jpg" alt="" class="room2-background-image" aria-hidden="true" />
 
-  <!-- Ord på väggen -->
-  <div class="storleken-vaggord">
-    <span class="vaggord vaggord--stor">STOR</span>
-    <span class="vaggord vaggord--mellan">MELLAN</span>
-    <span class="vaggord vaggord--liten">LITEN</span>
-  </div>
+      <!-- Ord på väggen -->
+      <div class="storleken-vaggord">
+        <span class="vaggord vaggord--stor">STOR</span>
+        <span class="vaggord vaggord--mellan">MELLAN</span>
+        <span class="vaggord vaggord--liten">LITEN</span>
+      </div>
 
-  <!-- Alice -->
-  <img
-    src="images/Room2_bilder/AliceTransparent.png"
-    alt="Alice"
-    class="storleken-alice"
-  />
+      <!-- Alice -->
+      <img src="images/Room2_bilder/AliceTransparent.png" alt="Alice" class="storleken-alice" />
 
-  <!-- Instruktionstext -->
-  <p class="storleken-text">
-    Alice är för stor! <br />
-    Kan du göra henne
-    <span class="storleken-text__mindre">mindre</span>?
-  </p>
+      <!-- Instruktionstext -->
+      <p class="storleken-text">
+        Alice är för stor! <br />
+        Kan du göra henne
+        <span class="storleken-text__mindre">mindre</span>?
+      </p>
 
-  <!-- Klar-text -->
-  <p class="storleken-success hidden">
-    <strong>Bra jobbat!</strong><br />
-    Alice är lagom stor<br />
-    och kommer in genom dörren.
-  </p>
-</div>
+      <!-- Klar-text -->
+      <p class="storleken-success hidden">
+        <strong>Bra jobbat!</strong><br />
+        Alice är lagom stor<br />
+        och kommer in genom dörren.
+      </p>
+    </div>
 
     <!-- rum3 -->
     <div id="rum3" class="room hidden">

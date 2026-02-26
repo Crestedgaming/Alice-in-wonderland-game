@@ -145,12 +145,42 @@ footer {
   height: 90vh;
   overflow: auto;
 }
+.fallet-container .background-container {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: auto;
+}
 .fallet-container .background-image {
-  width: 100vw;
-  max-width: 100%;
+  width: 100%;
+  display: block;
   height: auto;
   transition: width 0.3s, left 0.3s, top 0.3s;
-  position: relative;
+}
+
+.fallet-container .nyckelhalet {
+  position: absolute;
+  left: 50%; /* Example: center horizontally */
+  top: 60%; /* Example: 60% from top */
+  transform: translate(-50%, -50%);
+  width: 7%; /* Responsive width */
+  height: auto;
+  z-index: 4;
+}
+.fallet-container .nycklar-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  /* No flex, so children can be absolutely positioned */
+}
+.fallet-container .nycklar-container img {
+  width: 7%;
+  height: auto;
+  position: absolute;
+  transition: all 0.3s;
 }
 .fallet-container img {
   transition: all 0.3s;
@@ -188,38 +218,42 @@ footer {
   position: absolute;
   left: 38vw;
   top: 59vh;
-  z-index: 5;
+  z-index: 13;
   overflow: hidden;
   transition: left 0.3s, top 0.3s;
 }
 .fallet-container .nyckel1 {
   position: absolute;
-  left: 40vw;
-  top: 40vh;
-  width: 70px;
-  z-index: 10;
+  left: 40%;
+  top: 20%;
+  width: 7%;
+  height: auto;
+  z-index: 11;
 }
 .fallet-container .nyckel2 {
   position: absolute;
-  left: 40vw;
-  top: 50vh;
-  width: 70px;
-  z-index: 10;
+  left: 42%;
+  top: 30%;
+  width: 7%;
+  height: auto;
+  z-index: 11;
 }
 
 .fallet-container .nyckel3 {
   position: absolute;
-  left: 60vw;
-  top: 35vh;
-  width: 70px;
-  z-index: 10;
+  left: 60%;
+  top: 25%;
+  width: 7%;
+  height: auto;
+  z-index: 11;
 }
 .fallet-container .nyckel4 {
   position: absolute;
-  left: 60vw;
-  top: 45vh;
-  width: 70px;
-  z-index: 10;
+  left: 60%;
+  top: 35%;
+  width: 7%;
+  height: auto;
+  z-index: 11;
 }
 .fallet-container .nycklar-container img:hover {
   transform: scale(1.5);
@@ -246,22 +280,15 @@ footer {
   height: 70px;
   cursor: pointer;
   pointer-events: auto;
-  z-index: 4;
-  top: 112vh;
-  left: 50.2vw;
+  z-index: 12;
+  top: 77%;
+  left: 53%;
   padding: 0;
   margin: 0;
 }
-.fallet-container .nyckelhalet:hover {
-  transform: scale(1.5);
-  border: 1px solid goldenrod;
-  box-shadow: inset 2px 8px 20px goldenrod;
-  border-radius: 50%;
-  pointer-events: auto;
-  padding: 2px;
-}
+.fallet-container .nyckelhalet:hover,
 .fallet-container .nyckelhalet:focus {
-  transform: scale(1.5);
+  transform: translate(-50%, -50%) scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
   border-radius: 50%;
