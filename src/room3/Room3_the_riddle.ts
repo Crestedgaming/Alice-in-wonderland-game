@@ -9,6 +9,8 @@ const submitButton = document.getElementById("submit-button") as HTMLButtonEleme
 const nextButton = document.getElementById("next-button") as HTMLButtonElement;
 
 
+
+
 /**
  * Spelaren kommer ut på en stor äng med blommor och svampa, men något är inte som det ska vara,
  * allt är mycket större än vanligt.
