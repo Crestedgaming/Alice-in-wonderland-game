@@ -1,3 +1,78 @@
+// MutationObserver to always attach key event listeners after DOM changes
+function observeKeys() {
+	const keyIds = ["L", "E", "V", "A"];
+	const observer = new MutationObserver(() => {
+		const room1 = document.getElementById("room1");
+		keyIds.forEach((id, index) => {
+			const keyElement = document.getElementById(`nyckeln-${id}`);
+			// Only attach if not already attached
+			if (
+				keyElement &&
+				room1 &&
+				!keyElement.hasAttribute("data-key-attached")
+			) {
+				keyElement.setAttribute("data-key-attached", "true");
+				keyElement.addEventListener("click", () => {
+					// Save selected key globally
+					(window as any).selectedKey = id;
+					const messageElement = document.getElementById("falletMeddelande");
+					if (room1 && !room1.classList.contains("hidden") && messageElement) {
+						messageElement.innerHTML = `<p>Du har valt nyckeln med bokstaven ${id}!</p>`;
+					}
+				});
+			}
+		});
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeKeys);
+} else {
+	observeKeys();
+}
+// MutationObserver to always attach keyhole event listener after DOM changes
+function observeKeyhole() {
+	const observer = new MutationObserver(() => {
+		const doorElement = document.getElementById("nyckelhalet");
+		const room1 = document.getElementById("room1");
+		// Only attach if not already attached
+		if (
+			doorElement &&
+			room1 &&
+			!doorElement.hasAttribute("data-keyhole-attached")
+		) {
+			doorElement.setAttribute("data-keyhole-attached", "true");
+			doorElement.addEventListener("click", () => {
+				const messageElement = document.getElementById("falletMeddelande");
+				// Kontrollera att rummet är synligt och att meddelande-elementet finns
+				if (room1 && !room1.classList.contains("hidden") && messageElement) {
+					// Use selectedKey from window scope
+					const selectedKey = (window as any).selectedKey || null;
+					if (selectedKey) {
+						messageElement.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!<\/p>`;
+						// Optionally clear timer and update artefact
+						const artefaktSpan = document.querySelector("#artefakt1 span");
+						if (artefaktSpan) {
+							artefaktSpan.textContent = selectedKey;
+						}
+					} else {
+						messageElement.innerHTML = `<p>Du måste välja en nyckel för att låsa upp dörren!<\/p>`;
+					}
+				}
+			});
+		}
+	});
+	observer.observe(document.body, { childList: true, subtree: true });
+}
+
+// Start observing as soon as script loads
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", observeKeyhole);
+} else {
+	observeKeyhole();
+}
 // MutationObserver to always attach onboarding logic after DOM changes
 function observeRoom1Landing() {
 	const observer = new MutationObserver(() => {
@@ -5,7 +80,12 @@ function observeRoom1Landing() {
 		const landing = document.getElementById("room1-landing");
 		const content = document.getElementById("room1-content");
 		// Only attach if not already attached
-		if (startBtn && landing && content && !startBtn.hasAttribute("data-onboarding-attached")) {
+		if (
+			startBtn &&
+			landing &&
+			content &&
+			!startBtn.hasAttribute("data-onboarding-attached")
+		) {
 			startBtn.setAttribute("data-onboarding-attached", "true");
 			startBtn.addEventListener("click", () => {
 				landing.classList.add("hidden");
@@ -99,7 +179,8 @@ function startRoom1GameLogic() {
 		"#rum1 .background-scroll",
 	) as HTMLElement;
 	if (scrollContainer) {
-		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, 9000); // 9 sekunder
+		const SECONDS = 10 * 1000; // Total tid i sekunder för att scrolla hela vägen
+		smoothScrollTo(scrollContainer, scrollContainer.scrollHeight, SECONDS); // 9 sekunder
 	}
 
 	// Starta en timer som räknar sekunder
