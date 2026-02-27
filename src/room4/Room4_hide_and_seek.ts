@@ -122,7 +122,7 @@ catImage.style.display = 'block';
 ///////////////////////
 
 function startSetup() {
-  const startButton = document.getElementById('start-button');
+  const startButton = document.getElementById('start-button-cat');
   if (startButton) {
     startButton.addEventListener('click', startGame);
   }
