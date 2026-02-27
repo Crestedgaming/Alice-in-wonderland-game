@@ -108,18 +108,24 @@ footer {
 
 .myProgress {
   position: absolute;
-  width: 150px;
-  left: 10px;
-  background-color: #f2e6ce;
-  border-radius: 10px;
+  top: auto;
+  left: 40px;
+  width: 18vw;
+  background-color: #ddd;
+  height: 20px;
+  border-radius: 20px;
+  margin: 10px 0;
+  overflow: hidden;
+  box-shadow: 5px 5px 4px #4b1f1f;
+  border: #4b1f1f 2px inset;
 }
 
 .myBar {
-  width: 1%;
-  height: -moz-fit-content;
-  height: fit-content;
+  width: 0%;
+  height: 100%;
   background-color: #732f2f;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.3s;
 }
 
 /* rooms */
