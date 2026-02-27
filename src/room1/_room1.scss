@@ -2,8 +2,8 @@
 .fallet-container {
 	.room-landing {
 		position: relative;
-		width: 100%;
-		min-height: 100vh;
+		width: 100vw;
+		min-height: 90vh;
 		z-index: 1;
 		background-image: url(/public/images/Room1_bilder/bakgrund.webp);
 		border: 50% solid transparent;
@@ -12,50 +12,39 @@
 		background-attachment: fixed;
 		align-content: center;
 		justify-items: center;
+		gap: 10px;
+
+		h2,
+		p {
+			position: relative;
+			width: 50vw;
+			color: #000;
+			font-family: "Henny Penny", system-ui;
+			font-weight: 400;
+			font-style: normal;
+			letter-spacing: 1px;
+			font-size: 1.6rem;
+			text-shadow: #fff 2px 2px 4px;
+		}
 
 		.room1-landing-content {
 			margin: 0 auto;
 			position: relative;
-			top: -10px;
-			left: 0%;
 			transform: translate(-50%, -50%);
 			align-content: center;
 			justify-items: center;
 			background-color: #732f2f;
 			border-radius: 100px;
-			padding: 10px;
+			padding: 50px;
 			color: #f2e6ce;
 			box-shadow: 5px 5px 10px #4b1f1f;
 			border: 2px inset #f2e6ce;
-
-			h2,
-			p {
-				position: absolute;
-				top: -30%;
-				margin: 10px 20px;
-				text-shadow: 5px 5px 10px #4b1f1f;
-				color: #f2e6ce;
-				text-align: center;
-				justify-items: center;
-				align-content: center;
-				font-family: "Henny Penny", system-ui;
-				font-weight: 400;
-				font-style: normal;
-				letter-spacing: 1px;
-				font-size: 1.6em;
-				text-shadow: 5px 5px 10px #4b1f1f;
-				color: #f2e6ce;
-				margin: 10px 20px;
-				text-align: center;
-				justify-items: center;
-				align-content: center;
-			}
+			padding-bottom: 10px;
 		}
 
 		button {
-			position: absolute;
-			top: 55%;
-			left: 45%;
+			position: relative;
+			top: 5vh;
 			background: #732f2f;
 			border: 2px inset #f2e6ce;
 			color: #f2e6ce;
@@ -66,7 +55,7 @@
 			font-weight: 400;
 			font-style: normal;
 			letter-spacing: 1px;
-			font-size: 1rem;
+			font-size: 1.2rem;
 			box-shadow: 5px 5px 10px #4b1f1f;
 			padding: 10px 20px;
 
