@@ -23,6 +23,7 @@ function startRiddle(): void {
 
 
 
+
 /**
  * Spelaren kommer ut på en stor äng med blommor och svampa, men något är inte som det ska vara,
  * allt är mycket större än vanligt.
