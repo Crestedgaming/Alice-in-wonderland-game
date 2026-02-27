@@ -37,7 +37,14 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
+const startBtn = document.getElementById("room6-start-btn");
+const intro = document.getElementById("room6-intro");
 
+startBtn?.addEventListener("click", () => {
+  intro?.classList.add("hidden");
+
+ 
+});
 
   const submitButton = document.getElementById("submit");
 
