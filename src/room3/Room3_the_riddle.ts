@@ -1,7 +1,7 @@
 import { gameState } from "../engine/GameState";
 import { completeRoom } from "../engine/GameManager";
 
-
+/// Riddle Room
 const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
 const riddleText = document.getElementById("riddle-text") as HTMLParagraphElement;
 const answerInput = document.getElementById("answer-input") as HTMLInputElement;
@@ -9,17 +9,23 @@ const submitButton = document.getElementById("submit-button") as HTMLButtonEleme
 const nextButton = document.getElementById("next-button") as HTMLButtonElement;
 const rum3StartButton = document.getElementById("rum3-start-button") as HTMLButtonElement;
 
+
+// Riddle data
 export function initRoom3(): void {
    rum3StartButton.addEventListener("click", startRiddle);
    submitButton.addEventListener("click", submitAnswer);
    nextButton.addEventListener("click", goToNextRoom);
 }
 
+
+
 function startRiddle(): void {
    rum3StartButton.classList.add("hidden");
    riddleContainer.classList.remove("hidden");
    startRiddle(0);
 }
+
+
 
 
 
