@@ -13,7 +13,7 @@ Dagens scrum master: Mohammed
 ## Namn: Markus Jönsson
 - Närvarande: Ja
 
-## Namn: Mohammed Amin Yasin
+## Namn: Alex Truong
 - Närvarande: Ja
 
 ## Namn: Sandra Hellström
