@@ -15,6 +15,7 @@ Dagens scrum master: Mohammed
 
 ## Namn: Alex Truong
 - Närvarande: Ja
+- Har arbetat med att lägga till designen för en progressbar i footer istället för att den ska vara i header. Detta är för att skapa plats för både en timer för den totala tiden man spenderar på spelet och en för tiden man spenderat på det aktuella rummet. Lagt till en landing page så att spelet inte rummets-logik inte aktiveras direkt utan man får en kort instruktion innan man startar igång. Lagt till logiken som gör att rummet scrollar nedåt på 10s så att spelaren måste vara snabb med att välja en nyckel innan man hamnar längst ned vid dörren. Annars måste man börja om.
 
 ## Namn: Sandra Hellström
 - Närvarande: Ja
