@@ -52,7 +52,7 @@ header {
   border-color: #732f2e;
 }
 
-.navBarTitle, .navBarProgress, .navBarTimer {
+.navBarElement {
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
   padding-top: 10px;
@@ -107,11 +107,9 @@ footer {
 /* rooms */
 /************************** Styling for desktop view of room 1 **************************/
 .fallet-container .room-landing {
-  position: absolute;
-  top: 120px;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 50%;
+  min-height: 100vh;
   z-index: 1;
   background-image: url(/public/images/Room1_bilder/bakgrund.webp);
   border: 50% solid transparent;
@@ -122,9 +120,10 @@ footer {
   justify-items: center;
 }
 .fallet-container .room-landing .room1-landing-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin: 0 auto;
+  position: relative;
+  top: -10px;
+  left: 0%;
   transform: translate(-50%, -50%);
   align-content: center;
   justify-items: center;
@@ -137,6 +136,8 @@ footer {
 }
 .fallet-container .room-landing .room1-landing-content h2,
 .fallet-container .room-landing .room1-landing-content p {
+  position: absolute;
+  top: -30%;
   margin: 10px 20px;
   text-shadow: 5px 5px 10px #4b1f1f;
   color: #f2e6ce;
@@ -147,7 +148,7 @@ footer {
   font-weight: 400;
   font-style: normal;
   letter-spacing: 1px;
-  font-size: 1.2em;
+  font-size: 1.6em;
   text-shadow: 5px 5px 10px #4b1f1f;
   color: #f2e6ce;
   margin: 10px 20px;
@@ -157,7 +158,7 @@ footer {
 }
 .fallet-container .room-landing button {
   position: absolute;
-  top: 85%;
+  top: 55%;
   left: 45%;
   background: #732f2f;
   border: 2px inset #f2e6ce;
@@ -412,6 +413,24 @@ body {
 .storleken-text__mindre {
   color: #f2e6ce;
   cursor: pointer;
+}
+
+/* Mindre pulserar */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation: pulse 1s infinite;
+  color: #f8cd6f;
+  display: inline-block;
 }
 
 /* bakgrundsplatta bakom texten */
@@ -795,19 +814,18 @@ body {
 }
 
 .room--final {
-  background-image: url("/Room6_bilder/QUEEN ROOM EL FINALE.png");
+  background-image: url("./Room6_bilder/QUEEN ROOM EL FINALE.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 0.5rem;
   min-width: 100vw;
 }
 
@@ -828,10 +846,34 @@ body {
   color: white;
   transition: all 0.2s ease;
 }
-.room--final .letter-btn:focus {
+
+.letter-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 12%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.35));
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 160ms ease, opacity 200ms ease;
+}
+
+.letter-btn:hover,
+.letter-btn:focus {
+  transform: translateY(-6px) scale(1.03);
   outline: none;
-  border-color: gold;
-  transform: scale(1.1);
+}
+
+.letter-btn.used {
+  opacity: 0.45;
+  transform: scale(0.98);
+  cursor: default;
+  filter: grayscale(0.15) saturate(0.6);
 }
 
 .room--final .hint-button {
