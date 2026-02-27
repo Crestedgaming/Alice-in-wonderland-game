@@ -12,7 +12,7 @@ header {
 }
 
 .falletNavBar {
-  width: 100vw;
+  width: 100%;
   height: 60px;
   position: sticky;
   display: flex;
@@ -73,7 +73,7 @@ footer {
 
 .visaArtefakter {
   position: sticky;
-  width: 100vw;
+  width: 100%;
   height: 60px;
   bottom: 0;
   padding-block: 10px;
@@ -114,8 +114,8 @@ footer {
 .myProgress {
   position: absolute;
   top: auto;
-  left: 40px;
-  width: 18vw;
+  left: 140px;
+  width: 10vw;
   background-color: #ddd;
   height: 20px;
   border-radius: 20px;
@@ -138,7 +138,7 @@ footer {
 .fallet-container .room-landing {
   position: relative;
   width: 100vw;
-  min-height: 90vh;
+  min-height: 100vh;
   z-index: 1;
   background-image: url(/public/images/Room1_bilder/bakgrund.webp);
   border: 50% solid transparent;
@@ -173,7 +173,6 @@ footer {
   color: #f2e6ce;
   box-shadow: 5px 5px 10px #4b1f1f;
   border: 2px inset #f2e6ce;
-  padding-bottom: 10px;
 }
 .fallet-container .room-landing button {
   position: relative;
@@ -206,7 +205,7 @@ footer {
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   overflow: auto;
 }
 .fallet-container .background-container {
@@ -240,13 +239,23 @@ footer {
   z-index: 1;
   /* No flex, so children can be absolutely positioned */
 }
-.fallet-container .nycklar-container img {
+.fallet-container .nycklar-container button {
   width: 5%;
   height: auto;
   position: absolute;
   transition: all 0.3s;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
-.fallet-container img {
+.fallet-container .nycklar-container button img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fallet-container button img {
   transition: all 0.3s;
 }
 
@@ -281,15 +290,18 @@ footer {
   transform: scale(1);
   position: absolute;
   left: 38vw;
-  top: 59vh;
-  z-index: 5;
+  top: 37.5vh;
+  z-index: 3;
   overflow: hidden;
   transition: left 0.3s, top 0.3s;
+}
+.fallet-container .alice-faller img {
+  text-shadow: #4b1f1f 2px 2px 4px;
 }
 .fallet-container .nyckel1 {
   position: absolute;
   left: 40%;
-  top: 20%;
+  top: 50%;
   width: 5%;
   height: auto;
   z-index: 1;
@@ -297,7 +309,7 @@ footer {
 .fallet-container .nyckel2 {
   position: absolute;
   left: 42%;
-  top: 30%;
+  top: 60%;
   width: 5%;
   height: auto;
   z-index: 1;
@@ -306,7 +318,7 @@ footer {
 .fallet-container .nyckel3 {
   position: absolute;
   left: 60%;
-  top: 25%;
+  top: 50%;
   width: 5%;
   height: auto;
   z-index: 1;
@@ -314,12 +326,12 @@ footer {
 .fallet-container .nyckel4 {
   position: absolute;
   left: 60%;
-  top: 35%;
+  top: 60%;
   width: 5%;
   height: auto;
   z-index: 1;
 }
-.fallet-container .nycklar-container img:hover {
+.fallet-container .nycklar-container button:hover img {
   transform: scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -329,7 +341,8 @@ footer {
   cursor: pointer;
 }
 
-.fallet-container .nycklar-container img:focus {
+.fallet-container .nycklar-container button:focus img,
+.fallet-container .nycklar-container button:focus-visible img {
   transform: scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -344,14 +357,22 @@ footer {
   height: 60px;
   cursor: pointer;
   pointer-events: auto;
-  z-index: 3;
-  top: 77%;
+  z-index: 2;
+  top: 210%;
   left: 53.2%;
+  background: transparent;
+  border: 0;
   padding: 0;
   margin: 0;
 }
-.fallet-container .nyckelhalet:hover,
-.fallet-container .nyckelhalet:focus {
+.fallet-container .nyckelhalet img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.fallet-container .nyckelhalet:hover img,
+.fallet-container .nyckelhalet:focus img,
+.fallet-container .nyckelhalet:focus-visible img {
   transform: translate(-50%, -50%) scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -614,7 +635,7 @@ body {
   z-index: 20;
 }
 
-#start-button {
+#start-button-cat {
   position: absolute;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
@@ -670,6 +691,73 @@ body {
 :root {
   font-family: "Henny Penny", cursive, sans-serif;
   background-color: #fdf2e3;
+}
+
+.teaparty-start {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.teaparty-start button {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.teaparty-game.hidden {
+  display: none;
+}
+
+#instructions-teaparty {
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: #f2e6ce;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  z-index: 10;
+  position: absolute;
+  width: 600px;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #732F2F;
+  border-radius: 10px;
+  border: dotted 8px #f2e6ce;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
+#start-button-teaparty {
+  position: absolute;
+  font-family: "Henny Penny", cursive, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #f2e6ce;
+  background: #732F2F;
+  border: dotted 8px #f2e6ce;
+  border-radius: 10px;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 16px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#start-button-teaparty:hover {
+  background: #f2e6ce;
+  color: #732F2F;
+  border-color: #732F2F;
 }
 
 /* 
@@ -818,9 +906,9 @@ body {
   font-family: "henny penny", cursive, sans-serif;
 }
 
-/* ===============================
+/* 
    MESSAGE
-================================ */
+ */
 .teaparty__message {
   margin-top: 1rem;
   font-weight: bold;
@@ -865,13 +953,41 @@ body {
   transition: all 0.2s ease;
 }
 
+.room-intro {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.room-intro__box {
+  background-color: #732f2f;
+  color: black;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.room-intro__box button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f2e6ce;
+}
+
 .letter-btn {
   width: 64px;
   height: 64px;
   border-radius: 12%;
   border: 3px solid rgba(255, 255, 255, 0.9);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.35));
-  color: white;
+  color: #f2e6ce;
   font-size: 1.6rem;
   font-weight: 700;
   display: inline-flex;
@@ -936,6 +1052,7 @@ body {
 
 body {
   background-color: black;
+  overflow-x: hidden;
 }
 body .hidden {
   display: none !important;
@@ -944,7 +1061,7 @@ body .hidden {
 main {
   display: grid;
   grid-template-rows: 1fr;
-  width: 100vw;
+  width: 100%;
   justify-content: center;
   text-align: center;
   background-color: #732f2f;
