@@ -32,7 +32,11 @@ import "./room2/Room2_Storleken";
 			(window as any).initRoom1();
 		}
 	}
-  
+
+	/* 	if (roomId === "rum3") {
+			import("./room3/Room3_the_riddle").then(m => m.initRoom3());
+		} */
+
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");

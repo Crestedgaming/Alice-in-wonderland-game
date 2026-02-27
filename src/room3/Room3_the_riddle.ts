@@ -1,47 +1,76 @@
-import "../mainstyles/main.scss";
-
-let currentRiddle = 0;
-
-const riddles = [
-   {
-      element: document.getElementById("riddle1") as HTMLDivElement,
-      answer: "människan"
-   },
-   {
-      element: document.getElementById("riddle2") as HTMLDivElement,
-      answer: "solen"
-   },
-   {
-      element: document.getElementById("riddle3") as HTMLDivElement,
-      answer: "dammråtta"
-   }
-];
+// Room 3 – The Caterpillar Riddles
 
 export function initRoom3(): void {
-   rum3StartButton.addEventListener("click", startRiddle);
 
-   document.getElementById("submit1")!.addEventListener("click", checkAnswer);
-   document.getElementById("submit2")!.addEventListener("click", checkAnswer);
-   document.getElementById("submit3")!.addEventListener("click", checkAnswer);
-}
+   // --- Get fresh DOM references every time room opens ---
+   const rum3StartButton = document.getElementById("rum3-start-button") as HTMLButtonElement;
+   const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
 
-function startRiddle(): void {
-   rum3StartButton.classList.add("hidden");
-   riddleConttainer.classList.remove("hidden");
+   if (!rum3StartButton || !riddleContainer) return;
 
-   showRiddle(0);
-}
+   // --- Riddle data ---
+   const riddles = [
+      { id: "riddle1", answer: ["människa", "människan"] },
+      { id: "riddle2", answer: ["solen", "sol"] },
+      { id: "riddle3", answer: ["dammråtta"] }
+   ];
 
-function showRiddle(index: number): void {
-   riddles.forEach(r => r.element.classList.add("hidden"));
-   riddles[index].element.classList.remove("hidden");
-}
+   let currentRiddle = 0;
+   let correctAnswers = 0;
 
-function checkAnswer(): void {
-   const input = riddles[currentRiddle].element.querySelector("input") as HTMLInputElement;
-   const userAnswer = input.value.trim().toLowerCase();
+   // -----------------------------
+   // Show specific riddle
+   // -----------------------------
+   function showRiddle(index: number): void {
+      riddles.forEach(r => {
+         const el = document.getElementById(r.id);
+         if (el) el.classList.add("hidden");
+      });
 
-   if (userAnswer === riddles[currentRiddle].answer) {
+      const active = document.getElementById(riddles[index].id);
+      if (active) active.classList.remove("hidden");
+   }
+
+   // -----------------------------
+   // Start room
+   // -----------------------------
+   function startRiddle(): void {
+      rum3StartButton.classList.add("hidden");
+      riddleContainer.classList.remove("hidden");
+      currentRiddle = 0;
+      correctAnswers = 0;
+      showRiddle(0);
+   }
+
+   // -----------------------------
+   // Normalize player input
+   // -----------------------------
+   function normalize(text: string): string {
+      return text
+         .trim()
+         .toLowerCase()
+         .replace(/[.,!?]/g, "");
+   }
+
+   // -----------------------------
+   // Check answer
+   // -----------------------------
+   function checkAnswer(index: number): void {
+
+      const riddleEl = document.getElementById(riddles[index].id)!;
+      const input = riddleEl.querySelector("input") as HTMLInputElement;
+
+      const playerAnswer = normalize(input.value);
+
+      const isCorrect = riddles[index].answer.some(a => normalize(a) === playerAnswer);
+
+      if (isCorrect) {
+         correctAnswers++;
+         riddleEl.classList.add("correct");
+      } else {
+         riddleEl.classList.add("wrong");
+      }
+
       currentRiddle++;
 
       if (currentRiddle < riddles.length) {
@@ -49,48 +78,58 @@ function checkAnswer(): void {
       } else {
          finishRoom3();
       }
-   } else {
-      alert("Fel svar!");
    }
+
+   // -----------------------------
+   // Decide artifact (REAL vs FAKE)
+   // -----------------------------
+   function finishRoom3(): void {
+
+      let letter: string;
+      let message: string;
+
+      if (correctAnswers >= 2) {
+         letter = "A"; // REAL LETTER
+         message = "🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
+      } else {
+         letter = "Q"; // FAKE LETTER
+         message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
+      }
+
+      giveArtifact(letter);
+
+      riddleContainer.innerHTML = `
+      <div class="riddle-result">
+        <h3>${message}</h3>
+        <p>Du får en bokstav: <b>${letter}</b></p>
+        <button id="room3-continue">Gå vidare</button>
+      </div>
+    `;
+
+      document.getElementById("room3-continue")!
+         .addEventListener("click", () => {
+            (window as any).showRoom("rum4");
+         });
+   }
+
+   // -----------------------------
+   // Artifact hook (connect later)
+   // -----------------------------
+   function giveArtifact(letter: string): void {
+      // You will connect this to your footer artifact system
+      console.log("Artifact received:", letter);
+
+      // Example if your group later adds global artifact system:
+      // (window as any).addArtifact(letter);
+   }
+
+   // -----------------------------
+   // Event listeners
+   // -----------------------------
+   rum3StartButton.addEventListener("click", startRiddle);
+
+   riddles.forEach((_, i) => {
+      const btn = document.getElementById(`submit${i + 1}`);
+      btn?.addEventListener("click", () => checkAnswer(i));
+   });
 }
-
-function finishRoom3(): void {
-   riddleContainer.innerHTML = "<h3>Du klarade alla gåtor! 🎉</h3>";
-}
-
-
-
-
-
-/**
- * Spelaren kommer ut på en stor äng med blommor och svampa, men något är inte som det ska vara,
- * allt är mycket större än vanligt.
- *
- * På en av det större svamparna ser spelaren en stor fet larv.
- *
- * Spelaren trycker på "starta"
-
- START
-
- * Spelaren behöver svara rätt på 3 gåtor som larven ger spelaren för att kunna gå vidare och avsluta rummet samt att det får en artifact som behövs för det sista pusslet.
-
- * När spelaren klickar på "starta" så tas classen hidden bort från kod-blocket och den första gåtan visas på skärmen.
-    * När spelaren har svarat på den första gåtan så visas den andra gåtan på skärmen.
-    * När spelaren har svarat på den andra gåtan så visas den tredje gåtan på skärmen.
-    * När spelaren har svarat på den tredje gåtan så visas en text som säger att spelaren har klarat rummet och att den får en artifact (spelaren ska kunna få en felaktigt artifact).
-    * När spelaren har klarat rummet så kan den klicka på "nästa" för att gå vidare till nästa rum.
-    *
-    *
-    * start() {
-    *   const app = document.getElementById("app")!;
-    *  app.innerHTML = `
-    *      <h1>Puzzle</h1>
-    *      <button id="solve">Solve</button>
-    *  `;
-    * //if (svaret är rätt) {
-    //  visa nästa gåta a
-    //} else {
-    //  visa att svaret är fel och att spelaren måste försöka igen
-    //}
- */
-//}
