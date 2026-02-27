@@ -1,5 +1,4 @@
-import { gameState } from "../engine/GameState";
-import { completeRoom } from "../engine/GameManager";
+import "../mainstyles/main.scss";
 
 /// Riddle Room
 const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
