@@ -140,105 +140,123 @@
  * ============================================================
  */
 
-// Hämta alla koppar
-const cups = document.querySelectorAll<HTMLDivElement>(".cup");
+// ===============================
+// RUM 5 – TEAPARTY
+// ===============================
 
-// Hämta total-displayen
-const totalDisplay = document.getElementById("total-percent");
+let gameRunning = false;
 
-// Hämta meddelande-rutan
-const messageElement = document.querySelector<HTMLDivElement>(".teaparty__message");
+// Start-knappen
+const startButton = document.getElementById("start-button-teaparty");
 
-// State – hur mycket te varje kopp har
-let cupValues: number[] = [0, 0, 0];
+startButton?.addEventListener("click", startGame);
 
-const FILL_AMOUNT = 25;
-const TARGET_TOTAL = 125;
+function startGame() {
+  console.log("TEAPARTY STARTED");
 
-// Koppla klick på varje tekanna
-cups.forEach((cup) => {
-  const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
+  gameRunning = true;
 
-  button?.addEventListener("click", () => {
-    const index = Number(cup.dataset.cup);
-    fillCup(index);
-  });
-});
+  const instructions = document.getElementById("instructions-teaparty");
+  const startBtn = document.getElementById("start-button-teaparty");
 
-// Fyll en kopp
-function fillCup(index: number) {
-  // Stoppa om koppen redan är full
-  if (cupValues[index] >= 100) return;
+ const startScreen = document.getElementById("teaparty-start");
+const content = document.getElementById("teaparty-content");
 
-  cupValues[index] += FILL_AMOUNT;
-
-  updateUI();
-  checkGame();
+if (startScreen) startScreen.classList.add("hidden");
+if (content) content.classList.remove("hidden");
+  initGame();
 }
 
-// Uppdatera det man ser på skärmen
-function updateUI() {
-  cups.forEach((cup, index) => {
-    const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
-    const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+function initGame() {
 
-    if (fillElement) {
-      fillElement.style.height = cupValues[index] + "%";
-    }
+  // 🔒 Begränsa allt till rum5
+  const room = document.getElementById("rum5");
+  if (!room) return;
 
-    if (percentText) {
-      percentText.textContent = cupValues[index] + "%";
-    }
+  const cups = room.querySelectorAll<HTMLDivElement>(".cup");
+  const totalDisplay = room.querySelector<HTMLSpanElement>("#total-percent");
+  const messageElement = room.querySelector<HTMLDivElement>(".teaparty__message");
+
+  let cupValues: number[] = [0, 0, 0];
+
+  const FILL_AMOUNT = 25;
+  const TARGET_TOTAL = 125;
+
+  cups.forEach((cup) => {
+    const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
+
+    button?.addEventListener("click", () => {
+
+      if (!gameRunning) return;
+
+      const index = Number(cup.dataset.cup);
+
+      if (cupValues[index] >= 100) return;
+
+      cupValues[index] += FILL_AMOUNT;
+
+      updateUI();
+      checkGame();
+    });
   });
 
-  const total = calculateTotal();
-  if (totalDisplay) {
-    totalDisplay.textContent = total.toString();
+  function updateUI() {
+    cups.forEach((cup, index) => {
+      const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
+      const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+
+      if (fillElement) {
+        fillElement.style.height = cupValues[index] + "%";
+      }
+
+      if (percentText) {
+        percentText.textContent = cupValues[index] + "%";
+      }
+    });
+
+    const total = calculateTotal();
+
+    if (totalDisplay) {
+      totalDisplay.textContent = total.toString();
+    }
   }
-}
 
-// Räkna ut totalsumman
-function calculateTotal(): number {
-  return cupValues.reduce((sum, value) => sum + value, 0);
-}
+  function calculateTotal(): number {
+    return cupValues.reduce((sum, value) => sum + value, 0);
+  }
 
-// Kolla om man vunnit eller förlorat
-function checkGame() {
-  const total = calculateTotal();
+  function checkGame() {
+    const total = calculateTotal();
+    const allCupsHaveTea = cupValues.every((value) => value > 0);
 
-  // Kolla om alla koppar har mer än 0
-  const allCupsHaveTea = cupValues.every((value) => value > 0);
+    if (total === TARGET_TOTAL && allCupsHaveTea) {
+      if (messageElement) {
+        messageElement.textContent =
+          "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
+      }
+    }
 
-  if (total === TARGET_TOTAL && allCupsHaveTea) {
+    else if (total === TARGET_TOTAL && !allCupsHaveTea) {
+      if (messageElement) {
+        messageElement.textContent =
+          "Alla koppar måste få lite te!";
+      }
+    }
+
+    if (total > TARGET_TOTAL) {
+      resetGame();
+    }
+  }
+
+  function resetGame() {
+    cupValues = [0, 0, 0];
+
     if (messageElement) {
       messageElement.textContent =
-        "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te! 🎉";
+        "Ops, nu rann det över! Börja om och fyll tekopparna igen";
     }
+
+    updateUI();
   }
 
-  // Om total är rätt men någon kopp är 0
-  else if (total === TARGET_TOTAL && !allCupsHaveTea) {
-    if (messageElement) {
-      messageElement.textContent =
-        "Alla koppar måste få lite te!";
-    }
-  }
-
-  if (total > TARGET_TOTAL) {
-    resetGame();
-  }
 }
-
-// Återställ spelet
-function resetGame() {
-  cupValues = [0, 0, 0];
-
-  if (messageElement) {
-    messageElement.textContent =
-      "Ops, nu rann det över! Börja om och fyll tekopparna igen";
-  }
-
-  updateUI();
-}
-
-console.log("TEAPARTY LOADED");
