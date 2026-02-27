@@ -70,140 +70,127 @@
               som hjälper dig att lösa slutgiltiga hemligheten.
             </p>
 
-          <p></p>
-          <p>Klicka på <b>Starta spelet</b> för att börja.</p>
-          <button id="room1-start-btn">Starta spelet</button>
-        </div>
-        <div id="room1-content" class="hidden">
-          <div id="falletMeddelande" class="falletMeddelande"></div>
-          <div class="background-scroll">
-            <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
-              alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-            <div class="nyckelhal-container">
-              <span tabindex="0">
-                <img id="nyckelhalet" class="nyckelhalet" src="/images/Room1_bilder/nyckelhalet.gif"
-                  alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" tabindex="0" role="button"
-                  aria-label="Lås upp dörren med rätt nyckel" />
-              </span>
+            <p></p>
+            <p>Klicka på <b>Starta spelet</b> för att börja.</p>
+            <button id="room1-start-btn">Starta spelet</button>
+          </div>
+          <div id="room1-content" class="hidden">
+            <div id="falletMeddelande" class="falletMeddelande"></div>
+            <div class="background-scroll">
+              <img
+                class="background-image"
+                src="/images/Room1_bilder/bakgrund.webp"
+                alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål"
+              />
+              <div class="nyckelhal-container">
+                <span tabindex="0">
+                  <img
+                    id="nyckelhalet"
+                    class="nyckelhalet"
+                    src="/images/Room1_bilder/nyckelhalet.gif"
+                    alt="Ett nyckelhål till en dörr som blir stor och liten i en loop"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Lås upp dörren med rätt nyckel"
+                  />
+                </span>
+              </div>
+              <div id="nycklar" class="nycklar-container">
+                <span>
+                  <img
+                    id="nyckeln-L"
+                    class="nyckel1"
+                    src="/images/Room1_bilder/nyckel_1.gif"
+                    alt="En guldnyckel med en topp som snurrar i lila färg"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Välj guldnyckel med lila topp, bokstav L"
+                /></span>
+                <span>
+                  <img
+                    id="nyckeln-E"
+                    class="nyckel2"
+                    src="/images/Room1_bilder/nyckel_2.gif"
+                    alt="En ljusblå nyckel med toppen som är formad som en klöver"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Välj ljusblå nyckel med klöver, bokstav E"
+                  />
+                </span>
+                <span>
+                  <img
+                    id="nyckeln-V"
+                    class="nyckel3"
+                    src="/images/Room1_bilder/nyckel_3.gif"
+                    alt="En guldnyckel med en krona i toppen."
+                    tabindex="0"
+                    role="button"
+                    aria-label="Välj guldnyckel med krona, bokstav V"
+                  />
+                </span>
+                <span>
+                  <img
+                    id="nyckeln-A"
+                    class="nyckel4"
+                    src="/images/Room1_bilder/nyckel_4.gif"
+                    alt="En guldnyckel med en stjärna i toppen."
+                    tabindex="0"
+                    role="button"
+                    aria-label="Välj guldnyckel med stjärna, bokstav A"
+                  />
+                </span>
+              </div>
             </div>
-            <div id="nycklar" class="nycklar-container">
-              <span>
-                <img id="nyckeln-L" class="nyckel1" src="/images/Room1_bilder/nyckel_1.gif"
-                  alt="En guldnyckel med en topp som snurrar i lila färg" tabindex="0" role="button"
-                  aria-label="Välj guldnyckel med lila topp, bokstav L" /></span>
-              <span>
-                <img id="nyckeln-E" class="nyckel2" src="/images/Room1_bilder/nyckel_2.gif"
-                  alt="En ljusblå nyckel med toppen som är formad som en klöver" tabindex="0" role="button"
-                  aria-label="Välj ljusblå nyckel med klöver, bokstav E" />
-              </span>
-              <span>
-                <img id="nyckeln-V" class="nyckel3" src="/images/Room1_bilder/nyckel_3.gif"
-                  alt="En guldnyckel med en krona i toppen." tabindex="0" role="button"
-                  aria-label="Välj guldnyckel med krona, bokstav V" />
-              </span>
-              <span>
-                <img id="nyckeln-A" class="nyckel4" src="/images/Room1_bilder/nyckel_4.gif"
-                  alt="En guldnyckel med en stjärna i toppen." tabindex="0" role="button"
-                  aria-label="Välj guldnyckel med stjärna, bokstav A" />
-              </span>
+            <div class="alice-faller">
+              <img
+                src="/images/Room1_bilder/alice-faller.png"
+                alt="Alice faller"
+              />
             </div>
           </div>
-          <div class="alice-faller">
-            <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+        </div>
+        <!-- rum2 -->
+        <div id="rum2" class="room hidden room--storleken">
+          <!-- Bakgrundsbild -->
+          <img
+            src="images/Room2_bilder/Rum2bakgrund.jpg"
+            alt=""
+            class="room2-background-image"
+            aria-hidden="true"
+          />
+
+          <!-- Ord på väggen -->
+          <div class="storleken-vaggord">
+            <span class="vaggord vaggord--stor">STOR</span>
+            <span class="vaggord vaggord--mellan">MELLAN</span>
+            <span class="vaggord vaggord--liten">LITEN</span>
           </div>
+
+          <!-- Alice -->
+          <img
+            src="images/Room2_bilder/AliceTransparent.png"
+            alt="Alice"
+            class="storleken-alice"
+          />
+
+          <!-- Instruktionstext -->
+          <p class="storleken-text">
+            Alice är för stor! <br />
+            Kan du göra henne
+            <span class="storleken-text__mindre">mindre</span>?
+          </p>
+
+          <!-- Klar-text -->
+          <p class="storleken-success hidden">
+            <strong>Bra jobbat!</strong><br />
+            Alice är lagom stor<br />
+            och kommer in genom dörren.
+          </p>
         </div>
-      </div>
-      <!-- rum2 -->
-      <div id="rum2" class="room hidden room--storleken">
 
-        <!-- Bakgrundsbild -->
-        <img
-          src="images/Room2_bilder/Rum2bakgrund.jpg"
-          alt=""
-          class="room2-background-image"
-          aria-hidden="true"
-        />
-
-        <!-- Ord på väggen -->
-        <div class="storleken-vaggord">
-          <span class="vaggord vaggord--stor">STOR</span>
-          <span class="vaggord vaggord--mellan">MELLAN</span>
-          <span class="vaggord vaggord--liten">LITEN</span>
-        </div>
-
-        <!-- Alice -->
-        <img
-          src="images/Room2_bilder/AliceTransparent.png"
-          alt="Alice"
-          class="storleken-alice"
-        />
-
-        <!-- Instruktionstext -->
-        <p class="storleken-text">
-          Alice är för stor! <br />
-          Kan du göra henne
-          <span class="storleken-text__mindre">mindre</span>?
-        </p>
-
-        <!-- Klar-text -->
-        <p class="storleken-success hidden">
-          <strong>Bra jobbat!</strong><br />
-          Alice är lagom stor<br />
-          och kommer in genom dörren.
-        </p>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-      <!-- rum3 -->
-      <div id="rum3" class="room hidden">
-        <button onclick="goToStart()">Tillbaka</button>
+        <!-- rum3 -->
+        <div id="rum3" class="room hidden">
+          <button onclick="goToStart()">Tillbaka</button>
 
           <h2>Rum 3</h2>
           <p>Välkommen till rum 3!</p>
@@ -392,7 +379,6 @@
         <!-- rum6 -->
 
         <div id="rum6" class="room hidden">
-          <button onclick="goToStart()">Tillbaka</button>
           <div class="room-intro" id="room6-intro">
             <div class="room-intro__box">
               <h2

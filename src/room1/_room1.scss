@@ -3,7 +3,7 @@
 	.room-landing {
 		position: relative;
 		width: 100vw;
-		min-height: 90vh;
+		min-height: 100vh;
 		z-index: 1;
 		background-image: url(/public/images/Room1_bilder/bakgrund.webp);
 		border: 50% solid transparent;
@@ -39,7 +39,6 @@
 			color: #f2e6ce;
 			box-shadow: 5px 5px 10px #4b1f1f;
 			border: 2px inset #f2e6ce;
-			padding-bottom: 10px;
 		}
 
 		button {
