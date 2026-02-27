@@ -20,6 +20,9 @@ footer {
 	border-radius: 0 0 10px 10px;
 
 	ul {
+		position: relative;
+		left: 100px;
+
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
@@ -41,4 +44,19 @@ footer {
 		text-shadow: 5px 5px 4px #4b1f1f;
 		box-shadow: 5px 5px 4px #4b1f1f;
 	}
+}
+
+.myProgress {
+	position: absolute;
+	width: 150px;
+	left: 10px;
+	background-color: #f2e6ce;
+	border-radius: 10px;
+}
+
+.myBar {
+	width: 1%;
+	height: fit-content;
+	background-color: #732f2f;
+	border-radius: 10px;
 }

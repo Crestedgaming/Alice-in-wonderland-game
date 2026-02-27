@@ -1,6 +1,5 @@
 import "./mainstyles/main.scss";
 import { startGame } from "./engine/GameManager";
-import { gameState } from "./engine/GameState";
 
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
