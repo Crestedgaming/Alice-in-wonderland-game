@@ -301,16 +301,16 @@ footer {
 .fallet-container .nyckel1 {
   position: absolute;
   left: 40%;
-  top: 50%;
-  width: 5%;
+  top: 60%;
+  width: 4%;
   height: auto;
   z-index: 1;
 }
 .fallet-container .nyckel2 {
   position: absolute;
   left: 40%;
-  top: 70%;
-  width: 5%;
+  top: 80%;
+  width: 4%;
   height: auto;
   z-index: 1;
 }
@@ -318,16 +318,16 @@ footer {
 .fallet-container .nyckel3 {
   position: absolute;
   left: 60%;
-  top: 50%;
-  width: 5%;
+  top: 60%;
+  width: 4%;
   height: auto;
   z-index: 1;
 }
 .fallet-container .nyckel4 {
   position: absolute;
   left: 60%;
-  top: 70%;
-  width: 5%;
+  top: 80%;
+  width: 4%;
   height: auto;
   z-index: 1;
 }
