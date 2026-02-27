@@ -1,29 +1,62 @@
 import "../mainstyles/main.scss";
 
-/// Riddle Room
-const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
-const riddleText = document.getElementById("riddle-text") as HTMLParagraphElement;
-const answerInput = document.getElementById("answer-input") as HTMLInputElement;
-const submitButton = document.getElementById("submit-button") as HTMLButtonElement;
-const nextButton = document.getElementById("next-button") as HTMLButtonElement;
-const rum3StartButton = document.getElementById("rum3-start-button") as HTMLButtonElement;
+let currentRiddle = 0;
 
+const riddles = [
+   {
+      element: document.getElementById("riddle1") as HTMLDivElement,
+      answer: "människan"
+   },
+   {
+      element: document.getElementById("riddle2") as HTMLDivElement,
+      answer: "solen"
+   },
+   {
+      element: document.getElementById("riddle3") as HTMLDivElement,
+      answer: "dammråtta"
+   }
+];
 
-// Riddle data
 export function initRoom3(): void {
    rum3StartButton.addEventListener("click", startRiddle);
-   submitButton.addEventListener("click", submitAnswer);
-   nextButton.addEventListener("click", goToNextRoom);
+
+   document.getElementById("submit1")!.addEventListener("click", checkAnswer);
+   document.getElementById("submit2")!.addEventListener("click", checkAnswer);
+   document.getElementById("submit3")!.addEventListener("click", checkAnswer);
 }
-
-
 
 function startRiddle(): void {
    rum3StartButton.classList.add("hidden");
-   riddleContainer.classList.remove("hidden");
-   startRiddle(0);
+   riddleConttainer.classList.remove("hidden");
+
+   showRiddle(0);
 }
 
+function showRiddle(index: number): void {
+   riddles.forEach(r => r.element.classList.add("hidden"));
+   riddles[index].element.classList.remove("hidden");
+}
+
+function checkAnswer(): void {
+   const input = riddles[currentRiddle].element.querySelector("input") as HTMLInputElement;
+   const userAnswer = input.value.trim().toLowerCase();
+
+   if (userAnswer === riddles[currentRiddle].answer) {
+      currentRiddle++;
+
+      if (currentRiddle < riddles.length) {
+         showRiddle(currentRiddle);
+      } else {
+         finishRoom3();
+      }
+   } else {
+      alert("Fel svar!");
+   }
+}
+
+function finishRoom3(): void {
+   riddleContainer.innerHTML = "<h3>Du klarade alla gåtor! 🎉</h3>";
+}
 
 
 
