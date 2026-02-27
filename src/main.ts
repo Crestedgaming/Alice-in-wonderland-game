@@ -5,7 +5,7 @@ import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
 import "./room1/Room1_Fallet";
 import "./room6/Room6_Slutstriden";
-import "./room5/Room5_Tebjudningen";
+import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
 
 /*
