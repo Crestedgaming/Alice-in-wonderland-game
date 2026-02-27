@@ -23,9 +23,57 @@
         <span id="falletTimerTotalt" class="navBarElement">Tid i rummet: 00.00</span>
         <h1 id="rumID" class="navBarElement">Alice i underlandet</h1>
         <span id="falletTimerRum" class="navBarElement">Totala tid: 00.00</span>
-        <label>
-          <button onclick="goToStart()"><span>Gå tillbaka</span></button>
-        </label>
+
+        <<<<<<< HEAD <body>
+          <header>
+            <div>
+              <nav id="falletNavBar" class="falletNavBar">
+                <label>
+                  <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
+                    <span>Börja om</span>
+                  </button>
+                </label>
+                <span id="falletTimerTotalt" class="navBarElement">Tid i rummet: 00.00</span>
+                <h1 id="rumID" class="navBarElement">Alice i underlandet</h1>
+                <span id="falletTimerRum" class="navBarElement">Totala tid: 00.00</span>
+                <label>
+                  <button onclick="goToStart()"><span>Gå tillbaka</span></button>
+                </label>
+              </nav>
+            </div>
+          </header>
+          <main>
+            <!-- Startsida -->
+
+            <div id="start">
+              <button onclick="showRoom('rum1')">Rum 1</button>
+              <button onclick="showRoom('rum2')">Rum 2</button>
+              <button onclick="showRoom('rum3')">Rum 3</button>
+              <button onclick="showRoom('rum4')">Rum 4</button>
+              <button onclick="showRoom('rum5')">Rum 5</button>
+              <button onclick="showRoom('rum6')">Rum 6</button>
+            </div>
+
+            <div id="app"></div>
+
+            <!-- rum1 -->
+
+            <div id="rum1" class="room fallet-container hidden">
+              <div id="room1-landing" class="room-landing">
+                <h2>Välkommen till Rum 1!</h2>
+                <p>
+                  Spelet går ut på innan man landar på marken välja en
+                  nyckel för att låsa upp dörren till nästa rum. Varje nyckel har en
+                  bokstav som hjälper dig att lösa slutgiltiga hemligheten.
+                </p>
+
+                <p></p>
+                <p>Klicka på <b>Starta spelet</b> för att börja.</p>
+                <button id="room1-start-btn">Starta spelet</button>
+                =======
+                <label>
+                  <button onclick="goToStart()"><span>Gå tillbaka</span></button>
+                </label>
       </nav>
     </div>
   </header>
@@ -39,6 +87,7 @@
       <button onclick="showRoom('rum4')">Rum 4</button>
       <button onclick="showRoom('rum5')">Rum 5</button>
       <button onclick="showRoom('rum6')">Rum 6</button>
+      >>>>>>> 5c24275da8b76e3587198965d429151d3fdfb012
     </div>
 
     <div id="app"></div>
@@ -49,9 +98,9 @@
       <div id="room1-landing" class="room-landing">
         <h2>Välkommen till Rum 1!</h2>
         <p>
-          Spelet går ut på innan man landar på marken välja en
-          nyckel för att låsa upp dörren till nästa rum. Varje nyckel har en
-          bokstav som hjälper dig att lösa slutgiltiga hemligheten.
+          Spelet går ut på innan man landar på marken välja en nyckel för att
+          låsa upp dörren till nästa rum. Varje nyckel har en bokstav som
+          hjälper dig att lösa slutgiltiga hemligheten.
         </p>
 
         <p></p>
@@ -264,8 +313,33 @@
 
     <div id="rum6" class="room hidden">
       <button onclick="goToStart()">Tillbaka</button>
-      <h2>Rum 6</h2>
-      <p>Välkommen till rum 6!</p>
+      <div class="room-intro" id="room6-intro">
+        <div class="room-intro__box">
+          <h2 style="
+                font-family:
+                  henny penny,
+                  cursive,
+                  sans-serif;
+                color: #f2e6ce;
+                font-weight: 400;
+                font-style: normal;
+              ">
+            Välkommen!
+          </h2>
+          <p style="
+                font-family:
+                  Bricolage Grotesque,
+                  sans-serif;
+                color: #f2e6ce;
+              ">
+            Lös pusslet genom att skriva rätt bokstäver i rutorna. När alla är
+            rätt kan du gå vidare.
+          </p>
+          <button id="room6-start-btn" style="color: #732f2f; font-weight: bolder">
+            Starta
+          </button>
+        </div>
+      </div>
       <div class="room--final">
         <div class="puzzle">
           <div class="box"></div>
@@ -289,6 +363,20 @@
 
         <p id="message" class="message"></p>
       </div>
+      <div class="letters">
+        <button class="letter-btn">V</button>
+        <button class="letter-btn">A</button>
+        <button class="letter-btn">K</button>
+        <button class="letter-btn">N</button>
+        <button class="letter-btn">A</button>
+      </div>
+
+      <button class="hint-button" disabled style="margin-top: 20px; margin-bottom: 20px">
+        Hint
+      </button>
+      <button class="submit" id="submit">Submit</button>
+
+      <p id="message" class="message"></p>
     </div>
   </main>
   <footer>
