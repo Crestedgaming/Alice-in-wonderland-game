@@ -25,9 +25,14 @@
               <span>Börja om</span>
             </button>
           </label>
-          <h1 id="rumID" class="navBarElement">Titel</h1>
-          <span id="rumPositionISpelet" class="navBarElement">Rum 1 av 6</span>
-          <span id="falletTimer" class="navBarElement">Din tid: 00.00</span>
+          <span id="falletTimerTotalt" class="navBarElement"
+            >Tid i rummet: 00.00</span
+          >
+          <h1 id="rumID" class="navBarElement">Alice i underlandet</h1>
+          <span id="falletTimerRum" class="navBarElement"
+            >Totala tid: 00.00</span
+          >
+
           <label>
             <button onclick="goToStart()"><span>Gå tillbaka</span></button>
           </label>
@@ -54,9 +59,9 @@
         <div id="room1-landing" class="room-landing">
           <h2>Välkommen till Rum 1!</h2>
           <p>
-            Instruktioner: Spelet går ut på innan man landar på marken välja en
-            nyckel för att låsa upp dörren till nästa rum. Varje nyckel har en
-            bokstav som hjälper dig att lösa slutgiltiga hemligheten.
+            Spelet går ut på innan man landar på marken välja en nyckel för att
+            låsa upp dörren till nästa rum. Varje nyckel har en bokstav som
+            hjälper dig att lösa slutgiltiga hemligheten.
           </p>
 
           <p></p>
@@ -418,10 +423,31 @@
 
           <p id="message" class="message"></p>
         </div>
+        <div class="letters">
+          <button class="letter-btn">V</button>
+          <button class="letter-btn">A</button>
+          <button class="letter-btn">K</button>
+          <button class="letter-btn">N</button>
+          <button class="letter-btn">A</button>
+        </div>
+
+        <button
+          class="hint-button"
+          disabled
+          style="margin-top: 20px; margin-bottom: 20px"
+        >
+          Hint
+        </button>
+        <button class="submit" id="submit">Submit</button>
+
+        <p id="message" class="message"></p>
       </div>
     </main>
     <footer>
       <div id="visaArtefakter" class="visaArtefakter">
+        <div id="myProgress" class="myProgress">
+          <div id="myBar" class="myBar"></div>
+        </div>
         <ul>
           <li id="artefakt1" class="artefakter"><span>I</span></li>
           <li id="artefakt2" class="artefakter"><span>II</span></li>

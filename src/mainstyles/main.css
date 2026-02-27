@@ -52,12 +52,17 @@ header {
   border-color: #732f2e;
 }
 
-.navBarTitle, .navBarProgress, .navBarTimer {
+.falletNavBar {
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
   padding-top: 10px;
   text-shadow: 5px 5px 10px #4b1f1f;
-  font-size: 1.7rem;
+}
+.falletNavBar h1 {
+  font-size: 2rem;
+}
+.falletNavBar span {
+  font-size: 1.2rem;
 }
 
 footer {
@@ -83,6 +88,8 @@ footer {
   border-radius: 0 0 10px 10px;
 }
 .visaArtefakter ul {
+  position: relative;
+  left: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -104,14 +111,34 @@ footer {
   box-shadow: 5px 5px 4px #4b1f1f;
 }
 
+.myProgress {
+  position: absolute;
+  top: auto;
+  left: 40px;
+  width: 18vw;
+  background-color: #ddd;
+  height: 20px;
+  border-radius: 20px;
+  margin: 10px 0;
+  overflow: hidden;
+  box-shadow: 5px 5px 4px #4b1f1f;
+  border: #4b1f1f 2px inset;
+}
+
+.myBar {
+  width: 0%;
+  height: 100%;
+  background-color: #732f2f;
+  border-radius: 10px 0 0 10px;
+  transition: width 0.3s;
+}
+
 /* rooms */
 /************************** Styling for desktop view of room 1 **************************/
 .fallet-container .room-landing {
-  position: absolute;
-  top: 120px;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  position: relative;
+  width: 100vw;
+  min-height: 90vh;
   z-index: 1;
   background-image: url(/public/images/Room1_bilder/bakgrund.webp);
   border: 50% solid transparent;
@@ -120,45 +147,37 @@ footer {
   background-attachment: fixed;
   align-content: center;
   justify-items: center;
+  gap: 10px;
+}
+.fallet-container .room-landing h2,
+.fallet-container .room-landing p {
+  position: relative;
+  width: 50vw;
+  color: #000;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  text-shadow: #fff 2px 2px 4px;
 }
 .fallet-container .room-landing .room1-landing-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  margin: 0 auto;
+  position: relative;
   transform: translate(-50%, -50%);
   align-content: center;
   justify-items: center;
   background-color: #732f2f;
   border-radius: 100px;
-  padding: 10px;
+  padding: 50px;
   color: #f2e6ce;
   box-shadow: 5px 5px 10px #4b1f1f;
   border: 2px inset #f2e6ce;
-}
-.fallet-container .room-landing .room1-landing-content h2,
-.fallet-container .room-landing .room1-landing-content p {
-  margin: 10px 20px;
-  text-shadow: 5px 5px 10px #4b1f1f;
-  color: #f2e6ce;
-  text-align: center;
-  justify-items: center;
-  align-content: center;
-  font-family: "Henny Penny", system-ui;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: 1px;
-  font-size: 1.2em;
-  text-shadow: 5px 5px 10px #4b1f1f;
-  color: #f2e6ce;
-  margin: 10px 20px;
-  text-align: center;
-  justify-items: center;
-  align-content: center;
+  padding-bottom: 10px;
 }
 .fallet-container .room-landing button {
-  position: absolute;
-  top: 85%;
-  left: 45%;
+  position: relative;
+  top: 5vh;
   background: #732f2f;
   border: 2px inset #f2e6ce;
   color: #f2e6ce;
@@ -169,7 +188,7 @@ footer {
   font-weight: 400;
   font-style: normal;
   letter-spacing: 1px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   box-shadow: 5px 5px 10px #4b1f1f;
   padding: 10px 20px;
 }
@@ -412,6 +431,24 @@ body {
 .storleken-text__mindre {
   color: #f2e6ce;
   cursor: pointer;
+}
+
+/* Mindre pulserar */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.pulse {
+  animation: pulse 1s infinite;
+  color: #f8cd6f;
+  display: inline-block;
 }
 
 /* bakgrundsplatta bakom texten */
@@ -795,19 +832,18 @@ body {
 }
 
 .room--final {
-  background-image: url("/Room6_bilder/QUEEN ROOM EL FINALE.png");
+  background-image: url("./Room6_bilder/QUEEN ROOM EL FINALE.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
   color: white;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 0.5rem;
   min-width: 100vw;
 }
 
@@ -828,10 +864,34 @@ body {
   color: white;
   transition: all 0.2s ease;
 }
-.room--final .letter-btn:focus {
+
+.letter-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 12%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.35));
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 160ms ease, opacity 200ms ease;
+}
+
+.letter-btn:hover,
+.letter-btn:focus {
+  transform: translateY(-6px) scale(1.03);
   outline: none;
-  border-color: gold;
-  transform: scale(1.1);
+}
+
+.letter-btn.used {
+  opacity: 0.45;
+  transform: scale(0.98);
+  cursor: default;
+  filter: grayscale(0.15) saturate(0.6);
 }
 
 .room--final .hint-button {

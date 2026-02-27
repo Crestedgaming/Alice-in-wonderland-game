@@ -20,6 +20,9 @@ footer {
 	border-radius: 0 0 10px 10px;
 
 	ul {
+		position: relative;
+		left: 100px;
+
 		display: flex;
 		flex-direction: row;
 		justify-content: space-evenly;
@@ -41,4 +44,26 @@ footer {
 		text-shadow: 5px 5px 4px #4b1f1f;
 		box-shadow: 5px 5px 4px #4b1f1f;
 	}
+}
+
+.myProgress {
+	position: absolute;
+	top: auto;
+	left: 40px;
+	width: 18vw;
+	background-color: #ddd;
+	height: 20px;
+	border-radius: 20px;
+	margin: 10px 0;
+	overflow: hidden;
+	box-shadow: 5px 5px 4px #4b1f1f;
+	border: #4b1f1f 2px inset;
+}
+
+.myBar {
+	width: 0%;
+	height: 100%;
+	background-color: #732f2f;
+	border-radius: 10px 0 0 10px;
+	transition: width 0.3s;
 }

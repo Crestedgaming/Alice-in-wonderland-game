@@ -20,6 +20,8 @@ export function initRoom1() {
 		};
 	}
 }
+(window as any).initRoom1 = initRoom1;
+
 
 // Sätt event på nycklar och nyckelhål
 function attachRoom1Listeners() {
@@ -72,28 +74,26 @@ function attachRoom1Listeners() {
 
 // Enkel scroll och startmeddelande
 function startRoom1GameLogic() {
-	let scrollContainer = document.querySelector(
-		"#rum1 .background-scroll",
-	) as HTMLElement;
-	if (scrollContainer) {
-		let start = scrollContainer.scrollTop;
-		let target = scrollContainer.scrollHeight;
-		let duration = 15000;
-		let startTime = performance.now();
-		function animateScroll(currentTime: number) {
-			let elapsed = currentTime - startTime;
-			let progress = Math.min(elapsed / duration, 1);
-			scrollContainer.scrollTop = start + (target - start) * progress;
-			if (progress < 1) {
-				requestAnimationFrame(animateScroll);
-			}
-		}
-		requestAnimationFrame(animateScroll);
-	}
-	let message = document.getElementById("falletMeddelande");
-	if (message) {
-		message.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-	}
+  let scrollContainer = document.querySelector("#rum1 .background-scroll") as HTMLElement;
+  if (scrollContainer) {
+    let start = scrollContainer.scrollTop;
+    let target = scrollContainer.scrollHeight;
+    let duration = 15000;
+    let startTime = performance.now();
+    function animateScroll(currentTime: number) {
+      let elapsed = currentTime - startTime;
+      let progress = Math.min(elapsed / duration, 1);
+      scrollContainer.scrollTop = start + (target - start) * progress;
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    }
+    requestAnimationFrame(animateScroll);
+  }
+  let message = document.getElementById("falletMeddelande");
+  if (message) {
+    message.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
+  }
 }
 
 // Gör funktionen global
