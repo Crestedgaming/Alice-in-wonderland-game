@@ -32,6 +32,7 @@ import "./room2/Room2_Storleken";
 			(window as any).initRoom1();
 		}
 	}
+  
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");

@@ -20,6 +20,8 @@ export function initRoom1() {
 		};
 	}
 }
+(window as any).initRoom1 = initRoom1;
+
 
 // Sätt event på nycklar och nyckelhål
 function attachRoom1Listeners() {
