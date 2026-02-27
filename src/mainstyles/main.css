@@ -52,12 +52,17 @@ header {
   border-color: #732f2e;
 }
 
-.navBarElement {
+.falletNavBar {
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
   padding-top: 10px;
   text-shadow: 5px 5px 10px #4b1f1f;
-  font-size: 1.7rem;
+}
+.falletNavBar h1 {
+  font-size: 2rem;
+}
+.falletNavBar span {
+  font-size: 1.2rem;
 }
 
 footer {
