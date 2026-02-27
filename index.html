@@ -58,17 +58,17 @@
         <button id="about">Om oss</button>
       </div>
 
-    <div id="game">
-      <!--class="hidden"-->
-      <!-- rum1 -->
-      <div id="rum1" class="room fallet-container hidden">
-        <div id="room1-landing" class="room-landing">
-          <h2>Välkommen till Rum 1!</h2>
-          <p>
-            Spelet går ut på innan man landar på marken välja en nyckel för att
-            låsa upp dörren till nästa rum. Varje nyckel har en bokstav som
-            hjälper dig att lösa slutgiltiga hemligheten.
-          </p>
+      <div id="game">
+        <!--class="hidden"-->
+        <!-- rum1 -->
+        <div id="rum1" class="room fallet-container hidden">
+          <div id="room1-landing" class="room-landing">
+            <h2>Välkommen till Rum 1!</h2>
+            <p>
+              Spelet går ut på innan man landar på marken välja en nyckel för
+              att låsa upp dörren till nästa rum. Varje nyckel har en bokstav
+              som hjälper dig att lösa slutgiltiga hemligheten.
+            </p>
 
           <p></p>
           <p>Klicka på <b>Starta spelet</b> för att börja.</p>
@@ -114,45 +114,11 @@
         </div>
       </div>
       <!-- rum2 -->
-      <div id="rum2" class="room hidden room--storleken">
-
-        <!-- Bakgrundsbild -->
-        <img
-          src="images/Room2_bilder/Rum2bakgrund.jpg"
-          alt=""
-          class="room2-background-image"
-          aria-hidden="true"
-        />
-
-        <!-- Ord på väggen -->
-        <div class="storleken-vaggord">
-          <span class="vaggord vaggord--stor">STOR</span>
-          <span class="vaggord vaggord--mellan">MELLAN</span>
-          <span class="vaggord vaggord--liten">LITEN</span>
-        </div>
-
-        <!-- Alice -->
-        <img
-          src="images/Room2_bilder/AliceTransparent.png"
-          alt="Alice"
-          class="storleken-alice"
-        />
-
-        <!-- Instruktionstext -->
-        <p class="storleken-text">
-          Alice är för stor! <br />
-          Kan du göra henne
-          <span class="storleken-text__mindre">mindre</span>?
-        </p>
-
-        <!-- Klar-text -->
-        <p class="storleken-success hidden">
-          <strong>Bra jobbat!</strong><br />
-          Alice är lagom stor<br />
-          och kommer in genom dörren.
-        </p>
+      <div id="rum2" class="room hidden">
+        <button onclick="goToStart()">Tillbaka</button>
+        <h2>Rum 2</h2>
+        <p>Välkommen till rum 2!</p>
       </div>
-
       <!-- rum3 -->
       <div id="rum3" class="room hidden">
         <button onclick="goToStart()">Tillbaka</button>
@@ -208,7 +174,6 @@
 
         <!-- rum4 -->
         <div id="rum4" class="room hidden">
-          <button onclick="goToStart()">Tillbaka</button>
           <h2 class="game-title">Kurrgömma</h2>
           <div class="game-container">
             <img
@@ -253,7 +218,6 @@
         </div>
         <!-- rum5 -->
         <div id="rum5" class="room hidden">
-          <button onclick="goToStart()">Tillbaka</button>
           <div class="room--teaparty">
             <div class="teaparty-wrapper">
               <img
