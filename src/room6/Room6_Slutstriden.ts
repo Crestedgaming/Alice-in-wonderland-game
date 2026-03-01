@@ -43,9 +43,12 @@ const intro = document.getElementById("room6-intro");
 startBtn?.addEventListener("click", () => {
   intro?.classList.add("hidden");
 
- 
-});
 
+  shuffleLetters();
+
+
+  setInterval(shuffleLetters, 2000);
+});
   const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", checkWord);
@@ -91,3 +94,15 @@ letters.forEach((letter) => {
 });
 
 
+function shuffleLetters() {
+  const lettersContainer = document.querySelector(".letters");
+  if (!lettersContainer) return;
+
+  const lettersArray = Array.from(lettersContainer.children);
+
+  lettersArray.sort(() => Math.random() - 0.5);
+
+  lettersArray.forEach((letter) => {
+    lettersContainer.appendChild(letter);
+  });
+}
