@@ -1,3 +1,7 @@
+body {
+    font-family: Henny Penny;
+}
+
 .room--final {
     background-image: url("./Room6_bilder/QUEEN ROOM EL FINALE.png");
     background-size: cover;
@@ -77,6 +81,10 @@
     background-color: #f2e6ce;
 }
 
+.letters {
+    display: flex;
+    gap: 1rem;
+}
 
 .letter-btn {
     width: 64px;
@@ -94,9 +102,16 @@
     transition: transform 160ms ease, opacity 200ms ease;
 }
 
+#room6-start-btn {
+    color: #732f2f;
+    font-weight: bolder;
+    font-family: inherit;
+    text-transform: uppercase;
+}
+
 .letter-btn:hover,
 .letter-btn:focus {
-    transform: translateY(-6px) scale(1.03);
+    background-color: #732f2f;
     outline: none;
 
 }
@@ -126,28 +141,21 @@
 
 }
 
-.room--final {
+.submit {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #732f2f;
+    color: #f2e6ce;
+    font-family: inherit;
+}
 
-    .submit {
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
-        border: none;
-        border-radius: 8px;
-        margin-top: 20px;
-        background-color: gray;
-        color: white;
-
-        transition: all 0.3s ease;
-    }
-
-    .submit:not(:disabled) {
-        color: black;
-        cursor: pointer;
-    }
-
-    .submit:not(:disabled):hover {
-        transform: scale(1.05);
-    }
+.submit:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    border: #f2e6ce solid 3px;
 }
 
 .room--final {
@@ -207,9 +215,8 @@
     border-radius: 12px;
     text-align: center;
     max-width: 450px;
-    font-family: 'Bricolage Grotesque', sans-serif;
 
-    .p {
+    .game-completed__box h2 {
         color: #f2e6ce;
     }
 
