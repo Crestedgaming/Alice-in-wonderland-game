@@ -43,9 +43,12 @@ const intro = document.getElementById("room6-intro");
 startBtn?.addEventListener("click", () => {
   intro?.classList.add("hidden");
 
- 
-});
 
+  shuffleLetters();
+
+
+  setInterval(shuffleLetters, 1000);
+});
   const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", checkWord);
@@ -53,22 +56,28 @@ submitButton?.addEventListener("click", checkWord);
 
 
 function checkWord() {
-  const message = document.querySelector(".message") as HTMLParagraphElement;
+  const message = document.getElementById("message") as HTMLDivElement;
+  const messageBox = message.querySelector(".message-box") as HTMLDivElement;
 
-const boxes = document.querySelectorAll(".box");
- let word = "";
-boxes.forEach((box) => {
-  word += box.textContent;
-});
- 
+  const boxes = document.querySelectorAll(".box");
+  let word = "";
+
+  boxes.forEach((box) => {
+    word += box.textContent;
+  });
 
 
-  if (word === "VAKNA") {
-    message.textContent = "Grattis! Du klarade det!";
-    message.classList.remove("error");
-    message.classList.add("success");
-  } else {
-    message.textContent = "Fel ord! Du måste tillbaka.";
+if (word === "VAKNA") {
+  document.querySelectorAll(".room").forEach((room) => {
+    room.classList.add("hidden");
+  });
+
+  const completed = document.getElementById("game-completed");
+  completed?.classList.remove("hidden");
+} else {
+    message.classList.remove("hidden");
+
+    messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
     message.classList.remove("success");
     message.classList.add("error");
   }
@@ -91,3 +100,25 @@ letters.forEach((letter) => {
 });
 
 
+function shuffleLetters() {
+  const lettersContainer = document.querySelector(".letters");
+  if (!lettersContainer) return;
+
+  const lettersArray = Array.from(lettersContainer.children);
+
+  lettersArray.sort(() => Math.random() - 0.5);
+
+  lettersArray.forEach((letter) => {
+    lettersContainer.appendChild(letter);
+  });
+}
+
+const restartBtn = document.getElementById("restart-game");
+
+restartBtn?.addEventListener("click", () => {
+  document.querySelectorAll(".room").forEach((room) => {
+    room.classList.add("hidden");
+  });
+
+  document.getElementById("start")?.classList.remove("hidden");
+});

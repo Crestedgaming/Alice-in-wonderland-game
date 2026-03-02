@@ -333,14 +333,26 @@
             <button class="letter-btn">A</button>
           </div>
 
-          <button class="hint-button" disabled style="margin-top: 20px; margin-bottom: 20px">
-            Hint
-          </button>
+        
           <button class="submit" id="submit">Submit</button>
 
-          <p id="message" class="message"></p>
+         <div id="message" class="message hidden">
+  <div class="message-box"></div>
+</div>
         </div>
       </div>
+      <!-- Spelet är klart sida -->
+<div id="game-completed" class="room hidden game-completed" >
+  <div class="game-completed__overlay">
+    <div class="game-completed__box" >
+      <h2>🎉 Spelet är avklarat! 🎉</h2>
+      <p>
+        Du lyckades samla alla bokstäver och lösa slutstriden.
+      </p>
+      <button id="restart-game">Spela igen</button>
+    </div>
+  </div>
+</div>
     </div>
   </main>
   <footer>
