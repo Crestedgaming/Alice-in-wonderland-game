@@ -534,14 +534,12 @@ body {
 }
 
 #rum3 {
-  background-image: url("/public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png");
-  background-size: cover;
-  background-position: center;
+  display: block;
+  pointer-events: none;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .room3-description {
@@ -911,6 +909,10 @@ body {
   font-size: 1.2rem;
 }
 
+body {
+  font-family: Henny Penny;
+}
+
 .room--final {
   background-image: url("./Room6_bilder/QUEEN ROOM EL FINALE.png");
   background-size: cover;
@@ -925,6 +927,7 @@ body {
   text-align: center;
   padding: 0.5rem;
   min-width: 100vw;
+  min-height: 100vh;
 }
 
 .room--final .puzzle {
@@ -973,6 +976,11 @@ body {
   background-color: #f2e6ce;
 }
 
+.letters {
+  display: flex;
+  gap: 1rem;
+}
+
 .letter-btn {
   width: 64px;
   height: 64px;
@@ -989,9 +997,16 @@ body {
   transition: transform 160ms ease, opacity 200ms ease;
 }
 
+#room6-start-btn {
+  color: #732f2f;
+  font-weight: bolder;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
 .letter-btn:hover,
 .letter-btn:focus {
-  transform: translateY(-6px) scale(1.03);
+  background-color: #732f2f;
   outline: none;
 }
 
@@ -1013,33 +1028,84 @@ body {
   transition: all 0.3s ease;
 }
 
-.room--final .submit {
+.submit {
   padding: 0.8rem 2rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 8px;
-  background-color: gray;
-  color: white;
-  transition: all 0.3s ease;
+  margin-top: 20px;
+  background-color: #732f2f;
+  color: #f2e6ce;
+  font-family: inherit;
 }
-.room--final .submit:not(:disabled) {
-  color: black;
+
+.submit:hover {
+  transform: scale(1.1);
   cursor: pointer;
-}
-.room--final .submit:not(:disabled):hover {
-  transform: scale(1.05);
+  border: #f2e6ce solid 3px;
 }
 
 .room--final .message {
-  margin-top: 1.5rem;
-  font-size: 1.2rem;
-  min-height: 30px;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
 }
-.room--final .message.success {
-  color: lightgreen;
+.room--final .message-box {
+  background-color: #732f2f;
+  color: #f2e6ce;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 400px;
+  min-height: 180px;
+  margin-bottom: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.room--final .message.error {
-  color: red;
+
+.game-completed {
+  background-image: url("./Room6_bilder/Game Over Alice.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  min-width: 100vw;
+}
+
+.game-completed__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-completed__box {
+  color: #f2e6ce;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 450px;
+}
+.game-completed__box .game-completed__box h2 {
+  color: #f2e6ce;
+}
+
+.game-completed__box button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f2e6ce;
+  color: #732f2f;
+  font-weight: bold;
 }
 
 body {
