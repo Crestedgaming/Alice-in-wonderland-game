@@ -56,22 +56,24 @@ submitButton?.addEventListener("click", checkWord);
 
 
 function checkWord() {
-  const message = document.querySelector(".message") as HTMLParagraphElement;
+  const message = document.getElementById("message") as HTMLDivElement;
+  const messageBox = message.querySelector(".message-box") as HTMLDivElement;
 
-const boxes = document.querySelectorAll(".box");
- let word = "";
-boxes.forEach((box) => {
-  word += box.textContent;
-});
- 
+  const boxes = document.querySelectorAll(".box");
+  let word = "";
 
+  boxes.forEach((box) => {
+    word += box.textContent;
+  });
+
+  message.classList.remove("hidden");
 
   if (word === "VAKNA") {
-    message.textContent = "Grattis! Du klarade det!";
+    messageBox.textContent = "Grattis 🤗 Du klarade det!";
     message.classList.remove("error");
     message.classList.add("success");
   } else {
-    message.textContent = "Fel ord! Du måste tillbaka.";
+    messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
     message.classList.remove("success");
     message.classList.add("error");
   }
