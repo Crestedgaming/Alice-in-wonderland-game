@@ -97,16 +97,6 @@
 	}
 }
 .fallet-container {
-	.nyckelhalet {
-		position: absolute;
-		left: 50%; /* Example: center horizontally */
-		top: 60%; /* Example: 60% from top */
-		transform: translate(-50%, -50%);
-		width: 7%; /* Responsive width */
-		height: auto;
-		z-index: 2;
-	}
-
 	.nycklar-container {
 		position: absolute;
 		width: 100%;
@@ -172,8 +162,9 @@
 		transform: scale(1);
 		position: absolute;
 		left: 38vw;
-		top: 37.5vh;
-		z-index: 3;
+		top: 37.8vh;
+		z-index: 5;
+		pointer-events: none;
 		overflow: hidden;
 		transition:
 			left 0.3s,
@@ -249,9 +240,9 @@
 		height: 60px;
 		cursor: pointer;
 		pointer-events: auto;
-		z-index: 2;
-		top: 210%;
-		left: 53.2%;
+		z-index: 3;
+		top: 207%;
+		left: 51.1%;
 		background: transparent;
 		border: 0;
 		padding: 0;
@@ -267,7 +258,7 @@
 	.nyckelhalet:hover img,
 	.nyckelhalet:focus img,
 	.nyckelhalet:focus-visible img {
-		transform: translate(-50%, -50%) scale(1.5);
+		transform: scale(1.5);
 		border: 1px solid goldenrod;
 		box-shadow: inset 2px 8px 20px goldenrod;
 		border-radius: 50%;
