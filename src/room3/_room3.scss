@@ -1,13 +1,15 @@
 #rum3 {
-    background-image: url("/public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png");
-    background-size: cover;
-    background-position: center;
+    display: block;
+    pointer-events: none;
+    width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
+
 }
+
+
+
+
 
 .room3-description {
     font-family: "Henny Penny", system-ui;
