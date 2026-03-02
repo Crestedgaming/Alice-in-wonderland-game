@@ -47,7 +47,7 @@ startBtn?.addEventListener("click", () => {
   shuffleLetters();
 
 
-  setInterval(shuffleLetters, 2000);
+  setInterval(shuffleLetters, 1000);
 });
   const submitButton = document.getElementById("submit");
 
@@ -66,13 +66,17 @@ function checkWord() {
     word += box.textContent;
   });
 
-  message.classList.remove("hidden");
 
-  if (word === "VAKNA") {
-    messageBox.textContent = "Grattis 🤗 Du klarade det!";
-    message.classList.remove("error");
-    message.classList.add("success");
-  } else {
+if (word === "VAKNA") {
+  document.querySelectorAll(".room").forEach((room) => {
+    room.classList.add("hidden");
+  });
+
+  const completed = document.getElementById("game-completed");
+  completed?.classList.remove("hidden");
+} else {
+    message.classList.remove("hidden");
+
     messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
     message.classList.remove("success");
     message.classList.add("error");
@@ -108,3 +112,13 @@ function shuffleLetters() {
     lettersContainer.appendChild(letter);
   });
 }
+
+const restartBtn = document.getElementById("restart-game");
+
+restartBtn?.addEventListener("click", () => {
+  document.querySelectorAll(".room").forEach((room) => {
+    room.classList.add("hidden");
+  });
+
+  document.getElementById("start")?.classList.remove("hidden");
+});

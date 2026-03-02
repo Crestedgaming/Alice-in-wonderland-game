@@ -180,3 +180,50 @@
 
 
 }
+
+.game-completed {
+    background-image: url("./Room6_bilder/Game Over Alice.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+    min-width: 100vw;
+}
+
+.game-completed__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-completed__box {
+    color: #f2e6ce;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 450px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+
+    .p {
+        color: #f2e6ce;
+    }
+
+
+
+}
+
+.game-completed__box button {
+    margin-top: 1rem;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #f2e6ce;
+    color: #732f2f;
+    font-weight: bold;
+}
