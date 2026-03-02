@@ -116,11 +116,8 @@ export function initRoom3(): void {
    // Artifact hook (connect later)
    // -----------------------------
    function giveArtifact(letter: string): void {
-      // You will connect this to your footer artifact system
       console.log("Artifact received:", letter);
 
-      // Example if your group later adds global artifact system:
-      // (window as any).addArtifact(letter);
    }
 
    // -----------------------------

@@ -33,9 +33,9 @@ import "./room2/Room2_Storleken";
 		}
 	}
 
-	/* 	if (roomId === "rum3") {
-			import("./room3/Room3_the_riddle").then(m => m.initRoom3());
-		} */
+	if (roomId === "rum3") {
+		import("./room3/Room3_the_riddle").then(m => m.initRoom3());
+	}
 
 
 	// Set navBarTitle to current room's title
