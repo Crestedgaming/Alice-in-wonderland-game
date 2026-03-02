@@ -1,4 +1,9 @@
 
+.hidden {
+  display: none;
+}
+
+
 
 .game-title {
   visibility: hidden;
@@ -9,19 +14,19 @@
  display: inline-block;
 }
 
-#game-status {
+.game-status {
   position: absolute;
   left: -9999px;
 }
 
-#background-image {
+.background-image {
   display: block;
 pointer-events: none;
   width: 100vw;
   height: 100vh;
  object-fit: cover;
 }
-#backgroundimg {
+.backgroundimg {
  position: relative;
   width: 100vw;
   height: 100vh;
@@ -30,7 +35,7 @@ pointer-events: none;
   z-index: 0;
 }
 
-#cat-image {
+.cat-image {
   position: absolute;
   display: none;
   width: 310px;
@@ -39,7 +44,7 @@ pointer-events: none;
 }
 
 
-#start-button-cat {
+.start-button-cat {
   position: absolute;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
@@ -58,12 +63,12 @@ pointer-events: none;
   
 
 }
-#start-button:hover {
+.start-button-cat:hover {
   background: #f2e6ce;
   color: #732F2F;
   border-color: #732F2F;
 }
-#cat-image-1 {
+.cat-image-1 {
   position: absolute;
   z-index: 10;
   left: 32%;
@@ -74,7 +79,7 @@ pointer-events: none;
 
 
 
-#instructions {
+.instructions {
     font-family: "Bricolage Grotesque", sans-serif;
     color: #f2e6ce;
   font-optical-sizing: auto;
@@ -93,4 +98,11 @@ pointer-events: none;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -20%);
+}
+
+.no-outline-cat{
+  outline: none;
+}
+.outline-focus-cat{
+  outline: 3px solid #bf5A50;
 }

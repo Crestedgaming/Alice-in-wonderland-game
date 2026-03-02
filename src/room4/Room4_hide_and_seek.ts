@@ -19,17 +19,17 @@ const startGame = () => {
 
 // Dölj startnapp, instruktioner och statisk knapp.// 
     if (instructions) 
-      instructions.style.display = 'none';
+      instructions.classList.add('hidden');
     if (startButton) 
-      startButton.style.display = 'none';
+      startButton.classList.add('hidden');
     if (catImage1)      
-      catImage1.style.display = 'none';
+      catImage1.classList.add('hidden');
 
 // Lägg till klick-event på katten// 
     const catImage = document.getElementById('cat-image');
     if (catImage) {
       catImage.onclick = () => catchCat();
-      catImage.style.outline = 'none';
+      catImage.classList.add('no-outline-cat')
 
     }
 // starta kattens slumpmässiga visning//
@@ -45,7 +45,7 @@ function catchCat() {
   const catImage = document.getElementById('cat-image');
    if (!gameRunning || !catImage) return;
 
-   catImage.style.display = 'none';
+   catImage.classList.add('hidden'); 
    catCaughtCount++;
    catFocused = false;
     console.log("Cat clicked!");
@@ -53,7 +53,7 @@ function catchCat() {
    if (catCaughtCount === 5) {
          console.log(" spelet är slut! Katten fångad 5 gånger!");
          gameRunning = false;
-         catImage.style.display = 'none';
+         catImage.classList.add('hidden');
 
          /* Lägg till artefakt här, när katten är fångad 5 gånger */
        }
@@ -66,9 +66,9 @@ document.addEventListener('keydown', (e) => {
   const catImage = document.getElementById('cat-image');
   if (!catImage || !gameRunning) return;
 
-  if (e.code === 'Space' && catImage.style.display === 'block') {
+  if (e.code === 'Space' && !catImage.classList.contains('hidden')) {
     catFocused = true;
-    catImage.style.outline = '3px solid #bf5A50';
+    catImage.classList.add('outline-focus-cat');
     console.log("Cat focused");    
     e.preventDefault();
   }
@@ -98,25 +98,25 @@ function showCatRandom() {
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
 
-    catImage.style.left = `${randomX}px`;
-    catImage.style.top = `${randomY}px`;
-catImage.style.display = 'block';
+catImage.style.left = `${randomX}px`;
+catImage.style.top = `${randomY}px`;
+catImage.classList.remove('hidden');
 
  /* Dölj katten efter 1,5 sek och 
  visa den igen efter 1 sek om spelet fortsätter*/
 
     setTimeout(() => {
-      catImage.style.display = 'none';
-      catImage.style.outline = 'none';
+ const catImage = document.getElementById('cat-image')
+ if(!catImage) return;
       catFocused = false;
     
-      if(gameRunning && catCaughtCount <5) {
+      if(gameRunning && catCaughtCount < 5) {
         setTimeout(showCatRandom, 1000);
       }
-    },1500);
+    },1500)  
+  }
 }
-}
-     
+
 //////-Funktion-/////////
 /////Startknappen///////
 ///////////////////////

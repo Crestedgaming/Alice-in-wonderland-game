@@ -23,6 +23,8 @@ DS_Store
 *.njsproj
 *.sln
 *.sw?
+*.css.map
+
 
 
 
