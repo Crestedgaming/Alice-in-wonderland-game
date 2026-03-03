@@ -2,13 +2,13 @@
 
 // Visa landningssidan och göm spelet
 export function initRoom1() {
-	let landing = document.getElementById("room1-landing");
-	let content = document.getElementById("room1-content");
+	let landing = document.getElementById("rum1Startsida");
+	let content = document.getElementById("rum1StartsidaInnehall");
 	if (landing && content) {
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
-	let startBtn = document.getElementById("room1-start-btn");
+	let startBtn = document.getElementById("rum1StartKnapp");
 	if (startBtn) {
 		startBtn.onclick = function () {
 			if (landing && content) {
