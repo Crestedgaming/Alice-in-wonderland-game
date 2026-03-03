@@ -1,4 +1,4 @@
-import { assignRandomArtefacts } from "../utils";
+//import { assignRandomArtefacts } from "../utils";
 
 // Enkel kod för Rum 1 (nybörjarnivå)
 
