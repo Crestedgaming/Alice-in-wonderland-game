@@ -10,10 +10,39 @@ header {
   top: 0;
   z-index: 1000;
 }
-
-.falletNavBar {
+header .startGamePage {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #732f2f;
+  opacity: 0.95;
+  padding-bottom: 12px;
+}
+header .startGamePage button {
+  background: transparent;
+  border: 2px inset #f2e6ce;
+  color: #f2e6ce;
+  padding: 5px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  box-shadow: 5px 5px 10px #4b1f1f;
+  margin-inline: 5px;
+}
+header .startGamePage button:hover {
+  background: #f2e6ce;
+  color: #732f2f;
+  border-color: #732f2f;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+header .gameMenuBar {
   width: 100%;
-  height: 60px;
+  height: 70px;
   position: sticky;
   display: flex;
   justify-content: space-evenly;
@@ -24,13 +53,14 @@ header {
   padding-block: 10px;
   font-size: 1.6rem;
   border-radius: 10px 10px 0 0;
+  text-shadow: #000000 2px 2px 4px;
 }
-.falletNavBar button {
+header .gameMenuBar button {
   background: transparent;
   border: 2px inset #f2e6ce;
   color: #f2e6ce;
   padding: 5px 18px;
-  border-radius: 50px 0px 50px 0;
+  border-radius: 20px;
   cursor: pointer;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
@@ -39,29 +69,27 @@ header {
   font-size: 1rem;
   box-shadow: 5px 5px 10px #4b1f1f;
 }
-.falletNavBar button:hover {
+header .gameMenuBar button:hover {
   background: #f2e6ce;
   color: #732f2f;
   border-color: #732f2f;
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
 }
-.falletNavBar button:focus {
+header .gameMenuBar button:focus {
   background: #f2e6ce;
   color: #732f2f;
   border-color: #732f2e;
 }
-
-.falletNavBar {
+header .gameMenuBar {
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
   padding-top: 10px;
-  text-shadow: 5px 5px 10px #4b1f1f;
 }
-.falletNavBar h1 {
+header .gameMenuBar h1 {
   font-size: 2rem;
 }
-.falletNavBar span {
+header .gameMenuBar span {
   font-size: 1.2rem;
 }
 
@@ -71,7 +99,7 @@ footer {
   z-index: 1000;
 }
 
-.visaArtefakter {
+.showArtefacts {
   position: sticky;
   width: 100%;
   height: 60px;
@@ -87,7 +115,7 @@ footer {
   font-style: normal;
   border-radius: 0 0 10px 10px;
 }
-.visaArtefakter ul {
+.showArtefacts ul {
   position: relative;
   left: 100px;
   display: flex;
@@ -97,7 +125,7 @@ footer {
   height: 100%;
   margin: 10px;
 }
-.visaArtefakter li {
+.showArtefacts li {
   border: 2px inset #f2e6ce;
   border-radius: 50%;
   width: 40px;
@@ -107,14 +135,14 @@ footer {
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  text-shadow: 5px 5px 4px #4b1f1f;
+  text-shadow: #000000 2px 2px 4px;
   box-shadow: 5px 5px 4px #4b1f1f;
 }
 
-.myProgress {
+.progressBar {
   position: absolute;
   top: auto;
-  left: 140px;
+  left: 7%;
   width: 10vw;
   background-color: #ddd;
   height: 20px;
@@ -135,12 +163,12 @@ footer {
 
 /* rooms */
 /************************** Styling for desktop view of room 1 **************************/
-.fallet-container .room-landing {
+.fallContainer .room1StartPage {
   position: relative;
   width: 100vw;
   min-height: 100vh;
   z-index: 1;
-  background-image: url(/public/images/Room1_bilder/bakgrund.webp);
+  background-image: url("/images/Room1_bilder/bakgrund.webp");
   border: 50% solid transparent;
   background-size: cover;
   background-position: center;
@@ -149,9 +177,10 @@ footer {
   justify-items: center;
   gap: 10px;
 }
-.fallet-container .room-landing h2,
-.fallet-container .room-landing p {
+.fallContainer .room1StartPage h2,
+.fallContainer .room1StartPage p {
   position: relative;
+  top: -10vh;
   width: 50vw;
   color: #000;
   font-family: "Henny Penny", system-ui;
@@ -161,10 +190,9 @@ footer {
   font-size: 1.6rem;
   text-shadow: #fff 2px 2px 4px;
 }
-.fallet-container .room-landing .room1-landing-content {
+.fallContainer .room1StartPage .room1StartPageContent {
   margin: 0 auto;
   position: relative;
-  transform: translate(-50%, -50%);
   align-content: center;
   justify-items: center;
   background-color: #732f2f;
@@ -174,14 +202,14 @@ footer {
   box-shadow: 5px 5px 10px #4b1f1f;
   border: 2px inset #f2e6ce;
 }
-.fallet-container .room-landing button {
+.fallContainer .room1StartPage button {
   position: relative;
-  top: 5vh;
+  bottom: 10vh;
   background: #732f2f;
   border: 2px inset #f2e6ce;
   color: #f2e6ce;
   padding: 5px 18px;
-  border-radius: 50%;
+  border-radius: 20px;
   cursor: pointer;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
@@ -189,9 +217,8 @@ footer {
   letter-spacing: 1px;
   font-size: 1.2rem;
   box-shadow: 5px 5px 10px #4b1f1f;
-  padding: 10px 20px;
 }
-.fallet-container .room-landing button:hover {
+.fallContainer .room1StartPage button:hover {
   background: #f2e6ce;
   color: #732f2f;
   border-color: #732f2f;
@@ -199,7 +226,7 @@ footer {
   transition: transform 0.3s ease-in-out;
 }
 
-.fallet-container .background-scroll {
+.fallContainer .backgroundScroll {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -208,20 +235,20 @@ footer {
   height: 100vh;
   overflow: auto;
 }
-.fallet-container .background-container {
+.fallContainer .backgroundContainer {
   position: relative;
   width: 100%;
   max-width: 100vw;
   height: auto;
 }
-.fallet-container .background-image {
+.fallContainer .backgroundImage {
   width: 100%;
   display: block;
   height: auto;
   transition: width 0.3s, left 0.3s, top 0.3s;
 }
 
-.fallet-container .nycklar-container {
+.fallContainer .keysContainer {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -230,7 +257,7 @@ footer {
   z-index: 1;
   /* No flex, so children can be absolutely positioned */
 }
-.fallet-container .nycklar-container button {
+.fallContainer .keysContainer button {
   width: 5%;
   height: auto;
   position: absolute;
@@ -241,18 +268,18 @@ footer {
   margin: 0;
   cursor: pointer;
 }
-.fallet-container .nycklar-container button img {
+.fallContainer .keysContainer button img {
   display: block;
   width: 100%;
   height: auto;
 }
-.fallet-container button img {
+.fallContainer button img {
   transition: all 0.3s;
 }
 
-.falletMeddelande {
+.fallMessage {
   position: fixed;
-  top: 100px;
+  top: 140px;
   left: 50%;
   min-width: 300px;
   max-width: -moz-max-content;
@@ -272,12 +299,12 @@ footer {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
-.falletMeddelande p {
+.fallMessage p {
   color: #f2e6ce;
   margin: 0;
 }
 
-.fallet-container .alice-faller {
+.fallContainer .aliceFalling {
   transform: scale(1);
   position: absolute;
   left: 38vw;
@@ -287,10 +314,10 @@ footer {
   overflow: hidden;
   transition: left 0.3s, top 0.3s;
 }
-.fallet-container .alice-faller img {
+.fallContainer .aliceFalling img {
   text-shadow: #4b1f1f 2px 2px 4px;
 }
-.fallet-container .nyckel1 {
+.fallContainer .key1 {
   position: absolute;
   left: 40%;
   top: 70%;
@@ -298,7 +325,7 @@ footer {
   height: auto;
   z-index: 1;
 }
-.fallet-container .nyckel2 {
+.fallContainer .key2 {
   position: absolute;
   left: 40%;
   top: 90%;
@@ -307,7 +334,7 @@ footer {
   z-index: 1;
 }
 
-.fallet-container .nyckel3 {
+.fallContainer .key3 {
   position: absolute;
   left: 60%;
   top: 70%;
@@ -315,7 +342,7 @@ footer {
   height: auto;
   z-index: 1;
 }
-.fallet-container .nyckel4 {
+.fallContainer .key4 {
   position: absolute;
   left: 60%;
   top: 90%;
@@ -323,7 +350,7 @@ footer {
   height: auto;
   z-index: 1;
 }
-.fallet-container .nycklar-container button:hover img {
+.fallContainer .keysContainer button:hover img {
   transform: scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -333,8 +360,8 @@ footer {
   cursor: pointer;
 }
 
-.fallet-container .nycklar-container button:focus img,
-.fallet-container .nycklar-container button:focus-visible img {
+.fallContainer .keysContainer button:focus img,
+.fallContainer .keysContainer button:focus-visible img {
   transform: scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -343,7 +370,7 @@ footer {
   padding: 2px;
 }
 
-.fallet-container .nyckelhalet {
+.fallContainer .keyhole {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -357,14 +384,14 @@ footer {
   padding: 0;
   margin: 0;
 }
-.fallet-container .nyckelhalet img {
+.fallContainer .keyhole img {
   display: block;
   width: 100%;
   height: auto;
 }
-.fallet-container .nyckelhalet:hover img,
-.fallet-container .nyckelhalet:focus img,
-.fallet-container .nyckelhalet:focus-visible img {
+.fallContainer .keyhole:hover img,
+.fallContainer .keyhole:focus img,
+.fallContainer .keyhole:focus-visible img {
   transform: scale(1.5);
   border: 1px solid goldenrod;
   box-shadow: inset 2px 8px 20px goldenrod;
@@ -534,12 +561,19 @@ body {
 }
 
 #rum3 {
-  display: block;
-  pointer-events: none;
+  min-height: 100vh;
   width: 100vw;
-  height: 100vh;
-  -o-object-fit: cover;
-     object-fit: cover;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background-image: url("/public/room3_bilder/Gemini_Generated_Image_a9bxua9bxua9bxua.webp");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .room3-description {
@@ -555,6 +589,7 @@ body {
   max-width: 600px;
   margin: 20px auto;
   text-align: center;
+  transform: translateY(-200px);
 }
 
 .start-button-rum3 {
@@ -568,7 +603,7 @@ body {
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transform: translateY(-200px);
 }
 
 .start-button-rum3:hover {
@@ -584,6 +619,19 @@ body {
   margin: 20px 0;
 }
 
+.room3-h2 {
+  font-family: "Henny Penny", cursive;
+  font-size: 24px;
+  color: #8C8961;
+  text-align: center;
+  margin: 20px 0;
+  transform: translateY(-200px);
+}
+
+.hidden {
+  display: none;
+}
+
 .game-title {
   visibility: hidden;
 }
@@ -593,12 +641,12 @@ body {
   display: inline-block;
 }
 
-#game-status {
+.game-status {
   position: absolute;
   left: -9999px;
 }
 
-#background-image {
+.background-image {
   display: block;
   pointer-events: none;
   width: 100vw;
@@ -607,7 +655,7 @@ body {
      object-fit: cover;
 }
 
-#backgroundimg {
+.backgroundimg {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -617,7 +665,7 @@ body {
   z-index: 0;
 }
 
-#cat-image {
+.cat-image {
   position: absolute;
   display: none;
   width: 310px;
@@ -625,7 +673,7 @@ body {
   z-index: 20;
 }
 
-#start-button-cat {
+.start-button-cat {
   position: absolute;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
@@ -643,13 +691,13 @@ body {
   cursor: pointer;
 }
 
-#start-button:hover {
+.start-button-cat:hover {
   background: #f2e6ce;
   color: #732F2F;
   border-color: #732F2F;
 }
 
-#cat-image-1 {
+.cat-image-1 {
   position: absolute;
   z-index: 10;
   left: 32%;
@@ -657,7 +705,7 @@ body {
   transform: translate(-50%, -20%);
 }
 
-#instructions {
+.instructions {
   font-family: "Bricolage Grotesque", sans-serif;
   color: #f2e6ce;
   font-optical-sizing: auto;
@@ -676,6 +724,14 @@ body {
   top: 35%;
   left: 50%;
   transform: translate(-50%, -20%);
+}
+
+.no-outline-cat {
+  outline: none;
+}
+
+.outline-focus-cat {
+  outline: 3px solid #bf5A50;
 }
 
 :root {
