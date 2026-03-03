@@ -1,6 +1,6 @@
 /************************** Styling for desktop view of room 1 **************************/
-.fallet-container {
-	.room-landing {
+.falletBehallare {
+	.rum1Startsida {
 		position: relative;
 		width: 100vw;
 		min-height: 100vh;
@@ -27,7 +27,7 @@
 			text-shadow: #fff 2px 2px 4px;
 		}
 
-		.room1-landing-content {
+		.rum1StartsidaInnehall {
 			margin: 0 auto;
 			position: relative;
 			transform: translate(-50%, -50%);
@@ -69,8 +69,8 @@
 	}
 }
 
-.fallet-container {
-	.background-scroll {
+.falletBehallare {
+	.bakgrundsSkroll {
 		position: relative;
 		display: flex;
 		flex-direction: column;
@@ -80,14 +80,14 @@
 		overflow: auto;
 	}
 
-	.background-container {
+	.bakgrundBehallare {
 		position: relative;
 		width: 100%;
 		max-width: 100vw;
 		height: auto;
 	}
 
-	.background-image {
+	.bakgrundsBild {
 		width: 100%;
 		display: block;
 		height: auto;
@@ -98,8 +98,8 @@
 	}
 }
 
-.fallet-container {
-	.nycklar-container {
+.falletBehallare {
+	.nycklarBehallare {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -109,7 +109,7 @@
 		/* No flex, so children can be absolutely positioned */
 	}
 
-	.nycklar-container button {
+	.nycklarBehallare button {
 		width: 5%;
 		height: auto;
 		position: absolute;
@@ -121,7 +121,7 @@
 		cursor: pointer;
 	}
 
-	.nycklar-container button img {
+	.nycklarBehallare button img {
 		display: block;
 		width: 100%;
 		height: auto;
@@ -159,8 +159,8 @@
 	}
 }
 
-.fallet-container {
-	.alice-faller {
+.falletBehallare {
+	.aliceFaller {
 		transform: scale(1);
 		position: absolute;
 		left: 38vw;
@@ -196,7 +196,7 @@
 	}
 }
 
-.fallet-container {
+.falletBehallare {
 	.nyckel3 {
 		position: absolute;
 		left: 60%;
@@ -215,7 +215,7 @@
 		z-index: 1;
 	}
 
-	.nycklar-container button:hover img {
+	.nycklarBehallare button:hover img {
 		transform: scale(1.5);
 		border: 1px solid goldenrod;
 		box-shadow: inset 2px 8px 20px goldenrod;
@@ -226,8 +226,8 @@
 	}
 }
 
-.fallet-container .nycklar-container button:focus img,
-.fallet-container .nycklar-container button:focus-visible img {
+.falletBehallare .nycklarBehallare button:focus img,
+.falletBehallare .nycklarBehallare button:focus-visible img {
 	transform: scale(1.5);
 	border: 1px solid goldenrod;
 	box-shadow: inset 2px 8px 20px goldenrod;
@@ -236,7 +236,7 @@
 	padding: 2px;
 }
 
-.fallet-container {
+.falletBehallare {
 	.nyckelhalet {
 		position: absolute;
 		width: 60px;
