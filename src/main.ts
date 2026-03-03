@@ -24,18 +24,29 @@ import "./room2/Room2_Storleken";
 
 	document.getElementById(roomId)!.classList.remove("hidden");
 
-	// Initialize Room 1 logic and listeners when showing Room 1
-	if (roomId === "room1") {
-		if (typeof window.initRoom1 === "function") {
-			window.initRoom1();
-		}
+	// ✅ Initialize correct room when shown
+	switch (roomId) {
+		case "room1":
+			initRoom1();
+			break;
+		case "room2":
+			initRoom2();
+			break;
+		case "room3":
+			initRoom3();
+			break;
+		case "room4":
+			initRoom4();
+			break;
+		case "room5":
+			initRoom5();
+			break;
+		case "room6":
+			initRoom6();
+			break;
 	}
 
-	if (roomId === "rum3") {
-		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
-	}
-
-	// Set navBarTitle to current room's title
+	// Set navBarTitle
 	const navTitle = document.getElementById("rumID");
 	if (navTitle) {
 		let title = "";
@@ -43,19 +54,19 @@ import "./room2/Room2_Storleken";
 			case "room1":
 				title = "Fallet";
 				break;
-			case "rum2":
+			case "room2":
 				title = "Storleken";
 				break;
-			case "rum3":
+			case "room3":
 				title = "Gåtan";
 				break;
-			case "rum4":
+			case "room4":
 				title = "Kurragömma";
 				break;
-			case "rum5":
+			case "room5":
 				title = "Tebjudningen";
 				break;
-			case "rum6":
+			case "room6":
 				title = "Slutstriden";
 				break;
 			default:
@@ -63,6 +74,37 @@ import "./room2/Room2_Storleken";
 		}
 		navTitle.textContent = title;
 	}
+};
+
+
+
+// Set navBarTitle to current room's title
+const navTitle = document.getElementById("rumID");
+if (navTitle) {
+	let title = "";
+	switch (roomId) {
+		case "room1":
+			title = "Fallet";
+			break;
+		case "room2":
+			title = "Storleken";
+			break;
+		case "room3":
+			title = "Gåtan";
+			break;
+		case "room4":
+			title = "Kurragömma";
+			break;
+		case "room5":
+			title = "Tebjudningen";
+			break;
+		case "room6":
+			title = "Slutstriden";
+			break;
+		default:
+			title = "Escape Room";
+	}
+	navTitle.textContent = title;
 };
 
 // --- Room reset logic ---
@@ -98,3 +140,14 @@ if (resetBtn) {
 
 	document.getElementById("start")!.classList.remove("hidden");
 };
+
+function initGameFlow() {
+	window.addEventListener("ROOM_1_COMPLETED", () => showRoom("room2"));
+	window.addEventListener("ROOM_2_COMPLETED", () => showRoom("room3"));
+	window.addEventListener("ROOM_3_COMPLETED", () => showRoom("room4"));
+	window.addEventListener("ROOM_4_COMPLETED", () => showRoom("room5"));
+	window.addEventListener("ROOM_5_COMPLETED", () => showRoom("room6"));
+	window.addEventListener("ROOM_6_COMPLETED", () => showRoom("game-completed"));
+}
+
+initGameFlow();

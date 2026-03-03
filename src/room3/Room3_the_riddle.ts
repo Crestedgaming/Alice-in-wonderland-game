@@ -89,26 +89,26 @@ export function initRoom3(): void {
       let message: string;
 
       if (correctAnswers >= 2) {
-         letter = "k"; // REAL LETTER
+         letter = "k";
          message = "🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
       } else {
-         letter = "Q"; // FAKE LETTER
+         letter = "Q";
          message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
       }
 
       giveArtifact(letter);
 
       riddleContainer.innerHTML = `
-      <div class="riddle-result">
-        <h3>${message}</h3>
-        <p>Du får en bokstav: <b>${letter}</b></p>
-        <button id="room3-continue">Gå vidare</button>
-      </div>
-    `;
+		<div class="riddle-result">
+			<h3>${message}</h3>
+			<p>Du får en bokstav: <b>${letter}</b></p>
+			<button id="room3-continue">Gå vidare</button>
+		</div>
+	`;
 
       document.getElementById("room3-continue")!
          .addEventListener("click", () => {
-            (window as any).showRoom("rum4");
+            window.dispatchEvent(new Event("ROOM_3_COMPLETED"));
          });
    }
 
