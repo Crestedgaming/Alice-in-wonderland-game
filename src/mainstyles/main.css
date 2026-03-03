@@ -400,6 +400,28 @@ footer {
   padding: 2px;
 }
 
+.room1EndButton {
+  background: #732f2f;
+  border: 2px inset #f2e6ce;
+  color: #f2e6ce;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  box-shadow: 5px 5px 10px #4b1f1f;
+}
+.room1EndButton:hover {
+  background: #f2e6ce;
+  color: #732f2f;
+  border-color: #732f2f;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+
 * {
   box-sizing: border-box;
 }
