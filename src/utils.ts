@@ -1,4 +1,4 @@
-const defaultArtefactTokens = ["I", "II", "III", "IV", "V"];
+/** const defaultArtefactTokens = ["I", "II", "III", "IV", "V"];
 const awardedRooms = new Set<string>();
 
 function getArtefactSpans(): HTMLSpanElement[] {
@@ -27,7 +27,10 @@ export function updateArtefactsFooter(): void {
 	}
 }
 
-export function assignRandomArtefacts(letter: string, roomId?: string): boolean {
+export function assignRandomArtefacts(
+	letter: string,
+	roomId?: string,
+): boolean {
 	const normalizedLetter = letter.trim().toUpperCase();
 	if (!normalizedLetter) return false;
 
@@ -63,3 +66,5 @@ export function assignRandomArtefacts(letter: string, roomId?: string): boolean 
 	updateArtefactsFooter();
 	return true;
 }
+
+*/
