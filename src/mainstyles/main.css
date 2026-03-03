@@ -401,6 +401,9 @@ footer {
 }
 
 .room1EndButton {
+  position: absolute;
+  bottom: 15vh;
+  right: 5vw;
   background: #732f2f;
   border: 2px inset #f2e6ce;
   color: #f2e6ce;
