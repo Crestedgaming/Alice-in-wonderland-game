@@ -68,8 +68,18 @@ function attachRoom1Listeners() {
 	let keyA = document.getElementById("keyA");
 	let keyhole = document.getElementById("keyhole");
 	let message = document.getElementById("fallMessage");
+	let endButton = document.getElementById("room1EndButton");
 	// Ingen nyckel är vald när rummet startar.
 	window.selectedKey = null;
+
+	if (endButton) {
+		endButton.classList.add("hidden");
+		endButton.onclick = function () {
+			if (typeof window.showRoom === "function") {
+				window.showRoom("rum2");
+			}
+		};
+	}
 
 	if (keyL)
 		keyL.onclick = function () {
@@ -107,6 +117,9 @@ function attachRoom1Listeners() {
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
+				if (endButton) {
+					endButton.classList.remove("hidden");
+				}
 			} else if (message) {
 				message.innerHTML =
 					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
