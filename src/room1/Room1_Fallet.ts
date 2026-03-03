@@ -2,13 +2,13 @@
 
 // Visa landningssidan och göm spelet
 export function initRoom1() {
-	let landing = document.getElementById("rum1Startsida");
-	let content = document.getElementById("rum1Behallare");
+	let landing = document.getElementById("room1StartPage");
+	let content = document.getElementById("room1Container");
 	if (landing && content) {
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
-	let startBtn = document.getElementById("rum1StartKnapp");
+	let startBtn = document.getElementById("room1StartButton");
 	if (startBtn) {
 		startBtn.onclick = function () {
 			if (landing && content) {
@@ -24,12 +24,12 @@ window.initRoom1 = initRoom1;
 
 // Sätt event på nycklar och nyckelhål
 function attachRoom1Listeners() {
-	let keyL = document.getElementById("nyckeln-L");
-	let keyE = document.getElementById("nyckeln-E");
-	let keyV = document.getElementById("nyckeln-V");
-	let keyA = document.getElementById("nyckeln-A");
-	let keyhole = document.getElementById("nyckelhalet");
-	let message = document.getElementById("falletMeddelande");
+	let keyL = document.getElementById("keyL");
+	let keyE = document.getElementById("keyE");
+	let keyV = document.getElementById("keyV");
+	let keyA = document.getElementById("keyA");
+	let keyhole = document.getElementById("keyhole");
+	let message = document.getElementById("fallMessage");
 	window.selectedKey = null;
 
 	if (keyL)
@@ -62,8 +62,8 @@ function attachRoom1Listeners() {
 			let selectedKey = window.selectedKey;
 			if (selectedKey && message) {
 				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefaktSpan = document.querySelector("#artefakt1 span");
-				if (artefaktSpan) artefaktSpan.textContent = selectedKey;
+				let artefactsSpan = document.querySelector("#artefacts1 span");
+				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 			} else if (message) {
 				message.innerHTML =
 					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
@@ -74,7 +74,7 @@ function attachRoom1Listeners() {
 // Enkel scroll och startmeddelande
 function startRoom1GameLogic() {
 	let scrollContainer = document.querySelector(
-		"#rum1 .bakgrundsRullning",
+		"#room1 .backgroundScroll",
 	) as HTMLElement;
 	if (scrollContainer) {
 		let start = scrollContainer.scrollTop;
@@ -91,7 +91,7 @@ function startRoom1GameLogic() {
 		}
 		requestAnimationFrame(animateScroll);
 	}
-	let message = document.getElementById("falletMeddelande");
+	let message = document.getElementById("fallMessage");
 	if (message) {
 		message.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
 	}

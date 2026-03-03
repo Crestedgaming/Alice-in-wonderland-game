@@ -1,6 +1,6 @@
 /************************** Styling for desktop view of room 1 **************************/
-.falletBehallare {
-	.rum1Startsida {
+.fallContainer {
+	.room1StartPage {
 		position: relative;
 		width: 100vw;
 		min-height: 100vh;
@@ -27,7 +27,7 @@
 			text-shadow: #fff 2px 2px 4px;
 		}
 
-		.rum1StartsidaInnehall {
+		.room1StartPageContent {
 			margin: 0 auto;
 			position: relative;
 			transform: translate(-50%, -50%);
@@ -69,8 +69,8 @@
 	}
 }
 
-.falletBehallare {
-	.bakgrundsRullning {
+.fallContainer {
+	.backgroundScroll {
 		position: relative;
 		display: flex;
 		flex-direction: column;
@@ -80,14 +80,14 @@
 		overflow: auto;
 	}
 
-	.bakgrundBehallare {
+	.backgroundContainer {
 		position: relative;
 		width: 100%;
 		max-width: 100vw;
 		height: auto;
 	}
 
-	.bakgrundsBild {
+	.backgroundImage {
 		width: 100%;
 		display: block;
 		height: auto;
@@ -98,8 +98,8 @@
 	}
 }
 
-.falletBehallare {
-	.nycklarBehallare {
+.fallContainer {
+	.keysContainer {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -109,7 +109,7 @@
 		/* No flex, so children can be absolutely positioned */
 	}
 
-	.nycklarBehallare button {
+	.keysContainer button {
 		width: 5%;
 		height: auto;
 		position: absolute;
@@ -121,7 +121,7 @@
 		cursor: pointer;
 	}
 
-	.nycklarBehallare button img {
+	.keysContainer button img {
 		display: block;
 		width: 100%;
 		height: auto;
@@ -132,7 +132,7 @@
 	}
 }
 
-.falletMeddelande {
+.fallMessage {
 	position: fixed;
 	top: 100px;
 	left: 50%;
@@ -159,8 +159,8 @@
 	}
 }
 
-.falletBehallare {
-	.aliceFaller {
+.fallContainer {
+	.aliceFalling {
 		transform: scale(1);
 		position: absolute;
 		left: 38vw;
@@ -177,7 +177,7 @@
 		}
 	}
 
-	.nyckel1 {
+	.key1 {
 		position: absolute;
 		left: 40%;
 		top: 70%;
@@ -186,7 +186,7 @@
 		z-index: 1;
 	}
 
-	.nyckel2 {
+	.key2 {
 		position: absolute;
 		left: 40%;
 		top: 90%;
@@ -196,8 +196,8 @@
 	}
 }
 
-.falletBehallare {
-	.nyckel3 {
+.fallContainer {
+	.key3 {
 		position: absolute;
 		left: 60%;
 		top: 70%;
@@ -206,7 +206,7 @@
 		z-index: 1;
 	}
 
-	.nyckel4 {
+	.key4 {
 		position: absolute;
 		left: 60%;
 		top: 90%;
@@ -215,7 +215,7 @@
 		z-index: 1;
 	}
 
-	.nycklarBehallare button:hover img {
+	.keysContainer button:hover img {
 		transform: scale(1.5);
 		border: 1px solid goldenrod;
 		box-shadow: inset 2px 8px 20px goldenrod;
@@ -226,8 +226,8 @@
 	}
 }
 
-.falletBehallare .nycklarBehallare button:focus img,
-.falletBehallare .nycklarBehallare button:focus-visible img {
+.fallContainer .keysContainer button:focus img,
+.fallContainer .keysContainer button:focus-visible img {
 	transform: scale(1.5);
 	border: 1px solid goldenrod;
 	box-shadow: inset 2px 8px 20px goldenrod;
@@ -236,8 +236,8 @@
 	padding: 2px;
 }
 
-.falletBehallare {
-	.nyckelhalet {
+.fallContainer {
+	.keyhole {
 		position: absolute;
 		width: 60px;
 		height: 60px;
@@ -252,15 +252,15 @@
 		margin: 0;
 	}
 
-	.nyckelhalet img {
+	.keyhole img {
 		display: block;
 		width: 100%;
 		height: auto;
 	}
 
-	.nyckelhalet:hover img,
-	.nyckelhalet:focus img,
-	.nyckelhalet:focus-visible img {
+	.keyhole:hover img,
+	.keyhole:focus img,
+	.keyhole:focus-visible img {
 		transform: scale(1.5);
 		border: 1px solid goldenrod;
 		box-shadow: inset 2px 8px 20px goldenrod;

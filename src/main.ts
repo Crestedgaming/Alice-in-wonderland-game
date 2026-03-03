@@ -16,30 +16,29 @@ import "./room2/Room2_Storleken";
 (window as any).showRoom = function (roomId: string) {
 	document.getElementById("start")!.classList.add("hidden");
 
-	document.querySelectorAll(".room, .rum1").forEach((room) => {
+	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});
 
 	document.getElementById(roomId)!.classList.remove("hidden");
 
 	// Initialize Room 1 logic and listeners when showing Room 1
-	if (roomId === "rum1") {
+	if (roomId === "room1") {
 		if (typeof window.initRoom1 === "function") {
 			window.initRoom1();
 		}
 	}
 
 	if (roomId === "rum3") {
-		import("./room3/Room3_the_riddle").then(m => m.initRoom3());
+		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
 	}
-
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
 	if (navTitle) {
 		let title = "";
 		switch (roomId) {
-			case "rum1":
+			case "room1":
 				title = "Fallet";
 				break;
 			case "rum2":
