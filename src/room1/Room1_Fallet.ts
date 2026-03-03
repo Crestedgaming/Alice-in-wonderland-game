@@ -68,7 +68,7 @@ function attachRoom1Listeners() {
 			if (selectedKey && message) {
 				// Visar bekräftelse och skriver bokstaven till artefaktplatsen.
 				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefactsSpan = document.querySelector("#artefacts1 span");
+				let artefactsSpan = document.querySelector("#artefact1 span");
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 			} else if (message) {
 				message.innerHTML =
