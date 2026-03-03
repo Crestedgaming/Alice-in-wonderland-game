@@ -96,3 +96,30 @@ if (resetBtn) {
 	document.getElementById("start")!.classList.remove("hidden");
 };
 
+function initGameFlow() {
+	window.addEventListener("ROOM_1_COMPLETED", () =>
+		(window as any).showRoom("rum2")
+	);
+
+	window.addEventListener("ROOM_2_COMPLETED", () =>
+		(window as any).showRoom("rum3")
+	);
+
+	window.addEventListener("ROOM_3_COMPLETED", () =>
+		(window as any).showRoom("rum4")
+	);
+
+	window.addEventListener("ROOM_4_COMPLETED", () =>
+		(window as any).showRoom("rum5")
+	);
+
+	window.addEventListener("ROOM_5_COMPLETED", () =>
+		(window as any).showRoom("rum6")
+	);
+
+	window.addEventListener("ROOM_6_COMPLETED", () =>
+		(window as any).showRoom("start")
+	);
+}
+
+initGameFlow();
