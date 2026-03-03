@@ -9,6 +9,8 @@ header {
 		align-items: center;
 		background-color: #732f2f;
 		opacity: 0.95;
+		padding-bottom: 12px;
+		
 
 		button {
 			background: transparent;
@@ -23,6 +25,7 @@ header {
 			letter-spacing: 1px;
 			font-size: 1rem;
 			box-shadow: 5px 5px 10px #4b1f1f;
+			margin-inline: 5px;
 
 			&:hover {
 				background: #f2e6ce;
@@ -36,7 +39,7 @@ header {
 
 	.gameMenuBar {
 		width: 100%;
-		height: 100px;
+		height: 70px;
 		position: sticky;
 		display: flex;
 		justify-content: space-evenly;
