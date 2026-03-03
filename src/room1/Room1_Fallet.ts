@@ -1,3 +1,5 @@
+import { assignRandomArtefacts } from "../utils";
+
 // Enkel kod för Rum 1 (nybörjarnivå)
 
 // Visa landningssidan och göm spelet
@@ -61,9 +63,12 @@ function attachRoom1Listeners() {
 		keyhole.onclick = function () {
 			let selectedKey = window.selectedKey;
 			if (selectedKey && message) {
-				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefactsSpan = document.querySelector("#artefacts1 span");
-				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
+				const wasAdded = assignRandomArtefacts(selectedKey, "room1");
+				if (wasAdded) {
+					message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
+				} else {
+					message.innerHTML = "<p>Du har redan samlat en artefakt i rum 1.</p>";
+				}
 			} else if (message) {
 				message.innerHTML =
 					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
