@@ -8,7 +8,7 @@ function startRoom1Timer() {
 
 	if (room1TimerId !== null) window.clearInterval(room1TimerId);
 
-	const roomTimerEl = document.getElementById("falletTimerRum");
+	const roomTimerEl = document.getElementById("gameTimerEachRoom");
 	room1TimerId = window.setInterval(() => {
 		room1ElapsedMs = Date.now() - room1StartTime;
 		if (roomTimerEl)
