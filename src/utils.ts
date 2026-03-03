@@ -1,7 +1,7 @@
-/** export function assignRandomArtefakt(letter: string) {
-	const artefaktSpans = document.querySelectorAll("#visaArtefakter li span");
+/** export function assignRandomArtefacts (letter: string) {
+	const artefactsSpan = document.querySelectorAll("#showArtefacts li span");
 	// Only assign to artefakts that still have their default value (not already set)
-	const available = Array.from(artefaktSpans).filter(
+	const available = Array.from(artefactsSpan).filter(
 		(span) => !["L", "E", "V", "A", "K", "N"].includes(span.textContent || ""),
 	);
 	if (available.length > 0) {
