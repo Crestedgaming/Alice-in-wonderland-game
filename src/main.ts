@@ -16,7 +16,7 @@ import "./room2/Room2_Storleken";
 (window as any).showRoom = function (roomId: string) {
 	document.getElementById("start")!.classList.add("hidden");
 
-	document.querySelectorAll(".room").forEach((room) => {
+	document.querySelectorAll(".room, .rum1").forEach((room) => {
 		room.classList.add("hidden");
 	});
 
@@ -24,12 +24,8 @@ import "./room2/Room2_Storleken";
 
 	// Initialize Room 1 logic and listeners when showing Room 1
 	if (roomId === "rum1") {
-		// Import is already done at top, so just call the function
-		// @ts-ignore
 		if (typeof window.initRoom1 === "function") {
 			window.initRoom1();
-		} else if (typeof (window as any).initRoom1 === "function") {
-			(window as any).initRoom1();
 		}
 	}
 
