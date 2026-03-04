@@ -35,6 +35,10 @@ import "./room2/Room2_Storleken";
 		import("./room2/Room2_Storleken").then((m) => m.initRoom2());
 	}
 
+	if (roomId === "rum4") {
+		import("./room4/Room4_hide_and_seek").then((m) => m.initRoom4());
+	}
+
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
 	if (navTitle) {
