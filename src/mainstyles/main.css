@@ -236,7 +236,8 @@ footer {
 .fallContainer .room1StartPage p {
   position: relative;
   top: -10vh;
-  width: 50vw;
+  left: 25vw;
+  width: 50%;
   color: #000;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
