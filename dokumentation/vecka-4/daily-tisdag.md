@@ -2,7 +2,7 @@
 
 Dagens scrum master: Amanda
 
-## Namn: Amanda Andersson
+## Namn: Mohammed Amin Yasin
 
 - Närvarande: Ja
 
