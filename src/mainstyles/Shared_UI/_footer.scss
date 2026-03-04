@@ -21,7 +21,6 @@ footer {
 
 	ul {
 		position: relative;
-		left: 100px;
 
 		display: flex;
 		flex-direction: row;
@@ -49,7 +48,7 @@ footer {
 .progressBar {
 	position: absolute;
 	top: 35%;
-	left: 6%;
+	left: 3%;
 	transform: translateY(-50%);
 	width: 10vw;
 	min-width: 120px;
