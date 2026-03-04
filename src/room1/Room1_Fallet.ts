@@ -22,6 +22,11 @@ export function initRoom1() {
 			startRoom1GameLogic();
 		};
 	}
+	const nextBtn = document.getElementById("room1-next");
+
+	nextBtn?.addEventListener("click", () => {
+		window.dispatchEvent(new Event("ROOM_1_COMPLETED"));
+	});
 }
 window.initRoom1 = initRoom1;
 
@@ -68,8 +73,11 @@ function attachRoom1Listeners() {
 			if (selectedKey && message) {
 				// Visar bekräftelse och skriver bokstaven till artefaktplatsen.
 				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefactsSpan = document.querySelector("#artefacts1 span");
+				let artefactsSpan = document.querySelector("#artefact1 span");
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
+				// 👇 SHOW NEXT ROOM BUTTON
+				const nextBtn = document.getElementById("room1-next");
+				nextBtn?.classList.remove("hidden");
 			} else if (message) {
 				message.innerHTML =
 					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
