@@ -31,6 +31,10 @@ import "./room2/Room2_Storleken";
 		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
 	}
 
+	if (roomId === "rum2") {
+		import("./room2/Room2_Storleken").then((m) => m.initRoom2());
+	}
+
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
 	if (navTitle) {
