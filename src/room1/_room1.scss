@@ -71,7 +71,7 @@
 		flex-direction: column;
 		align-items: center; // or flex-start, flex-end, etc.
 		width: 100vw;
-		height: 100vh;
+		height: 105vh;
 		overflow: auto;
 	}
 
@@ -158,7 +158,7 @@
 		transform: scale(1);
 		position: absolute;
 		left: 38vw;
-		top: 37.8vh;
+		top: 33vh;
 		z-index: 5;
 		pointer-events: none;
 		overflow: hidden;
@@ -232,14 +232,15 @@
 
 .fallContainer {
 	.keyhole {
-		position: absolute;
+		position: relative;
 		width: 60px;
 		height: 60px;
 		cursor: pointer;
 		pointer-events: auto;
 		z-index: 3;
-		top: 207%;
-		left: 51.1%;
+		top: -724%;
+		left: 125%;
+		transform: translate(-50%, -50%);
 		background: transparent;
 		border: 0;
 		padding: 0;
