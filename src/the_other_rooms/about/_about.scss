@@ -1,0 +1,55 @@
+/* hela about-sidan */
+#about-us-page {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* container som håller sektionerna */
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.about-container section {
+  padding: 60px 40px;
+}
+
+#about-game {
+  background-color: #f8e8dc;
+}
+
+#about-us {
+  background-color: #e4f0f5;
+}
+
+#about-team {
+  background-color: #f0f5e4;
+}
+
+#teknik {
+  background-color: #efe4f5;
+}
+
+.about-container h2,
+.about-container h3 {
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+#about-team ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#about-team li {
+  margin-bottom: 6px;
+}
+
+section {
+  border-bottom: 4px solid white;
+}

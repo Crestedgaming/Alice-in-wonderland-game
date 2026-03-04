@@ -45,7 +45,7 @@
 
   <main>
     <!-- Startsida -->
-    <div id="home-page">
+    <div id="home-page" class="room">
       <button id="start-button">Starta spelet</button>
       <button id="highscore">Highscore</button>
       <button onclick="showRoom('about-us-page')">Om oss</button>
@@ -53,6 +53,42 @@
 
     <div id="game">
       <!--class="hidden"-->
+
+<!-- Om oss sida -->
+
+<div id="about-us-page" class="room hidden"> 
+  <div class="about-container">
+
+    <section id="about-game">
+  <h2>Om spelet</h2>
+  <p>Spelet är ett interaktivt mysterie där du ska lösa pussel och samla bokstäver för att avsluta spelet.</p>
+</section>
+  <section id="about-us">
+    <h3>Om oss</h3>
+    <p>Vi är ett team av passionerade spelutvecklare som älskar att skapa unika och engagerande spelupplevelser. Vårt mål är att underhålla och utmana spelare genom innovativa koncept och välgenomtänkta pussel.</p>
+
+    </section>
+    <section id="about-team">
+    <h3>Teamet</h3>
+    <ul>
+      <li><strong>Alex:</strong> Speldesigner och berättare</li>
+      <li><strong>Amanda:</strong> Programmerare och teknisk ledare</li>
+      <li><strong>Marcus:</strong> Grafisk designer och illustratör</li>
+      <li><strong>Sandra:</strong> Ljuddesigner och kompositör</li>
+      <li><strong>Mohammed:</strong> Testare och kvalitetsansvarig</li>
+      <li><strong>Jennie:</strong> Testare och kvalitetsansvarig</li>
+</ul>
+</section>
+      <section id="teknik">
+
+<h3>Tekniker</h3>
+
+<p>Spelet är byggt med HTML, CSS och JavaScript. Vi har använt moderna webbteknologier för att skapa en interaktiv och engagerande upplevelse.</p>
+     
+    </section>
+    </div>
+    </div>
+
       <!-- rum1 -->
       <div id="room1" class="room room1 fallContainer hidden">
         <div id="room1StartPage" class="room1StartPage">
@@ -208,7 +244,8 @@
         </div>
 
         <!-- SPELET -->
-        <div class="teaparty-game" id="teaparty-game"> <div class="room--teaparty">
+       <div class="teaparty-game" id="teaparty-game">
+  <div class="room--teaparty">
           <div class="teaparty-wrapper">
             <img src="public/room5_bilder/teaparty_backgroundpic.jpg" alt="" class="teaparty__background"
               aria-hidden="true" />
@@ -351,38 +388,6 @@
           </div>
         </div>
       </div>
-   
-     <!----ABOUT US PAGE-->
-<div id="about-us-page" class="room hidden"> 
-  <div class="about-container">
-  <h2>Om spelet</h2>
-  <p>Spelet är ett interaktivt mysterie där du ska lösa pussel och samla bokstäver för att avsluta spelet.</p>
-
-  <section id="about-us">
-    <h3>Om oss</h3>
-    <p>Vi är ett team av passionerade spelutvecklare som älskar att skapa unika och engagerande spelupplevelser. Vårt mål är att underhålla och utmana spelare genom innovativa koncept och välgenomtänkta pussel.</p>
-
-    </section>
-    <section id="about-team">
-    <h3>Teamet</h3>
-    <ul>
-      <li><strong>Alex:</strong> Speldesigner och berättare</li>
-      <li><strong>Amanda:</strong> Programmerare och teknisk ledare</li>
-      <li><strong>Marcus:</strong> Grafisk designer och illustratör</li>
-      <li><strong>Sandra:</strong> Ljuddesigner och kompositör</li>
-      <li><strong>Mohammed:</strong> Testare och kvalitetsansvarig</li>
-      <li><strong>Jennie:</strong> Testare och kvalitetsansvarig</li>
-</ul>
-</section>
-      <section id="teknik">
-
-<h3>Tekniker</h3>
-
-<p>Spelet är byggt med HTML, CSS och JavaScript. Vi har använt moderna webbteknologier för att skapa en interaktiv och engagerande upplevelse.</p>
-     
-    </section>
-    </div>
-    </div>
 
   </main>
   <footer>
