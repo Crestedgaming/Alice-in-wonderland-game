@@ -37,6 +37,7 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
+import { showGameCompleted } from "../the_other_rooms/game_over/game_over"; 
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 
@@ -68,12 +69,7 @@ function checkWord() {
 
 
 if (word === "VAKNA") {
-  document.querySelectorAll(".room").forEach((room) => {
-    room.classList.add("hidden");
-  });
-
-  const completed = document.getElementById("game-completed");
-  completed?.classList.remove("hidden");
+  showGameCompleted();
 } else {
     message.classList.remove("hidden");
 
