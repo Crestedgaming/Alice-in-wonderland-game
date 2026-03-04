@@ -1,0 +1,25 @@
+#highscore-page {
+
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+ background: url("/images/highscore_pictures/highscore-background.webp") center / cover no-repeat;
+}
+
+.hs-heading {
+    position: absolute;
+    font-family: "Henny Penny", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 2rem;
+  z-index: 20;
+  left: 45%;
+   top: 250px; 
+transform: translateX(-50%);
+}
+
+
+

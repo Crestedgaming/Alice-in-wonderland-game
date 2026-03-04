@@ -29,39 +29,29 @@
         </label>
       </nav>
     </div>
-    <div id="start">
+  <div id="start">
       <button onclick="showRoom('rum1')">Rum 1</button>
       <button onclick="showRoom('rum2')">Rum 2</button>
       <button onclick="showRoom('rum3')">Rum 3</button>
       <button onclick="showRoom('rum4')">Rum 4</button>
       <button onclick="showRoom('rum5')">Rum 5</button>
       <button onclick="showRoom('rum6')">Rum 6</button>
-    </div>
+      </div>
+
+ 
+  
     
-    <div id="home-page">
-      <button id="start-button">Starta spelet</button>
-      <button id="highscore">Highscore</button>
-      <button id="about">Om oss</button>
-    </div>
+   
   </header>
 
   <main>
     <!-- Startsida -->
 
-   <!---<div id="start">
-      <button onclick="showRoom('rum1')">Rum 1</button>
-      <button onclick="showRoom('rum2')">Rum 2</button>
-      <button onclick="showRoom('rum3')">Rum 3</button>
-      <button onclick="showRoom('rum4')">Rum 4</button>
-      <button onclick="showRoom('rum5')">Rum 5</button>
-      <button onclick="showRoom('rum6')">Rum 6</button>
-    </div>
-
     <div id="home-page">
       <button id="start-button">Starta spelet</button>
       <button id="highscore">Highscore</button>
       <button id="about">Om oss</button>
-    </div> ------>
+    </div> 
 
     <div id="game">
       <!--class="hidden"-->
@@ -352,6 +342,17 @@
           </div>
         </div>
       </div>
+      </div>
+
+      <!--Highscore-->
+    <div id="highscore-page" class="room hidden">
+    <h2 class="hs-heading"> Highscore</h2>
+    
+    <ul id="highscore-list"></ul>
+    <button id="close-highscore">Tillbaka</button>
+    </div>
+
+
       <!-- Spelet är klart sida -->
       <div id="game-completed" class="room hidden game-completed">
         <div class="game-completed__overlay">
@@ -378,12 +379,7 @@
         <li id="artefakt4" class="artefakter"><span>IV</span></li>
         <li id="artefakt5" class="artefakter"><span>V</span></li>
       </ul>
-    </div>
-    <div id="highscore-page" class="hidden">
-    <h2> Highscore</h2>
-    <ul id="highscore-list"></ul>
-    <button id="close-highscore">Tillbaka</button>
-    </div>
+    
     
   </footer>
   <script type="module" src="/src/main.ts"></script>

@@ -38,7 +38,19 @@ function displayHighscores () {
     .map(entry =>`<li>${entry.name}: ${entry.score} sekunder</li>`)
         .join(""); */ 
 
-    
 
+
+function highScoreBtn() {
+  const highScoreBtn = document.getElementById('highscore');
+  if (highScoreBtn) {
+highScoreBtn.addEventListener('click', () => {
+    console.log("Visa highscore");
+    document.getElementById("highscore-page")?.classList.remove("hidden");
+    document.getElementById("home-page")?.classList.add("hidden");
+    displayHighscores();
+});
+  }
+}
+highScoreBtn();
 
 
