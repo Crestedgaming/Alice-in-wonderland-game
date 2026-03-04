@@ -48,7 +48,7 @@ startBtn?.addEventListener("click", () => {
   shuffleLetters();
 
 
-  setInterval(shuffleLetters, 1000);
+  setInterval(shuffleLetters, 3000);
 });
   const submitButton = document.getElementById("submit");
 
@@ -109,12 +109,3 @@ function shuffleLetters() {
   });
 }
 
-const restartBtn = document.getElementById("restart-game");
-
-restartBtn?.addEventListener("click", () => {
-  document.querySelectorAll(".room").forEach((room) => {
-    room.classList.add("hidden");
-  });
-
-  document.getElementById("start")?.classList.remove("hidden");
-});
