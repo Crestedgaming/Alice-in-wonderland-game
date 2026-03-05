@@ -1,6 +1,7 @@
 let room1StartTime = 0;
 let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
+let room1Unlocked = false;
 
 function startRoom1Timer() {
 	room1StartTime = Date.now();
@@ -68,13 +69,22 @@ function attachRoom1Listeners() {
 	let keyA = document.getElementById("keyA");
 	let keyhole = document.getElementById("keyhole");
 	let message = document.getElementById("fallMessage");
-	let endButton = document.getElementById("room1EndButton");
+	let endButton =
+		document.getElementById("room1-next") ||
+		document.getElementById("room1EndButton");
 	// Ingen nyckel är vald när rummet startar.
 	window.selectedKey = null;
+	room1Unlocked = false;
 
 	if (endButton) {
 		endButton.classList.add("hidden");
 		endButton.onclick = function () {
+			if (room1Unlocked && typeof window.markRoomFinished === "function") {
+				window.markRoomFinished("room1");
+			}
+			if (room1Unlocked && typeof window.updateFooterContext === "function") {
+				window.updateFooterContext("room1", true);
+			}
 			if (typeof window.showRoom === "function") {
 				window.showRoom("rum2");
 			}
@@ -117,6 +127,7 @@ function attachRoom1Listeners() {
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
+				room1Unlocked = true;
 				if (endButton) {
 					endButton.classList.remove("hidden");
 				}
