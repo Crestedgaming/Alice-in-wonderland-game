@@ -151,7 +151,7 @@ function startRoom1GameLogic() {
 
 		const startFallingAnimation = () => {
 			let start = scrollContainer.scrollTop;
-			let duration = 15000;
+			let duration = 12000;
 			let startTime = performance.now();
 
 			// Mjuk animation som scrollar från toppen till botten.
