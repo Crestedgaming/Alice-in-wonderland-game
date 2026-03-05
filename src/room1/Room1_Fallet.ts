@@ -134,20 +134,38 @@ function startRoom1GameLogic() {
 		"#room1 .backgroundScroll",
 	) as HTMLElement;
 	if (scrollContainer) {
-		let start = scrollContainer.scrollTop;
-		let target = scrollContainer.scrollHeight;
-		let duration = 15000;
-		let startTime = performance.now();
-		// Mjuk animation som scrollar från toppen till botten.
-		function animateScroll(currentTime: number) {
-			let elapsed = currentTime - startTime;
-			let progress = Math.min(elapsed / duration, 1);
-			scrollContainer.scrollTop = start + (target - start) * progress;
-			if (progress < 1) {
-				requestAnimationFrame(animateScroll);
+		const backgroundImage = scrollContainer.querySelector(
+			".backgroundImage",
+		) as HTMLImageElement | null;
+
+		const startFallingAnimation = () => {
+			let start = scrollContainer.scrollTop;
+			let duration = 15000;
+			let startTime = performance.now();
+
+			// Mjuk animation som scrollar från toppen till botten.
+			function animateScroll(currentTime: number) {
+				let elapsed = currentTime - startTime;
+				let progress = Math.min(elapsed / duration, 1);
+				// Beräkna maxscroll löpande så olika browsers och sen bildladdning blir stabilt.
+				let maxScroll =
+					scrollContainer.scrollHeight - scrollContainer.clientHeight;
+				scrollContainer.scrollTop = start + (maxScroll - start) * progress;
+				if (progress < 1) {
+					requestAnimationFrame(animateScroll);
+				}
 			}
+
+			requestAnimationFrame(animateScroll);
+		};
+
+		if (backgroundImage && !backgroundImage.complete) {
+			backgroundImage.addEventListener("load", startFallingAnimation, {
+				once: true,
+			});
+		} else {
+			startFallingAnimation();
 		}
-		requestAnimationFrame(animateScroll);
 	}
 	let message = document.getElementById("fallMessage");
 	if (message) {
