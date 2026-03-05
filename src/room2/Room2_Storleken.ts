@@ -98,17 +98,28 @@
  *
  */
 
-const alice = document.querySelector(
-  ".storleken-alice"
-) as HTMLElement | null;
 
-const mindre = document.querySelector(
-  ".storleken-text__mindre"
-) as HTMLElement | null;
+// start knapp
+const room2StartButton = document.querySelector<HTMLButtonElement>(
+  "#room2-start-button"
+);
+const overlay = document.getElementById("room2-overlay");
 
-const successText = document.querySelector(
-  ".storleken-success"
-) as HTMLElement | null;
+room2StartButton?.addEventListener("click", () => {
+  // göm overlay + start-knappen
+  overlay?.classList.add("hidden");
+  room2StartButton.classList.add("hidden");
+});
+
+/* =========================
+   RUM 2 - DIN LOGIK
+   ========================= */
+
+const alice = document.querySelector(".size-alice") as HTMLElement | null;
+
+const mindre = document.querySelector(".size-text__smaller") as HTMLElement | null;
+
+const successText = document.querySelector(".size-success") as HTMLElement | null;
 
 // 3 = jättestor, 0 = lagom
 let sizeLevel = 3;
@@ -150,7 +161,7 @@ if (mindre) {
 }
 
 // väggord försvinner när man klickar
-const vaggord = document.querySelectorAll(".vaggord");
+const vaggord = document.querySelectorAll(".wall-word");
 
 vaggord.forEach((ord) => {
   ord.addEventListener("click", () => {
@@ -158,14 +169,16 @@ vaggord.forEach((ord) => {
 
     // kolla hur många som är kvar
     const remaining = document.querySelectorAll(
-      ".vaggord:not([style*='display: none'])"
+      ".wall-word:not([style*='display: none'])"
     );
 
     if (remaining.length === 0 && mindre) {
-  mindre.classList.add("pulse");
-}
+      mindre.classList.add("pulse");
+    }
   });
 });
 
 // startläge
 updateSize();
+
+export {};
