@@ -1,17 +1,24 @@
+/* Footer theme colors */
 $brand-red: #732f2f;
 $cream: #f2e6ce;
 $shadow-brown: #4b1f1f;
 
+/* Footer layout constants */
+$footer-height: 60px;
+$artifact-size: 45px;
+
+/* Footer container */
 footer {
 	position: sticky;
 	bottom: 0;
 	z-index: 1000;
 }
 
+/* Artifact strip */
 .showArtifacts {
 	position: sticky;
 	width: 100%;
-	height: 60px;
+	height: $footer-height;
 	bottom: 0;
 	padding-block: 10px;
 	background: $brand-red;
@@ -36,8 +43,8 @@ footer {
 	li {
 		border: 2px inset $cream;
 		border-radius: 50%;
-		width: 45px;
-		height: 45px;
+		width: $artifact-size;
+		height: $artifact-size;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -68,6 +75,7 @@ footer {
 	}
 }
 
+/* Progress bar track */
 .progressBar {
 	position: absolute;
 	top: 35%;
@@ -84,6 +92,7 @@ footer {
 	border: $shadow-brown 2px inset;
 }
 
+/* Progress bar fill */
 .myBar {
 	width: 0%;
 	height: 100%;
