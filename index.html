@@ -14,50 +14,48 @@
 <body>
   <header>
     <div>
-      <nav id="falletNavBar" class="falletNavBar">
+      <nav id="gameMenuBar" class="gameMenuBar">
         <label>
           <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
             <span>Börja om</span>
           </button>
         </label>
-        <span id="falletTimerTotalt" class="navBarElement">Tid i rummet: 00.00</span>
-        <h1 id="rumID" class="navBarElement">Alice i underlandet</h1>
-        <span id="falletTimerRum" class="navBarElement">Totala tid: 00.00</span>
+        <span id="gameTimerTotalt" class="gameMenuBarElement">Total speltid: 00.00</span>
+        <h1 id="rumID" class="gameMenuBarElement">Alice i underlandet</h1>
+        <span id="gameTimerEachRoom" class="gameMenuBarElement">Tid i rummet: 00.00</span>
 
         <label>
           <button onclick="goToStart()"><span>Gå tillbaka</span></button>
         </label>
       </nav>
-    </div>
-  <div id="start">
-      <button onclick="showRoom('rum1')">Rum 1</button>
-      <button onclick="showRoom('rum2')">Rum 2</button>
-      <button onclick="showRoom('rum3')">Rum 3</button>
-      <button onclick="showRoom('rum4')">Rum 4</button>
-      <button onclick="showRoom('rum5')">Rum 5</button>
-      <button onclick="showRoom('rum6')">Rum 6</button>
-      </div>
+      <div class="startGamePage">
 
- 
-  
-    
-   
+        <div id="start">
+          <button onclick="showRoom('room1')">Rum 1</button>
+          <button onclick="showRoom('rum2')">Rum 2</button>
+          <button onclick="showRoom('rum3')">Rum 3</button>
+          <button onclick="showRoom('rum4')">Rum 4</button>
+          <button onclick="showRoom('rum5')">Rum 5</button>
+          <button onclick="showRoom('rum6')">Rum 6</button>
+        </div>
+      </div>
+    </div>
+
   </header>
 
   <main>
     <!-- Startsida -->
-
     <div id="home-page">
       <button id="start-button">Starta spelet</button>
       <button id="highscore">Highscore</button>
       <button id="about">Om oss</button>
-    </div> 
+    </div>
 
     <div id="game">
       <!--class="hidden"-->
       <!-- rum1 -->
-      <div id="rum1" class="rum1 falletBehallare hidden">
-        <div id="rum1Startsida" class="rum1Startsida">
+      <div id="room1" class="room room1 fallContainer hidden">
+        <div id="room1StartPage" class="room1StartPage">
           <h2>Välkommen till Rum 1!</h2>
           <p>
             Spelet går ut på innan man landar på marken välja en nyckel för
@@ -67,40 +65,41 @@
 
           <p></p>
           <p>Klicka på <b>Starta spelet</b> för att börja.</p>
-          <button id="rum1StartKnapp">Starta spelet</button>
+          <button id="room1StartButton">Starta spelet</button>
         </div>
-        <div id="rum1Behallare" class="hidden">
-          <div id="falletMeddelande" class="falletMeddelande"></div>
-          <div class="background-scroll">
-            <img class="background-image" src="/images/Room1_bilder/bakgrund.webp"
+        <div id="room1Container" class="hidden">
+          <div id="fallMessage" class="fallMessage"></div>
+          <div class="backgroundScroll">
+            <img class="backgroundImage" src="./public/Room1_bilder/bakgrund.webp"
               alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-            <div class="nyckelhal-container">
-              <button id="nyckelhalet" class="nyckelhalet" type="button" aria-label="Lås upp dörren med vald nyckel">
-                <img src="/images/Room1_bilder/nyckelhalet.gif"
+            <div class="keyholeContainer">
+              <button id="keyhole" class="keyhole" type="button" aria-label="Lås upp dörren med vald nyckel">
+                <img src="./public/Room1_bilder/nyckelhalet.gif"
                   alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" />
               </button>
             </div>
-            <div id="nycklar" class="nycklar-container">
-              <button id="nyckeln-L" class="nyckel1" type="button"
-                aria-label="Välj guldnyckel med lila topp, bokstav L">
-                <img src="/images/Room1_bilder/nyckel_1.gif" alt="En guldnyckel med en topp som snurrar i lila färg" />
+            <div id="keys" class="keysContainer">
+              <button id="keyL" class="key1" type="button" aria-label="Välj guldnyckel med lila topp, bokstav L">
+                <img src="./public/Room1_bilder/nyckel_1.gif" alt="En guldnyckel med en topp som snurrar i lila färg" />
               </button>
-              <button id="nyckeln-E" class="nyckel2" type="button"
-                aria-label="Välj ljusblå nyckel med klöver, bokstav E">
-                <img src="/images/Room1_bilder/nyckel_2.gif"
+              <button id="keyE" class="key2" type="button" aria-label="Välj ljusblå nyckel med klöver, bokstav E">
+                <img src="./public/Room1_bilder/nyckel_2.gif"
                   alt="En ljusblå nyckel med toppen som är formad som en klöver" />
               </button>
-              <button id="nyckeln-V" class="nyckel3" type="button" aria-label="Välj guldnyckel med krona, bokstav V">
-                <img src="/images/Room1_bilder/nyckel_3.gif" alt="En guldnyckel med en krona i toppen." />
+              <button id="keyV" class="key3" type="button" aria-label="Välj guldnyckel med krona, bokstav V">
+                <img src="./public/Room1_bilder/nyckel_3.gif" alt="En guldnyckel med en krona i toppen." />
               </button>
-              <button id="nyckeln-A" class="nyckel4" type="button" aria-label="Välj guldnyckel med stjärna, bokstav A">
-                <img src="/images/Room1_bilder/nyckel_4.gif" alt="En guldnyckel med en stjärna i toppen." />
+              <button id="keyA" class="key4" type="button" aria-label="Välj guldnyckel med stjärna, bokstav A">
+                <img src="./public/Room1_bilder/nyckel_4.gif" alt="En guldnyckel med en stjärna i toppen." />
               </button>
             </div>
           </div>
-          <div class="alice-faller">
-            <img src="/images/Room1_bilder/alice-faller.png" alt="Alice faller" />
+          <div class="aliceFalling">
+            <img src="./public/Room1_bilder/alice-faller.png" alt="Alice faller" />
           </div>
+          <!--<div>
+          <button id="room1EndButton" class="room1EndButton hidden">Gå vidare till nästa rum</button>
+          </div> --->
         </div>
       </div>
       <!-- rum2 -->
@@ -190,10 +189,11 @@
 
           <p id="game-status" class="game-status" aria-live="polite"></p>
 
-          <div id="backgroundimg" class="backgroundimg" >
-            <img src="public/room4_bilder/background.jpg" alt="" id="background-image" class="background-image" aria-hidden="true" />
-            <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" class="cat-image" role="button" tabindex="0"
-              aria-label="Fånga katten" />
+          <div id="backgroundimg" class="backgroundimg">
+            <img src="public/room4_bilder/background.jpg" alt="" id="background-image" class="background-image"
+              aria-hidden="true" />
+            <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" class="cat-image" role="button"
+              tabindex="0" aria-label="Fånga katten" />
           </div>
         </div>
       </div>
@@ -368,16 +368,16 @@
     </div>
   </main>
   <footer>
-    <div id="visaArtefakter" class="visaArtefakter">
-      <div id="myProgress" class="myProgress">
+    <div id="showArtefacts" class="showArtefacts">
+      <div id="progressBar" class="progressBar">
         <div id="myBar" class="myBar"></div>
       </div>
       <ul>
-        <li id="artefakt1" class="artefakter"><span>I</span></li>
-        <li id="artefakt2" class="artefakter"><span>II</span></li>
-        <li id="artefakt3" class="artefakter"><span>III</span></li>
-        <li id="artefakt4" class="artefakter"><span>IV</span></li>
-        <li id="artefakt5" class="artefakter"><span>V</span></li>
+        <li id="artefact1" class="artefacts"><span><img src="./public/assets/rabbitInFooter.png" alt="Vid start är det en vit kanin med en blårosett på huvudet, om du har löst pusslet dyker en bokstavsartefakt här." /></span></li>
+        <li id="artefact2" class="artefacts"><span><img src="./public/assets/rabbitInFooter.png" alt="Vid start är det en vit kanin med en blårosett på huvudet, om du har löst pusslet dyker en bokstavsartefakt här." /></span></li>
+        <li id="artefact3" class="artefacts"><span><img src="./public/assets/rabbitInFooter.png" alt="Vid start är det en vit kanin med en blårosett på huvudet, om du har löst pusslet dyker en bokstavsartefakt här." /></span></li>
+        <li id="artefact4" class="artefacts"><span><img src="./public/assets/rabbitInFooter.png" alt="Vid start är det en vit kanin med en blårosett på huvudet, om du har löst pusslet dyker en bokstavsartefakt här." /></span></li>
+        <li id="artefact5" class="artefacts"><span><img src="./public/assets/rabbitInFooter.png" alt="Vid start är det en vit kanin med en blårosett på huvudet, om du har löst pusslet dyker en bokstavsartefakt här." /></span></li>
       </ul>
     
     
