@@ -1,16 +1,21 @@
+$brand-red: #732f2f;
+$cream: #f2e6ce;
+$shadow-brown: #4b1f1f;
+
 footer {
 	position: sticky;
 	bottom: 0;
 	z-index: 1000;
 }
-.showArtefacts {
+
+.showArtifacts {
 	position: sticky;
 	width: 100%;
 	height: 60px;
 	bottom: 0;
 	padding-block: 10px;
-	background: #732f2f;
-	color: #f2e6ce;
+	background: $brand-red;
+	color: $cream;
 	opacity: 0.95;
 	list-style: circle;
 	font-family: "Henny Penny", system-ui;
@@ -29,7 +34,7 @@ footer {
 	}
 
 	li {
-		border: 2px inset #f2e6ce;
+		border: 2px inset $cream;
 		border-radius: 50%;
 		width: 45px;
 		height: 45px;
@@ -37,16 +42,15 @@ footer {
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 30px;
-		box-shadow: 5px 5px 4px #4b1f1f;
+		box-shadow: 5px 5px 4px $shadow-brown;
 	}
 
 	li:has(span:not(:empty)) {
-		background-color: #732f2f;
-		color: #f2e6ce;
+		background-color: $brand-red;
+		color: $cream;
 		padding: 1px;
 	}
-}
-.showArtefacts {
+
 	span {
 		display: block;
 		width: 100%;
@@ -76,14 +80,14 @@ footer {
 	border-radius: 20px;
 	margin: 10px 0;
 	overflow: hidden;
-	box-shadow: 5px 5px 4px #4b1f1f;
-	border: #4b1f1f 2px inset;
+	box-shadow: 5px 5px 4px $shadow-brown;
+	border: $shadow-brown 2px inset;
 }
 
 .myBar {
 	width: 0%;
 	height: 100%;
-	background-color: #732f2f;
+	background-color: $brand-red;
 	border-radius: 10px 0 0 10px;
 	transition: width 0.4s;
 }

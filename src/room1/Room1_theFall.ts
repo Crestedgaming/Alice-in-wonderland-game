@@ -3,6 +3,13 @@ let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
 let room1Unlocked = false;
 
+const ROOM1_KEYS = [
+	{ buttonId: "keyL", letter: "L" },
+	{ buttonId: "keyE", letter: "E" },
+	{ buttonId: "keyV", letter: "V" },
+	{ buttonId: "keyA", letter: "A" },
+];
+
 function startRoom1Timer() {
 	room1StartTime = Date.now();
 	room1ElapsedMs = 0;
@@ -33,18 +40,24 @@ function formatMs(ms: number): string {
 	return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
 
+function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
+	if (messageEl) {
+		messageEl.innerHTML = `<p>${text}</p>`;
+	}
+}
+
 // Visa landningssidan och göm spelet
 
 export function initRoom1() {
 	// Hämtar startsidan och spelinnehållet för rum 1.
-	let landing = document.getElementById("room1StartPage");
-	let content = document.getElementById("room1Container");
+	const landing = document.getElementById("room1StartPage");
+	const content = document.getElementById("room1Container");
 	if (landing && content) {
 		// Visar startsidan först och gömmer själva spelet.
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
-	let startBtn = document.getElementById("room1StartButton");
+	const startBtn = document.getElementById("room1StartButton");
 	if (startBtn) {
 		startBtn.onclick = function () {
 			// När spelaren klickar start visas spelet och startsidan döljs.
@@ -63,15 +76,13 @@ window.initRoom1 = initRoom1;
 
 // Sätt event på nycklar och nyckelhål
 function attachRoom1Listeners() {
-	let keyL = document.getElementById("keyL");
-	let keyE = document.getElementById("keyE");
-	let keyV = document.getElementById("keyV");
-	let keyA = document.getElementById("keyA");
-	let keyhole = document.getElementById("keyhole");
-	let message = document.getElementById("fallMessage");
-	let endButton =
+	const keyhole = document.getElementById("keyhole");
+	const message = document.getElementById("fallMessage");
+	const endButton =
 		document.getElementById("room1-next") ||
 		document.getElementById("room1EndButton");
+	const artefactsSpan = document.querySelector("#artefact1 span");
+
 	// Ingen nyckel är vald när rummet startar.
 	window.selectedKey = null;
 	room1Unlocked = false;
@@ -91,39 +102,26 @@ function attachRoom1Listeners() {
 		};
 	}
 
-	if (keyL)
-		keyL.onclick = function () {
-			window.selectedKey = "L";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven L!</p>";
+	ROOM1_KEYS.forEach(({ buttonId, letter }) => {
+		const button = document.getElementById(buttonId);
+		if (!button) return;
+
+		button.onclick = () => {
+			window.selectedKey = letter;
+			setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
 		};
-	if (keyE)
-		keyE.onclick = function () {
-			window.selectedKey = "E";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven E!</p>";
-		};
-	if (keyV)
-		keyV.onclick = function () {
-			window.selectedKey = "V";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven V!</p>";
-		};
-	if (keyA)
-		keyA.onclick = function () {
-			window.selectedKey = "A";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven A!</p>";
-		};
+	});
 
 	if (keyhole)
 		keyhole.onclick = function () {
 			// Läser av vilken nyckel spelaren senast valde.
-			let selectedKey = window.selectedKey;
+			const selectedKey = window.selectedKey;
 			if (selectedKey && message) {
 				// Visar bekräftelse och skriver bokstaven till artefaktplatsen.
-				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefactsSpan = document.querySelector("#artefact1 span");
+				setRoom1Message(
+					message,
+					`Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!`,
+				);
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
@@ -131,9 +129,11 @@ function attachRoom1Listeners() {
 				if (endButton) {
 					endButton.classList.remove("hidden");
 				}
-			} else if (message) {
-				message.innerHTML =
-					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
+			} else {
+				setRoom1Message(
+					message,
+					"Du måste välja en nyckel för att låsa upp dörren!",
+				);
 			}
 		};
 }
@@ -141,7 +141,7 @@ function attachRoom1Listeners() {
 // Enkel scroll och startmeddelande
 function startRoom1GameLogic() {
 	// Hämtar containern som ska scrollas under fallet.
-	let scrollContainer = document.querySelector(
+	const scrollContainer = document.querySelector(
 		"#room1 .backgroundScroll",
 	) as HTMLElement;
 	if (scrollContainer) {
@@ -150,16 +150,16 @@ function startRoom1GameLogic() {
 		) as HTMLImageElement | null;
 
 		const startFallingAnimation = () => {
-			let start = scrollContainer.scrollTop;
-			let duration = 12000;
-			let startTime = performance.now();
+			const start = scrollContainer.scrollTop;
+			const duration = 12000;
+			const startTime = performance.now();
 
 			// Mjuk animation som scrollar från toppen till botten.
 			function animateScroll(currentTime: number) {
-				let elapsed = currentTime - startTime;
-				let progress = Math.min(elapsed / duration, 1);
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
 				// Beräkna maxscroll löpande så olika browsers och sen bildladdning blir stabilt.
-				let maxScroll =
+				const maxScroll =
 					scrollContainer.scrollHeight - scrollContainer.clientHeight;
 				scrollContainer.scrollTop = start + (maxScroll - start) * progress;
 				if (progress < 1) {
@@ -178,11 +178,12 @@ function startRoom1GameLogic() {
 			startFallingAnimation();
 		}
 	}
-	let message = document.getElementById("fallMessage");
-	if (message) {
-		// Startmeddelande till spelaren.
-		message.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-	}
+
+	// Startmeddelande till spelaren.
+	setRoom1Message(
+		document.getElementById("fallMessage"),
+		"Fort! Välj en nyckel innan du landar!",
+	);
 }
 
 function saveRoom1Result(letter: string, timeMs: number) {

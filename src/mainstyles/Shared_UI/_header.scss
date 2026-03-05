@@ -1,3 +1,26 @@
+@mixin headerButton {
+	background: transparent;
+	border: 2px inset #f2e6ce;
+	color: #f2e6ce;
+	padding: 5px 18px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-family: "Henny Penny", system-ui;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: 1px;
+	font-size: 1rem;
+	box-shadow: 5px 5px 10px #4b1f1f;
+
+	&:hover {
+		background: #f2e6ce;
+		color: #732f2f;
+		border-color: #732f2f;
+		transform: scale(1.2);
+		transition: transform 0.4s ease-in-out;
+	}
+}
+
 header {
 	position: sticky;
 	top: 0;
@@ -10,30 +33,10 @@ header {
 		background-color: #732f2f;
 		opacity: 0.95;
 		padding-bottom: 12px;
-		
 
 		button {
-			background: transparent;
-			border: 2px inset #f2e6ce;
-			color: #f2e6ce;
-			padding: 5px 18px;
-			border-radius: 20px;
-			cursor: pointer;
-			font-family: "Henny Penny", system-ui;
-			font-weight: 400;
-			font-style: normal;
-			letter-spacing: 1px;
-			font-size: 1rem;
-			box-shadow: 5px 5px 10px #4b1f1f;
+			@include headerButton;
 			margin-inline: 5px;
-
-			&:hover {
-				background: #f2e6ce;
-				color: #732f2f;
-				border-color: #732f2f;
-				transform: scale(1.2);
-				transition: transform 0.4s ease-in-out;
-			}
 		}
 	}
 
@@ -51,28 +54,12 @@ header {
 		font-size: 1.6rem;
 		border-radius: 10px 10px 0 0;
 		text-shadow: #000000 2px 2px 4px;
+		font-family: "Henny Penny", system-ui;
+		font-weight: 400;
+		padding-top: 10px;
 
 		button {
-			background: transparent;
-			border: 2px inset #f2e6ce;
-			color: #f2e6ce;
-			padding: 5px 18px;
-			border-radius: 20px;
-			cursor: pointer;
-			font-family: "Henny Penny", system-ui;
-			font-weight: 400;
-			font-style: normal;
-			letter-spacing: 1px;
-			font-size: 1rem;
-			box-shadow: 5px 5px 10px #4b1f1f;
-
-			&:hover {
-				background: #f2e6ce;
-				color: #732f2f;
-				border-color: #732f2f;
-				transform: scale(1.2);
-				transition: transform 0.4s ease-in-out;
-			}
+			@include headerButton;
 		}
 
 		button:focus {
@@ -80,15 +67,11 @@ header {
 			color: #732f2f;
 			border-color: #732f2e;
 		}
-	}
 
-	.gameMenuBar {
-		font-family: "Henny Penny", system-ui;
-		font-weight: 400;
-		padding-top: 10px;
 		h1 {
 			font-size: 2rem;
 		}
+
 		span {
 			font-size: 1.2rem;
 		}

@@ -1,5 +1,36 @@
 /************************** Styling for desktop view of room 1 **************************/
 
+@mixin room1Button {
+	background: #732f2f;
+	border: 2px inset #f2e6ce;
+	color: #f2e6ce;
+	padding: 5px 18px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-family: "Henny Penny", system-ui;
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: 1px;
+	box-shadow: 5px 5px 10px #4b1f1f;
+
+	&:hover {
+		background: #f2e6ce;
+		color: #732f2f;
+		border-color: #732f2f;
+		transform: scale(1.2);
+		transition: transform 0.3s ease-in-out;
+	}
+}
+
+@mixin room1Glow {
+	transform: scale(1.5);
+	border: 1px solid goldenrod;
+	box-shadow: inset 2px 8px 20px goldenrod;
+	border-radius: 50%;
+	pointer-events: auto;
+	padding: 2px;
+}
+
 .fallContainer {
 	width: 100%;
 	min-height: 100vh;
@@ -40,31 +71,11 @@
 		button {
 			position: static;
 			margin-top: 1rem;
-			background: #732f2f;
-			border: 2px inset #f2e6ce;
-			color: #f2e6ce;
-			padding: 5px 18px;
-			border-radius: 20px;
-			cursor: pointer;
-			font-family: "Henny Penny", system-ui;
-			font-weight: 400;
-			font-style: normal;
-			letter-spacing: 1px;
+			@include room1Button;
 			font-size: 1.2rem;
-			box-shadow: 5px 5px 10px #4b1f1f;
-
-			&:hover {
-				background: #f2e6ce;
-				color: #732f2f;
-				border-color: #732f2f;
-				transform: scale(1.2);
-				transition: transform 0.3s ease-in-out;
-			}
 		}
 	}
-}
 
-.fallContainer {
 	.backgroundScroll {
 		position: relative;
 		display: flex;
@@ -92,9 +103,7 @@
 			left 0.3s,
 			top 0.3s;
 	}
-}
 
-.fallContainer {
 	.keysContainer {
 		position: absolute;
 		width: 100%;
@@ -125,6 +134,91 @@
 	button img {
 		transition: all 0.3s;
 	}
+
+	.aliceFalling {
+		transform: scale(1);
+		position: absolute;
+		left: 38vw;
+		top: 33vh;
+		z-index: 5;
+		pointer-events: none;
+		overflow: hidden;
+		transition:
+			left 0.3s,
+			top 0.3s;
+
+		img {
+			text-shadow: #4b1f1f 2px 2px 4px;
+		}
+	}
+
+	.key1,
+	.key2,
+	.key3,
+	.key4 {
+		position: absolute;
+		width: 4%;
+		height: auto;
+		z-index: 1;
+	}
+
+	.key1 {
+		left: 40%;
+		top: 70%;
+	}
+
+	.key2 {
+		left: 40%;
+		top: 90%;
+	}
+
+	.key3 {
+		left: 60%;
+		top: 70%;
+	}
+
+	.key4 {
+		left: 60%;
+		top: 90%;
+	}
+
+	.keysContainer button:hover img {
+		@include room1Glow;
+		cursor: pointer;
+	}
+
+	.keysContainer button:focus img,
+	.keysContainer button:focus-visible img {
+		@include room1Glow;
+	}
+
+	.keyhole {
+		position: relative;
+		width: 60px;
+		height: 60px;
+		cursor: pointer;
+		pointer-events: auto;
+		z-index: 3;
+		top: -724%;
+		left: 125%;
+		transform: translate(-50%, -50%);
+		background: transparent;
+		border: 0;
+		padding: 0;
+		margin: 0;
+	}
+
+	.keyhole img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.keyhole:hover img,
+	.keyhole:focus img,
+	.keyhole:focus-visible img {
+		@include room1Glow;
+	}
 }
 
 .fallMessage {
@@ -154,140 +248,11 @@
 	}
 }
 
-.fallContainer {
-	.aliceFalling {
-		transform: scale(1);
-		position: absolute;
-		left: 38vw;
-		top: 33vh;
-		z-index: 5;
-		pointer-events: none;
-		overflow: hidden;
-		transition:
-			left 0.3s,
-			top 0.3s;
-
-		img {
-			text-shadow: #4b1f1f 2px 2px 4px;
-		}
-	}
-
-	.key1 {
-		position: absolute;
-		left: 40%;
-		top: 70%;
-		width: 4%;
-		height: auto;
-		z-index: 1;
-	}
-
-	.key2 {
-		position: absolute;
-		left: 40%;
-		top: 90%;
-		width: 4%;
-		height: auto;
-		z-index: 1;
-	}
-}
-
-.fallContainer {
-	.key3 {
-		position: absolute;
-		left: 60%;
-		top: 70%;
-		width: 4%;
-		height: auto;
-		z-index: 1;
-	}
-
-	.key4 {
-		position: absolute;
-		left: 60%;
-		top: 90%;
-		width: 4%;
-		height: auto;
-		z-index: 1;
-	}
-
-	.keysContainer button:hover img {
-		transform: scale(1.5);
-		border: 1px solid goldenrod;
-		box-shadow: inset 2px 8px 20px goldenrod;
-		border-radius: 50%;
-		pointer-events: auto;
-		padding: 2px;
-		cursor: pointer;
-	}
-}
-
-.fallContainer .keysContainer button:focus img,
-.fallContainer .keysContainer button:focus-visible img {
-	transform: scale(1.5);
-	border: 1px solid goldenrod;
-	box-shadow: inset 2px 8px 20px goldenrod;
-	border-radius: 50%;
-	pointer-events: auto;
-	padding: 2px;
-}
-
-.fallContainer {
-	.keyhole {
-		position: relative;
-		width: 60px;
-		height: 60px;
-		cursor: pointer;
-		pointer-events: auto;
-		z-index: 3;
-		top: -724%;
-		left: 125%;
-		transform: translate(-50%, -50%);
-		background: transparent;
-		border: 0;
-		padding: 0;
-		margin: 0;
-	}
-
-	.keyhole img {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-
-	.keyhole:hover img,
-	.keyhole:focus img,
-	.keyhole:focus-visible img {
-		transform: scale(1.5);
-		border: 1px solid goldenrod;
-		box-shadow: inset 2px 8px 20px goldenrod;
-		border-radius: 50%;
-		pointer-events: auto;
-		padding: 2px;
-	}
-}
-
 .room1EndButton {
 	position: absolute;
 	bottom: 15vh;
 	right: 5vw;
-	background: #732f2f;
-	border: 2px inset #f2e6ce;
-	color: #f2e6ce;
+	@include room1Button;
 	padding: 10px 20px;
-	border-radius: 20px;
-	cursor: pointer;
-	font-family: "Henny Penny", system-ui;
-	font-weight: 400;
-	font-style: normal;
-	letter-spacing: 1px;
 	font-size: 1.2rem;
-	box-shadow: 5px 5px 10px #4b1f1f;
-
-	&:hover {
-		background: #f2e6ce;
-		color: #732f2f;
-		border-color: #732f2f;
-		transform: scale(1.2);
-		transition: transform 0.3s ease-in-out;
-	}
 }

@@ -62,12 +62,12 @@ import "./room2/Room2_Storleken";
 		navTitle.textContent = title;
 	}
 
-	// Set showArtefacts to reflect current room context in footer
-	const showArtefacts = document.getElementById("showArtefacts");
-	if (showArtefacts) {
+	// Set showArtifacts to reflect current room context in footer
+	const showArtifacts = document.getElementById("showArtifacts");
+	if (showArtifacts) {
 		const artifactsLabel = `Artefakter: ${title}`;
-		showArtefacts.setAttribute("aria-label", artifactsLabel);
-		showArtefacts.setAttribute("data-current-room", roomId);
+		showArtifacts.setAttribute("aria-label", artifactsLabel);
+		showArtifacts.setAttribute("data-current-room", roomId);
 	}
 };
 

@@ -3,7 +3,7 @@ const awardedRooms = new Set<string>();
 
 function getArtefactSpans(): HTMLSpanElement[] {
 	return Array.from(
-		document.querySelectorAll<HTMLSpanElement>("#showArtefacts li span"),
+		document.querySelectorAll<HTMLSpanElement>("#showArtifacts li span"),
 	);
 }
 
