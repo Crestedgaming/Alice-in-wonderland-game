@@ -89,7 +89,7 @@ export function initRoom3(): void {
       let message: string;
 
       if (correctAnswers >= 2) {
-         letter = "k";
+         letter = "K";
          message = "🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
       } else {
          letter = "Q";
