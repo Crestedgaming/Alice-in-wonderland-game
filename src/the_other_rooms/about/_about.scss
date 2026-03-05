@@ -1,5 +1,5 @@
 :root {
----primary-color: #732f2f;
+--primary-color: #732f2f;
 
 }
 
@@ -94,20 +94,15 @@
   max-width: 600px;
 }
 
-#about-team ul {
-  margin-top: 10px;
-  padding-left: 20px;
-  font-family: 'bricolage grotesque', sans-serif;
+#about-team h4 {
   color: white;
-  margin-left: 100px;
-}
-
-#about-team li {
-  margin-bottom: 6px;
+  font-size: 1rem;
+  font-family: 'henny penny', cursive, sans-serif;
+  margin-top: 0.2rem;
 }
 
 #teknik {
-  background-color: var(---primary-color)
+  background-color: var(--primary-color);
 }
 
 #teknik h3 {
@@ -124,4 +119,27 @@
   margin-top: 0.5rem;
   margin-left: 100px;
   font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-member {
+  text-align: center;
+}
+
+#about-team .team-member p {
+  margin-left: 0;
+  text-align: center;
+}
+
+
+.team-member img {
+  width: 200px;
+  border-radius: 50%;
 }
