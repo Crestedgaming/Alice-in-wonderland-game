@@ -31,13 +31,14 @@ function displayHighscores () {
         highscoreList.innerHTML = "<li> Ingen har spelat än 😢 </li>";
         return;
     }
-}
-// sortera snabbast först (lägst poäng vinner)
-   /* const sortedScores = savedScores.sort ((player1, player2) => player1.score -player2.score);
-    highscoreList?.innerHTML = sortedScores 
-    .map(entry =>`<li>${entry.name}: ${entry.score} sekunder</li>`)
-        .join(""); */ 
 
+ // sortera snabbast först (lägst poäng vinner)
+   const sortedScores = savedScores.sort ((player1, player2) => player1.score -player2.score);
+    highscoreList.innerHTML = sortedScores 
+    .map(entry =>`<li>${entry.name}: ${entry.score} sekunder</li>`)
+        .join(""); 
+
+}
 
 
 function highScoreBtn() {
