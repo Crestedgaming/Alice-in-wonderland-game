@@ -57,6 +57,11 @@ export function initRoom1() {
 			startRoom1GameLogic();
 		};
 	}
+	const nextBtn = document.getElementById("room1-next");
+
+	nextBtn?.addEventListener("click", () => {
+		window.dispatchEvent(new Event("ROOM_1_COMPLETED"));
+	});
 }
 window.initRoom1 = initRoom1;
 
@@ -115,6 +120,9 @@ function attachRoom1Listeners() {
 				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
 				let artefactsSpan = document.querySelector("#artefact1 span");
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
+				// 👇 SHOW NEXT ROOM BUTTON
+				const nextBtn = document.getElementById("room1-next");
+				nextBtn?.classList.remove("hidden");
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
 				if (endButton) {
@@ -161,10 +169,10 @@ function saveRoom1Result(letter: string, timeMs: number) {
 	const previous = localStorage.getItem(storageKey);
 	const results = previous
 		? (JSON.parse(previous) as Array<{
-				letter: string;
-				timeMs: number;
-				finishedAt: string;
-			}>)
+			letter: string;
+			timeMs: number;
+			finishedAt: string;
+		}>)
 		: [];
 
 	results.push({

@@ -1,13 +1,8 @@
 /************************** Styling for desktop view of room 1 **************************/
-
 .fallContainer {
-	width: 100%;
-	min-height: 100vh;
-	overflow: visible;
-
 	.room1StartPage {
 		position: relative;
-		width: 100%;
+		width: 100vw;
 		min-height: 100vh;
 		z-index: 1;
 		background-image: url("/images/Room1_bilder/bakgrund.webp");
@@ -15,31 +10,40 @@
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
+		align-content: center;
+		justify-items: center;
 		gap: 10px;
 
 		h2,
 		p {
-			position: static;
-			width: 50%;
-			max-width: fit-content;
-			margin-inline: auto;
+			position: relative;
+			top: -10vh;
+			width: 50vw;
 			color: #000;
 			font-family: "Henny Penny", system-ui;
 			font-weight: 400;
 			font-style: normal;
 			letter-spacing: 1px;
-			font-size: 1.7rem;
-			text-shadow: #ffffff 2px 1px 1px;
+			font-size: 1.6rem;
+			text-shadow: #fff 2px 2px 4px;
+		}
+
+		.room1StartPageContent {
+			margin: 0 auto;
+			position: relative;
+			align-content: center;
+			justify-items: center;
+			background-color: #732f2f;
+			border-radius: 100px;
+			padding: 50px;
+			color: #f2e6ce;
+			box-shadow: 5px 5px 10px #4b1f1f;
+			border: 2px inset #f2e6ce;
 		}
 
 		button {
-			position: static;
-			margin-top: 1rem;
+			position: relative;
+			bottom: 10vh;
 			background: #732f2f;
 			border: 2px inset #f2e6ce;
 			color: #f2e6ce;
@@ -71,22 +75,21 @@
 		flex-direction: column;
 		align-items: center; // or flex-start, flex-end, etc.
 		width: 100vw;
-		height: 105vh;
+		height: 100vh;
 		overflow: auto;
 	}
 
-	.backgroundContainer { 
+	.backgroundContainer {
 		position: relative;
 		width: 100%;
-		max-width: 100%;
+		max-width: 100vw;
 		height: auto;
-		overflow: hidden;
 	}
 
 	.backgroundImage {
 		width: 100%;
-		height: auto;
 		display: block;
+		height: auto;
 		transition:
 			width 0.3s,
 			left 0.3s,
@@ -102,6 +105,7 @@
 		top: 0;
 		left: 0;
 		z-index: 1;
+		/* No flex, so children can be absolutely positioned */
 	}
 
 	.keysContainer button {
@@ -159,7 +163,7 @@
 		transform: scale(1);
 		position: absolute;
 		left: 38vw;
-		top: 33vh;
+		top: 37.8vh;
 		z-index: 5;
 		pointer-events: none;
 		overflow: hidden;
@@ -233,15 +237,14 @@
 
 .fallContainer {
 	.keyhole {
-		position: relative;
+		position: absolute;
 		width: 60px;
 		height: 60px;
 		cursor: pointer;
 		pointer-events: auto;
 		z-index: 3;
-		top: -724%;
-		left: 125%;
-		transform: translate(-50%, -50%);
+		top: 207%;
+		left: 51.1%;
 		background: transparent;
 		border: 0;
 		padding: 0;
@@ -264,30 +267,33 @@
 		pointer-events: auto;
 		padding: 2px;
 	}
-}
 
-.room1EndButton {
-	position: absolute;
-	bottom: 15vh;
-	right: 5vw;
-	background: #732f2f;
-	border: 2px inset #f2e6ce;
-	color: #f2e6ce;
-	padding: 10px 20px;
-	border-radius: 20px;
-	cursor: pointer;
-	font-family: "Henny Penny", system-ui;
-	font-weight: 400;
-	font-style: normal;
-	letter-spacing: 1px;
-	font-size: 1.2rem;
-	box-shadow: 5px 5px 10px #4b1f1f;
+	// Next button styling
+	#room1-next {
+		position: fixed;
+		bottom: 5vh;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 1000;
+		background: #732f2f;
+		border: 2px inset #f2e6ce;
+		color: #f2e6ce;
+		padding: 10px 30px;
+		border-radius: 20px;
+		cursor: pointer;
+		font-family: "Henny Penny", system-ui;
+		font-weight: 400;
+		font-style: normal;
+		letter-spacing: 1px;
+		font-size: 1.2rem;
+		box-shadow: 5px 5px 10px #4b1f1f;
 
-	&:hover {
-		background: #f2e6ce;
-		color: #732f2f;
-		border-color: #732f2f;
-		transform: scale(1.2);
-		transition: transform 0.3s ease-in-out;
+		&:hover {
+			background: #f2e6ce;
+			color: #732f2f;
+			border-color: #732f2f;
+			transform: translateX(-50%) scale(1.2);
+			transition: transform 0.3s ease-in-out;
+		}
 	}
 }
