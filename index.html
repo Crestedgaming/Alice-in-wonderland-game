@@ -66,6 +66,7 @@
           <p></p>
           <p>Klicka på <b>Starta spelet</b> för att börja.</p>
           <button id="room1StartButton">Starta spelet</button>
+          <button id="room1ProgressTestButton">Testa progressbar (Room 1)</button>
         </div>
         <div id="room1Container" class="hidden">
           <div id="fallMessage" class="fallMessage"></div>
@@ -359,8 +360,9 @@
   </main>
   <footer>
     <div id="showArtifacts" class="showArtifacts">
-      <div id="progressBar" class="progressBar">
-        <div id="myBar" class="myBar"></div>
+<div id="progressBar" class="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"
+  aria-label="Rooms completed">
+  <div id="myBar" class="myBar"></div>
       </div>
       <ul>
         <li id="artefact1" class="artefacts"><span><img src="./public/images/rabbitInFooter.png"

@@ -1,70 +1,24 @@
-/** const defaultArtefactTokens = ["I", "II", "III", "IV", "V"];
-const awardedRooms = new Set<string>();
+const TOTAL_ROOMS = 6;
+const doneRooms = new Set<number>();
+const progressRoot = document.getElementById("progressBar");
+const progressFill = document.getElementById("myBar") as HTMLDivElement | null;
 
-function getArtefactSpans(): HTMLSpanElement[] {
-	return Array.from(
-		document.querySelectorAll<HTMLSpanElement>("#showArtifacts li span"),
-	);
+function renderProgress(): void {
+	const completed = doneRooms.size;
+	const percent = (completed / TOTAL_ROOMS) * 100;
+
+	if (progressFill) progressFill.style.width = `${percent}%`;
+	progressRoot?.setAttribute("aria-valuenow", String(completed));
 }
 
-function isCollectedValue(value: string): boolean {
-	return value.length > 0 && !defaultArtefactTokens.includes(value);
+export function finishRoom(room: number): void {
+	if (room < 1 || room > TOTAL_ROOMS) return;
+	if (doneRooms.has(room)) return;
+	doneRooms.add(room);
+	renderProgress();
 }
 
-export function updateArtefactsFooter(): void {
-	const artefactSpans = getArtefactSpans();
-	const collectedCount = artefactSpans.filter((span) =>
-		isCollectedValue((span.textContent || "").trim()),
-	).length;
-
-	const progress = artefactSpans.length
-		? Math.round((collectedCount / artefactSpans.length) * 100)
-		: 0;
-
-	const progressBar = document.getElementById("myBar");
-	if (progressBar) {
-		progressBar.style.width = `${progress}%`;
-	}
+export function resetRoomProgress(): void {
+	doneRooms.clear();
+	renderProgress();
 }
-
-export function assignRandomArtefacts(
-	letter: string,
-	roomId?: string,
-): boolean {
-	const normalizedLetter = letter.trim().toUpperCase();
-	if (!normalizedLetter) return false;
-
-	if (roomId && awardedRooms.has(roomId)) {
-		updateArtefactsFooter();
-		return false;
-	}
-
-	const artefactSpans = getArtefactSpans();
-
-	const alreadyExists = artefactSpans.some(
-		(span) => (span.textContent || "").trim() === normalizedLetter,
-	);
-	if (alreadyExists) {
-		updateArtefactsFooter();
-		return false;
-	}
-
-	const availableSpans = artefactSpans.filter(
-		(span) => !isCollectedValue((span.textContent || "").trim()),
-	);
-
-	if (availableSpans.length === 0) {
-		updateArtefactsFooter();
-		return false;
-	}
-
-	const randomIndex = Math.floor(Math.random() * availableSpans.length);
-	availableSpans[randomIndex].textContent = normalizedLetter;
-	if (roomId) {
-		awardedRooms.add(roomId);
-	}
-	updateArtefactsFooter();
-	return true;
-}
-
-*/

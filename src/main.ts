@@ -6,6 +6,7 @@ import "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
+import { finishRoom } from "./footer";
 
 /*
  * ============================================================
@@ -103,5 +104,12 @@ if (resetBtn) {
 	});
 
 	document.getElementById("start")!.classList.remove("hidden");
+};
+
+// Progress bar test: only Room 1 is counted for now.
+window.markRoomFinished = (roomId: string | number) => {
+	if (roomId === "room1" || roomId === 1) {
+		finishRoom(1);
+	}
 };
 

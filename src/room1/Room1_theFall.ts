@@ -58,6 +58,7 @@ export function initRoom1() {
 		content.classList.add("hidden");
 	}
 	const startBtn = document.getElementById("room1StartButton");
+	const progressTestBtn = document.getElementById("room1ProgressTestButton");
 	if (startBtn) {
 		startBtn.onclick = function () {
 			// When the player clicks start, show the game and hide the start page.
@@ -69,6 +70,14 @@ export function initRoom1() {
 			startRoom1Timer();
 			attachRoom1Listeners();
 			startRoom1GameLogic();
+		};
+	}
+
+	if (progressTestBtn) {
+		progressTestBtn.onclick = function () {
+			if (typeof window.markRoomFinished === "function") {
+				window.markRoomFinished("room1");
+			}
 		};
 	}
 }
