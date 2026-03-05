@@ -45,31 +45,40 @@ import "./room2/Room2_Storleken";
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
+	let title = "";
+	switch (roomId) {
+		case "room1":
+			title = "Fallet";
+			break;
+		case "rum2":
+			title = "Storleken";
+			break;
+		case "rum3":
+			title = "Gåtan";
+			break;
+		case "rum4":
+			title = "Kurragömma";
+			break;
+		case "rum5":
+			title = "Tebjudningen";
+			break;
+		case "rum6":
+			title = "Slutstriden";
+			break;
+		default:
+			title = "Escape Room";
+	}
+
 	if (navTitle) {
-		let title = "";
-		switch (roomId) {
-			case "room1":
-				title = "Fallet";
-				break;
-			case "rum2":
-				title = "Storleken";
-				break;
-			case "rum3":
-				title = "Gåtan";
-				break;
-			case "rum4":
-				title = "Kurragömma";
-				break;
-			case "rum5":
-				title = "Tebjudningen";
-				break;
-			case "rum6":
-				title = "Slutstriden";
-				break;
-			default:
-				title = "Escape Room";
-		}
 		navTitle.textContent = title;
+	}
+
+	// Set showArtifacts to reflect current room context in footer
+	const showArtifacts = document.getElementById("showArtifacts");
+	if (showArtifacts) {
+		const artifactsLabel = `Artefakter: ${title}`;
+		showArtifacts.setAttribute("aria-label", artifactsLabel);
+		showArtifacts.setAttribute("data-current-room", roomId);
 	}
 };
 
