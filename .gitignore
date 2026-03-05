@@ -11,13 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
-DS_Store
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
@@ -25,9 +23,6 @@ DS_Store
 *.sw?
 *.css.map
 
-
-
-
-
+# Ignore macOS system files
 .DS_Store
 **/.DS_Store

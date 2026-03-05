@@ -102,7 +102,13 @@ catImage.style.left = `${randomX}px`;
 catImage.style.top = `${randomY}px`;
 catImage.classList.remove('hidden');
 
- /* Dölj katten efter 1,5 sek och 
+   // lägg till skak-animation
+    catImage.classList.remove('shake'); // reset animation
+    void catImage.offsetWidth;          // trigger reflow
+    catImage.classList.add('shake');    // starta skak
+
+
+     /* Dölj katten efter 1,5 sek och 
  visa den igen efter 1 sek om spelet fortsätter*/
 
     setTimeout(() => {
@@ -113,9 +119,11 @@ catImage.classList.remove('hidden');
       if(gameRunning && catCaughtCount < 5) {
         setTimeout(showCatRandom, 1000);
       }
-    },1500)  
+    },800)  
   }
 }
+
+
 
 //////-Funktion-/////////
 /////Startknappen///////
