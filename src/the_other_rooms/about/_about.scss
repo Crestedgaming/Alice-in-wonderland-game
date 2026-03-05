@@ -1,34 +1,87 @@
+:root {
+---primary-color: #732f2f;
+
+}
+
+
 /* hela about-sidan */
 #about-us-page {
-  min-height: 100vh;
   width: 100%;
 }
 
 /* container som håller sektionerna */
 .about-container {
-  max-width: 900px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
+  width: 100%;
 }
 
-.about-container section {
-  padding: 60px 40px;
+#about-us-page section {
+  width: 100%;
+  padding: 60px 0;
 }
 
 #about-game {
-  background-color: #f8e8dc;
+  background-image: url("/public/about_bilder/about-game.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 80vh;
+}
+
+#about-game h2 {
+  color: white;
+  font-size: 4rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-game p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
 }
 
 #about-us {
-  background-color: #e4f0f5;
+  background-color: var(---primary-color)
+}
+
+#about-us h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-us p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
 }
 
 #about-team {
-  background-color: #f0f5e4;
+  background-color: var(--primary-color);
 }
 
-#teknik {
-  background-color: #efe4f5;
+#about-team h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-team p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
 }
 
 .about-container h2,
@@ -44,12 +97,31 @@
 #about-team ul {
   margin-top: 10px;
   padding-left: 20px;
+  font-family: 'bricolage grotesque', sans-serif;
+  color: white;
+  margin-left: 100px;
 }
 
 #about-team li {
   margin-bottom: 6px;
 }
 
-section {
-  border-bottom: 4px solid white;
+#teknik {
+  background-color: var(---primary-color)
+}
+
+#teknik h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#teknik p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
 }

@@ -6,6 +6,7 @@ import "./room1/Room1_Fallet";
 import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
+import "./the_other_rooms/about/_about.scss";
 
 /*
  * ============================================================
