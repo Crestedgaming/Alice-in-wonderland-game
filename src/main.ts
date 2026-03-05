@@ -2,7 +2,7 @@ import "./mainstyles/main.scss";
 import { startGame } from "./engine/GameManager";
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
-import "./room1/Room1_Fallet";
+import "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
