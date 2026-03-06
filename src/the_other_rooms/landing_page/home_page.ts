@@ -14,10 +14,14 @@ startButton?.addEventListener("click", () => {
 
   // highscore
 highscoreButton?.addEventListener("click", () => {
+  document.getElementById("home-page")?.classList.add("hidden");
+  (window as any).showRoom("highscore-page");
 });
 
   // Om oss
 aboutButton?.addEventListener("click", () => {
+  document.getElementById("home-page")?.classList.add("hidden");
+  (window as any).showRoom("about-us-page");
 });
 
 export {};
