@@ -79,9 +79,9 @@ window.initRoom1 = initRoom1;
 function attachRoom1Listeners() {
 	const keyhole = document.getElementById("keyhole");
 	const message = document.getElementById("fallMessage");
-	const endButton =
-		document.getElementById("room1-next") ||
-		document.getElementById("room1EndButton");
+	const endButton = document.getElementById(
+		"room1EndButton",
+	) as HTMLButtonElement | null;
 
 	// No key is selected when the room starts.
 	window.selectedKey = null;
@@ -90,21 +90,7 @@ function attachRoom1Listeners() {
 
 	if (endButton) {
 		endButton.classList.add("hidden");
-		endButton.onclick = function () {
-			if (
-				room1Unlocked &&
-				room1AwardedLetter &&
-				typeof window.completeRoom === "function"
-			) {
-				window.completeRoom(1, room1AwardedLetter);
-			}
-			if (room1Unlocked && typeof window.updateFooterContext === "function") {
-				window.updateFooterContext("room1", true);
-			}
-			if (typeof window.showRoom === "function") {
-				window.showRoom("rum2");
-			}
-		};
+		delete endButton.dataset.artifactLetter;
 	}
 
 	ROOM1_KEYS.forEach(({ buttonId, letter }) => {
@@ -139,6 +125,9 @@ function attachRoom1Listeners() {
 					`<img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true"> Du klarade utmaningen! Klicka på "Gå vidare" för att spara din artefakt ${selectedKey}. <img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true">`,
 				);
 				room1AwardedLetter = selectedKey;
+				if (endButton) {
+					endButton.dataset.artifactLetter = selectedKey;
+				}
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
 				room1Unlocked = true;

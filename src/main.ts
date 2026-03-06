@@ -49,6 +49,49 @@ window.completeRoom = (room: number, letter?: string) => {
 	placeArtifactRandom(letter);
 };
 
+// Reusable flow for all room next buttons.
+function handleRoomNextButtonClick(nextButton: HTMLButtonElement): void {
+	const roomNumber = Number(nextButton.dataset.room);
+	const artifactLetter = nextButton.dataset.artifactLetter;
+	const nextRoomId = nextButton.dataset.nextRoom;
+	const currentRoomId = nextButton.dataset.roomId;
+
+	if (
+		typeof window.completeRoom === "function" &&
+		Number.isFinite(roomNumber)
+	) {
+		window.completeRoom(roomNumber, artifactLetter);
+	}
+
+	if (
+		typeof window.updateFooterContext === "function" &&
+		currentRoomId &&
+		Number.isFinite(roomNumber)
+	) {
+		window.updateFooterContext(currentRoomId, true);
+	}
+
+	if (typeof window.showRoom === "function" && nextRoomId) {
+		window.showRoom(nextRoomId);
+	}
+}
+
+function registerRoomNextButtonHandler(): void {
+	document.addEventListener("click", (event) => {
+		const target = event.target as HTMLElement | null;
+		if (!target) return;
+
+		const nextButton = target.closest(
+			".roomNextButton",
+		) as HTMLButtonElement | null;
+		if (!nextButton) return;
+
+		handleRoomNextButtonClick(nextButton);
+	});
+}
+
+registerRoomNextButtonHandler();
+
 /*
  * ============================================================
  * ************************Startsida***************************

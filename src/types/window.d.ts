@@ -7,8 +7,6 @@ declare global {
 		goToStart?: () => void;
 		selectedKey?: string | null;
 		updateFooterContext?: (roomId: string, completed?: boolean) => void;
-		markRoomFinished?: (roomId: string | number) => void;
-		resetRoomProgress?: () => void;
 		completeRoom?: (room: number, letter?: string) => void;
 	}
 }
