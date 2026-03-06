@@ -97,6 +97,9 @@ export function initRoom3(): void {
       }
 
       giveArtifact(letter);
+      if (typeof window.completeRoom === "function") {
+         window.completeRoom(3, letter);
+      }
 
       riddleContainer.innerHTML = `
       <div class="riddle-result">

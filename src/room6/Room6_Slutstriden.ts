@@ -68,6 +68,10 @@ function checkWord() {
 
 
 if (word === "VAKNA") {
+  if (typeof window.completeRoom === "function") {
+    window.completeRoom(6);
+  }
+
   document.querySelectorAll(".room").forEach((room) => {
     room.classList.add("hidden");
   });

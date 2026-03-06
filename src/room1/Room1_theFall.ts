@@ -47,25 +47,6 @@ function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
 	}
 }
 
-function assignRoom1ArtefactRandom(letter: string): void {
-	const artefactsList = document.getElementById("artefactsList");
-	if (!artefactsList) return;
-
-	const slots = Array.from(
-		artefactsList.querySelectorAll<HTMLSpanElement>("li.artefacts > span"),
-	);
-	if (slots.length === 0) return;
-
-	// Prefer a slot that still has the placeholder image.
-	const availableSlots = slots.filter((slot) =>
-		Boolean(slot.querySelector("img")),
-	);
-	const slotPool = availableSlots.length > 0 ? availableSlots : slots;
-	const randomIndex = Math.floor(Math.random() * slotPool.length);
-
-	slotPool[randomIndex].textContent = letter;
-}
-
 // Show the landing page and hide the game
 
 export function initRoom1() {
@@ -110,11 +91,12 @@ function attachRoom1Listeners() {
 	if (endButton) {
 		endButton.classList.add("hidden");
 		endButton.onclick = function () {
-			if (room1Unlocked && room1AwardedLetter) {
-				assignRoom1ArtefactRandom(room1AwardedLetter);
-			}
-			if (room1Unlocked && typeof window.markRoomFinished === "function") {
-				window.markRoomFinished("room1");
+			if (
+				room1Unlocked &&
+				room1AwardedLetter &&
+				typeof window.completeRoom === "function"
+			) {
+				window.completeRoom(1, room1AwardedLetter);
 			}
 			if (room1Unlocked && typeof window.updateFooterContext === "function") {
 				window.updateFooterContext("room1", true);

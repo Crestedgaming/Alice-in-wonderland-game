@@ -54,6 +54,9 @@ function catchCat() {
          console.log(" spelet är slut! Katten fångad 5 gånger!");
          gameRunning = false;
          catImage.classList.add('hidden');
+         if (typeof window.completeRoom === "function") {
+           window.completeRoom(4, "K");
+         }
 
          /* Lägg till artefakt här, när katten är fångad 5 gånger */
        }

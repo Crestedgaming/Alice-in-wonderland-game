@@ -1,12 +1,53 @@
 import "./mainstyles/main.scss";
-import { startGame } from "./engine/GameManager";
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
 import "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
-import { finishRoom } from "./footer";
+
+const TOTAL_ROOMS = 6;
+const completedRooms = new Set<number>();
+
+function updateProgressUI(): void {
+	const progressFill = document.getElementById(
+		"myBar",
+	) as HTMLDivElement | null;
+	const progressRoot = document.getElementById("progressBar");
+	const percent = (completedRooms.size / TOTAL_ROOMS) * 100;
+
+	if (progressFill) {
+		progressFill.style.width = `${percent}%`;
+	}
+
+	progressRoot?.setAttribute("aria-valuenow", String(completedRooms.size));
+}
+
+function placeArtifactRandom(letter?: string): void {
+	if (!letter) return;
+
+	const artefactsList = document.getElementById("artefactsList");
+	if (!artefactsList) return;
+
+	const slots = Array.from(
+		artefactsList.querySelectorAll<HTMLSpanElement>("li.artefacts > span"),
+	);
+	if (slots.length === 0) return;
+
+	const emptySlots = slots.filter((slot) => Boolean(slot.querySelector("img")));
+	const slotPool = emptySlots.length > 0 ? emptySlots : slots;
+	const randomSlot = slotPool[Math.floor(Math.random() * slotPool.length)];
+	randomSlot.textContent = letter;
+}
+
+window.completeRoom = (room: number, letter?: string) => {
+	if (room < 1 || room > TOTAL_ROOMS) return;
+	if (completedRooms.has(room)) return;
+
+	completedRooms.add(room);
+	updateProgressUI();
+	placeArtifactRandom(letter);
+};
 
 /*
  * ============================================================
@@ -88,6 +129,9 @@ function getCurrentRoomId(): string | null {
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
+		completedRooms.clear();
+		updateProgressUI();
+
 		const currentRoomId = getCurrentRoomId();
 		if (currentRoomId && roomOriginalHTML[currentRoomId]) {
 			const roomElem = document.getElementById(currentRoomId);
@@ -105,11 +149,3 @@ if (resetBtn) {
 
 	document.getElementById("start")!.classList.remove("hidden");
 };
-
-// Progress bar test: only Room 1 is counted for now.
-window.markRoomFinished = (roomId: string | number) => {
-	if (roomId === "room1" || roomId === 1) {
-		finishRoom(1);
-	}
-};
-

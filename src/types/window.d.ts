@@ -9,5 +9,6 @@ declare global {
 		updateFooterContext?: (roomId: string, completed?: boolean) => void;
 		markRoomFinished?: (roomId: string | number) => void;
 		resetRoomProgress?: () => void;
+		completeRoom?: (room: number, letter?: string) => void;
 	}
 }
