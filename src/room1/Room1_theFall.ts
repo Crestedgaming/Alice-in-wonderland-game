@@ -129,7 +129,10 @@ function attachRoom1Listeners() {
 					`Du har valt den här nyckeln!<img src="${keyIcon.src}" alt="${keyIcon.alt}" width="44" height="44">`,
 				);
 			} else {
-				setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
+				setRoom1Message(
+					message,
+					`Du har valt nyckeln med bokstaven ${letter}!`,
+				);
 			}
 		};
 	});
