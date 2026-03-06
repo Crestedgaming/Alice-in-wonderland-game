@@ -231,6 +231,7 @@ $shadow-brown: #4b1f1f;
 	min-width: 300px;
 	max-width: max-content;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	transform: translateX(-50%);
 	opacity: 0.5;
@@ -248,6 +249,17 @@ $shadow-brown: #4b1f1f;
 	p {
 		color: #f2e6ce;
 		margin: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		text-align: center;
+		line-height: 1.2;
+
+		img {
+			display: block;
+			flex-shrink: 0;
+		}
 	}
 }
 

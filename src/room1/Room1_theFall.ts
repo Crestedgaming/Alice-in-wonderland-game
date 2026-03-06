@@ -2,6 +2,7 @@ let room1StartTime = 0;
 let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
 let room1Unlocked = false;
+let room1AwardedLetter: string | null = null;
 
 const ROOM1_KEYS = [
 	{ buttonId: "keyL", letter: "L" },
@@ -95,10 +96,14 @@ function attachRoom1Listeners() {
 	// No key is selected when the room starts.
 	window.selectedKey = null;
 	room1Unlocked = false;
+	room1AwardedLetter = null;
 
 	if (endButton) {
 		endButton.classList.add("hidden");
 		endButton.onclick = function () {
+			if (room1Unlocked && room1AwardedLetter && artefactsSpan) {
+				artefactsSpan.textContent = room1AwardedLetter;
+			}
 			if (room1Unlocked && typeof window.markRoomFinished === "function") {
 				window.markRoomFinished("room1");
 			}
@@ -117,7 +122,15 @@ function attachRoom1Listeners() {
 
 		button.onclick = () => {
 			window.selectedKey = letter;
-			setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
+			const keyIcon = button.querySelector("img") as HTMLImageElement | null;
+			if (keyIcon) {
+				setRoom1Message(
+					message,
+					`Du har valt den här nyckeln!<img src="${keyIcon.src}" alt="${keyIcon.alt}" width="44" height="44">`,
+				);
+			} else {
+				setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
+			}
 		};
 	});
 
@@ -126,12 +139,12 @@ function attachRoom1Listeners() {
 			// Read which key the player selected most recently.
 			const selectedKey = window.selectedKey;
 			if (selectedKey && message) {
-				// Show confirmation and write the letter to the artifact slot.
+				// Unlock room and store the selected letter to award on next button click.
 				setRoom1Message(
 					message,
-					`Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!`,
+					`<img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true"> Du klarade utmaningen! Klicka på "Gå vidare" för att spara din artefakt ${selectedKey}. <img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true">`,
 				);
-				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
+				room1AwardedLetter = selectedKey;
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
 				room1Unlocked = true;
