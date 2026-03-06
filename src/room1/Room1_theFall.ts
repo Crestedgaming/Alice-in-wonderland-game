@@ -1,6 +1,14 @@
 let room1StartTime = 0;
 let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
+let room1Unlocked = false;
+
+const ROOM1_KEYS = [
+	{ buttonId: "keyL", letter: "L" },
+	{ buttonId: "keyE", letter: "E" },
+	{ buttonId: "keyV", letter: "V" },
+	{ buttonId: "keyA", letter: "A" },
+];
 
 function startRoom1Timer() {
 	room1StartTime = Date.now();
@@ -32,128 +40,154 @@ function formatMs(ms: number): string {
 	return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
 }
 
-// Visa landningssidan och göm spelet
+function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
+	if (messageEl) {
+		messageEl.innerHTML = `<p>${text}</p>`;
+	}
+}
 
+// Show the landing page and hide the game
 export function initRoom1() {
-	// Hämtar startsidan och spelinnehållet för rum 1.
-	let landing = document.getElementById("room1StartPage");
-	let content = document.getElementById("room1Container");
+	// Get the start page and game content for Room 1.
+	const landing = document.getElementById("room1StartPage");
+	const content = document.getElementById("room1Container");
 	if (landing && content) {
-		// Visar startsidan först och gömmer själva spelet.
+		// Show the start page first and hide the actual game.
 		landing.classList.remove("hidden");
 		content.classList.add("hidden");
 	}
-	let startBtn = document.getElementById("room1StartButton");
+
+	const startBtn = document.getElementById("room1StartButton");
 	if (startBtn) {
 		startBtn.onclick = function () {
-			// När spelaren klickar start visas spelet och startsidan döljs.
+			// When the player clicks start, show the game and hide the start page.
 			if (landing && content) {
 				landing.classList.add("hidden");
 				content.classList.remove("hidden");
 			}
-			// Kopplar lyssnare och startar spelloopen för rummet.
+			// Attach listeners and start the room game logic.
 			startRoom1Timer();
 			attachRoom1Listeners();
 			startRoom1GameLogic();
 		};
 	}
+
+	const nextBtn = document.getElementById("room1-next");
+	nextBtn?.addEventListener("click", () => {
+		window.dispatchEvent(new Event("ROOM_1_COMPLETED"));
+	});
 }
 window.initRoom1 = initRoom1;
 
-// Sätt event på nycklar och nyckelhål
+// Attach events to keys and keyhole
 function attachRoom1Listeners() {
-	let keyL = document.getElementById("keyL");
-	let keyE = document.getElementById("keyE");
-	let keyV = document.getElementById("keyV");
-	let keyA = document.getElementById("keyA");
-	let keyhole = document.getElementById("keyhole");
-	let message = document.getElementById("fallMessage");
-	let endButton = document.getElementById("room1EndButton");
-	// Ingen nyckel är vald när rummet startar.
+	const keyhole = document.getElementById("keyhole");
+	const message = document.getElementById("fallMessage");
+	const endButton =
+		document.getElementById("room1-next") ||
+		document.getElementById("room1EndButton");
+	const artefactsSpan = document.querySelector("#artefact1 span");
+
+	// No key is selected when the room starts.
 	window.selectedKey = null;
+	room1Unlocked = false;
 
 	if (endButton) {
 		endButton.classList.add("hidden");
 		endButton.onclick = function () {
-			if (typeof window.showRoom === "function") {
-				window.showRoom("rum2");
+			if (!room1Unlocked) return;
+			if (typeof window.markRoomFinished === "function") {
+				window.markRoomFinished("room1");
 			}
+			if (typeof window.updateFooterContext === "function") {
+				window.updateFooterContext("room1", true);
+			}
+			window.dispatchEvent(new Event("ROOM_1_COMPLETED"));
 		};
 	}
 
-	if (keyL)
-		keyL.onclick = function () {
-			window.selectedKey = "L";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven L!</p>";
+	ROOM1_KEYS.forEach(({ buttonId, letter }) => {
+		const button = document.getElementById(buttonId);
+		if (!button) return;
+
+		button.onclick = () => {
+			window.selectedKey = letter;
+			setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
 		};
-	if (keyE)
-		keyE.onclick = function () {
-			window.selectedKey = "E";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven E!</p>";
-		};
-	if (keyV)
-		keyV.onclick = function () {
-			window.selectedKey = "V";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven V!</p>";
-		};
-	if (keyA)
-		keyA.onclick = function () {
-			window.selectedKey = "A";
-			if (message)
-				message.innerHTML = "<p>Du har valt nyckeln med bokstaven A!</p>";
-		};
+	});
 
 	if (keyhole)
 		keyhole.onclick = function () {
-			// Läser av vilken nyckel spelaren senast valde.
-			let selectedKey = window.selectedKey;
+			// Read which key the player selected most recently.
+			const selectedKey = window.selectedKey;
 			if (selectedKey && message) {
-				// Visar bekräftelse och skriver bokstaven till artefaktplatsen.
-				message.innerHTML = `<p>Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!</p>`;
-				let artefactsSpan = document.querySelector("#artefact1 span");
+				// Show confirmation and write the letter to the artifact slot.
+				setRoom1Message(
+					message,
+					`Du har låst upp dörren och samlat på dig bokstaven ${selectedKey}!`,
+				);
 				if (artefactsSpan) artefactsSpan.textContent = selectedKey;
 				const finalMs = stopRoom1Timer();
 				saveRoom1Result(selectedKey, finalMs);
+				room1Unlocked = true;
 				if (endButton) {
 					endButton.classList.remove("hidden");
 				}
-			} else if (message) {
-				message.innerHTML =
-					"<p>Du måste välja en nyckel för att låsa upp dörren!</p>";
+			} else {
+				setRoom1Message(
+					message,
+					"Du måste välja en nyckel för att låsa upp dörren!",
+				);
 			}
 		};
 }
 
-// Enkel scroll och startmeddelande
+// Simple scroll and start message
 function startRoom1GameLogic() {
-	// Hämtar containern som ska scrollas under fallet.
-	let scrollContainer = document.querySelector(
+	// Get the container that scrolls during the fall.
+	const scrollContainer = document.querySelector(
 		"#room1 .backgroundScroll",
 	) as HTMLElement;
 	if (scrollContainer) {
-		let start = scrollContainer.scrollTop;
-		let target = scrollContainer.scrollHeight;
-		let duration = 15000;
-		let startTime = performance.now();
-		// Mjuk animation som scrollar från toppen till botten.
-		function animateScroll(currentTime: number) {
-			let elapsed = currentTime - startTime;
-			let progress = Math.min(elapsed / duration, 1);
-			scrollContainer.scrollTop = start + (target - start) * progress;
-			if (progress < 1) {
-				requestAnimationFrame(animateScroll);
+		const backgroundImage = scrollContainer.querySelector(
+			".backgroundImage",
+		) as HTMLImageElement | null;
+
+		const startFallingAnimation = () => {
+			const start = scrollContainer.scrollTop;
+			const duration = 12000;
+			const startTime = performance.now();
+
+			// Smooth animation that scrolls from top to bottom.
+			function animateScroll(currentTime: number) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				// Recalculate max scroll continuously for stable behavior across browsers and late image loads.
+				const maxScroll =
+					scrollContainer.scrollHeight - scrollContainer.clientHeight;
+				scrollContainer.scrollTop = start + (maxScroll - start) * progress;
+				if (progress < 1) {
+					requestAnimationFrame(animateScroll);
+				}
 			}
+
+			requestAnimationFrame(animateScroll);
+		};
+
+		if (backgroundImage && !backgroundImage.complete) {
+			backgroundImage.addEventListener("load", startFallingAnimation, {
+				once: true,
+			});
+		} else {
+			startFallingAnimation();
 		}
-		requestAnimationFrame(animateScroll);
 	}
-	let message = document.getElementById("fallMessage");
-	if (message) {
-		// Startmeddelande till spelaren.
-		message.innerHTML = "<p>Fort! Välj en nyckel innan du landar!</p>";
-	}
+
+	// Initial message for the player.
+	setRoom1Message(
+		document.getElementById("fallMessage"),
+		"Fort! Välj en nyckel innan du landar!",
+	);
 }
 
 function saveRoom1Result(letter: string, timeMs: number) {

@@ -1,5 +1,4 @@
 import "./mainstyles/main.scss";
-import { startGame } from "./engine/GameManager";
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
 import "./room1/Room1_theFall";
@@ -36,33 +35,54 @@ import "./the_other_rooms/highscore/highscore";
 		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
 	}
 
+	if (roomId === "rum2") {
+		import("./room2/Room2_Storleken").then((m) => m.initRoom2());
+	}
+
+	if (roomId === "rum4") {
+		import("./room4/Room4_hide_and_seek").then((m) => m.initRoom4());
+	}
+
+	if (roomId === "rum5") {
+		import("./room5/room5_teaparty").then((m) => m.initRoom5());
+	}
+
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
+	let title = "";
+	switch (roomId) {
+		case "room1":
+			title = "Fallet";
+			break;
+		case "rum2":
+			title = "Storleken";
+			break;
+		case "rum3":
+			title = "Gåtan";
+			break;
+		case "rum4":
+			title = "Kurragömma";
+			break;
+		case "rum5":
+			title = "Tebjudningen";
+			break;
+		case "rum6":
+			title = "Slutstriden";
+			break;
+		default:
+			title = "Escape Room";
+	}
+
 	if (navTitle) {
-		let title = "";
-		switch (roomId) {
-			case "room1":
-				title = "Fallet";
-				break;
-			case "rum2":
-				title = "Storleken";
-				break;
-			case "rum3":
-				title = "Gåtan";
-				break;
-			case "rum4":
-				title = "Kurragömma";
-				break;
-			case "rum5":
-				title = "Tebjudningen";
-				break;
-			case "rum6":
-				title = "Slutstriden";
-				break;
-			default:
-				title = "Escape Room";
-		}
 		navTitle.textContent = title;
+	}
+
+	// Set showArtifacts to reflect current room context in footer
+	const showArtifacts = document.getElementById("showArtifacts");
+	if (showArtifacts) {
+		const artifactsLabel = `Artefakter: ${title}`;
+		showArtifacts.setAttribute("aria-label", artifactsLabel);
+		showArtifacts.setAttribute("data-current-room", roomId);
 	}
 };
 
@@ -100,3 +120,30 @@ if (resetBtn) {
 	document.getElementById("start")!.classList.remove("hidden");
 };
 
+function initGameFlow() {
+	window.addEventListener("ROOM_1_COMPLETED", () =>
+		(window as any).showRoom("rum2")
+	);
+
+	window.addEventListener("ROOM_2_COMPLETED", () =>
+		(window as any).showRoom("rum3")
+	);
+
+	window.addEventListener("ROOM_3_COMPLETED", () =>
+		(window as any).showRoom("rum4")
+	);
+
+	window.addEventListener("ROOM_4_COMPLETED", () =>
+		(window as any).showRoom("rum5")
+	);
+
+	window.addEventListener("ROOM_5_COMPLETED", () =>
+		(window as any).showRoom("rum6")
+	);
+
+	window.addEventListener("ROOM_6_COMPLETED", () =>
+		(window as any).showRoom("start")
+	);
+}
+
+initGameFlow();
