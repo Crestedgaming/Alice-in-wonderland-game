@@ -264,7 +264,9 @@ $shadow-brown: #4b1f1f;
 }
 
 /* End button */
-#room1-next {
+#room1-next,
+#room1EndButton,
+.room1EndButton {
 	position: absolute;
 	bottom: 15vh;
 	right: 5vw;

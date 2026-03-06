@@ -47,6 +47,25 @@ function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
 	}
 }
 
+function assignRoom1ArtefactRandom(letter: string): void {
+	const artefactsList = document.getElementById("artefactsList");
+	if (!artefactsList) return;
+
+	const slots = Array.from(
+		artefactsList.querySelectorAll<HTMLSpanElement>("li.artefacts > span"),
+	);
+	if (slots.length === 0) return;
+
+	// Prefer a slot that still has the placeholder image.
+	const availableSlots = slots.filter((slot) =>
+		Boolean(slot.querySelector("img")),
+	);
+	const slotPool = availableSlots.length > 0 ? availableSlots : slots;
+	const randomIndex = Math.floor(Math.random() * slotPool.length);
+
+	slotPool[randomIndex].textContent = letter;
+}
+
 // Show the landing page and hide the game
 
 export function initRoom1() {
@@ -59,7 +78,6 @@ export function initRoom1() {
 		content.classList.add("hidden");
 	}
 	const startBtn = document.getElementById("room1StartButton");
-	const progressTestBtn = document.getElementById("room1ProgressTestButton");
 	if (startBtn) {
 		startBtn.onclick = function () {
 			// When the player clicks start, show the game and hide the start page.
@@ -73,14 +91,6 @@ export function initRoom1() {
 			startRoom1GameLogic();
 		};
 	}
-
-	if (progressTestBtn) {
-		progressTestBtn.onclick = function () {
-			if (typeof window.markRoomFinished === "function") {
-				window.markRoomFinished("room1");
-			}
-		};
-	}
 }
 window.initRoom1 = initRoom1;
 
@@ -91,7 +101,6 @@ function attachRoom1Listeners() {
 	const endButton =
 		document.getElementById("room1-next") ||
 		document.getElementById("room1EndButton");
-	const artefactsSpan = document.querySelector("#artefact1 span");
 
 	// No key is selected when the room starts.
 	window.selectedKey = null;
@@ -101,8 +110,8 @@ function attachRoom1Listeners() {
 	if (endButton) {
 		endButton.classList.add("hidden");
 		endButton.onclick = function () {
-			if (room1Unlocked && room1AwardedLetter && artefactsSpan) {
-				artefactsSpan.textContent = room1AwardedLetter;
+			if (room1Unlocked && room1AwardedLetter) {
+				assignRoom1ArtefactRandom(room1AwardedLetter);
 			}
 			if (room1Unlocked && typeof window.markRoomFinished === "function") {
 				window.markRoomFinished("room1");
