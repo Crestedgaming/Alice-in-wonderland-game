@@ -92,6 +92,21 @@ function registerRoomNextButtonHandler(): void {
 
 registerRoomNextButtonHandler();
 
+function focusCurrentViewTarget(viewId: string): void {
+	const view = document.getElementById(viewId);
+	if (!view) return;
+
+	const heading = view.querySelector("h1, h2") as HTMLElement | null;
+	if (heading) {
+		heading.setAttribute("tabindex", "-1");
+		heading.focus();
+		return;
+	}
+
+	const firstButton = view.querySelector("button") as HTMLButtonElement | null;
+	firstButton?.focus();
+}
+
 /*
  * ============================================================
  * ************************Startsida***************************
@@ -105,6 +120,7 @@ registerRoomNextButtonHandler();
 	});
 
 	document.getElementById(roomId)!.classList.remove("hidden");
+	focusCurrentViewTarget(roomId);
 
 	// Initialize Room 1 logic and listeners when showing Room 1
 	if (roomId === "room1") {
@@ -156,32 +172,11 @@ registerRoomNextButtonHandler();
 	}
 };
 
-// --- Room reset logic ---
-const roomOriginalHTML: Record<string, string> = {};
-document.querySelectorAll(".room").forEach((room) => {
-	roomOriginalHTML[room.id] = room.innerHTML;
-});
-
-function getCurrentRoomId(): string | null {
-	const visibleRoom = Array.from(document.querySelectorAll(".room")).find(
-		(room) => !room.classList.contains("hidden"),
-	);
-	return visibleRoom ? visibleRoom.id : null;
-}
-
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
-		completedRooms.clear();
-		updateProgressUI();
-
-		const currentRoomId = getCurrentRoomId();
-		if (currentRoomId && roomOriginalHTML[currentRoomId]) {
-			const roomElem = document.getElementById(currentRoomId);
-			if (roomElem) {
-				roomElem.innerHTML = roomOriginalHTML[currentRoomId];
-			}
-		}
+		// Full reload is the safest reset because several rooms attach listeners once at module load.
+		window.location.reload();
 	});
 }
 
@@ -191,4 +186,19 @@ if (resetBtn) {
 	});
 
 	document.getElementById("start")!.classList.remove("hidden");
+	focusCurrentViewTarget("start");
+
+	const navTitle = document.getElementById("rumID");
+	if (navTitle) {
+		navTitle.textContent = "Alice i underlandet";
+	}
 };
+
+const goToStartBtn = document.getElementById("goToStartBtn");
+if (goToStartBtn) {
+	goToStartBtn.addEventListener("click", () => {
+		if (typeof window.goToStart === "function") {
+			window.goToStart();
+		}
+	});
+}
