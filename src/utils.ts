@@ -11,3 +11,25 @@
 }
 
 */
+
+let seconds = 0;
+let timerStarted = false;
+
+export function startTimer() {
+  if (timerStarted) return;
+  timerStarted = true;
+
+  setInterval(() => {
+    seconds++;
+
+    const timerElement = document.getElementById("falletTimerTotalt");
+
+    if (timerElement) {
+      const minutes = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+
+      timerElement.textContent =
+        `Tid i rummet: ${String(minutes).padStart(2, "0")}.${String(secs).padStart(2, "0")}`;
+    }
+  }, 1000);
+}
