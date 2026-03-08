@@ -8,6 +8,11 @@ import "./room2/Room2_Storleken";
 
 const TOTAL_ROOMS = 6;
 const completedRooms = new Set<number>();
+const initialArtifactSlotMarkup = Array.from(
+	document.querySelectorAll<HTMLSpanElement>(
+		"#artefactsList li.artefacts > span",
+	),
+).map((slot) => slot.innerHTML);
 
 function updateProgressUI(): void {
 	const progressFill = document.getElementById(
@@ -40,6 +45,40 @@ function placeArtifactRandom(letter?: string): void {
 	randomSlot.textContent = letter;
 }
 
+function resetArtifactsUI(): void {
+	const slots = Array.from(
+		document.querySelectorAll<HTMLSpanElement>(
+			"#artefactsList li.artefacts > span",
+		),
+	);
+
+	slots.forEach((slot, index) => {
+		slot.innerHTML = initialArtifactSlotMarkup[index] ?? "";
+	});
+}
+
+function resetGameUIState(): void {
+	completedRooms.clear();
+	updateProgressUI();
+	resetArtifactsUI();
+
+	localStorage.removeItem("room1Results");
+	window.selectedKey = null;
+
+	const totalTimer = document.getElementById("gameTimerTotalt");
+	if (totalTimer) {
+		totalTimer.textContent = "Total speltid: 00.00";
+	}
+
+	const roomTimer = document.getElementById("gameTimerEachRoom");
+	if (roomTimer) {
+		roomTimer.textContent = "Tid i rummet: 00.00";
+	}
+
+	const completedView = document.getElementById("game-completed");
+	completedView?.classList.add("hidden");
+}
+
 window.completeRoom = (room: number, letter?: string) => {
 	if (room < 1 || room > TOTAL_ROOMS) return;
 	if (completedRooms.has(room)) return;
@@ -49,7 +88,6 @@ window.completeRoom = (room: number, letter?: string) => {
 	placeArtifactRandom(letter);
 };
 
-// Reusable flow for all room next buttons.
 function handleRoomNextButtonClick(nextButton: HTMLButtonElement): void {
 	const roomNumber = Number(nextButton.dataset.room);
 	const artifactLetter = nextButton.dataset.artifactLetter;
@@ -175,8 +213,10 @@ function focusCurrentViewTarget(viewId: string): void {
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
-		// Full reload is the safest reset because several rooms attach listeners once at module load.
-		window.location.reload();
+		resetGameUIState();
+		if (typeof window.goToStart === "function") {
+			window.goToStart();
+		}
 	});
 }
 
