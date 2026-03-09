@@ -143,7 +143,7 @@
 // ===============================
 // RUM 5 – TEAPARTY
 // ===============================
-import { startTimer } from "../utils";
+import { startTimer, pauseTimer, goToNextRoom} from "../utils";
 let gameRunning = false;
 
 // Start-knappen
@@ -227,16 +227,31 @@ function initGame() {
   }
 
   function checkGame() {
-    const total = calculateTotal();
-    const allCupsHaveTea = cupValues.every((value) => value > 0);
+  const total = calculateTotal();
+  const allCupsHaveTea = cupValues.every((value) => value > 0);
 
-    if (total === TARGET_TOTAL && allCupsHaveTea) {
+  if (total === TARGET_TOTAL && allCupsHaveTea) {
+  gameRunning = false;
       if (messageElement) {
         messageElement.textContent =
           "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
       }
+
+    
+    pauseTimer();
+
+    const nextBtn = document.getElementById("next-room5");
+
+    if (nextBtn) {
+      nextBtn.classList.remove("hidden");
+
+      nextBtn.addEventListener("click", () => {
+        console.log("NEXT ROOM CLICKED");
+        goToNextRoom("rum5", "rum6");
+      });
     }
 
+  } 
     else if (total === TARGET_TOTAL && !allCupsHaveTea) {
       if (messageElement) {
         messageElement.textContent =
@@ -261,3 +276,4 @@ function initGame() {
   }
 
 }
+

@@ -37,7 +37,7 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
-import { startTimer } from "../utils";
+import { startTimer,resumeTimer } from "../utils";
 
 import { showGameCompleted } from "../the_other_rooms/game_over/game_over"; 
 const startBtn = document.getElementById("room6-start-btn");
@@ -45,6 +45,7 @@ const intro = document.getElementById("room6-intro");
 
 startBtn?.addEventListener("click", () => {
   startTimer();
+  resumeTimer();
   intro?.classList.add("hidden");
 
 
