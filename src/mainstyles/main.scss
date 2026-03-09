@@ -20,12 +20,6 @@
 
 @use "../the_other_rooms/highscore/highscore";
 
-
-
-@use "../the_other_rooms/highscore/highscore";
-
-
-
 body {
 	background-color: black;
 	overflow-x: hidden;
@@ -41,8 +35,6 @@ main {
 	grid-template-rows: 1fr;
 	width: 100%;
 	background-color: #732f2f;
-
-
 
 	h2 {
 		color: black;
