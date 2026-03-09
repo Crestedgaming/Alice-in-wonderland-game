@@ -1,54 +1,75 @@
 # Asset Credits
 
-Use this file to document attribution for icons, images, and other visual assets.
+This file tracks attribution for images, icons, fonts, and third-party visual resources used in the project.
 
-## How to fill this in
+## Quick Rules
 
-For each asset:
+- If the team created an asset:
+  - Creator: `Shikadi Shadowstep team`
+  - Source: `Original work`
+  - License: `Project internal`
+- If external:
+  - Add creator, source URL, and license.
 
-1. Add creator name
-2. Add source URL
-3. Add license name
-4. Add license URL (if available)
-5. Add where the asset is used in the game
+## Confirmed Asset Credits
 
-If an asset is made by your team, set:
+| File                              | Creator                | Source                                                       | License          |
+| --------------------------------- | ---------------------- | ------------------------------------------------------------ | ---------------- |
+| `public/Room1_bilder/key1.gif`    | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_18820940     | Flaticon License |
+| `public/Room1_bilder/key2.gif`    | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_13932784     | Flaticon License |
+| `public/Room1_bilder/key3.gif`    | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_14240877     | Flaticon License |
+| `public/Room1_bilder/key4.gif`    | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_17888913     | Flaticon License |
+| `public/Room1_bilder/keyhole.gif` | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/keyhole_15968645 | Flaticon License |
 
-- Creator: `Shikadi Shadowstep team`
-- Source: `Original work`
-- License: `Project internal` (or your chosen repo license)
+Reference: https://www.flaticon.com/legal
 
-## Credits Table
+## Third-Party Fonts and Libraries
 
-| File                                                               | Creator                | Source URL                                                   | License                                 | License URL                    | Used In                     |
-| ------------------------------------------------------------------ | ---------------------- | ------------------------------------------------------------ | --------------------------------------- | ------------------------------ | --------------------------- |
-| `public/images/rabbitInFooter.png`                                 | TODO                   | TODO                                                         | TODO                                    | TODO                           | Footer artifact placeholder |
-| `public/Room1_bilder/backgroundRoom1.webp`                         | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 1 background           |
-| `public/Room1_bilder/aliceFalling.png`                             | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 1 falling animation    |
-| `public/Room1_bilder/key1.gif`                                     | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_18820940     | Flaticon License (attribution required) | https://www.flaticon.com/legal | Room 1 key choice           |
-| `public/Room1_bilder/key2.gif`                                     | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_13932784     | Flaticon License (attribution required) | https://www.flaticon.com/legal | Room 1 key choice           |
-| `public/Room1_bilder/key3.gif`                                     | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_14240877     | Flaticon License (attribution required) | https://www.flaticon.com/legal | Room 1 key choice           |
-| `public/Room1_bilder/key4.gif`                                     | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/key_17888913     | Flaticon License (attribution required) | https://www.flaticon.com/legal | Room 1 key choice           |
-| `public/Room1_bilder/keyhole.gif`                                  | Freepik (via Flaticon) | https://www.flaticon.com/free-animated-icon/keyhole_15968645 | Flaticon License (attribution required) | https://www.flaticon.com/legal | Room 1 keyhole              |
-| `public/Room1_bilder/room1Star.png`                                | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 1 success message      |
-| `public/images/Room2_bilder/Rum2bakgrund.jpg`                      | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 2 background           |
-| `public/images/Room2_bilder/AliceTransparent.png`                  | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 2 Alice sprite         |
-| `public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png`  | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 3 visuals              |
-| `public/room3_bilder/Gemini_Generated_Image_a9bxua9bxua9bxua.webp` | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 3 visuals              |
-| `public/room4_bilder/background.jpg`                               | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 4 background           |
-| `public/room4_bilder/cat.png`                                      | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 4 game target          |
-| `public/room5_bilder/teaparty_backgroundpic.jpg`                   | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 5 background           |
-| `public/room5_bilder/teapot.png`                                   | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 5 controls             |
-| `public/room5_bilder/teacup_outline.png`                           | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 5 cups                 |
-| `public/Room6_bilder/pngwing.com.png`                              | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
-| `public/Room6_bilder/pngwing.com(1).png`                           | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
-| `public/Room6_bilder/pngwing.com(2).png`                           | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
-| `public/Room6_bilder/pngwing.com(5).png`                           | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
-| `public/Room6_bilder/pngwing.com(7).png`                           | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
-| `public/Room6_bilder/pngwing.com (2).png`                          | TODO                   | TODO                                                         | TODO                                    | TODO                           | Room 6 visuals              |
+| Dependency                        | Source                                                                                 | License                       |
+| --------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+| Font Awesome 4.7.0 (CDN)          | https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css     | SIL OFL 1.1 / MIT / CC BY 4.0 |
+| Google Fonts: Henny Penny         | https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap                      | SIL Open Font License         |
+| Google Fonts: Bricolage Grotesque | https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800 | SIL Open Font License         |
 
-## Optional UI Attribution
+License references:
 
-If your icon source requires visible attribution inside the app, add this line in your About page:
+- Font Awesome: https://fontawesome.com/v4/license/
+- Henny Penny: https://fonts.google.com/specimen/Henny+Penny
+- Bricolage Grotesque: https://fonts.google.com/specimen/Bricolage+Grotesque
 
-`Icons/images credited in CREDITS.md in this repository.`
+## Assets To Confirm
+
+Add source and license details for these files:
+
+- Shared UI:
+  - `public/images/rabbitInFooter.png`
+- Room 1:
+  - `public/Room1_bilder/backgroundRoom1.webp`
+  - `public/Room1_bilder/aliceFalling.png`
+  - `public/Room1_bilder/room1Star.png`
+- Room 2:
+  - `public/images/Room2_bilder/Rum2bakgrund.jpg`
+  - `public/images/Room2_bilder/AliceTransparent.png`
+- Room 3:
+  - `public/room3_bilder/Gemini_Generated_Image_i7woeji7woeji7wo.png`
+  - `public/room3_bilder/Gemini_Generated_Image_a9bxua9bxua9bxua.webp`
+- Room 4:
+  - `public/room4_bilder/background.jpg`
+  - `public/room4_bilder/cat.png`
+- Room 5:
+  - `public/room5_bilder/teaparty_backgroundpic.jpg`
+  - `public/room5_bilder/teapot.png`
+  - `public/room5_bilder/teacup_outline.png`
+- Room 6:
+  - `public/Room6_bilder/pngwing.com.png`
+  - `public/Room6_bilder/pngwing.com(1).png`
+  - `public/Room6_bilder/pngwing.com(2).png`
+  - `public/Room6_bilder/pngwing.com(5).png`
+  - `public/Room6_bilder/pngwing.com(7).png`
+  - `public/Room6_bilder/pngwing.com (2).png`
+  - `src/room6/Room6_bilder/QUEEN ROOM EL FINALE.png`
+  - `src/room6/Room6_bilder/Game Over Alice.png`
+
+## Optional In-App Attribution
+
+`Icons and images are credited in CREDITS.md in this repository.`

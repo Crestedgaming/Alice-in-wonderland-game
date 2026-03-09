@@ -1,43 +1,64 @@
 # Escape Room Game
 
-This is our Alice in Wonderland-inspired escape room game, built as a team project.
-Our goal was to create something playful, a little strange, and fun to explore while practicing TypeScript, SCSS, and collaboration.
+Alice in Wonderland-inspired escape room game built as a team project in the FED25D JavaScript course.
 
-## Quick Start
+The game contains six connected rooms with different puzzle mechanics. As players finish rooms, they collect artifact letters and progress toward the final challenge.
 
-1. Install dependencies:
-   - `npm install`
-2. Start the app:
-   - `npm run dev`
-3. Open the URL shown by Vite (usually `http://localhost:5173`).
+## Features
 
-## What This Project Includes
-
-- 6 playable rooms
-- Progress bar in the footer
-- Artifact letters collected as you complete rooms
-- Final puzzle in Room 6
-
-Each room has its own mini challenge and personality, but they all connect into one story.
+- Six playable rooms with separate room logic
+- Room progress tracking in the footer
+- Artifact letter collection across the game
+- Final room challenge after completing the full sequence
+- Local asset-driven gameplay and browser-based state
 
 Room order:
 
 1. Fallet
 2. Storleken
-3. The Riddle
-4. Hide and Seek
+3. Gåtan
+4. Kurragömma
 5. Tebjudningen
 6. Slutstriden
 
-## Main Files
+## Tech Stack
 
-- `index.html`: page structure and all room sections
-- `src/main.ts`: room switching, progress, and artifact placement
-- `src/footer.ts`: shared progress helper functions
-- `src/engine/GameState.ts`: global game state type and object
-- `src/engine/GameManager.ts`: game flow helpers (start, complete, timer)
+- TypeScript
+- SCSS
+- Vite
+- HTML
+- CSS
 
-Room logic files:
+## Getting Started
+
+Prerequisites:
+
+- Node.js 18+ (recommended)
+- npm
+
+Install and run:
+
+1. `npm install`
+2. `npm run dev`
+3. Open the URL shown by Vite (usually `http://localhost:5173`)
+
+## Available Scripts
+
+- `npm run dev`: Start development server
+- `npm run build`: Run TypeScript build and create production bundle
+- `npm run preview`: Preview the production build locally
+
+## Project Structure
+
+Core files:
+
+- `index.html`: Main page and room containers
+- `src/main.ts`: Room switching, progress, and artifact placement
+- `src/footer.ts`: Shared footer/progress helpers
+- `src/engine/GameState.ts`: Global game state type and state object
+- `src/engine/GameManager.ts`: Shared game flow helpers
+
+Room files:
 
 - `src/room1/Room1_theFall.ts`
 - `src/room2/Room2_Storleken.ts`
@@ -46,45 +67,29 @@ Room logic files:
 - `src/room5/room5_teaparty.ts`
 - `src/room6/Room6_Slutstriden.ts`
 
-## Data and Assets
+Assets and data:
 
-- Uses local assets from `public/` (images/gifs/webp for each room)
-- Uses browser localStorage for some runtime results (for example Room 1)
-- No external or confidential datasets are required
+- `public/`: Room images and other static assets
+- `src/data/rooms.json`: Present but currently empty
+- `src/data/artifacts.json`: Present but currently empty
 
-Note:
+## Manual Test Checklist
 
-- `src/data/rooms.json` exists but is currently empty
-- `src/data/artifacts.json` exists but is currently empty
+1. Start a new game from the landing view.
+2. Complete all rooms in sequence.
+3. Verify that:
+   - The footer progress bar increases correctly.
+   - Artifact letters appear as expected.
+   - The final completion state appears after Room 6.
 
-## Scripts
+## Notes
 
-- `npm run dev`: start local development server
-- `npm run build`: type-check and build production files
-- `npm run preview`: preview production build locally
+- Some rooms include randomized behavior (for example shuffled letters or random positions).
+- Runtime data such as Room 1 results can be stored in browser `localStorage`.
 
-## Testing the Full Flow
+## Team
 
-1. Start the game from the menu.
-2. Complete all rooms in order.
-3. Confirm that:
-   - progress bar increases
-   - artifact letters appear in footer
-   - final completion screen appears after Room 6
-
-If all of that works, the full game loop works as intended.
-
-## Technical Notes
-
-- Randomness is used in some rooms (for example random cat position and letter shuffle).
-- No fixed random seed is configured.
-- Typical manual full-play test time: 10 to 60 minutes.
-
-## Credits
-
-Built by Team `Shikadi Shadowstep` in the FED25D JavaScript course project.
-
-Team members:
+Built by Team `Shikadi Shadowstep`.
 
 - Jennie Modd - <https://github.com/jenniemodd>
 - Sandra Hellstrom - <https://github.com/Saandrah>
@@ -93,23 +98,10 @@ Team members:
 - Mohammed Yasin - <https://github.com/Mohammed-FE2025>
 - Amanda Andersson - <https://github.com/amanda-andersson>
 
-How we worked together:
+## Attribution
 
-- We split work by rooms, then helped each other when someone got stuck.
-- We used daily standups and retros to keep momentum and adjust plans.
-- We rotated between creative roles (ideas/design) and quality roles (review/testing).
-
-Thanks to everyone in the team for ideas, debugging sessions, and making each room feel different.
+Icon and image attribution is documented in `CREDITS.md`.
 
 ## License
 
 No license file is currently included in this branch.
-
-## Icon and Asset Attribution
-
-Full icon/image attribution is documented in `CREDITS.md`.
-
-## Reference
-
-Original structure inspiration:
-<https://raw.githubusercontent.com/social-science-data-editors/template_README/releases/README.md>
