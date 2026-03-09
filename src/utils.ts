@@ -15,46 +15,32 @@
 let seconds = 0;
 let timerStarted = false;
 let timerInterval: number;
+let timerElement: HTMLElement | null = null;
 
-export function startTimer() {
-  if (timerStarted) return;
+export function startTimer(elementId: string) {
+	if (timerStarted) return;
 
-  timerStarted = true;
+	timerStarted = true;
 
-  timerInterval = setInterval(updateTimer, 1000);
+	timerElement = document.getElementById(elementId);
+
+	timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer() {
-  seconds++;
+	seconds++;
 
-  const timerElement = document.getElementById("falletTimerTotalt");
+	if (timerElement) {
+		const minutes = Math.floor(seconds / 60);
+		const secs = seconds % 60;
 
-  if (timerElement) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-
-    timerElement.textContent =
-      `Tid i rummet: ${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  }
-}
-
-export function pauseTimer() {
-  clearInterval(timerInterval);
-}
-
-export function resumeTimer() {
-  timerInterval = setInterval(updateTimer, 1000);
+		timerElement.textContent =
+			`Tid i rummet: ${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+	}
 }
 
 export function stopTimer() {
-  clearInterval(timerInterval);
-  timerStarted = false;
-}
-
-export function goToNextRoom(currentRoomId: string, nextRoomId: string) {
-  const currentRoom = document.getElementById(currentRoomId);
-  const nextRoom = document.getElementById(nextRoomId);
-
-  currentRoom?.classList.add("hidden");
-  nextRoom?.classList.remove("hidden");
+	clearInterval(timerInterval);
+	timerStarted = false;
+	seconds = 0;
 }

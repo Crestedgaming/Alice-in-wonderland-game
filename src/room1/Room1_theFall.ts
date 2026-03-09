@@ -1,4 +1,5 @@
 import { completeRoom } from "../engine/GameManager";
+import { startTimer, stopTimer } from "../utils";
 
 type Room1Elements = {
 	landing: HTMLElement | null;
@@ -26,9 +27,7 @@ const ROOM1_KEYS = [
 const ROOM1_FALL_DURATION_MS = 12000;
 const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
 
-let room1StartTime = 0;
-let room1TimerId: number | null = null;
-let room1ElapsedMs = 0;
+
 
 function getRoom1Elements(): Room1Elements {
 	return {
@@ -75,44 +74,7 @@ function showGame(
 	content?.classList.remove("hidden");
 }
 
-function updateRoom1TimerDisplay(
-	timerEl: HTMLElement | null,
-	elapsedMs: number,
-): void {
-	if (!timerEl) {
-		return;
-	}
-	timerEl.textContent = `Tid i rummet: ${formatMs(elapsedMs)}`;
-}
 
-function startRoom1Timer(timerEl: HTMLElement | null): void {
-	if (room1TimerId !== null) {
-		clearInterval(room1TimerId);
-	}
-
-	room1StartTime = Date.now();
-	room1ElapsedMs = 0;
-	updateRoom1TimerDisplay(timerEl, 0);
-
-	room1TimerId = window.setInterval(() => {
-		room1ElapsedMs = Date.now() - room1StartTime;
-		updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
-	}, 250);
-}
-
-function stopRoom1Timer(timerEl: HTMLElement | null): number {
-	if (room1TimerId !== null) {
-		clearInterval(room1TimerId);
-		room1TimerId = null;
-	}
-
-	if (room1StartTime > 0) {
-		room1ElapsedMs = Date.now() - room1StartTime;
-	}
-
-	updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
-	return room1ElapsedMs;
-}
 
 function saveRoom1Result(letter: string, timeMs: number): void {
 	const result: Room1Result = {
@@ -196,7 +158,8 @@ function bindKeyhole(
 			`Du klarade utmaningen! Bokstaven ${selectedKey} sparades.`,
 		);
 
-		const finalMs = stopRoom1Timer(roomTimer);
+		stopTimer();
+const finalMs = 0;
 		saveRoom1Result(selectedKey, finalMs);
 
 		completeRoom(1, selectedKey);
@@ -268,7 +231,7 @@ export function initRoom1(): void {
 
 	elements.startButton.onclick = () => {
 		showGame(elements.landing, elements.content);
-		startRoom1Timer(elements.roomTimer);
+		startTimer("gameTimerEachRoom");
 		attachRoom1Listeners(elements);
 		startRoom1GameLogic();
 	};

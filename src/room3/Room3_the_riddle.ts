@@ -1,44 +1,9 @@
 // Room 3 – The Caterpillar Riddles
+import { startTimer, stopTimer } from "../utils";
 import { completeRoom } from "../engine/GameManager";
 
 export function initRoom3(): void {
-		// Room 3 timer logic
-		let room3TimerId: number | null = null;
-		let room3StartTime = 0;
-		let room3ElapsedMs = 0;
-
-		function updateRoom3TimerDisplay(timerEl: HTMLElement | null, elapsedMs: number) {
-			if (!timerEl) return;
-			const totalSec = Math.floor(elapsedMs / 1000);
-			const min = Math.floor(totalSec / 60);
-			const sec = totalSec % 60;
-			timerEl.textContent = `Tid i rummet: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-		}
-
-		function startRoom3Timer(timerEl: HTMLElement | null) {
-			if (room3TimerId !== null) {
-				clearInterval(room3TimerId);
-			}
-			room3StartTime = Date.now();
-			room3ElapsedMs = 0;
-			updateRoom3TimerDisplay(timerEl, 0);
-			room3TimerId = window.setInterval(() => {
-				room3ElapsedMs = Date.now() - room3StartTime;
-				updateRoom3TimerDisplay(timerEl, room3ElapsedMs);
-			}, 250);
-		}
-
-		function stopRoom3Timer(timerEl: HTMLElement | null): number {
-			if (room3TimerId !== null) {
-				clearInterval(room3TimerId);
-				room3TimerId = null;
-			}
-			if (room3StartTime > 0) {
-				room3ElapsedMs = Date.now() - room3StartTime;
-			}
-			updateRoom3TimerDisplay(timerEl, room3ElapsedMs);
-			return room3ElapsedMs;
-		}
+		
 	// --- Get fresh DOM references every time room opens ---
 	const rum3StartButton = document.getElementById(
 		"rum3-start-button",
@@ -99,8 +64,7 @@ export function initRoom3(): void {
 	// Start room
 	// -----------------------------
 	function startRiddle(): void {
-		const roomTimer = document.getElementById("gameTimerEachRoom");
-		startRoom3Timer(roomTimer);
+	startTimer("gameTimerEachRoom");
 		rum3StartButton.classList.add("hidden");
 		riddleContainer.classList.remove("hidden");
 		currentRiddle = 0;
@@ -151,8 +115,7 @@ export function initRoom3(): void {
 	// Decide artifact (REAL vs FAKE)
 	// -----------------------------
 	function finishRoom3(): void {
-		const roomTimer = document.getElementById("gameTimerEachRoom");
-		stopRoom3Timer(roomTimer);
+	stopTimer();
 		let letter: string;
 		let message: string;
 

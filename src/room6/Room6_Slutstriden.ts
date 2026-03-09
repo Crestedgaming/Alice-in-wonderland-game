@@ -1,40 +1,6 @@
-// Room 6 timer logic
-let room6TimerId: number | null = null;
-let room6StartTime = 0;
-let room6ElapsedMs = 0;
 
-function updateRoom6TimerDisplay(timerEl: HTMLElement | null, elapsedMs: number) {
-	if (!timerEl) return;
-	const totalSec = Math.floor(elapsedMs / 1000);
-	const min = Math.floor(totalSec / 60);
-	const sec = totalSec % 60;
-	timerEl.textContent = `Tid i rummet: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-}
+import { startTimer, stopTimer } from "../utils";
 
-function startRoom6Timer(timerEl: HTMLElement | null) {
-	if (room6TimerId !== null) {
-		clearInterval(room6TimerId);
-	}
-	room6StartTime = Date.now();
-	room6ElapsedMs = 0;
-	updateRoom6TimerDisplay(timerEl, 0);
-	room6TimerId = window.setInterval(() => {
-		room6ElapsedMs = Date.now() - room6StartTime;
-		updateRoom6TimerDisplay(timerEl, room6ElapsedMs);
-	}, 250);
-}
-
-function stopRoom6Timer(timerEl: HTMLElement | null): number {
-	if (room6TimerId !== null) {
-		clearInterval(room6TimerId);
-		room6TimerId = null;
-	}
-	if (room6StartTime > 0) {
-		room6ElapsedMs = Date.now() - room6StartTime;
-	}
-	updateRoom6TimerDisplay(timerEl, room6ElapsedMs);
-	return room6ElapsedMs;
-}
 /* Rum 6 är finalen
 
 Här får spelaren fem bokstäver som de har samlat från de tidigare rummen.
@@ -74,21 +40,29 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
+let shuffleInterval: number | null = null;
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 const roomTimer = document.getElementById("gameTimerEachRoom");
 
 startBtn?.addEventListener("click", () => {
-	startRoom6Timer(roomTimer);
+	startTimer("gameTimerEachRoom");
+
 	intro?.classList.add("hidden");
+
 	shuffleLetters();
-	setInterval(shuffleLetters, 3000);
+
+	if (shuffleInterval !== null) {
+		clearInterval(shuffleInterval);
+	}
+
+	shuffleInterval = window.setInterval(shuffleLetters, 3000);
 });
 const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", () => {
 	checkWord();
-	stopRoom6Timer(roomTimer);
+	stopTimer();
 });
 
 function checkWord() {
@@ -144,4 +118,31 @@ function shuffleLetters() {
 	lettersArray.forEach((letter) => {
 		lettersContainer.appendChild(letter);
 	});
+}
+export function initRoom6() {
+
+	stopTimer();
+
+	currentIndex = 0;
+
+	const intro = document.getElementById("room6-intro");
+	intro?.classList.remove("hidden");
+
+	const boxes = document.querySelectorAll(".box");
+	boxes.forEach((box) => {
+		box.textContent = "";
+	});
+
+	const letters = document.querySelectorAll(".letter-btn");
+	letters.forEach((btn) => {
+		(btn as HTMLButtonElement).disabled = false;
+	});
+
+	const message = document.getElementById("message");
+	message?.classList.add("hidden");
+
+	if (shuffleInterval !== null) {
+		clearInterval(shuffleInterval);
+		shuffleInterval = null;
+	}
 }
