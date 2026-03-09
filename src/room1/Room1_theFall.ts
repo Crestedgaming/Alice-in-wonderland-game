@@ -175,7 +175,6 @@ function bindKeySelection(message: HTMLElement | null): void {
 function bindKeyhole(
 	keyhole: HTMLButtonElement | null,
 	message: HTMLElement | null,
-	endButton: HTMLButtonElement | null,
 	roomTimer: HTMLElement | null,
 ): void {
 	if (!keyhole) {
@@ -204,22 +203,13 @@ function bindKeyhole(
 		if (typeof window.updateFooterContext === "function") {
 			window.updateFooterContext("room1", true);
 		}
-
-		if (endButton) {
-			endButton.classList.add("hidden");
-		}
 	};
 }
 
 function attachRoom1Listeners(elements: Room1Elements): void {
 	resetRoom1State(elements.endButton);
 	bindKeySelection(elements.message);
-	bindKeyhole(
-		elements.keyhole,
-		elements.message,
-		elements.endButton,
-		elements.roomTimer,
-	);
+	bindKeyhole(elements.keyhole, elements.message, elements.roomTimer);
 }
 
 function startFallingAnimation(scrollContainer: HTMLElement): void {
