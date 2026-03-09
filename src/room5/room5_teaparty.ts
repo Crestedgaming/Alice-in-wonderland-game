@@ -143,7 +143,6 @@
 // ===============================
 // RUM 5 – TEAPARTY
 // ===============================
-import { startTimer, pauseTimer, goToNextRoom} from "../utils";
 let gameRunning = false;
 
   // Start-knappen
@@ -259,4 +258,8 @@ function initGame() {
     updateUI();
   }
 
+}
+
+export function initRoom5() {
+  // Lägg till rum5-logik här
 }

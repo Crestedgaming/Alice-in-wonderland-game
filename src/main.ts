@@ -1,5 +1,4 @@
 import "./mainstyles/main.scss";
-import { startGame } from "./engine/GameManager";
 import "./the_other_rooms/landing_page/home_page";
 import "./the_other_rooms/landing_page/login";
 import "./room4/Room4_hide_and_seek";
@@ -102,4 +101,12 @@ if (resetBtn) {
 
 	document.getElementById("start")!.classList.remove("hidden");
 };
+
+function focusCurrentViewTarget(roomId: string) {
+  // Stub: Lägg till logik om du vill hantera fokus
+}
+
+function resetGameUIState() {
+  // Stub: Lägg till logik för att återställa UI
+}
 

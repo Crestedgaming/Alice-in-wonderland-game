@@ -181,4 +181,8 @@ vaggord.forEach((ord) => {
 // startläge
 updateSize();
 
+export function initRoom2() {
+  // Lägg till rum2-logik här
+}
+
 export {};
