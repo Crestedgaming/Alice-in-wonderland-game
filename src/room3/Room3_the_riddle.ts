@@ -89,29 +89,28 @@ export function initRoom3(): void {
       let message: string;
 
       if (correctAnswers >= 2) {
-         letter = "k"; // REAL LETTER
+         letter = "K";
          message = "🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
       } else {
-         letter = "Q"; // FAKE LETTER
+         letter = "Q";
          message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
       }
 
       giveArtifact(letter);
 
-      riddleContainer.innerHTML = `
-      <div class="riddle-result">
-        <h3>${message}</h3>
-        <p>Du får en bokstav: <b>${letter}</b></p>
-        <button id="room3-continue">Gå vidare</button>
-      </div>
-    `;
+      // Hide individual riddles (not the container, so the button stays visible)
+      riddles.forEach(r => {
+         const el = document.getElementById(r.id);
+         if (el) el.classList.add("hidden");
+      });
 
-      document.getElementById("room3-continue")!
-         .addEventListener("click", () => {
-            (window as any).showRoom("rum4");
-         });
+      // Show message (optional: add a <p id="room3-message"> in HTML if you want)
+      alert(message + " Du få bokstaven: " + letter);
+
+      // Show next button
+      const nextBtn = document.getElementById("room3-next");
+      nextBtn?.classList.remove("hidden");
    }
-
    // -----------------------------
    // Artifact hook (connect later)
    // -----------------------------
@@ -123,10 +122,18 @@ export function initRoom3(): void {
    // -----------------------------
    // Event listeners
    // -----------------------------
+   // -----------------------------
+   // Event listeners
+   // -----------------------------
    rum3StartButton.addEventListener("click", startRiddle);
 
    riddles.forEach((_, i) => {
       const btn = document.getElementById(`submit${i + 1}`);
       btn?.addEventListener("click", () => checkAnswer(i));
+   });
+
+   const nextBtn = document.getElementById("room3-next");
+   nextBtn?.addEventListener("click", () => {
+      window.dispatchEvent(new Event("ROOM_3_COMPLETED"));
    });
 }

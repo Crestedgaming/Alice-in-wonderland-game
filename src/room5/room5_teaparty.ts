@@ -144,119 +144,133 @@
 // RUM 5 – TEAPARTY
 // ===============================
 
-let gameRunning = false;
+export function initRoom5() {
 
-// Start-knappen
-const startButton = document.getElementById("start-button-teaparty");
+  let gameRunning = false;
 
-startButton?.addEventListener("click", startGame);
+  // Start-knappen
+  const startButton = document.getElementById("start-button-teaparty");
 
-function startGame() {
-  console.log("TEAPARTY STARTED");
+  startButton?.addEventListener("click", startGame);
 
-  gameRunning = true;
+  function startGame() {
+    console.log("TEAPARTY STARTED");
 
-  const instructions = document.getElementById("instructions-teaparty");
-  const startBtn = document.getElementById("start-button-teaparty");
+    gameRunning = true;
 
- const startScreen = document.getElementById("teaparty-start");
-const content = document.getElementById("teaparty-content");
+    const startScreen = document.getElementById("teaparty-start");
+    const content = document.getElementById("teaparty-content");
 
-if (startScreen) startScreen.classList.add("hidden");
-if (content) content.classList.remove("hidden");
-  initGame();
-}
+    if (startScreen) startScreen.classList.add("hidden");
+    if (content) content.classList.remove("hidden");
+    initGame();
+  }
 
-function initGame() {
+  function initGame() {
 
-  // 🔒 Begränsa allt till rum5
-  const room = document.getElementById("rum5");
-  if (!room) return;
+    // 🔒 Begränsa allt till rum5
+    const room = document.getElementById("rum5");
+    if (!room) return;
 
-  const cups = room.querySelectorAll<HTMLDivElement>(".cup");
-  const totalDisplay = room.querySelector<HTMLSpanElement>("#total-percent");
-  const messageElement = room.querySelector<HTMLDivElement>(".teaparty__message");
+    const nextBtn = room.querySelector<HTMLButtonElement>("#room5-next");
+    nextBtn?.classList.add("hidden");
 
-  let cupValues: number[] = [0, 0, 0];
+    const cups = room.querySelectorAll<HTMLDivElement>(".cup");
+    const totalDisplay = room.querySelector<HTMLSpanElement>("#total-percent");
+    const messageElement = room.querySelector<HTMLDivElement>(".teaparty__message");
 
-  const FILL_AMOUNT = 25;
-  const TARGET_TOTAL = 125;
+    let cupValues: number[] = [0, 0, 0];
 
-  cups.forEach((cup) => {
-    const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
+    const FILL_AMOUNT = 25;
+    const TARGET_TOTAL = 125;
 
-    button?.addEventListener("click", () => {
+    cups.forEach((cup) => {
+      const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
 
-      if (!gameRunning) return;
+      button?.addEventListener("click", () => {
 
-      const index = Number(cup.dataset.cup);
+        if (!gameRunning) return;
 
-      if (cupValues[index] >= 100) return;
+        const index = Number(cup.dataset.cup);
 
-      cupValues[index] += FILL_AMOUNT;
+        if (cupValues[index] >= 100) return;
+
+        cupValues[index] += FILL_AMOUNT;
+
+        updateUI();
+        checkGame();
+      });
+    });
+
+    function updateUI() {
+      cups.forEach((cup, index) => {
+        const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
+        const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+
+        if (fillElement) {
+          fillElement.style.height = cupValues[index] + "%";
+        }
+
+        if (percentText) {
+          percentText.textContent = cupValues[index] + "%";
+        }
+      });
+
+      const total = calculateTotal();
+
+      if (totalDisplay) {
+        totalDisplay.textContent = total.toString();
+      }
+    }
+
+    function calculateTotal(): number {
+      return cupValues.reduce((sum, value) => sum + value, 0);
+    }
+
+    function checkGame() {
+      const total = calculateTotal();
+      const allCupsHaveTea = cupValues.every((value) => value > 0);
+
+      if (total === TARGET_TOTAL && allCupsHaveTea) {
+        if (messageElement) {
+          messageElement.textContent =
+            "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
+        }
+
+
+        gameRunning = false;
+
+        // 👇 SHOW NEXT BUTTON
+        nextBtn?.classList.remove("hidden");
+      }
+
+      else if (total === TARGET_TOTAL && !allCupsHaveTea) {
+        if (messageElement) {
+          messageElement.textContent =
+            "Alla koppar måste få lite te!";
+        }
+      }
+
+      if (total > TARGET_TOTAL) {
+        resetGame();
+      }
+    }
+
+    function resetGame() {
+      cupValues = [0, 0, 0];
+
+      if (messageElement) {
+        messageElement.textContent =
+          "Ops, nu rann det över! Börja om och fyll tekopparna igen";
+      }
 
       updateUI();
-      checkGame();
-    });
+    }
+
+  }
+  const nextBtn = document.querySelector<HTMLButtonElement>("#room5-next");
+
+  nextBtn?.addEventListener("click", () => {
+    window.dispatchEvent(new Event("ROOM_5_COMPLETED"));
   });
-
-  function updateUI() {
-    cups.forEach((cup, index) => {
-      const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
-      const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
-
-      if (fillElement) {
-        fillElement.style.height = cupValues[index] + "%";
-      }
-
-      if (percentText) {
-        percentText.textContent = cupValues[index] + "%";
-      }
-    });
-
-    const total = calculateTotal();
-
-    if (totalDisplay) {
-      totalDisplay.textContent = total.toString();
-    }
-  }
-
-  function calculateTotal(): number {
-    return cupValues.reduce((sum, value) => sum + value, 0);
-  }
-
-  function checkGame() {
-    const total = calculateTotal();
-    const allCupsHaveTea = cupValues.every((value) => value > 0);
-
-    if (total === TARGET_TOTAL && allCupsHaveTea) {
-      if (messageElement) {
-        messageElement.textContent =
-          "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
-      }
-    }
-
-    else if (total === TARGET_TOTAL && !allCupsHaveTea) {
-      if (messageElement) {
-        messageElement.textContent =
-          "Alla koppar måste få lite te!";
-      }
-    }
-
-    if (total > TARGET_TOTAL) {
-      resetGame();
-    }
-  }
-
-  function resetGame() {
-    cupValues = [0, 0, 0];
-
-    if (messageElement) {
-      messageElement.textContent =
-        "Ops, nu rann det över! Börja om och fyll tekopparna igen";
-    }
-
-    updateUI();
-  }
-
 }

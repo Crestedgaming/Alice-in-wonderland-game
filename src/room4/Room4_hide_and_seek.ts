@@ -1,109 +1,125 @@
 import "../mainstyles/main.scss";
 
-let catCaughtCount = 0;
-let gameRunning = false; 
-let catFocused = false;
+export function initRoom4() {
 
-//////////////////
-/* Starta Spelet*/
-/////////////////
+  let catCaughtCount = 0;
+  let gameRunning = false;
+  let catFocused = false;
 
-const startGame = () => {
-  console.log("Game started");
-  gameRunning = true;
+  //////////////////
+  /* Starta Spelet*/
+  /////////////////
+
+  const startGame = () => {
+    console.log("Game started");
+    gameRunning = true;
 
 
     const startButton = document.getElementById('start-button-cat');
     const instructions = document.getElementById('instructions');
     const catImage1 = document.getElementById('cat-image-1');
 
-// Dölj startnapp, instruktioner och statisk knapp.// 
-    if (instructions) 
+    // Dölj startnapp, instruktioner och statisk knapp.// 
+    if (instructions)
       instructions.classList.add('hidden');
-    if (startButton) 
+    if (startButton)
       startButton.classList.add('hidden');
-    if (catImage1)      
+    if (catImage1)
       catImage1.classList.add('hidden');
 
-// Lägg till klick-event på katten// 
+    // Lägg till klick-event på katten// 
     const catImage = document.getElementById('cat-image');
     if (catImage) {
       catImage.onclick = () => catchCat();
       catImage.classList.add('no-outline-cat')
 
     }
-// starta kattens slumpmässiga visning//
-  showCatRandom();
-};
+    // starta kattens slumpmässiga visning//
+    showCatRandom();
+  };
 
 
-//////////////////
-/* Fånga Katten */
-///////////////// 
+  //////////////////
+  /* Fånga Katten */
+  ///////////////// 
 
-function catchCat() {
-  const catImage = document.getElementById('cat-image');
-   if (!gameRunning || !catImage) return;
+  function catchCat() {
+    const catImage = document.getElementById('cat-image');
+    if (!gameRunning || !catImage) return;
 
-   catImage.classList.add('hidden'); 
-   catCaughtCount++;
-   catFocused = false;
+    catImage.classList.add('hidden');
+    catCaughtCount++;
+    catFocused = false;
     console.log("Cat clicked!");
 
-   if (catCaughtCount === 5) {
-         console.log(" spelet är slut! Katten fångad 5 gånger!");
-         gameRunning = false;
-         catImage.classList.add('hidden');
+    if (catCaughtCount === 5) {
+      console.log(" spelet är slut! Katten fångad 5 gånger!");
+      gameRunning = false;
+      catImage.classList.add('hidden');
 
-         /* Lägg till artefakt här, när katten är fångad 5 gånger */
-       }
-     }
-///////////////////////////   
-// Tangentbordkontroller//
-/////////////////////////
+      // 👇 SHOW NEXT BUTTON
+      nextBtn?.classList.remove("hidden");
 
-document.addEventListener('keydown', (e) => {
-  const catImage = document.getElementById('cat-image');
-  if (!catImage || !gameRunning) return;
-
-  if (e.code === 'Space' && !catImage.classList.contains('hidden')) {
-    catFocused = true;
-    catImage.classList.add('outline-focus-cat');
-    console.log("Cat focused");    
-    e.preventDefault();
+      /* Lägg till artefakt här, när katten är fångad 5 gånger */
+    }
   }
-  if (catFocused && e.code === 'Enter') {
-    catchCat();
-  }
-});
+  ///////////////////////////   
+  // Tangentbordkontroller//
+  /////////////////////////
 
-///////////-Funktion-////////////////
-//*Slumpmässig position inom bakgrunden*///
-//////////////////////////////////////////
+  document.addEventListener('keydown', (e) => {
+    const catImage = document.getElementById('cat-image');
+    if (!catImage || !gameRunning) return;
 
-function showCatRandom() {
-  const catImage = document.getElementById('cat-image');
-  const background = document.getElementById('backgroundimg');
+    if (e.code === 'Space' && !catImage.classList.contains('hidden')) {
+      catFocused = true;
+      catImage.classList.add('outline-focus-cat');
+      console.log("Cat focused");
+      e.preventDefault();
+    }
+    if (catFocused && e.code === 'Enter') {
+      catchCat();
+    }
+  });
 
-  if (catImage && background) {
+  ///////////-Funktion-////////////////
+  //*Slumpmässig position inom bakgrunden*///
+  //////////////////////////////////////////
 
-    // bakgrundsstorlek //
-    const backgroundSize = background.getBoundingClientRect();
+  function showCatRandom() {
+    const catImage = document.getElementById('cat-image');
+    const background = document.getElementById('backgroundimg');
 
-    // Max position för katt innanför bakgrund//
-    const maxX = backgroundSize.width - catImage.offsetWidth;
-    const maxY = backgroundSize.height - catImage.offsetHeight;
+    if (catImage && background) {
 
-    // slumpad position //
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
+      // bakgrundsstorlek //
+      const backgroundSize = background.getBoundingClientRect();
 
+      // Max position för katt innanför bakgrund//
+      const maxX = backgroundSize.width - catImage.offsetWidth;
+      const maxY = backgroundSize.height - catImage.offsetHeight;
+
+      // slumpad position //
+      const randomX = Math.floor(Math.random() * maxX);
+      const randomY = Math.floor(Math.random() * maxY);
+
+      catImage.style.left = `${randomX}px`;
+      catImage.style.top = `${randomY}px`;
+      catImage.classList.remove('hidden');
 catImage.style.left = `${randomX}px`;
 catImage.style.top = `${randomY}px`;
 catImage.classList.remove('hidden');
 
- /* Dölj katten efter 1,5 sek och 
+   // lägg till skak-animation
+    catImage.classList.remove('shake'); // reset animation
+    void catImage.offsetWidth;          // trigger reflow
+    catImage.classList.add('shake');    // starta skak
+
+
+     /* Dölj katten efter 1,5 sek och 
  visa den igen efter 1 sek om spelet fortsätter*/
+      /* Dölj katten efter 1,5 sek och 
+      visa den igen efter 1 sek om spelet fortsätter*/
 
     setTimeout(() => {
  const catImage = document.getElementById('cat-image')
@@ -113,19 +129,22 @@ catImage.classList.remove('hidden');
       if(gameRunning && catCaughtCount < 5) {
         setTimeout(showCatRandom, 1000);
       }
-    },1500)  
+    },800)  
   }
 }
 
-//////-Funktion-/////////
-/////Startknappen///////
-///////////////////////
 
-function startSetup() {
-  const startButton = document.getElementById('start-button-cat');
-  if (startButton) {
-    startButton.addEventListener('click', startGame);
+
+  //////-Funktion-/////////
+  /////Startknappen///////
+  ///////////////////////
+
+  function startSetup() {
+    const startButton = document.getElementById('start-button-cat');
+    if (startButton) {
+      startButton.addEventListener('click', startGame);
+    }
   }
-}
 
 startSetup();
+}
