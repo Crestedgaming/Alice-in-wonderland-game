@@ -1,3 +1,40 @@
+// Room 4 timer logic
+let room4TimerId: number | null = null;
+let room4StartTime = 0;
+let room4ElapsedMs = 0;
+
+function updateRoom4TimerDisplay(timerEl: HTMLElement | null, elapsedMs: number) {
+	if (!timerEl) return;
+	const totalSec = Math.floor(elapsedMs / 1000);
+	const min = Math.floor(totalSec / 60);
+	const sec = totalSec % 60;
+	timerEl.textContent = `Tid i rummet: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+}
+
+function startRoom4Timer(timerEl: HTMLElement | null) {
+	if (room4TimerId !== null) {
+		clearInterval(room4TimerId);
+	}
+	room4StartTime = Date.now();
+	room4ElapsedMs = 0;
+	updateRoom4TimerDisplay(timerEl, 0);
+	room4TimerId = window.setInterval(() => {
+		room4ElapsedMs = Date.now() - room4StartTime;
+		updateRoom4TimerDisplay(timerEl, room4ElapsedMs);
+	}, 250);
+}
+
+function stopRoom4Timer(timerEl: HTMLElement | null): number {
+	if (room4TimerId !== null) {
+		clearInterval(room4TimerId);
+		room4TimerId = null;
+	}
+	if (room4StartTime > 0) {
+		room4ElapsedMs = Date.now() - room4StartTime;
+	}
+	updateRoom4TimerDisplay(timerEl, room4ElapsedMs);
+	return room4ElapsedMs;
+}
 import "../mainstyles/main.scss";
 import { completeRoom } from "../engine/GameManager";
 import { startTimer } from "../utils";
@@ -11,7 +48,8 @@ let catFocused = false;
 //////////////////
 
 const startGame = () => {
-	startTimer();
+	const roomTimer = document.getElementById("gameTimerEachRoom");
+	startRoom4Timer(roomTimer);
 	console.log("Game started");
 	gameRunning = true;
 
@@ -48,11 +86,12 @@ function catchCat() {
 	console.log("Cat clicked!");
 
 	if (catCaughtCount === 5) {
+		const roomTimer = document.getElementById("gameTimerEachRoom");
+		stopRoom4Timer(roomTimer);
 		console.log("Game over! Cat caught 5 times!");
 		gameRunning = false;
 		catImage.classList.add("hidden");
 		completeRoom(4, "N");
-
 		/* Add artefact here when cat is caught 5 times */
 	}
 }
