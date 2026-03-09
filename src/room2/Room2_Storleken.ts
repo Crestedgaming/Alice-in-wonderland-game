@@ -1,3 +1,40 @@
+// Room 2 timer logic
+let room2TimerId: number | null = null;
+let room2StartTime = 0;
+let room2ElapsedMs = 0;
+
+function updateRoom2TimerDisplay(timerEl: HTMLElement | null, elapsedMs: number) {
+	if (!timerEl) return;
+	const totalSec = Math.floor(elapsedMs / 1000);
+	const min = Math.floor(totalSec / 60);
+	const sec = totalSec % 60;
+	timerEl.textContent = `Tid i rummet: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+}
+
+function startRoom2Timer(timerEl: HTMLElement | null) {
+	if (room2TimerId !== null) {
+		clearInterval(room2TimerId);
+	}
+	room2StartTime = Date.now();
+	room2ElapsedMs = 0;
+	updateRoom2TimerDisplay(timerEl, 0);
+	room2TimerId = window.setInterval(() => {
+		room2ElapsedMs = Date.now() - room2StartTime;
+		updateRoom2TimerDisplay(timerEl, room2ElapsedMs);
+	}, 250);
+}
+
+function stopRoom2Timer(timerEl: HTMLElement | null): number {
+	if (room2TimerId !== null) {
+		clearInterval(room2TimerId);
+		room2TimerId = null;
+	}
+	if (room2StartTime > 0) {
+		room2ElapsedMs = Date.now() - room2StartTime;
+	}
+	updateRoom2TimerDisplay(timerEl, room2ElapsedMs);
+	return room2ElapsedMs;
+}
 import { completeRoom } from "../engine/GameManager";
 
 /*
@@ -107,6 +144,8 @@ const room2StartButton = document.querySelector<HTMLButtonElement>(
 const overlay = document.getElementById("room2-overlay");
 
 room2StartButton?.addEventListener("click", () => {
+	const roomTimer = document.getElementById("gameTimerEachRoom");
+	startRoom2Timer(roomTimer);
 	// göm overlay + start-knappen
 	overlay?.classList.add("hidden");
 	room2StartButton.classList.add("hidden");
@@ -150,9 +189,10 @@ function updateSize() {
 	alice.style.left = `${offset}vw`;
 
 	if (sizeLevel === 0) {
+		const roomTimer = document.getElementById("gameTimerEachRoom");
+		stopRoom2Timer(roomTimer);
 		console.log("Alice är lagom!");
 		successText.classList.remove("hidden");
-
 		if (!room2Completed) {
 			room2Completed = true;
 			completeRoom(2, "A");

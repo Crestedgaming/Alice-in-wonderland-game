@@ -37,7 +37,6 @@ function stopRoom4Timer(timerEl: HTMLElement | null): number {
 }
 import "../mainstyles/main.scss";
 import { completeRoom } from "../engine/GameManager";
-import { startTimer } from "../utils";
 
 let catCaughtCount = 0;
 let gameRunning = false;

@@ -74,7 +74,6 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
-import { startTimer, resumeTimer } from "../utils";
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 const roomTimer = document.getElementById("gameTimerEachRoom");
