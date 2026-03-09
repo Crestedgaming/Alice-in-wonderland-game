@@ -171,3 +171,4 @@ vaggord.forEach((ord) => {
 
 // startläge
 updateSize();
+}
