@@ -1,21 +1,21 @@
-// Cached element references used across room startup and interaction logic.
+import { completeRoom } from "../engine/GameManager";
+
 type Room1Elements = {
 	landing: HTMLElement | null;
 	content: HTMLElement | null;
-	startButton: HTMLElement | null;
-	keyhole: HTMLElement | null;
+	startButton: HTMLButtonElement | null;
+	keyhole: HTMLButtonElement | null;
 	message: HTMLElement | null;
 	endButton: HTMLButtonElement | null;
+	roomTimer: HTMLElement | null;
 };
 
-// Shape persisted in localStorage after each completed run of Room 1.
 type Room1Result = {
 	letter: string;
 	timeMs: number;
 	finishedAt: string;
 };
 
-// Valid key choices in this room (spells LEVA).
 const ROOM1_KEYS = [
 	{ buttonId: "keyL", letter: "L" },
 	{ buttonId: "keyE", letter: "E" },
@@ -26,22 +26,24 @@ const ROOM1_KEYS = [
 const ROOM1_FALL_DURATION_MS = 12000;
 const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
 
-// Timer state for the room-specific elapsed time display.
 let room1StartTime = 0;
 let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
+let room1Unlocked = false;
 
-// Gather all Room 1 DOM dependencies in one place.
 function getRoom1Elements(): Room1Elements {
 	return {
 		landing: document.getElementById("room1StartPage"),
 		content: document.getElementById("room1Container"),
-		startButton: document.getElementById("room1StartButton"),
-		keyhole: document.getElementById("keyhole"),
+		startButton: document.getElementById(
+			"room1StartButton",
+		) as HTMLButtonElement | null,
+		keyhole: document.getElementById("keyhole") as HTMLButtonElement | null,
 		message: document.getElementById("fallMessage"),
 		endButton: document.getElementById(
 			"room1EndButton",
 		) as HTMLButtonElement | null,
+		roomTimer: document.getElementById("gameTimerEachRoom"),
 	};
 }
 
@@ -58,11 +60,131 @@ function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
 	}
 }
 
-// Validates selection, resolves room, stores result, and reveals continue button.
+function showStartPage(
+	landing: HTMLElement | null,
+	content: HTMLElement | null,
+): void {
+	landing?.classList.remove("hidden");
+	content?.classList.add("hidden");
+}
+
+function showGame(
+	landing: HTMLElement | null,
+	content: HTMLElement | null,
+): void {
+	landing?.classList.add("hidden");
+	content?.classList.remove("hidden");
+}
+
+function updateRoom1TimerDisplay(
+	timerEl: HTMLElement | null,
+	elapsedMs: number,
+): void {
+	if (!timerEl) {
+		return;
+	}
+	timerEl.textContent = `Tid i rummet: ${formatMs(elapsedMs)}`;
+}
+
+function startRoom1Timer(timerEl: HTMLElement | null): void {
+	if (room1TimerId !== null) {
+		clearInterval(room1TimerId);
+	}
+
+	room1StartTime = Date.now();
+	room1ElapsedMs = 0;
+	updateRoom1TimerDisplay(timerEl, 0);
+
+	room1TimerId = window.setInterval(() => {
+		room1ElapsedMs = Date.now() - room1StartTime;
+		updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
+	}, 250);
+}
+
+function stopRoom1Timer(timerEl: HTMLElement | null): number {
+	if (room1TimerId !== null) {
+		clearInterval(room1TimerId);
+		room1TimerId = null;
+	}
+
+	if (room1StartTime > 0) {
+		room1ElapsedMs = Date.now() - room1StartTime;
+	}
+
+	updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
+	return room1ElapsedMs;
+}
+
+function saveRoom1Result(letter: string, timeMs: number): void {
+	const result: Room1Result = {
+		letter,
+		timeMs,
+		finishedAt: new Date().toISOString(),
+	};
+
+	const raw = localStorage.getItem(ROOM1_RESULTS_STORAGE_KEY);
+	let results: Room1Result[] = [];
+
+	if (raw) {
+		try {
+			const parsed = JSON.parse(raw) as Room1Result[];
+			if (Array.isArray(parsed)) {
+				results = parsed;
+			}
+		} catch {
+			results = [];
+		}
+	}
+
+	results.push(result);
+	localStorage.setItem(ROOM1_RESULTS_STORAGE_KEY, JSON.stringify(results));
+}
+
+function resetRoom1State(endButton: HTMLButtonElement | null): void {
+	window.selectedKey = null;
+	room1Unlocked = false;
+	if (endButton) {
+		endButton.classList.add("hidden");
+	}
+}
+
+function bindKeySelection(message: HTMLElement | null): void {
+	ROOM1_KEYS.forEach(({ buttonId, letter }) => {
+		const button = document.getElementById(
+			buttonId,
+		) as HTMLButtonElement | null;
+		if (!button) {
+			return;
+		}
+
+		button.onclick = () => {
+			window.selectedKey = letter;
+			const keyIcon = button.querySelector("img") as HTMLImageElement | null;
+
+			if (keyIcon) {
+				setRoom1Message(
+					message,
+					`Du har valt den har nyckeln! <img src="${keyIcon.src}" alt="${keyIcon.alt}" width="44" height="44">`,
+				);
+				return;
+			}
+
+			setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
+		};
+	});
+}
+
+function goToRoom2(): void {
+	if (typeof window.showRoom === "function") {
+		window.showRoom("rum2");
+	}
+}
+
 function bindKeyhole(
-	keyhole: HTMLElement | null,
+	keyhole: HTMLButtonElement | null,
 	message: HTMLElement | null,
 	endButton: HTMLButtonElement | null,
+	roomTimer: HTMLElement | null,
 ): void {
 	if (!keyhole) {
 		return;
@@ -70,36 +192,53 @@ function bindKeyhole(
 
 	keyhole.onclick = () => {
 		const selectedKey = window.selectedKey;
-		if (!selectedKey || !message) {
+		if (!selectedKey) {
 			setRoom1Message(
 				message,
-				"Du måste välja en nyckel för att låsa upp dörren!",
+				"Du maste valja en nyckel for att lasa upp dorren!",
 			);
 			return;
 		}
 
 		setRoom1Message(
 			message,
-			`<img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true"> Du klarade utmaningen! Klicka på "Gå vidare" för att spara din artefakt ${selectedKey}. <img src="public/Room1_bilder/room1Star.png" alt="En gyllene stjärna." width="100px" height="150px" aria-hidden="true">`,
+			`Du klarade utmaningen! Bokstaven ${selectedKey} sparades.`,
 		);
 
-		const finalMs = stopRoom1Timer();
+		const finalMs = stopRoom1Timer(roomTimer);
 		saveRoom1Result(selectedKey, finalMs);
+		room1Unlocked = true;
+
+		completeRoom(1, selectedKey);
+		if (typeof window.updateFooterContext === "function") {
+			window.updateFooterContext("room1", true);
+		}
 
 		if (endButton) {
-			endButton.dataset.artifactLetter = selectedKey;
 			endButton.classList.remove("hidden");
+			endButton.onclick = () => {
+				if (room1Unlocked) {
+					goToRoom2();
+				}
+			};
+			return;
 		}
+
+		window.setTimeout(goToRoom2, 900);
 	};
 }
 
 function attachRoom1Listeners(elements: Room1Elements): void {
 	resetRoom1State(elements.endButton);
 	bindKeySelection(elements.message);
-	bindKeyhole(elements.keyhole, elements.message, elements.endButton);
+	bindKeyhole(
+		elements.keyhole,
+		elements.message,
+		elements.endButton,
+		elements.roomTimer,
+	);
 }
 
-// Smoothly scrolls the falling background over a fixed duration.
 function startFallingAnimation(scrollContainer: HTMLElement): void {
 	const start = scrollContainer.scrollTop;
 	const startTime = performance.now();
@@ -124,7 +263,6 @@ function startRoom1GameLogic(): void {
 		"#room1 .backgroundScroll",
 	) as HTMLElement | null;
 
-	// Wait for image load if needed to get reliable scroll height values.
 	if (scrollContainer) {
 		const backgroundImage = scrollContainer.querySelector(
 			".backgroundImage",
@@ -141,14 +279,12 @@ function startRoom1GameLogic(): void {
 		}
 	}
 
-	// Initial instruction shown when the room begins.
 	setRoom1Message(
 		document.getElementById("fallMessage"),
-		"Fort! Välj en nyckel innan du landar!",
+		"Fort! Valj en nyckel innan du landar!",
 	);
 }
 
-// Public entry point called by the main flow to initialize Room 1.
 export function initRoom1(): void {
 	const elements = getRoom1Elements();
 	showStartPage(elements.landing, elements.content);
@@ -157,10 +293,9 @@ export function initRoom1(): void {
 		return;
 	}
 
-	// Start button transitions from intro screen to active room state.
 	elements.startButton.onclick = () => {
 		showGame(elements.landing, elements.content);
-		startRoom1Timer();
+		startRoom1Timer(elements.roomTimer);
 		attachRoom1Listeners(elements);
 		startRoom1GameLogic();
 	};
