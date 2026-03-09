@@ -2,7 +2,7 @@
  * ============================================================
  * ************************STORLEKEN***************************
  * ============================================================
-  * Alice är för stor för att komma in genom dörren.
+ * Alice är för stor för att komma in genom dörren.
  * Spelaren måste manipulera hennes storlek genom att klicka
  * på orden i texten.
  *
@@ -121,9 +121,9 @@ const mindre = document.querySelector(".size-text__smaller") as HTMLElement | nu
 
 const successText = document.querySelector(".size-success") as HTMLElement | null;
 
-// 3 = jättestor, 0 = lagom
-let sizeLevel = 3;
-let step = 0;
+  // 3 = jättestor, 0 = lagom
+  let sizeLevel = 3;
+  let step = 0;
 
 function updateSize() {
   if (!alice || !successText) return;
