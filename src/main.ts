@@ -6,6 +6,10 @@ import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
 
+//import highscore
+
+import "./the_other_rooms/highscore/highscore"; 
+
 /*
  * ============================================================
  * ************************Startsida***************************

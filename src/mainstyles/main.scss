@@ -18,6 +18,10 @@
 @use "../room5/room5";
 @use "../room6/room6";
 
+@use "../the_other_rooms/highscore/highscore";
+
+
+
 body {
 	background-color: black;
 	overflow-x: hidden;
@@ -35,6 +39,7 @@ main {
 	justify-content: center;
 	text-align: center;
 	background-color: #732f2f;
+
 
 	h2 {
 		color: black;

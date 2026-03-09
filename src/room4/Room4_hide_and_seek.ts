@@ -106,21 +106,34 @@ export function initRoom4() {
       catImage.style.left = `${randomX}px`;
       catImage.style.top = `${randomY}px`;
       catImage.classList.remove('hidden');
+catImage.style.left = `${randomX}px`;
+catImage.style.top = `${randomY}px`;
+catImage.classList.remove('hidden');
 
+   // lägg till skak-animation
+    catImage.classList.remove('shake'); // reset animation
+    void catImage.offsetWidth;          // trigger reflow
+    catImage.classList.add('shake');    // starta skak
+
+
+     /* Dölj katten efter 1,5 sek och 
+ visa den igen efter 1 sek om spelet fortsätter*/
       /* Dölj katten efter 1,5 sek och 
       visa den igen efter 1 sek om spelet fortsätter*/
 
-      setTimeout(() => {
-        const catImage = document.getElementById('cat-image')
-        if (!catImage) return;
-        catFocused = false;
-
-        if (gameRunning && catCaughtCount < 5) {
-          setTimeout(showCatRandom, 1000);
-        }
-      }, 1500)
-    }
+    setTimeout(() => {
+ const catImage = document.getElementById('cat-image')
+ if(!catImage) return;
+      catFocused = false;
+    
+      if(gameRunning && catCaughtCount < 5) {
+        setTimeout(showCatRandom, 1000);
+      }
+    },800)  
   }
+}
+
+
 
   //////-Funktion-/////////
   /////Startknappen///////
@@ -133,11 +146,5 @@ export function initRoom4() {
     }
   }
 
-  const nextBtn = document.getElementById("room4-next");
-
-  nextBtn?.addEventListener("click", () => {
-    window.dispatchEvent(new Event("ROOM_4_COMPLETED"));
-  });
-
-  startSetup();
+startSetup();
 }
