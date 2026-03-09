@@ -10,9 +10,14 @@ Dagens scrum master: Markus
 
 - Närvarande: Ja
 
-## Namn: Markus Jönsson
+## Namn: Mohammed Amin Yasin
 
 - Närvarande: Ja
+
+## Namn: Mohammed Yasin
+- Närvarande: Ja
+- Jag jobbade med att skapa en funktion som  blandar bokstäverna automatiskt så att de hamnar i     slumpmässig ordning varje gång spelet startar. Tankan är att få spelaren att tänka själv istället för att få bokstaverna direkt. Jag har också jobbat med temat och designen i rummet så att det passar resten av spelet och förstärka upplevelsen.
+
 
 ## Namn: Alex Truong
 

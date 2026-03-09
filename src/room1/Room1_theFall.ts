@@ -58,87 +58,61 @@ function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
 	}
 }
 
-// Starts or restarts the room timer and updates UI every 100 ms.
-function startRoom1Timer(): void {
-	room1StartTime = Date.now();
-	room1ElapsedMs = 0;
+// Show the landing page and hide the game
 
-	if (room1TimerId !== null) {
-		window.clearInterval(room1TimerId);
+export function initRoom1() {
+	// Get the start page and game content for Room 1.
+	const landing = document.getElementById("room1StartPage");
+	const content = document.getElementById("room1Container");
+	if (landing && content) {
+		// Show the start page first and hide the actual game.
+		landing.classList.remove("hidden");
+		content.classList.add("hidden");
 	}
-
-	const roomTimerEl = document.getElementById("gameTimerEachRoom");
-	room1TimerId = window.setInterval(() => {
-		room1ElapsedMs = Date.now() - room1StartTime;
-		if (roomTimerEl) {
-			roomTimerEl.textContent = `Tid i rummet: ${formatMs(room1ElapsedMs)}`;
-		}
-	}, 100);
-}
-
-// Stops the timer and returns final elapsed time in milliseconds.
-function stopRoom1Timer(): number {
-	if (room1TimerId !== null) {
-		window.clearInterval(room1TimerId);
-		room1TimerId = null;
+	const startBtn = document.getElementById("room1StartButton");
+	if (startBtn) {
+		startBtn.onclick = function () {
+			// When the player clicks start, show the game and hide the start page.
+			if (landing && content) {
+				landing.classList.add("hidden");
+				content.classList.remove("hidden");
+			}
+			// Attach listeners and start the room game logic.
+			startRoom1Timer();
+			attachRoom1Listeners();
+			startRoom1GameLogic();
+		};
 	}
-
-	room1ElapsedMs = Date.now() - room1StartTime;
-	return room1ElapsedMs;
 }
+window.initRoom1 = initRoom1;
 
-// Resets transient state each time the room starts.
-function resetRoom1State(endButton: HTMLButtonElement | null): void {
+// Attach events to keys and keyhole
+function attachRoom1Listeners() {
+	const keyhole = document.getElementById("keyhole");
+	const message = document.getElementById("fallMessage");
+	const endButton =
+		document.getElementById("room1-next") ||
+		document.getElementById("room1EndButton");
+	const artefactsSpan = document.querySelector("#artefact1 span");
+
+	// No key is selected when the room starts.
 	window.selectedKey = null;
 
 	if (endButton) {
 		endButton.classList.add("hidden");
-		delete endButton.dataset.artifactLetter;
-	}
-}
-
-// Appends a completed attempt to localStorage history.
-function saveRoom1Result(letter: string, timeMs: number): void {
-	const previous = localStorage.getItem(ROOM1_RESULTS_STORAGE_KEY);
-	const results: Room1Result[] = previous
-		? (JSON.parse(previous) as Room1Result[])
-		: [];
-
-	results.push({
-		letter,
-		timeMs,
-		finishedAt: new Date().toISOString(),
-	});
-
-	localStorage.setItem(ROOM1_RESULTS_STORAGE_KEY, JSON.stringify(results));
-}
-
-function showGame(
-	landing: HTMLElement | null,
-	content: HTMLElement | null,
-): void {
-	if (!landing || !content) {
-		return;
+		endButton.onclick = function () {
+			if (room1Unlocked && typeof window.markRoomFinished === "function") {
+				window.markRoomFinished("room1");
+			}
+			if (room1Unlocked && typeof window.updateFooterContext === "function") {
+				window.updateFooterContext("room1", true);
+			}
+			if (typeof window.showRoom === "function") {
+				window.showRoom("rum2");
+			}
+		};
 	}
 
-	landing.classList.add("hidden");
-	content.classList.remove("hidden");
-}
-
-function showStartPage(
-	landing: HTMLElement | null,
-	content: HTMLElement | null,
-): void {
-	if (!landing || !content) {
-		return;
-	}
-
-	landing.classList.remove("hidden");
-	content.classList.add("hidden");
-}
-
-// Connects each key button to current key selection + feedback message.
-function bindKeySelection(message: HTMLElement | null): void {
 	ROOM1_KEYS.forEach(({ buttonId, letter }) => {
 		const button = document.getElementById(buttonId);
 		if (!button) {

@@ -1,0 +1,145 @@
+:root {
+--primary-color: #732f2f;
+
+}
+
+
+/* hela about-sidan */
+#about-us-page {
+  width: 100%;
+}
+
+/* container som håller sektionerna */
+.about-container {
+  width: 100%;
+}
+
+#about-us-page section {
+  width: 100%;
+  padding: 60px 0;
+}
+
+#about-game {
+  background-image: url("/public/about_bilder/about-game.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 80vh;
+}
+
+#about-game h2 {
+  color: white;
+  font-size: 4rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-game p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+#about-us {
+  background-color: var(---primary-color)
+}
+
+#about-us h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-us p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+#about-team {
+  background-color: var(--primary-color);
+}
+
+#about-team h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: -4rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#about-team p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.about-container h2,
+.about-container h3 {
+  margin-bottom: 15px;
+}
+
+.about-container p {
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+#about-team h4 {
+  color: white;
+  font-size: 1rem;
+  font-family: 'henny penny', cursive, sans-serif;
+  margin-top: 0.2rem;
+}
+
+#teknik {
+  background-color: var(--primary-color);
+}
+
+#teknik h3 {
+  color: white;
+  font-size: 3rem;
+  margin-top: -4rem;
+  margin-left: 100px;
+  font-family: 'henny penny', cursive, sans-serif;
+}
+
+#teknik p {
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.team-member {
+  text-align: center;
+}
+
+#about-team .team-member p {
+  margin-left: 0;
+  text-align: center;
+}
+
+
+.team-member img {
+  width: 200px;
+  border-radius: 50%;
+}

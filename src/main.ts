@@ -1,4 +1,5 @@
 import "./mainstyles/main.scss";
+import { startGame } from "./engine/GameManager";
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
 import "./room1/Room1_theFall";
@@ -6,153 +7,18 @@ import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
 
-const TOTAL_ROOMS = 6;
-const completedRooms = new Set<number>();
-const initialArtifactSlotMarkup = Array.from(
-	document.querySelectorAll<HTMLSpanElement>(
-		"#artefactsList li.artefacts > span",
-	),
-).map((slot) => slot.innerHTML);
-
-function updateProgressUI(): void {
-	const progressFill = document.getElementById(
-		"myBar",
-	) as HTMLDivElement | null;
-	const progressRoot = document.getElementById("progressBar");
-	const percent = (completedRooms.size / TOTAL_ROOMS) * 100;
-
-	if (progressFill) {
-		progressFill.style.width = `${percent}%`;
-	}
-
-	progressRoot?.setAttribute("aria-valuenow", String(completedRooms.size));
-}
-
-function placeArtifactRandom(letter?: string): void {
-	if (!letter) return;
-
-	const artefactsList = document.getElementById("artefactsList");
-	if (!artefactsList) return;
-
-	const slots = Array.from(
-		artefactsList.querySelectorAll<HTMLSpanElement>("li.artefacts > span"),
-	);
-	if (slots.length === 0) return;
-
-	const emptySlots = slots.filter((slot) => Boolean(slot.querySelector("img")));
-	const slotPool = emptySlots.length > 0 ? emptySlots : slots;
-	const randomSlot = slotPool[Math.floor(Math.random() * slotPool.length)];
-	randomSlot.textContent = letter;
-}
-
-function resetArtifactsUI(): void {
-	const slots = Array.from(
-		document.querySelectorAll<HTMLSpanElement>(
-			"#artefactsList li.artefacts > span",
-		),
-	);
-
-	slots.forEach((slot, index) => {
-		slot.innerHTML = initialArtifactSlotMarkup[index] ?? "";
-	});
-}
-
-function resetGameUIState(): void {
-	completedRooms.clear();
-	updateProgressUI();
-	resetArtifactsUI();
-
-	localStorage.removeItem("room1Results");
-	window.selectedKey = null;
-
-	const totalTimer = document.getElementById("gameTimerTotalt");
-	if (totalTimer) {
-		totalTimer.textContent = "Total speltid: 00.00";
-	}
-
-	const roomTimer = document.getElementById("gameTimerEachRoom");
-	if (roomTimer) {
-		roomTimer.textContent = "Tid i rummet: 00.00";
-	}
-
-	const completedView = document.getElementById("game-completed");
-	completedView?.classList.add("hidden");
-}
-
-window.completeRoom = (room: number, letter?: string) => {
-	if (room < 1 || room > TOTAL_ROOMS) return;
-	if (completedRooms.has(room)) return;
-
-	completedRooms.add(room);
-	updateProgressUI();
-	placeArtifactRandom(letter);
-};
-
-function handleRoomNextButtonClick(nextButton: HTMLButtonElement): void {
-	const roomNumber = Number(nextButton.dataset.room);
-	const artifactLetter = nextButton.dataset.artifactLetter;
-	const nextRoomId = nextButton.dataset.nextRoom;
-	const currentRoomId = nextButton.dataset.roomId;
-
-	if (
-		typeof window.completeRoom === "function" &&
-		Number.isFinite(roomNumber)
-	) {
-		window.completeRoom(roomNumber, artifactLetter);
-	}
-
-	if (
-		typeof window.updateFooterContext === "function" &&
-		currentRoomId &&
-		Number.isFinite(roomNumber)
-	) {
-		window.updateFooterContext(currentRoomId, true);
-	}
-
-	if (typeof window.showRoom === "function" && nextRoomId) {
-		window.showRoom(nextRoomId);
-	}
-}
-
-function registerRoomNextButtonHandler(): void {
-	document.addEventListener("click", (event) => {
-		const target = event.target as HTMLElement | null;
-		if (!target) return;
-
-		const nextButton = target.closest(
-			".roomNextButton",
-		) as HTMLButtonElement | null;
-		if (!nextButton) return;
-
-		handleRoomNextButtonClick(nextButton);
-	});
-}
-
-registerRoomNextButtonHandler();
-
-function focusCurrentViewTarget(viewId: string): void {
-	const view = document.getElementById(viewId);
-	if (!view) return;
-
-	const heading = view.querySelector("h1, h2") as HTMLElement | null;
-	if (heading) {
-		heading.setAttribute("tabindex", "-1");
-		heading.focus();
-		return;
-	}
-
-	const firstButton = view.querySelector("button") as HTMLButtonElement | null;
-	firstButton?.focus();
-}
-
 /*
  * ============================================================
  * ************************Startsida***************************
  * ============================================================*/
 
-(window as any).showRoom = function (roomId: string) {
-	document.getElementById("start")!.classList.add("hidden");
+interface CustomWindow extends Window {
+	showRoom: (roomId: string) => void;
+}
 
+declare const window: CustomWindow;
+
+window.showRoom = function (roomId: string) {
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});
@@ -160,15 +26,23 @@ function focusCurrentViewTarget(viewId: string): void {
 	document.getElementById(roomId)!.classList.remove("hidden");
 	focusCurrentViewTarget(roomId);
 
-	// Initialize Room 1 logic and listeners when showing Room 1
+	// Initialize Room logic and listeners when showing specific rooms
 	if (roomId === "room1") {
 		if (typeof window.initRoom1 === "function") {
 			window.initRoom1();
 		}
 	}
-
 	if (roomId === "rum3") {
 		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
+	}
+	if (roomId === "rum2") {
+		import("./room2/Room2_Storleken").then((m) => m.initRoom2());
+	}
+	if (roomId === "rum4") {
+		import("./room4/Room4_hide_and_seek").then((m) => m.initRoom4());
+	}
+	if (roomId === "rum5") {
+		import("./room5/room5_teaparty").then((m) => m.initRoom5());
 	}
 
 	// Set navBarTitle to current room's title
@@ -196,7 +70,6 @@ function focusCurrentViewTarget(viewId: string): void {
 		default:
 			title = "Escape Room";
 	}
-
 	if (navTitle) {
 		navTitle.textContent = title;
 	}
@@ -226,19 +99,5 @@ if (resetBtn) {
 	});
 
 	document.getElementById("start")!.classList.remove("hidden");
-	focusCurrentViewTarget("start");
-
-	const navTitle = document.getElementById("rumID");
-	if (navTitle) {
-		navTitle.textContent = "Alice i underlandet";
-	}
 };
 
-const goToStartBtn = document.getElementById("goToStartBtn");
-if (goToStartBtn) {
-	goToStartBtn.addEventListener("click", () => {
-		if (typeof window.goToStart === "function") {
-			window.goToStart();
-		}
-	});
-}
