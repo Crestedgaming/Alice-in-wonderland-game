@@ -260,5 +260,39 @@ function initGame() {
 }
 
 export function initRoom5() {
-	// Lägg till rum5-logik här
+	gameRunning = false;
+
+	const startScreen = document.getElementById("teaparty-start");
+	const content = document.getElementById("teaparty-content");
+	const totalDisplay = document.getElementById("total-percent");
+	const messageElement = document.querySelector(
+		"#rum5 .teaparty__message",
+	) as HTMLDivElement | null;
+	const nextButton = document.getElementById("room5-next");
+	const legacyNextButton = document.getElementById("next-room5");
+	const fills = document.querySelectorAll<HTMLElement>("#rum5 .cup__fill");
+	const percents = document.querySelectorAll<HTMLElement>(
+		"#rum5 .cup__percent",
+	);
+
+	startScreen?.classList.remove("hidden");
+	content?.classList.add("hidden");
+	nextButton?.classList.add("hidden");
+	legacyNextButton?.classList.add("hidden");
+
+	if (totalDisplay) {
+		totalDisplay.textContent = "0";
+	}
+
+	if (messageElement) {
+		messageElement.textContent = "";
+	}
+
+	fills.forEach((fill) => {
+		fill.style.height = "0%";
+	});
+
+	percents.forEach((percent) => {
+		percent.textContent = "0%";
+	});
 }

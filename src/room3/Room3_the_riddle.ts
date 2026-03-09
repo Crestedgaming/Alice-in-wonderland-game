@@ -23,6 +23,29 @@ export function initRoom3(): void {
 	let currentRiddle = 0;
 	let correctAnswers = 0;
 
+	function resetRoom3State(): void {
+		rum3StartButton.classList.remove("hidden");
+		riddleContainer.classList.add("hidden");
+
+		riddles.forEach((r) => {
+			const el = document.getElementById(r.id);
+			if (!el) return;
+
+			el.classList.add("hidden");
+			el.classList.remove("correct", "wrong");
+
+			const input = el.querySelector("input") as HTMLInputElement | null;
+			if (input) {
+				input.value = "";
+			}
+		});
+
+		const nextBtn = document.getElementById("room3-next");
+		nextBtn?.classList.add("hidden");
+	}
+
+	resetRoom3State();
+
 	// -----------------------------
 	// Show specific riddle
 	// -----------------------------
