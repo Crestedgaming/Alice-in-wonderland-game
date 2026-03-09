@@ -11,30 +11,25 @@ let catFocused = false;
 
 const startGame = () => {
   startTimer();
-
   console.log("Game started");
   gameRunning = true;
 
   const startButton = document.getElementById('start-button-cat');
   const instructions = document.getElementById('instructions');
   const catImage1 = document.getElementById('cat-image-1');
-
-  // Dölj startnapp, instruktioner och statisk knapp.// 
-  if (instructions)
-    instructions.classList.add('hidden');
-  if (startButton)
-    startButton.classList.add('hidden');
-  if (catImage1)
-    catImage1.classList.add('hidden');
-
-  // Lägg till klick-event på katten// 
-
   const catImage = document.getElementById('cat-image');
+
+  // Hide start button, instructions and cat-image-1
+  if (instructions) instructions.classList.add('hidden');
+  if (startButton) startButton.classList.add('hidden');
+  if (catImage1) catImage1.classList.add('hidden');
+
+  // Show cat-image for the game
   if (catImage) {
+    catImage.classList.remove('hidden');
     catImage.onclick = () => catchCat();
-    catImage.classList.add('no-outline-cat')
+    catImage.classList.add('no-outline-cat');
   }
-  // starta kattens slumpmässiga visning//
   showCatRandom();
 };
 
@@ -52,16 +47,16 @@ function catchCat() {
   console.log("Cat clicked!");
 
    if (catCaughtCount === 5) {
-         console.log(" spelet är slut! Katten fångad 5 gånger!");
+         console.log("Game over! Cat caught 5 times!");
          gameRunning = false;
          catImage.classList.add('hidden');
 
-    /* Lägg till artefakt här, när katten är fångad 5 gånger */
+    /* Add artefact here when cat is caught 5 times */
   }
 }
 
 ///////////////////////////   
-// Tangentbordkontroller//
+// Keyboard controls //
 /////////////////////////
 
 document.addEventListener('keydown', (e) => {
@@ -79,8 +74,8 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-///////////-Funktion-////////////////
-//*Slumpmässig position inom bakgrunden*///
+///////////-Function-////////////////
+//*Random position within background*///
 //////////////////////////////////////////
 
 function showCatRandom() {
@@ -88,14 +83,14 @@ function showCatRandom() {
   const background = document.getElementById('backgroundimg');
 
   if (catImage && background) {
-    // bakgrundsstorlek //
+    // background size //
     const backgroundSize = background.getBoundingClientRect();
 
-    // Max position för katt innanför bakgrund//
+    // Max position for cat inside background//
     const maxX = backgroundSize.width - catImage.offsetWidth;
     const maxY = backgroundSize.height - catImage.offsetHeight;
 
-    // slumpad position //
+    // random position //
     const randomX = Math.floor(Math.random() * maxX);
     const randomY = Math.floor(Math.random() * maxY);
 
@@ -103,13 +98,13 @@ function showCatRandom() {
     catImage.style.top = `${randomY}px`;
     catImage.classList.remove('hidden');
 
-    // lägg till skak-animation
+    // add shake animation
     catImage.classList.remove('shake'); // reset animation
     void catImage.offsetWidth;          // trigger reflow
-    catImage.classList.add('shake');    // starta skak
+    catImage.classList.add('shake');    // start shake
 
-    /* Dölj katten efter 1,5 sek och 
-    visa den igen efter 1 sek om spelet fortsätter*/
+    /* Hide cat after 0.8 sec and 
+    show again after 1 sec if game continues*/
 
     setTimeout(() => {
       const catImage = document.getElementById('cat-image')
@@ -123,12 +118,19 @@ function showCatRandom() {
   }
 }
 
-//////-Funktion-/////////
-// Startknappen /////////
+//////-Function-/////////
+// Start button /////////
 /////////////////////////
 
 function startSetup() {
   const startButton = document.getElementById('start-button-cat');
+  const catImage1 = document.getElementById('cat-image-1');
+  const catImage = document.getElementById('cat-image');
+
+  // Show cat-image-1 before game starts
+  if (catImage1) catImage1.classList.remove('hidden');
+  if (catImage) catImage.classList.add('hidden');
+
   if (startButton) {
     startButton.addEventListener('click', startGame);
   }
@@ -137,17 +139,17 @@ function startSetup() {
 startSetup();
 
 export function initRoom4() {
-  // Visa rum4 och starta spelet
+  // Show room4 and start the game
   const room4 = document.getElementById("rum4");
   if (room4) {
     room4.classList.remove("hidden");
   }
-  // Starta spelet om det finns en startknapp
+  // Start the game if there is a start button
   const startButton = document.getElementById('start-button-cat');
   if (startButton) {
     startButton.addEventListener('click', startGame);
   }
 }
 
-// Gör funktionen tillgänglig globalt om det behövs
+// Make function available globally if needed
 (window as any).initRoom4 = initRoom4;
