@@ -7,6 +7,7 @@ import { initRoom1 } from "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
+import { resetRoomProgress } from "./footer";
 
 /*
  * ============================================================
@@ -107,6 +108,8 @@ function focusCurrentViewTarget(roomId: string): void {
 }
 
 function resetGameUIState(): void {
+	resetRoomProgress();
+
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});

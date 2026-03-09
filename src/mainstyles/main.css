@@ -734,6 +734,11 @@ body {
 	justify-content: center;
 }
 
+.showArtifacts .artefacts.is-collected {
+	border-color: #f8cd6f;
+	box-shadow: 0 0 10px #f8cd6f;
+}
+
 .room3-description {
 	font-family: "Henny Penny", system-ui;
 	font-weight: 400;

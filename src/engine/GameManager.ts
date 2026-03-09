@@ -1,4 +1,5 @@
 import { gameState } from "./GameState";
+import { finishRoom, resetRoomProgress } from "../footer";
 
 /**
  * Room ID to room element ID mapping for display
@@ -34,6 +35,7 @@ export function startGame(): void {
 	gameState.timer = 0;
 	gameState.roomTimes = {};
 	gameState.currentRoomStartTime = Date.now();
+	resetRoomProgress();
 
 	showRoom(gameState.currentRoom);
 	startGlobalTimer();
@@ -71,6 +73,7 @@ export function completeRoom(roomId: number, artifactId: string): void {
 	// Register artifact and update score
 	gameState.artifacts.push(artifactId);
 	gameState.score += 100;
+	finishRoom(roomId);
 
 	const nextRoomId = roomId + 1;
 
