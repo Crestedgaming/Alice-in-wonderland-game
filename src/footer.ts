@@ -17,26 +17,14 @@ const artifactSlots = [
 function renderArtifacts(): void {
 	artifactSlots.forEach((slot, index) => {
 		const roomNumber = index + 1;
-		const span = slot?.querySelector("span") as HTMLSpanElement | null;
-		const icon = slot?.querySelector("img") as HTMLImageElement | null;
 		const letter = collectedArtifacts.get(roomNumber) ?? "";
 
 		if (doneRooms.has(roomNumber)) {
 			slot?.classList.add("is-collected");
-			if (span) {
-				span.textContent = letter;
-			}
-			if (icon) {
-				icon.style.display = "none";
-			}
+			slot?.setAttribute("data-artifact", letter);
 		} else {
 			slot?.classList.remove("is-collected");
-			if (span) {
-				span.textContent = "";
-			}
-			if (icon) {
-				icon.style.display = "block";
-			}
+			slot?.removeAttribute("data-artifact");
 		}
 	});
 }

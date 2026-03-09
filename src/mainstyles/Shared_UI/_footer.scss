@@ -41,6 +41,7 @@ footer {
 	}
 
 	li {
+		position: relative;
 		border: 2px inset $cream;
 		border-radius: 50%;
 		width: $artifact-size;
@@ -82,7 +83,10 @@ footer {
 			0 0 10px #f8cd6f;
 		background-color: rgba(248, 205, 111, 0.15);
 
-		span {
+		&::after {
+			content: attr(data-artifact);
+			position: absolute;
+			inset: 0;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -90,6 +94,7 @@ footer {
 			font-weight: 700;
 			color: #f8cd6f;
 			text-shadow: 0 0 6px rgba(248, 205, 111, 0.7);
+			z-index: 2;
 		}
 
 		img {
