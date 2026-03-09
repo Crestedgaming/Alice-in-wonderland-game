@@ -1,6 +1,7 @@
 import "./mainstyles/main.scss";
 import "./the_other_rooms/landing_page/home_page";
 import "./the_other_rooms/landing_page/login";
+import "./the_other_rooms/about/_about.scss"
 import { initRoom4 } from "./room4/Room4_hide_and_seek";
 import { initRoom3 } from "./room3/Room3_the_riddle";
 import { initRoom1 } from "./room1/Room1_theFall";
