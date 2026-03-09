@@ -152,106 +152,90 @@ let gameRunning = false;
   startButton?.addEventListener("click", startGame);
 
 function startGame() {
-  startTimer();
   console.log("TEAPARTY STARTED");
 
-    gameRunning = true;
+  gameRunning = true;
 
-    const startScreen = document.getElementById("teaparty-start");
-    const content = document.getElementById("teaparty-content");
+  const instructions = document.getElementById("instructions-teaparty");
+  const startBtn = document.getElementById("start-button-teaparty");
 
-    if (startScreen) startScreen.classList.add("hidden");
-    if (content) content.classList.remove("hidden");
-    initGame();
-  }
+ const startScreen = document.getElementById("teaparty-start");
+const content = document.getElementById("teaparty-content");
 
-  function initGame() {
+if (startScreen) startScreen.classList.add("hidden");
+if (content) content.classList.remove("hidden");
+  initGame();
+}
 
-    // 🔒 Begränsa allt till rum5
-    const room = document.getElementById("rum5");
-    if (!room) return;
+function initGame() {
 
-    const nextBtn = room.querySelector<HTMLButtonElement>("#room5-next");
-    nextBtn?.classList.add("hidden");
+  // 🔒 Begränsa allt till rum5
+  const room = document.getElementById("rum5");
+  if (!room) return;
 
-    const cups = room.querySelectorAll<HTMLDivElement>(".cup");
-    const totalDisplay = room.querySelector<HTMLSpanElement>("#total-percent");
-    const messageElement = room.querySelector<HTMLDivElement>(".teaparty__message");
+  const cups = room.querySelectorAll<HTMLDivElement>(".cup");
+  const totalDisplay = room.querySelector<HTMLSpanElement>("#total-percent");
+  const messageElement = room.querySelector<HTMLDivElement>(".teaparty__message");
 
-    let cupValues: number[] = [0, 0, 0];
+  let cupValues: number[] = [0, 0, 0];
 
-    const FILL_AMOUNT = 25;
-    const TARGET_TOTAL = 125;
+  const FILL_AMOUNT = 25;
+  const TARGET_TOTAL = 125;
 
-    cups.forEach((cup) => {
-      const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
+  cups.forEach((cup) => {
+    const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
 
-      button?.addEventListener("click", () => {
+    button?.addEventListener("click", () => {
 
-        if (!gameRunning) return;
+      if (!gameRunning) return;
 
-        const index = Number(cup.dataset.cup);
+      const index = Number(cup.dataset.cup);
 
-        if (cupValues[index] >= 100) return;
+      if (cupValues[index] >= 100) return;
 
-        cupValues[index] += FILL_AMOUNT;
+      cupValues[index] += FILL_AMOUNT;
 
-        updateUI();
-        checkGame();
-      });
+      updateUI();
+      checkGame();
+    });
+  });
+
+  function updateUI() {
+    cups.forEach((cup, index) => {
+      const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
+      const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+
+      if (fillElement) {
+        fillElement.style.height = cupValues[index] + "%";
+      }
+
+      if (percentText) {
+        percentText.textContent = cupValues[index] + "%";
+      }
     });
 
-    function updateUI() {
-      cups.forEach((cup, index) => {
-        const fillElement = cup.querySelector<HTMLDivElement>(".cup__fill");
-        const percentText = cup.querySelector<HTMLParagraphElement>(".cup__percent");
+    const total = calculateTotal();
 
-        if (fillElement) {
-          fillElement.style.height = cupValues[index] + "%";
-        }
-
-        if (percentText) {
-          percentText.textContent = cupValues[index] + "%";
-        }
-      });
-
-      const total = calculateTotal();
-
-      if (totalDisplay) {
-        totalDisplay.textContent = total.toString();
-      }
+    if (totalDisplay) {
+      totalDisplay.textContent = total.toString();
     }
+  }
 
-    function calculateTotal(): number {
-      return cupValues.reduce((sum, value) => sum + value, 0);
-    }
+  function calculateTotal(): number {
+    return cupValues.reduce((sum, value) => sum + value, 0);
+  }
 
   function checkGame() {
-  const total = calculateTotal();
-  const allCupsHaveTea = cupValues.every((value) => value > 0);
+    const total = calculateTotal();
+    const allCupsHaveTea = cupValues.every((value) => value > 0);
 
-  if (total === TARGET_TOTAL && allCupsHaveTea) {
-  gameRunning = false;
+    if (total === TARGET_TOTAL && allCupsHaveTea) {
       if (messageElement) {
         messageElement.textContent =
           "Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
       }
-
-    
-    pauseTimer();
-
-    const nextBtn = document.getElementById("next-room5");
-
-    if (nextBtn) {
-      nextBtn.classList.remove("hidden");
-
-      nextBtn.addEventListener("click", () => {
-        console.log("NEXT ROOM CLICKED");
-        goToNextRoom("rum5", "rum6");
-      });
     }
 
-  } 
     else if (total === TARGET_TOTAL && !allCupsHaveTea) {
       if (messageElement) {
         messageElement.textContent =
@@ -259,38 +243,20 @@ function startGame() {
       }
     }
 
-      if (total > TARGET_TOTAL) {
-        resetGame();
-      }
+    if (total > TARGET_TOTAL) {
+      resetGame();
+    }
+  }
+
+  function resetGame() {
+    cupValues = [0, 0, 0];
+
+    if (messageElement) {
+      messageElement.textContent =
+        "Ops, nu rann det över! Börja om och fyll tekopparna igen";
     }
 
-    function resetGame() {
-      cupValues = [0, 0, 0];
-
-      if (messageElement) {
-        messageElement.textContent =
-          "Ops, nu rann det över! Börja om och fyll tekopparna igen";
-      }
-
-      updateUI();
-    }
+    updateUI();
+  }
 
 }
-
-// Exportera initRoom5 för att kunna anropas från main.ts
-export function initRoom5() {
-  // Visa rum5 och starta spelet
-  const room5 = document.getElementById("rum5");
-  if (room5) {
-    room5.classList.remove("hidden");
-  }
-  // Starta spelet om det finns en startknapp
-  const startButton = document.getElementById('start-button-teaparty');
-  if (startButton) {
-    startButton.addEventListener('click', startGame);
-  }
-}
-
-// Gör funktionen tillgänglig globalt om det behövs
-(window as any).initRoom5 = initRoom5;
-

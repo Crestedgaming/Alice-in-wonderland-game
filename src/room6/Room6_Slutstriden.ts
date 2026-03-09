@@ -73,9 +73,12 @@ function checkWord() {
 
 
 if (word === "VAKNA") {
-   console.log("Correct word!");
-  showGameCompleted();
-  
+  document.querySelectorAll(".room").forEach((room) => {
+    room.classList.add("hidden");
+  });
+
+  const completed = document.getElementById("game-completed");
+  completed?.classList.remove("hidden");
 } else {
     message.classList.remove("hidden");
 

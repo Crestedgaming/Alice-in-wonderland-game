@@ -51,21 +51,10 @@ function catchCat() {
   catFocused = false;
   console.log("Cat clicked!");
 
-  if (catCaughtCount === 5) {
-    console.log(" spelet är slut! Katten fångad 5 gånger!");
-    gameRunning = false;
-    catImage.classList.add('hidden');
-
-    // Kontrollera att nextBtn är definierad innan den används
-    const nextBtn = document.getElementById('room4-next');
-    if (nextBtn) {
-      nextBtn.classList.remove('hidden');
-      nextBtn.addEventListener('click', () => {
-        window.dispatchEvent(new Event('ROOM_4_COMPLETED'));
-        const room4 = document.getElementById('rum4');
-        if (room4) room4.classList.add('hidden');
-      });
-    }
+   if (catCaughtCount === 5) {
+         console.log(" spelet är slut! Katten fångad 5 gånger!");
+         gameRunning = false;
+         catImage.classList.add('hidden');
 
     /* Lägg till artefakt här, när katten är fångad 5 gånger */
   }

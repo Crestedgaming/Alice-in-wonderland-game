@@ -1,15 +1,11 @@
 import "./mainstyles/main.scss";
 import { startGame } from "./engine/GameManager";
-
 import "./room4/Room4_hide_and_seek";
 import "./room3/Room3_the_riddle";
 import "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
 import "./room5/room5_teaparty";
 import "./room2/Room2_Storleken";
-
-//import highscore
-import "./the_other_rooms/highscore/highscore";
 
 /*
  * ============================================================
@@ -28,6 +24,7 @@ window.showRoom = function (roomId: string) {
 	});
 
 	document.getElementById(roomId)!.classList.remove("hidden");
+	focusCurrentViewTarget(roomId);
 
 	// Initialize Room logic and listeners when showing specific rooms
 	if (roomId === "room1") {
@@ -86,28 +83,12 @@ window.showRoom = function (roomId: string) {
 	}
 };
 
-// --- Room reset logic ---
-const roomOriginalHTML: Record<string, string> = {};
-document.querySelectorAll(".room").forEach((room) => {
-	roomOriginalHTML[room.id] = room.innerHTML;
-});
-
-function getCurrentRoomId(): string | null {
-	const visibleRoom = Array.from(document.querySelectorAll(".room")).find(
-		(room) => !room.classList.contains("hidden"),
-	);
-	return visibleRoom ? visibleRoom.id : null;
-}
-
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
-		const currentRoomId = getCurrentRoomId();
-		if (currentRoomId && roomOriginalHTML[currentRoomId]) {
-			const roomElem = document.getElementById(currentRoomId);
-			if (roomElem) {
-				roomElem.innerHTML = roomOriginalHTML[currentRoomId];
-			}
+		resetGameUIState();
+		if (typeof window.goToStart === "function") {
+			window.goToStart();
 		}
 	});
 }
@@ -120,30 +101,3 @@ if (resetBtn) {
 	document.getElementById("start")!.classList.remove("hidden");
 };
 
-function initGameFlow() {
-	window.addEventListener("ROOM_1_COMPLETED", () =>
-		(window as any).showRoom("rum2")
-	);
-
-	window.addEventListener("ROOM_2_COMPLETED", () =>
-		(window as any).showRoom("rum3")
-	);
-
-	window.addEventListener("ROOM_3_COMPLETED", () =>
-		(window as any).showRoom("rum4")
-	);
-
-	window.addEventListener("ROOM_4_COMPLETED", () =>
-		(window as any).showRoom("rum5")
-	);
-
-	window.addEventListener("ROOM_5_COMPLETED", () =>
-		(window as any).showRoom("rum6")
-	);
-
-	window.addEventListener("ROOM_6_COMPLETED", () =>
-		(window as any).showRoom("start")
-	);
-}
-
-initGameFlow();

@@ -100,6 +100,9 @@ export function initRoom3(): void {
       }
 
       giveArtifact(letter);
+      if (typeof window.completeRoom === "function") {
+         window.completeRoom(3, letter);
+      }
 
       // Hide individual riddles (not the container, so the button stays visible)
       riddles.forEach(r => {
