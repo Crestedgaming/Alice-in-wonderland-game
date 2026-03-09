@@ -93,11 +93,7 @@ if (resetBtn) {
 }
 
 (window as any).goToStart = function () {
-	document.querySelectorAll(".room").forEach((room) => {
-		room.classList.add("hidden");
-	});
-
-	document.getElementById("start")!.classList.remove("hidden");
+	resetGameUIState();
 };
 
 function focusCurrentViewTarget(roomId: string): void {
@@ -115,6 +111,18 @@ function resetGameUIState(): void {
 		room.classList.add("hidden");
 	});
 
+	const loginPage = document.getElementById("login-page");
+	const homePage = document.getElementById("home-page");
 	const start = document.getElementById("start");
-	start?.classList.remove("hidden");
+	const header = document.querySelector("header");
+	const footer = document.querySelector("footer");
+
+	// Reset should take the player to the real start page menu.
+	loginPage?.classList.add("hidden");
+	homePage?.classList.remove("hidden");
+	header?.removeAttribute("hidden");
+	footer?.removeAttribute("hidden");
+
+	// Keep the room-picker hidden when returning to start page.
+	start?.classList.add("hidden");
 }
