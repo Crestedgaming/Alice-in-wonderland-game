@@ -181,18 +181,20 @@ function initGame() {
 	cups.forEach((cup) => {
 		const button = cup.querySelector<HTMLButtonElement>(".cup__teapot");
 
-		button?.addEventListener("click", () => {
-			if (!gameRunning) return;
+		if (button) {
+			button.onclick = () => {
+				if (!gameRunning) return;
 
-			const index = Number(cup.dataset.cup);
+				const index = Number(cup.dataset.cup);
 
-			if (cupValues[index] >= 100) return;
+				if (cupValues[index] >= 100) return;
 
-			cupValues[index] += FILL_AMOUNT;
+				cupValues[index] += FILL_AMOUNT;
 
-			updateUI();
-			checkGame();
-		});
+				updateUI();
+				checkGame();
+			};
+		}
 	});
 
 	function updateUI() {

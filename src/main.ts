@@ -1,12 +1,12 @@
 import "./mainstyles/main.scss";
 import "./the_other_rooms/landing_page/home_page";
 import "./the_other_rooms/landing_page/login";
-import "./room4/Room4_hide_and_seek";
-import "./room3/Room3_the_riddle";
-import "./room1/Room1_theFall";
+import { initRoom4 } from "./room4/Room4_hide_and_seek";
+import { initRoom3 } from "./room3/Room3_the_riddle";
+import { initRoom1 } from "./room1/Room1_theFall";
 import "./room6/Room6_Slutstriden";
-import "./room5/room5_teaparty";
-import "./room2/Room2_Storleken";
+import { initRoom5 } from "./room5/room5_teaparty";
+import { initRoom2 } from "./room2/Room2_Storleken";
 
 /*
  * ============================================================
@@ -29,21 +29,19 @@ window.showRoom = function (roomId: string) {
 
 	// Initialize Room logic and listeners when showing specific rooms
 	if (roomId === "room1") {
-		if (typeof window.initRoom1 === "function") {
-			window.initRoom1();
-		}
+		initRoom1();
 	}
 	if (roomId === "rum3") {
-		import("./room3/Room3_the_riddle").then((m) => m.initRoom3());
+		initRoom3();
 	}
 	if (roomId === "rum2") {
-		import("./room2/Room2_Storleken").then((m) => m.initRoom2());
+		initRoom2();
 	}
 	if (roomId === "rum4") {
-		import("./room4/Room4_hide_and_seek").then((m) => m.initRoom4());
+		initRoom4();
 	}
 	if (roomId === "rum5") {
-		import("./room5/room5_teaparty").then((m) => m.initRoom5());
+		initRoom5();
 	}
 
 	// Set navBarTitle to current room's title

@@ -29,7 +29,6 @@ const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
 let room1StartTime = 0;
 let room1TimerId: number | null = null;
 let room1ElapsedMs = 0;
-let room1Unlocked = false;
 
 function getRoom1Elements(): Room1Elements {
 	return {
@@ -142,7 +141,6 @@ function saveRoom1Result(letter: string, timeMs: number): void {
 
 function resetRoom1State(endButton: HTMLButtonElement | null): void {
 	window.selectedKey = null;
-	room1Unlocked = false;
 	if (endButton) {
 		endButton.classList.add("hidden");
 	}
@@ -174,12 +172,6 @@ function bindKeySelection(message: HTMLElement | null): void {
 	});
 }
 
-function goToRoom2(): void {
-	if (typeof window.showRoom === "function") {
-		window.showRoom("rum2");
-	}
-}
-
 function bindKeyhole(
 	keyhole: HTMLButtonElement | null,
 	message: HTMLElement | null,
@@ -207,7 +199,6 @@ function bindKeyhole(
 
 		const finalMs = stopRoom1Timer(roomTimer);
 		saveRoom1Result(selectedKey, finalMs);
-		room1Unlocked = true;
 
 		completeRoom(1, selectedKey);
 		if (typeof window.updateFooterContext === "function") {
@@ -215,16 +206,8 @@ function bindKeyhole(
 		}
 
 		if (endButton) {
-			endButton.classList.remove("hidden");
-			endButton.onclick = () => {
-				if (room1Unlocked) {
-					goToRoom2();
-				}
-			};
-			return;
+			endButton.classList.add("hidden");
 		}
-
-		window.setTimeout(goToRoom2, 900);
 	};
 }
 
