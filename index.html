@@ -45,14 +45,107 @@
 
   <main>
     <!-- Startsida -->
-    <div id="home-page">
+    <div id="home-page" class="room">
       <button id="start-button">Starta spelet</button>
       <button id="highscore">Highscore</button>
-      <button id="about">Om oss</button>
+      <button onclick="showRoom('about-us-page')">Om oss</button>
     </div>
 
     <div id="game">
       <!--class="hidden"-->
+
+<!-- Om oss sida -->
+
+<div id="about-us-page" class="room hidden"> 
+  <div class="about-container">
+
+    <section id="about-game">
+  <h2>Om spelet</h2>
+  <p>Välkommen till Alice i Underlandet – Escape Room Edition!
+En dag hittar Alice ett konstigt hål i marken. Hon tittar ner… och plötsligt ramlar hon ner!
+Nu är hon fast i den märkliga världen Underlandet.
+För att hjälpa Alice hem igen måste du klara flera rum fyllda av kluriga spel och gåtor.
+I varje rum finns en hemlig artefakt. När du löser spelet får du en bokstav.
+Men var försiktig… alla bokstäver kanske inte är rätt!
+Spelet går på tid. Ju snabbare du löser rummen, desto bättre poäng får du.
+Den som får minst poäng hamnar högst upp på Highscore-listan!
+
+Kan du samla rätt bokstäver och hjälpa Alice hitta vägen hem?
+
+Lycka till!
+</p>
+</section>
+  <section id="about-us">
+    <h3>Om oss</h3>
+    <p>Vi är ett team på sex studenter som studerar till Front End Developers på Medieinstitutet.
+Detta spel skapades som en del av vår kurs i JavaScript, där uppdraget var att bygga ett eget escape room-spel. Under projektet fick vi arbeta tillsammans med idéutveckling, design och programmering för att skapa en interaktiv spelupplevelse i webbläsaren.
+Efter mycket idéspånande bestämde vi oss för att skapa ett spel inspirerat av Alice i Underlandet – en fantasifull värld fylld av mysterier, kluriga spel och märkliga karaktärer.
+Projektet har gett oss möjlighet att både utmana våra programmeringskunskaper och samarbeta som utvecklingsteam.</p>
+
+    </section>
+    <section id="about-team">
+    <h3>Teamet</h3>
+    <p>Teamet bakom spelet består av sex studenter från Medieinstitutet som tillsammans arbetat med design, utveckling och testning av spelet.
+Genom att samarbeta och dela idéer har vi byggt upp spelets olika rum, spelmoment och funktioner.
+Här är utvecklarna bakom projektet:</p>
+ <div class="team-grid">
+
+  <div class="team-member">
+    <img src="images/team/alex.png" alt="Alex">
+    <h4>Alex</h4>
+    <p>Speldesigner och berättare</p>
+     <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+  <div class="team-member">
+    <img src="images/team/amanda.png" alt="Amanda">
+    <h4>Amanda</h4>
+    <p>Programmerare och teknisk ledare</p>
+    <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+  <div class="team-member">
+    <img src="images/team/marcus.png" alt="Marcus">
+    <h4>Marcus</h4>
+    <p>Grafisk designer och illustratör</p>
+     <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+  <div class="team-member">
+    <img src="images/team/sandra.png" alt="Sandra">
+    <h4>Sandra</h4>
+    <p>Ljuddesigner och kompositör</p>
+     <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+  <div class="team-member">
+    <img src="images/team/mohammed.png" alt="Mohammed">
+    <h4>Mohammed</h4>
+    <p>Testare och kvalitetsansvarig</p>
+     <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+  <div class="team-member">
+    <img src="public/about_bilder/Jennie.jpg" alt="Jennie">
+    <h4>Jennie</h4>
+    <p>Testare och kvalitetsansvarig</p>
+     <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+  </div>
+
+</div>
+</section>
+      <section id="teknik">
+
+<h3>Tekniker</h3>
+
+<p>Spelet är byggt med moderna webbteknologier.
+Vi har använt HTML för struktur, CSS/SCSS för design och layout samt JavaScript och TypeScript för att skapa spelets interaktivitet och logik.
+Genom dessa tekniker har vi kunnat bygga ett webbaserat escape room där spelaren kan lösa olika uppgifter, samla bokstäver och ta sig vidare genom spelets rum.</p>
+     
+    </section>
+    </div>
+    </div>
+
       <!-- rum1 -->
       <div id="room1" class="room room1 fallContainer hidden">
         <div id="room1StartPage" class="room1StartPage">
@@ -215,7 +308,8 @@
         </div>
 
         <!-- SPELET -->
-        <div class="teaparty-game" id="teaparty-game" <div class="room--teaparty">
+       <div class="teaparty-game" id="teaparty-game">
+  <div class="room--teaparty">
           <div class="teaparty-wrapper">
             <img src="public/room5_bilder/teaparty_backgroundpic.jpg" alt="" class="teaparty__background"
               aria-hidden="true" />
@@ -368,7 +462,7 @@
           </div>
         </div>
       </div>
-    </div>
+
   </main>
   <footer>
     <div id="showArtifacts" class="showArtifacts">
@@ -394,3 +488,4 @@
 </body>
 
 </html>
+

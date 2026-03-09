@@ -25,7 +25,7 @@
 body {
 	background-color: black;
 	overflow-x: hidden;
-
+	overflow-y: auto;
 	// Utility class for hiding elements
 	.hidden {
 		display: none !important;
@@ -36,8 +36,6 @@ main {
 	display: grid;
 	grid-template-rows: 1fr;
 	width: 100%;
-	justify-content: center;
-	text-align: center;
 	background-color: #732f2f;
 
 
