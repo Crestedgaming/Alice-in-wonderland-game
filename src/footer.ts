@@ -1,6 +1,7 @@
 const TOTAL_ROOMS = 6;
 // Tracks which room numbers are completed in the current run.
 const doneRooms = new Set<number>();
+const collectedArtifacts = new Map<number, string>();
 const progressRoot = document.getElementById("progressBar");
 const progressFill = document.getElementById("myBar") as HTMLDivElement | null;
 // Artifact UI slots in the same order as rooms 1-5.
@@ -16,10 +17,26 @@ const artifactSlots = [
 function renderArtifacts(): void {
 	artifactSlots.forEach((slot, index) => {
 		const roomNumber = index + 1;
+		const span = slot?.querySelector("span") as HTMLSpanElement | null;
+		const icon = slot?.querySelector("img") as HTMLImageElement | null;
+		const letter = collectedArtifacts.get(roomNumber) ?? "";
+
 		if (doneRooms.has(roomNumber)) {
 			slot?.classList.add("is-collected");
+			if (span) {
+				span.textContent = letter;
+			}
+			if (icon) {
+				icon.style.display = "none";
+			}
 		} else {
 			slot?.classList.remove("is-collected");
+			if (span) {
+				span.textContent = "";
+			}
+			if (icon) {
+				icon.style.display = "block";
+			}
 		}
 	});
 }
@@ -35,8 +52,11 @@ function renderProgress(): void {
 }
 
 // Marks one room as completed and refreshes footer UI.
-export function finishRoom(room: number): void {
+export function finishRoom(room: number, artifact = ""): void {
 	if (room < 1 || room > TOTAL_ROOMS) return;
+	if (artifact) {
+		collectedArtifacts.set(room, artifact);
+	}
 	if (doneRooms.has(room)) return;
 	doneRooms.add(room);
 	renderProgress();
@@ -45,6 +65,7 @@ export function finishRoom(room: number): void {
 // Clears all room progress and resets footer UI.
 export function resetRoomProgress(): void {
 	doneRooms.clear();
+	collectedArtifacts.clear();
 	renderProgress();
 }
 

@@ -73,7 +73,7 @@ export function completeRoom(roomId: number, artifactId: string): void {
 	// Register artifact and update score
 	gameState.artifacts.push(artifactId);
 	gameState.score += 100;
-	finishRoom(roomId);
+	finishRoom(roomId, artifactId);
 
 	const nextRoomId = roomId + 1;
 
