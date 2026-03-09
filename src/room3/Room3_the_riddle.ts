@@ -123,7 +123,7 @@ export function initRoom3(): void {
 			message =
 				"🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
 		} else {
-			letter = "Q";
+			letter = "S";
 			message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
 		}
 

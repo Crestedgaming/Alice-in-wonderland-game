@@ -155,7 +155,7 @@ function updateSize() {
 
 		if (!room2Completed) {
 			room2Completed = true;
-			completeRoom(2, "E");
+			completeRoom(2, "A");
 		}
 	}
 }
