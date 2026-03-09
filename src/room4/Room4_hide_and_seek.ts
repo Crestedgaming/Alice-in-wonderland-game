@@ -1,4 +1,5 @@
 import "../mainstyles/main.scss";
+import { startTimer } from "../utils";
 
 let catCaughtCount = 0;
 let gameRunning = false; 
@@ -9,6 +10,8 @@ let catFocused = false;
 /////////////////
 
 const startGame = () => {
+  startTimer();
+
   console.log("Game started");
   gameRunning = true;
 

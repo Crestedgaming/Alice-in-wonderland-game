@@ -143,7 +143,7 @@
 // ===============================
 // RUM 5 – TEAPARTY
 // ===============================
-
+import { startTimer } from "../utils";
 let gameRunning = false;
 
 // Start-knappen
@@ -152,6 +152,7 @@ const startButton = document.getElementById("start-button-teaparty");
 startButton?.addEventListener("click", startGame);
 
 function startGame() {
+  startTimer();
   console.log("TEAPARTY STARTED");
 
   gameRunning = true;

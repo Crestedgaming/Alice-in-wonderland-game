@@ -33,3 +33,4 @@ export function startTimer() {
     }
   }, 1000);
 }
+
