@@ -1,4 +1,5 @@
 // Room 3 – The Caterpillar Riddles
+import { startTimer } from "../utils";
 
 export function initRoom3(): void {
 
@@ -35,6 +36,8 @@ export function initRoom3(): void {
    // Start room
    // -----------------------------
    function startRiddle(): void {
+      startTimer();
+
       rum3StartButton.classList.add("hidden");
       riddleContainer.classList.remove("hidden");
       currentRiddle = 0;

@@ -37,17 +37,22 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
+import { startTimer,resumeTimer } from "../utils";
+
+import { showGameCompleted } from "../the_other_rooms/game_over/game_over"; 
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 
 startBtn?.addEventListener("click", () => {
+  startTimer();
+  resumeTimer();
   intro?.classList.add("hidden");
 
 
   shuffleLetters();
 
 
-  setInterval(shuffleLetters, 1000);
+  setInterval(shuffleLetters, 3000);
 });
   const submitButton = document.getElementById("submit");
 
@@ -68,12 +73,9 @@ function checkWord() {
 
 
 if (word === "VAKNA") {
-  document.querySelectorAll(".room").forEach((room) => {
-    room.classList.add("hidden");
-  });
-
-  const completed = document.getElementById("game-completed");
-  completed?.classList.remove("hidden");
+   console.log("Correct word!");
+  showGameCompleted();
+  
 } else {
     message.classList.remove("hidden");
 
@@ -113,12 +115,3 @@ function shuffleLetters() {
   });
 }
 
-const restartBtn = document.getElementById("restart-game");
-
-restartBtn?.addEventListener("click", () => {
-  document.querySelectorAll(".room").forEach((room) => {
-    room.classList.add("hidden");
-  });
-
-  document.getElementById("start")?.classList.remove("hidden");
-});
