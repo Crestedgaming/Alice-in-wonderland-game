@@ -41,12 +41,65 @@
   </header>
 
   <main>
-    <!-- Startsida -->
-    <div id="home-page">
-      <button id="start-button">Starta spelet</button>
-      <button id="highscore">Highscore</button>
-      <button onclick="showRoom('about-us-page')">Om oss</button>
+
+    <!-- Login sida -->
+  <div id="login-page" class="login-page">
+
+    <img 
+      src="images/home_page_images/login_background.jpg"
+      alt=""
+      class="login-background-image"
+      aria-hidden="true"
+    />
+
+    <div class="login-box">
+      <h2>Vad heter du?</h2>
+
+      <input 
+        type="text"
+        id="username-input"
+        placeholder="Skriv ditt namn..."
+      />
+
+      <button id="login-button" class="menu-btn">
+        Börja äventyret
+      </button>
     </div>
+
+  </div>
+
+    <!-- STARTSIDA -->
+<div id="home-page" class="home-page hidden">
+
+  <img 
+    src="images/home_page_images/homepage.jpg"
+    alt=""
+    class="background-image"
+    aria-hidden="true"
+  />
+  <div class="main-menu">
+
+    <p id="welcome-text" class="welcome-text"></p>
+
+    <button id="start-button" class="menu-btn start-btn">
+      Starta spel
+    </button>
+
+    <div class="secondary-buttons">
+
+      <button id="highscore-button" class="menu-btn">
+        Highscore
+      </button>
+
+      <button id="about-button" class="menu-btn">
+        Om oss
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
 
     <div id="game">
       <!--class="hidden"-->
@@ -191,38 +244,47 @@
           </div> --->
         </div>
       </div>
+      <!-- Room 2 -->
+<div id="rum2" class="room hidden room--size">
 
-      <!-- rum2 -->
-      <div id="rum2" class="room hidden room--storleken">
-        <!-- Bakgrundsbild -->
-        <img src="images/Room2_bilder/Rum2bakgrund.jpg" alt="" class="room2-background-image" aria-hidden="true" />
+  <img
+    src="images/Room2_bilder/Rum2bakgrund.jpg"
+    alt=""
+    class="room2-background-image"
+    aria-hidden="true"
+  />
 
-        <!-- Ord på väggen -->
-        <div class="storleken-vaggord">
-          <span class="vaggord vaggord--stor">STOR</span>
-          <span class="vaggord vaggord--mellan">MELLAN</span>
-          <span class="vaggord vaggord--liten">LITEN</span>
-        </div>
+  <button id="room2-start-button" class="start-button-room2">
+          Starta spelet
+        </button>
 
-        <!-- Alice -->
-        <img src="images/Room2_bilder/AliceTransparent.png" alt="Alice" class="storleken-alice" />
+  <div id="room2-overlay" class="room2-overlay"></div>
 
-        <!-- Instruktionstext -->
-        <p class="storleken-text">
-          Alice är för stor! <br />
-          Kan du göra henne
-          <span class="storleken-text__mindre">mindre</span>?
-        </p>
+  <div class="size-wall-words">
+    <span class="wall-word wall-word--big">STOR</span>
+    <span class="wall-word wall-word--medium">MELLAN</span>
+    <span class="wall-word wall-word--small">LITEN</span>
+  </div>
 
-        <!-- Klar-text -->
-        <p class="storleken-success hidden">
-          <strong>Bra jobbat!</strong><br />
-          Alice är lagom stor<br />
-          och kommer in genom dörren.
-        </p>
-        <button id="room2-next" class="next-button hidden">Nästa rum</button>
-        <button id="room2-next" class="next-button hidden">Nästa rum</button>
-      </div>
+  <img
+    src="images/Room2_bilder/AliceTransparent.png"
+    alt="Alice"
+    class="size-alice"
+  />
+
+  <p class="size-text">
+    Alice är för stor! <br />
+    Kan du göra henne
+    <span class="size-text__smaller">mindre</span>?
+  </p>
+
+  <p class="size-success hidden">
+    <strong>Bra jobbat!</strong><br />
+    Alice är lagom stor<br />
+    och kommer in genom dörren.
+  </p>
+
+</div>
 
       <!-- rum3 -->
       <div id="rum3" class="room hidden">
