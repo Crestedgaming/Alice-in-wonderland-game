@@ -40,7 +40,7 @@ function getRoom1Elements(): Room1Elements {
 		keyhole: document.getElementById("keyhole") as HTMLButtonElement | null,
 		message: document.getElementById("fallMessage"),
 		endButton: document.getElementById(
-			"room1EndButton",
+			"room1-next",
 		) as HTMLButtonElement | null,
 		roomTimer: document.getElementById("gameTimerEachRoom"),
 	};

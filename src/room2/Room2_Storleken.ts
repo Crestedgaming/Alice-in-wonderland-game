@@ -193,7 +193,7 @@ vaggord.forEach((ord) => {
 updateSize();
 
 export function initRoom2() {
-	// Lägg till rum2-logik här
+	room2Completed = false;
 }
 
 export {};

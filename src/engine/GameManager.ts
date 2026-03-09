@@ -13,7 +13,8 @@ const ROOM_MAP: Record<number, string> = {
 };
 
 const NEXT_BUTTON_MAP: Partial<Record<number, string>> = {
-	1: "room1EndButton",
+	1: "room1-next",
+	2: "room2-next",
 	3: "room3-next",
 	4: "room4-next",
 	5: "room5-next",
