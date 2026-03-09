@@ -1,15 +1,15 @@
-import { gameState } from './GameState';
+import { gameState } from "./GameState";
 
 /**
  * Room ID to room element ID mapping for display
  */
 const ROOM_MAP: Record<number, string> = {
-    1: 'rum1',
-    2: 'rum2',
-    3: 'rum3',
-    4: 'rum4',
-    5: 'rum5',
-    6: 'rum6',
+	1: "room1",
+	2: "rum2",
+	3: "rum3",
+	4: "rum4",
+	5: "rum5",
+	6: "rum6",
 };
 
 const TOTAL_ROOMS = 6;
@@ -19,16 +19,16 @@ const TOTAL_ROOMS = 6;
  * Resets all game state and begins room 1
  */
 export function startGame(): void {
-    gameState.isGameActive = true;
-    gameState.currentRoom = 1;
-    gameState.artifacts = [];
-    gameState.score = 0;
-    gameState.timer = 0;
-    gameState.roomTimes = {};
-    gameState.currentRoomStartTime = Date.now();
+	gameState.isGameActive = true;
+	gameState.currentRoom = 1;
+	gameState.artifacts = [];
+	gameState.score = 0;
+	gameState.timer = 0;
+	gameState.roomTimes = {};
+	gameState.currentRoomStartTime = Date.now();
 
-    showRoom(gameState.currentRoom);
-    startGlobalTimer();
+	showRoom(gameState.currentRoom);
+	startGlobalTimer();
 }
 
 /**
@@ -36,41 +36,43 @@ export function startGame(): void {
  * Uses the global showRoom function defined in main.ts
  */
 function showRoom(roomId: number): void {
-    const roomElementId = ROOM_MAP[roomId];
-    if (!roomElementId) {
-        console.error(`Invalid room ID: ${roomId}`);
-        return;
-    }
-    (window as any).showRoom(roomElementId);
+	const roomElementId = ROOM_MAP[roomId];
+	if (!roomElementId) {
+		console.error(`Invalid room ID: ${roomId}`);
+		return;
+	}
+	(window as any).showRoom(roomElementId);
 }
 
 /**
  * Mark a room as complete and register the artifact
  * Tracks room completion time and advances to next room
- * 
+ *
  * @param roomId - The ID of the completed room
  * @param artifactId - The artifact letter/identifier to register
  */
 export function completeRoom(roomId: number, artifactId: string): void {
-    // Record the time spent in this room
-    if (gameState.currentRoomStartTime !== null) {
-        const duration = Math.floor((Date.now() - gameState.currentRoomStartTime) / 1000);
-        gameState.roomTimes[roomId] = duration;
-    }
+	// Record the time spent in this room
+	if (gameState.currentRoomStartTime !== null) {
+		const duration = Math.floor(
+			(Date.now() - gameState.currentRoomStartTime) / 1000,
+		);
+		gameState.roomTimes[roomId] = duration;
+	}
 
-    // Register artifact and update score
-    gameState.artifacts.push(artifactId);
-    gameState.score += 100;
+	// Register artifact and update score
+	gameState.artifacts.push(artifactId);
+	gameState.score += 100;
 
-    // Advance to next room or end game
-    gameState.currentRoom = roomId + 1;
+	// Advance to next room or end game
+	gameState.currentRoom = roomId + 1;
 
-    if (gameState.currentRoom > TOTAL_ROOMS) {
-        endGame();
-    } else {
-        gameState.currentRoomStartTime = Date.now();
-        showRoom(gameState.currentRoom);
-    }
+	if (gameState.currentRoom > TOTAL_ROOMS) {
+		endGame();
+	} else {
+		gameState.currentRoomStartTime = Date.now();
+		showRoom(gameState.currentRoom);
+	}
 }
 
 /**
@@ -78,12 +80,12 @@ export function completeRoom(roomId: number, artifactId: string): void {
  * Updates the timer display while the game is active
  */
 export function startGlobalTimer(): void {
-    setInterval(() => {
-        if (gameState.isGameActive) {
-            gameState.timer++;
-            updateTimerDisplay();
-        }
-    }, 1000);
+	setInterval(() => {
+		if (gameState.isGameActive) {
+			gameState.timer++;
+			updateTimerDisplay();
+		}
+	}, 1000);
 }
 
 /**
@@ -91,15 +93,15 @@ export function startGlobalTimer(): void {
  * Formats time as MM:SS
  */
 function updateTimerDisplay(): void {
-    const timerEl = document.getElementById('falletTimer');
-    if (timerEl) {
-        const minutes = Math.floor(gameState.timer / 60);
-        const seconds = gameState.timer % 60;
-        timerEl.textContent = `Din tid: ${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-    }
+	const timerEl = document.getElementById("falletTimer");
+	if (timerEl) {
+		const minutes = Math.floor(gameState.timer / 60);
+		const seconds = gameState.timer % 60;
+		timerEl.textContent = `Din tid: ${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+	}
 }
 
 export function endGame() {
-    gameState.isGameActive = false;
-    console.log('Game Over!', gameState.roomTimes);
+	gameState.isGameActive = false;
+	console.log("Game Over!", gameState.roomTimes);
 }

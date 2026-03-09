@@ -10,7 +10,7 @@ Dagens scrum master: Markus
 
 - Närvarande: Ja
 
-## Namn: Markus Jönsson
+## Namn: Mohammed Amin Yasin
 
 - Närvarande: Ja
 
