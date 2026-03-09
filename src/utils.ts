@@ -14,12 +14,13 @@
 
 let seconds = 0;
 let timerStarted = false;
+let timerInterval: number;
 
 export function startTimer() {
   if (timerStarted) return;
   timerStarted = true;
 
-  setInterval(() => {
+  timerInterval=setInterval(() => {
     seconds++;
 
     const timerElement = document.getElementById("falletTimerTotalt");
@@ -29,8 +30,10 @@ export function startTimer() {
       const secs = seconds % 60;
 
       timerElement.textContent =
-        `Tid i rummet: ${String(minutes).padStart(2, "0")}.${String(secs).padStart(2, "0")}`;
+       `Tid i rummet: ${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
     }
   }, 1000);
 }
-
+export function stopTimer() {
+  clearInterval(timerInterval);
+}

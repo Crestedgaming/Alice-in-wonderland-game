@@ -1,4 +1,8 @@
+import { stopTimer } from "../../utils";
 export function showGameCompleted() {
+  console.log("GAME COMPLETED"); // debug
+  stopTimer();
+
   document.querySelectorAll(".room").forEach((room) => {
     room.classList.add("hidden");
   });
