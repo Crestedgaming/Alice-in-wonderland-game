@@ -194,6 +194,13 @@ updateSize();
 
 export function initRoom2() {
 	room2Completed = false;
+	sizeLevel = 3;
+	step = 0;
+	overlay?.classList.remove("hidden");
+	room2StartButton?.classList.remove("hidden");
+	const nextButton = document.getElementById("room2-next");
+	nextButton?.classList.add("hidden");
+	updateSize();
 }
 
 export {};

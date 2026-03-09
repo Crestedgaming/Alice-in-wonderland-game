@@ -141,14 +141,30 @@ function startSetup() {
 startSetup();
 
 export function initRoom4() {
+	catCaughtCount = 0;
+	gameRunning = false;
+	catFocused = false;
+
 	// Show room4 and start the game
 	const room4 = document.getElementById("rum4");
 	if (room4) {
 		room4.classList.remove("hidden");
 	}
+
+	const instructions = document.getElementById("instructions");
+	const introCat = document.getElementById("cat-image-1");
+	const playCat = document.getElementById("cat-image");
+	const nextButton = document.getElementById("room4-next");
+
+	instructions?.classList.remove("hidden");
+	introCat?.classList.remove("hidden");
+	playCat?.classList.add("hidden");
+	nextButton?.classList.add("hidden");
+
 	// Start the game if there is a start button
 	const startButton = document.getElementById("start-button-cat");
 	if (startButton) {
+		startButton.classList.remove("hidden");
 		startButton.onclick = startGame;
 	}
 }
