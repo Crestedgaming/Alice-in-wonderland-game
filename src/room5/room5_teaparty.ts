@@ -143,6 +143,8 @@
 // ===============================
 // RUM 5 – TEAPARTY
 // ===============================
+import { completeRoom } from "../engine/GameManager";
+
 let gameRunning = false;
 
 // Start-knappen
@@ -232,6 +234,8 @@ function initGame() {
 				messageElement.textContent =
 					"Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";
 			}
+			gameRunning = false;
+			completeRoom(5, "A");
 		} else if (total === TARGET_TOTAL && !allCupsHaveTea) {
 			if (messageElement) {
 				messageElement.textContent = "Alla koppar måste få lite te!";

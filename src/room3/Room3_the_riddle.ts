@@ -141,11 +141,4 @@ export function initRoom3(): void {
 			btn.onclick = () => checkAnswer(i);
 		}
 	});
-
-	const nextBtn = document.getElementById("room3-next");
-	if (nextBtn) {
-		nextBtn.onclick = () => {
-			window.dispatchEvent(new Event("ROOM_3_COMPLETED"));
-		};
-	}
 }

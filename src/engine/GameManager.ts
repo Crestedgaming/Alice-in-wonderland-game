@@ -12,6 +12,13 @@ const ROOM_MAP: Record<number, string> = {
 	6: "rum6",
 };
 
+const NEXT_BUTTON_MAP: Partial<Record<number, string>> = {
+	1: "room1EndButton",
+	3: "room3-next",
+	4: "room4-next",
+	5: "room5-next",
+};
+
 const TOTAL_ROOMS = 6;
 
 /**
@@ -64,14 +71,29 @@ export function completeRoom(roomId: number, artifactId: string): void {
 	gameState.artifacts.push(artifactId);
 	gameState.score += 100;
 
-	// Advance to next room or end game
-	gameState.currentRoom = roomId + 1;
+	const nextRoomId = roomId + 1;
 
-	if (gameState.currentRoom > TOTAL_ROOMS) {
+	if (nextRoomId > TOTAL_ROOMS) {
 		endGame();
 	} else {
-		gameState.currentRoomStartTime = Date.now();
-		showRoom(gameState.currentRoom);
+		gameState.currentRoom = nextRoomId;
+
+		const nextButtonId = NEXT_BUTTON_MAP[roomId];
+		const nextButton = nextButtonId
+			? (document.getElementById(nextButtonId) as HTMLButtonElement | null)
+			: null;
+
+		if (nextButton) {
+			nextButton.classList.remove("hidden");
+			nextButton.onclick = () => {
+				nextButton.classList.add("hidden");
+				gameState.currentRoomStartTime = Date.now();
+				showRoom(nextRoomId);
+			};
+		} else {
+			gameState.currentRoomStartTime = Date.now();
+			showRoom(nextRoomId);
+		}
 	}
 }
 

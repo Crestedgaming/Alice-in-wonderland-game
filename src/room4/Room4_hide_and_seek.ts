@@ -1,4 +1,5 @@
 import "../mainstyles/main.scss";
+import { completeRoom } from "../engine/GameManager";
 import { startTimer } from "../utils";
 
 let catCaughtCount = 0;
@@ -50,6 +51,7 @@ function catchCat() {
 		console.log("Game over! Cat caught 5 times!");
 		gameRunning = false;
 		catImage.classList.add("hidden");
+		completeRoom(4, "N");
 
 		/* Add artefact here when cat is caught 5 times */
 	}
