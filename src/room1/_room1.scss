@@ -54,14 +54,14 @@ $shadow-brown: #4b1f1f;
 		background-size: cover;
 		background-position: center;
 		background-attachment: fixed;
-		align-content: center;
-		justify-items: center;
+		text-align: center;
 		gap: 10px;
 
 		h2,
 		p {
 			position: relative;
-			top: -10vh;
+			top: 20vh;
+			left: 25vw;
 			width: 50vw;
 			color: #000;
 			font-family: "Henny Penny", system-ui;
@@ -75,8 +75,6 @@ $shadow-brown: #4b1f1f;
 		.room1StartPageContent {
 			margin: 0 auto;
 			position: relative;
-			align-content: center;
-			justify-items: center;
 			background-color: $brand-red;
 			border-radius: 100px;
 			padding: 50px;
@@ -86,8 +84,8 @@ $shadow-brown: #4b1f1f;
 		}
 
 		button {
-			position: static;
-			margin-top: 1rem;
+			position: relative;
+			top: 210px;
 			font-size: 1.2rem;
 			@include room1Button;
 		}
