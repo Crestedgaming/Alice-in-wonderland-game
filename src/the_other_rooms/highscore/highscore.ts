@@ -13,7 +13,7 @@ const testScores: Highscore [] = [
 
 ];
 
-// Spara dummy dara i localStorage om det inte finns några poäng än
+// Spara dummy data i localStorage om det inte finns några poäng än
 
 if (!localStorage.getItem("highscores")){
     localStorage.setItem("highscores", JSON.stringify(testScores));
@@ -34,13 +34,18 @@ function displayHighscores () {
 
  // sortera snabbast först (lägst poäng vinner)
    const sortedScores = savedScores.sort ((player1, player2) => player1.score -player2.score);
-    highscoreList.innerHTML = sortedScores 
+
+     // Ta max 10
+    const topScores = sortedScores.slice(0, 10);
+
+    highscoreList.innerHTML = topScores 
     .map(entry =>`<li>${entry.name}: ${entry.score} sekunder</li>`)
         .join(""); 
 
 }
 
 
+  
 function highScoreBtn() {
   const highScoreBtn = document.getElementById('highscore');
   if (highScoreBtn) {

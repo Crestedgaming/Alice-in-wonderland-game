@@ -15,10 +15,33 @@
   font-weight: 400;
   font-style: normal;
   font-size: 2rem;
+  color: #732f2f;
   z-index: 20;
   left: 45%;
-   top: 250px; 
+   top: 400px; 
 transform: translateX(-50%);
+}
+
+.highscore-page {
+   display: flex;
+   flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+}
+
+
+.highscore-list { 
+    font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 10px;
+  margin-top: 350px;
+  list-style: none;
+  z-index: 20;
+   text-align: center;
+ 
 }
 
 

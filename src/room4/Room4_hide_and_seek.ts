@@ -147,3 +147,4 @@ catImage.classList.remove('hidden');
   }
 
 startSetup();
+}
