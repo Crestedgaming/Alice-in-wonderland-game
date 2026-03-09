@@ -102,11 +102,21 @@ if (resetBtn) {
 	document.getElementById("start")!.classList.remove("hidden");
 };
 
-function focusCurrentViewTarget(roomId: string) {
-  // Stub: Lägg till logik om du vill hantera fokus
+function focusCurrentViewTarget(roomId: string): void {
+	const room = document.getElementById(roomId);
+	if (!room) {
+		return;
+	}
+
+	const firstButton = room.querySelector("button") as HTMLButtonElement | null;
+	firstButton?.focus();
 }
 
-function resetGameUIState() {
-  // Stub: Lägg till logik för att återställa UI
-}
+function resetGameUIState(): void {
+	document.querySelectorAll(".room").forEach((room) => {
+		room.classList.add("hidden");
+	});
 
+	const start = document.getElementById("start");
+	start?.classList.remove("hidden");
+}

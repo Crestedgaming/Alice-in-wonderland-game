@@ -29,7 +29,7 @@
       </nav>
       <div class="startGamePage">
         <div id="start">
-          <button onclick="showRoom('rum1')">Fallet</button>
+          <button onclick="showRoom('room1')">Fallet</button>
           <button onclick="showRoom('rum2')">Storleken</button>
           <button onclick="showRoom('rum3')">Gåtan</button>
           <button onclick="showRoom('rum4')">Kurragömma</button>
@@ -43,70 +43,57 @@
   <main>
 
     <!-- Login sida -->
-  <div id="login-page" class="login-page">
+    <div id="login-page" class="login-page">
 
-    <img 
-      src="images/home_page_images/login_background.jpg"
-      alt=""
-      class="login-background-image"
-      aria-hidden="true"
-    />
+      <img src="images/home_page_images/login_background.jpg" alt="" class="login-background-image"
+        aria-hidden="true" />
 
-    <div class="login-box">
-      <h2>Vad heter du?</h2>
+      <div class="login-box">
+        <h2>Vad heter du?</h2>
 
-      <input 
-        type="text"
-        id="username-input"
-        placeholder="Skriv ditt namn..."
-      />
+        <input type="text" id="username-input" placeholder="Skriv ditt namn..." />
 
-      <button id="login-button" class="menu-btn">
-        Börja äventyret
-      </button>
+        <button id="login-button" class="menu-btn">
+          Börja äventyret
+        </button>
+      </div>
+
     </div>
-
-  </div>
 
     <!-- STARTSIDA -->
-<div id="home-page" class="home-page hidden">
+    <div id="home-page" class="home-page hidden">
 
-  <img 
-    src="images/home_page_images/homepage.jpg"
-    alt=""
-    class="background-image"
-    aria-hidden="true"
-  />
-  <div class="main-menu">
+      <img src="images/home_page_images/homepage.jpg" alt="" class="background-image" aria-hidden="true" />
+      <div class="main-menu">
 
-    <p id="welcome-text" class="welcome-text"></p>
+        <p id="welcome-text" class="welcome-text"></p>
 
-    <button id="start-button" class="menu-btn start-btn">
-      Starta spel
-    </button>
+        <button id="start-button" class="menu-btn start-btn">
+          Starta spel
+        </button>
 
-    <div class="secondary-buttons">
+        <div class="secondary-buttons">
 
-      <button id="highscore-button" class="menu-btn">
-        Highscore
-      </button>
+          <button id="highscore-button" class="menu-btn">
+            Highscore
+          </button>
 
-      <button id="about-button" class="menu-btn">
-        Om oss
-      </button>
+          <button id="about-button" class="menu-btn">
+            Om oss
+          </button>
+
+        </div>
+
+      </div>
 
     </div>
-
-  </div>
-
-</div>
 
     <div id="game">
       <!--class="hidden"-->
 
       <!-- Om oss sida -->
 
-      <div id="about-us-page" class="room hidden"> 
+      <div id="about-us-page" class="room hidden">
         <div class="about-container">
 
           <section id="about-game">
@@ -128,14 +115,19 @@
           <section id="about-us">
             <h3>Om oss</h3>
             <p>Vi är ett team på sex studenter som studerar till Front End Developers på Medieinstitutet.
-              Detta spel skapades som en del av vår kurs i JavaScript, där uppdraget var att bygga ett eget escape room-spel. Under projektet fick vi arbeta tillsammans med idéutveckling, design och programmering för att skapa en interaktiv spelupplevelse i webbläsaren.
-              Efter mycket idéspånande bestämde vi oss för att skapa ett spel inspirerat av Alice i Underlandet – en fantasifull värld fylld av mysterier, kluriga spel och märkliga karaktärer.
-              Projektet har gett oss möjlighet att både utmana våra programmeringskunskaper och samarbeta som utvecklingsteam.</p>
+              Detta spel skapades som en del av vår kurs i JavaScript, där uppdraget var att bygga ett eget escape
+              room-spel. Under projektet fick vi arbeta tillsammans med idéutveckling, design och programmering för att
+              skapa en interaktiv spelupplevelse i webbläsaren.
+              Efter mycket idéspånande bestämde vi oss för att skapa ett spel inspirerat av Alice i Underlandet – en
+              fantasifull värld fylld av mysterier, kluriga spel och märkliga karaktärer.
+              Projektet har gett oss möjlighet att både utmana våra programmeringskunskaper och samarbeta som
+              utvecklingsteam.</p>
 
           </section>
           <section id="about-team">
             <h3>Teamet</h3>
-            <p>Teamet bakom spelet består av sex studenter från Medieinstitutet som tillsammans arbetat med design, utveckling och testning av spelet.
+            <p>Teamet bakom spelet består av sex studenter från Medieinstitutet som tillsammans arbetat med design,
+              utveckling och testning av spelet.
               Genom att samarbeta och dela idéer har vi byggt upp spelets olika rum, spelmoment och funktioner.
               Här är utvecklarna bakom projektet:</p>
             <div class="team-grid">
@@ -144,42 +136,48 @@
                 <img src="images/team/alex.png" alt="Alex">
                 <h4>Alex</h4>
                 <p>Speldesigner och berättare</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
               <div class="team-member">
                 <img src="images/team/amanda.png" alt="Amanda">
                 <h4>Amanda</h4>
                 <p>Programmerare och teknisk ledare</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
               <div class="team-member">
                 <img src="images/team/marcus.png" alt="Marcus">
                 <h4>Marcus</h4>
                 <p>Grafisk designer och illustratör</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
               <div class="team-member">
                 <img src="images/team/sandra.png" alt="Sandra">
                 <h4>Sandra</h4>
                 <p>Ljuddesigner och kompositör</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
               <div class="team-member">
                 <img src="images/team/mohammed.png" alt="Mohammed">
                 <h4>Mohammed</h4>
                 <p>Testare och kvalitetsansvarig</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
               <div class="team-member">
                 <img src="public/about_bilder/Jennie.jpg" alt="Jennie">
                 <h4>Jennie</h4>
                 <p>Testare och kvalitetsansvarig</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank">amanda-olsson</a></p>
+                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
+                    rel="noopener noreferrer">amanda-olsson</a></p>
               </div>
 
             </div>
@@ -189,8 +187,10 @@
             <h3>Tekniker</h3>
 
             <p>Spelet är byggt med moderna webbteknologier.
-              Vi har använt HTML för struktur, CSS/SCSS för design och layout samt JavaScript och TypeScript för att skapa spelets interaktivitet och logik.
-              Genom dessa tekniker har vi kunnat bygga ett webbaserat escape room där spelaren kan lösa olika uppgifter, samla bokstäver och ta sig vidare genom spelets rum.</p>
+              Vi har använt HTML för struktur, CSS/SCSS för design och layout samt JavaScript och TypeScript för att
+              skapa spelets interaktivitet och logik.
+              Genom dessa tekniker har vi kunnat bygga ett webbaserat escape room där spelaren kan lösa olika uppgifter,
+              samla bokstäver och ta sig vidare genom spelets rum.</p>
 
           </section>
         </div>
@@ -226,7 +226,8 @@
                 <img src="/public/Room1_bilder/key1.gif" alt="En guldnyckel med en topp som snurrar i lila färg" />
               </button>
               <button id="keyE" class="key2" type="button" aria-label="Välj ljusblå nyckel med klöver, bokstav E">
-                <img src="/public/Room1_bilder/key2.gif" alt="En ljusblå nyckel med toppen som är formad som en klöver" />
+                <img src="/public/Room1_bilder/key2.gif"
+                  alt="En ljusblå nyckel med toppen som är formad som en klöver" />
               </button>
               <button id="keyV" class="key3" type="button" aria-label="Välj guldnyckel med krona, bokstav V">
                 <img src="/public/Room1_bilder/key3.gif" alt="En guldnyckel med en krona i toppen." />
@@ -245,46 +246,37 @@
         </div>
       </div>
       <!-- Room 2 -->
-<div id="rum2" class="room hidden room--size">
+      <div id="rum2" class="room hidden room--size">
 
-  <img
-    src="images/Room2_bilder/Rum2bakgrund.jpg"
-    alt=""
-    class="room2-background-image"
-    aria-hidden="true"
-  />
+        <img src="images/Room2_bilder/Rum2bakgrund.jpg" alt="" class="room2-background-image" aria-hidden="true" />
 
-  <button id="room2-start-button" class="start-button-room2">
+        <button id="room2-start-button" class="start-button-room2">
           Starta spelet
         </button>
 
-  <div id="room2-overlay" class="room2-overlay"></div>
+        <div id="room2-overlay" class="room2-overlay"></div>
 
-  <div class="size-wall-words">
-    <span class="wall-word wall-word--big">STOR</span>
-    <span class="wall-word wall-word--medium">MELLAN</span>
-    <span class="wall-word wall-word--small">LITEN</span>
-  </div>
+        <div class="size-wall-words">
+          <span class="wall-word wall-word--big">STOR</span>
+          <span class="wall-word wall-word--medium">MELLAN</span>
+          <span class="wall-word wall-word--small">LITEN</span>
+        </div>
 
-  <img
-    src="images/Room2_bilder/AliceTransparent.png"
-    alt="Alice"
-    class="size-alice"
-  />
+        <img src="images/Room2_bilder/AliceTransparent.png" alt="Alice" class="size-alice" />
 
-  <p class="size-text">
-    Alice är för stor! <br />
-    Kan du göra henne
-    <span class="size-text__smaller">mindre</span>?
-  </p>
+        <p class="size-text">
+          Alice är för stor! <br />
+          Kan du göra henne
+          <span class="size-text__smaller">mindre</span>?
+        </p>
 
-  <p class="size-success hidden">
-    <strong>Bra jobbat!</strong><br />
-    Alice är lagom stor<br />
-    och kommer in genom dörren.
-  </p>
+        <p class="size-success hidden">
+          <strong>Bra jobbat!</strong><br />
+          Alice är lagom stor<br />
+          och kommer in genom dörren.
+        </p>
 
-</div>
+      </div>
 
       <!-- rum3 -->
       <div id="rum3" class="room hidden">
@@ -322,7 +314,6 @@
             <button id="submit3" class="submit-button">Skicka</button>
           </div>
           <button id="room3-next" class="next-button hidden">Nästa rum</button>
-          <button id="room3-next" class="next-button hidden">Nästa rum</button>
         </div>
       </div>
 
@@ -350,13 +341,7 @@
               aria-hidden="true" />
             <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" class="cat-image" role="button"
               tabindex="0" aria-label="Fånga katten" />
-          <div id="backgroundimg" class="backgroundimg">
-            <img src="public/room4_bilder/background.jpg" alt="" id="background-image" class="background-image"
-              aria-hidden="true" />
-            <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" class="cat-image" role="button"
-              tabindex="0" aria-label="Fånga katten" />
           </div>
-          <button id="room4-next" class="next-button hidden">Nästa rum</button>
           <button id="room4-next" class="next-button hidden">Nästa rum</button>
         </div>
       </div>
@@ -459,23 +444,10 @@
       <div id="rum6" class="room hidden">
         <div class="room-intro" id="room6-intro">
           <div class="room-intro__box">
-            <h2 style="
-                  font-family:
-                    henny penny,
-                    cursive,
-                    sans-serif;
-                  color: #f2e6ce;
-                  font-weight: 400;
-                  font-style: normal;
-                ">
+            <h2 class="room6-intro-title">
               Välkommen!
             </h2>
-            <p style="
-                  font-family:
-                    Bricolage Grotesque,
-                    sans-serif;
-                  color: #f2e6ce;
-                ">
+            <p class="room6-intro-text">
               Lös pusslet genom att skriva rätt bokstäver i rutorna. När alla
               är rätt kan du gå vidare.
             </p>
@@ -538,16 +510,16 @@
         <div id="myBar" class="myBar"></div>
       </div>
       <ul>
-        <li id="artefact1" class="artefacts"><span><img src="./public/images/rabbitIcon.png"
-              alt="Artefakt 1" /></span></li>
-        <li id="artefact2" class="artefacts"><span><img src="./public/images/rabbitIcon.png"
-              alt="Artefakt 2" /></span></li>
-        <li id="artefact3" class="artefacts"><span><img src="./public/images/rabbitIcon.png"
-              alt="Artefakt 3" /></span></li>
-        <li id="artefact4" class="artefacts"><span><img src="./public/images/rabbitIcon.png"
-              alt="Artefakt 4" /></span></li>
-        <li id="artefact5" class="artefacts"><span><img src="./public/images/rabbitIcon.png"
-              alt="Artefakt 5" /></span></li>
+        <li id="artefact1" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 1" /></span>
+        </li>
+        <li id="artefact2" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 2" /></span>
+        </li>
+        <li id="artefact3" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 3" /></span>
+        </li>
+        <li id="artefact4" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 4" /></span>
+        </li>
+        <li id="artefact5" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 5" /></span>
+        </li>
       </ul>
     </div>
   </footer>
@@ -555,4 +527,3 @@
 </body>
 
 </html>
-
