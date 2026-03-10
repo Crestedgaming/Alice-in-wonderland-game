@@ -11,22 +11,23 @@ const artifactSlots = [
 	document.getElementById("artefact3"),
 	document.getElementById("artefact4"),
 	document.getElementById("artefact5"),
+	document.getElementById("artefact6"), // Added for Room 6
 ];
 
 // Updates artifact slot highlight to reflect completed rooms.
 function renderArtifacts(): void {
-	artifactSlots.forEach((slot, index) => {
-		const roomNumber = index + 1;
-		const letter = collectedArtifacts.get(roomNumber) ?? "";
+    artifactSlots.forEach((slot, index) => {
+        const roomNumber = index + 1;
+        const letter = collectedArtifacts.get(roomNumber) ?? "";
 
-		if (doneRooms.has(roomNumber)) {
-			slot?.classList.add("is-collected");
-			slot?.setAttribute("data-artifact", letter);
-		} else {
-			slot?.classList.remove("is-collected");
-			slot?.removeAttribute("data-artifact");
-		}
-	});
+        if (doneRooms.has(roomNumber)) {
+            slot?.classList.add("is-collected");
+            slot?.setAttribute("data-artifact", letter);
+        } else {
+            slot?.classList.remove("is-collected");
+            slot?.removeAttribute("data-artifact");
+        }
+    });
 }
 
 // Updates progress bar width and accessibility value.
@@ -55,6 +56,12 @@ export function resetRoomProgress(): void {
 	doneRooms.clear();
 	collectedArtifacts.clear();
 	renderProgress();
+}
+
+export function getCollectedArtifacts(): string[] {
+	return [1, 2, 3, 4, 5]
+		.map((room) => collectedArtifacts.get(room) ?? "")
+		.filter((letter) => letter !== "");
 }
 
 // Compatibility hook for modules that report completion by room id string.

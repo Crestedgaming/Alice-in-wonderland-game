@@ -1,5 +1,7 @@
 
 import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
+import { getCollectedArtifacts } from "../footer";
+import { completeRoom } from "../engine/GameManager";
 
 /* Rum 6 är finalen
 
@@ -45,6 +47,7 @@ const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 const roomTimer = document.getElementById("gameTimerEachRoom");
 
+
 startBtn?.addEventListener("click", () => {
 	startTimer("gameTimerEachRoom");
 	startTotalTimer("gameTimerTotal");
@@ -78,9 +81,11 @@ function checkWord() {
 		word += box.textContent;
 	});
 
-	if (word === "VAKNA") {
+	if (word === "SALTET") {
 		document.querySelectorAll(".room").forEach((room) => {
 			room.classList.add("hidden");
+			loadArtifactsIntoButtons();
+	completeRoom(6, "T");
 		});
 
 		const completed = document.getElementById("game-completed");
@@ -147,4 +152,17 @@ export function initRoom6() {
 		clearInterval(shuffleInterval);
 		shuffleInterval = null;
 	}
+}
+
+function loadArtifactsIntoButtons() {
+	const artifacts = getCollectedArtifacts();
+	const letterButtons = document.querySelectorAll(".letter-btn");
+
+	letterButtons.forEach((btn, index) => {
+		const letter = artifacts[index];
+
+		if (letter) {
+			btn.textContent = letter;
+		}
+	});
 }
