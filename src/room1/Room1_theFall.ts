@@ -1,4 +1,10 @@
 import { completeRoom } from "../engine/GameManager";
+import {
+	startTimer,
+	stopTimer,
+	startTotalTimer,
+	pauseTotalTimer,
+} from "../utils";
 
 type Room1Elements = {
 	landing: HTMLElement | null;
@@ -23,13 +29,8 @@ const ROOM1_KEYS = [
 	{ buttonId: "keyA", letter: "A" },
 ];
 
-const ROOM1_FALL_DURATION_MS = 12000;
+const ROOM1_FALL_DURATION_MS = 20000;
 const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
-
-let room1StartTime = 0;
-let room1TimerId: number | null = null;
-let room1ElapsedMs = 0;
-let room1Unlocked = false;
 
 function getRoom1Elements(): Room1Elements {
 	return {
@@ -41,7 +42,7 @@ function getRoom1Elements(): Room1Elements {
 		keyhole: document.getElementById("keyhole") as HTMLButtonElement | null,
 		message: document.getElementById("fallMessage"),
 		endButton: document.getElementById(
-			"room1EndButton",
+			"room1-next",
 		) as HTMLButtonElement | null,
 		roomTimer: document.getElementById("gameTimerEachRoom"),
 	};
@@ -76,45 +77,6 @@ function showGame(
 	content?.classList.remove("hidden");
 }
 
-function updateRoom1TimerDisplay(
-	timerEl: HTMLElement | null,
-	elapsedMs: number,
-): void {
-	if (!timerEl) {
-		return;
-	}
-	timerEl.textContent = `Tid i rummet: ${formatMs(elapsedMs)}`;
-}
-
-function startRoom1Timer(timerEl: HTMLElement | null): void {
-	if (room1TimerId !== null) {
-		clearInterval(room1TimerId);
-	}
-
-	room1StartTime = Date.now();
-	room1ElapsedMs = 0;
-	updateRoom1TimerDisplay(timerEl, 0);
-
-	room1TimerId = window.setInterval(() => {
-		room1ElapsedMs = Date.now() - room1StartTime;
-		updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
-	}, 250);
-}
-
-function stopRoom1Timer(timerEl: HTMLElement | null): number {
-	if (room1TimerId !== null) {
-		clearInterval(room1TimerId);
-		room1TimerId = null;
-	}
-
-	if (room1StartTime > 0) {
-		room1ElapsedMs = Date.now() - room1StartTime;
-	}
-
-	updateRoom1TimerDisplay(timerEl, room1ElapsedMs);
-	return room1ElapsedMs;
-}
-
 function saveRoom1Result(letter: string, timeMs: number): void {
 	const result: Room1Result = {
 		letter,
@@ -142,7 +104,6 @@ function saveRoom1Result(letter: string, timeMs: number): void {
 
 function resetRoom1State(endButton: HTMLButtonElement | null): void {
 	window.selectedKey = null;
-	room1Unlocked = false;
 	if (endButton) {
 		endButton.classList.add("hidden");
 	}
@@ -174,16 +135,9 @@ function bindKeySelection(message: HTMLElement | null): void {
 	});
 }
 
-function goToRoom2(): void {
-	if (typeof window.showRoom === "function") {
-		window.showRoom("rum2");
-	}
-}
-
 function bindKeyhole(
 	keyhole: HTMLButtonElement | null,
 	message: HTMLElement | null,
-	endButton: HTMLButtonElement | null,
 	roomTimer: HTMLElement | null,
 ): void {
 	if (!keyhole) {
@@ -205,38 +159,22 @@ function bindKeyhole(
 			`Du klarade utmaningen! Bokstaven ${selectedKey} sparades.`,
 		);
 
-		const finalMs = stopRoom1Timer(roomTimer);
+		stopTimer();
+		pauseTotalTimer();
+		const finalMs = 0;
 		saveRoom1Result(selectedKey, finalMs);
-		room1Unlocked = true;
 
 		completeRoom(1, selectedKey);
 		if (typeof window.updateFooterContext === "function") {
-			window.updateFooterContext("room1", true);
+			window.updateFooterContext("rum1", true);
 		}
-
-		if (endButton) {
-			endButton.classList.remove("hidden");
-			endButton.onclick = () => {
-				if (room1Unlocked) {
-					goToRoom2();
-				}
-			};
-			return;
-		}
-
-		window.setTimeout(goToRoom2, 900);
 	};
 }
 
 function attachRoom1Listeners(elements: Room1Elements): void {
 	resetRoom1State(elements.endButton);
 	bindKeySelection(elements.message);
-	bindKeyhole(
-		elements.keyhole,
-		elements.message,
-		elements.endButton,
-		elements.roomTimer,
-	);
+	bindKeyhole(elements.keyhole, elements.message, elements.roomTimer);
 }
 
 function startFallingAnimation(scrollContainer: HTMLElement): void {
@@ -260,7 +198,7 @@ function startFallingAnimation(scrollContainer: HTMLElement): void {
 
 function startRoom1GameLogic(): void {
 	const scrollContainer = document.querySelector(
-		"#room1 .backgroundScroll",
+		"#rum1 .backgroundScroll",
 	) as HTMLElement | null;
 
 	if (scrollContainer) {
@@ -295,7 +233,8 @@ export function initRoom1(): void {
 
 	elements.startButton.onclick = () => {
 		showGame(elements.landing, elements.content);
-		startRoom1Timer(elements.roomTimer);
+		startTimer("gameTimerEachRoom");
+		startTotalTimer("gameTimerTotal");
 		attachRoom1Listeners(elements);
 		startRoom1GameLogic();
 	};

@@ -1,4 +1,5 @@
 import { gameState } from "./GameState";
+import { finishRoom, resetRoomProgress } from "../footer";
 
 /**
  * Room ID to room element ID mapping for display
@@ -10,6 +11,14 @@ const ROOM_MAP: Record<number, string> = {
 	4: "rum4",
 	5: "rum5",
 	6: "rum6",
+};
+
+const NEXT_BUTTON_MAP: Partial<Record<number, string>> = {
+	1: "room1-next",
+	2: "room2-next",
+	3: "room3-next",
+	4: "room4-next",
+	5: "room5-next",
 };
 
 const TOTAL_ROOMS = 6;
@@ -26,6 +35,7 @@ export function startGame(): void {
 	gameState.timer = 0;
 	gameState.roomTimes = {};
 	gameState.currentRoomStartTime = Date.now();
+	resetRoomProgress();
 
 	showRoom(gameState.currentRoom);
 	startGlobalTimer();
@@ -63,15 +73,31 @@ export function completeRoom(roomId: number, artifactId: string): void {
 	// Register artifact and update score
 	gameState.artifacts.push(artifactId);
 	gameState.score += 100;
+	finishRoom(roomId, artifactId);
 
-	// Advance to next room or end game
-	gameState.currentRoom = roomId + 1;
+	const nextRoomId = roomId + 1;
 
-	if (gameState.currentRoom > TOTAL_ROOMS) {
+	if (nextRoomId > TOTAL_ROOMS) {
 		endGame();
 	} else {
-		gameState.currentRoomStartTime = Date.now();
-		showRoom(gameState.currentRoom);
+		gameState.currentRoom = nextRoomId;
+
+		const nextButtonId = NEXT_BUTTON_MAP[roomId];
+		const nextButton = nextButtonId
+			? (document.getElementById(nextButtonId) as HTMLButtonElement | null)
+			: null;
+
+		if (nextButton) {
+			nextButton.classList.remove("hidden");
+			nextButton.onclick = () => {
+				nextButton.classList.add("hidden");
+				gameState.currentRoomStartTime = Date.now();
+				showRoom(nextRoomId);
+			};
+		} else {
+			gameState.currentRoomStartTime = Date.now();
+			showRoom(nextRoomId);
+		}
 	}
 }
 

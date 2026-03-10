@@ -1,145 +1,170 @@
 // Room 3 – The Caterpillar Riddles
-import { startTimer } from "../utils";
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+import { completeRoom } from "../engine/GameManager";
 
 export function initRoom3(): void {
+		
+	// --- Get fresh DOM references every time room opens ---
+	const rum3StartButton = document.getElementById(
+		"rum3-start-button",
+	) as HTMLButtonElement;
+	const riddleContainer = document.getElementById(
+		"riddle-container",
+	) as HTMLDivElement;
 
-   // --- Get fresh DOM references every time room opens ---
-   const rum3StartButton = document.getElementById("rum3-start-button") as HTMLButtonElement;
-   const riddleContainer = document.getElementById("riddle-container") as HTMLDivElement;
+	if (!rum3StartButton || !riddleContainer) return;
 
-   if (!rum3StartButton || !riddleContainer) return;
+	// --- Riddle data ---
+	const riddles = [
+		{ id: "riddle1", answer: ["människa", "människan"] },
+		{ id: "riddle2", answer: ["solen", "sol"] },
+		{ id: "riddle3", answer: ["dammråtta"] },
+	];
 
-   // --- Riddle data ---
-   const riddles = [
-      { id: "riddle1", answer: ["människa", "människan"] },
-      { id: "riddle2", answer: ["solen", "sol"] },
-      { id: "riddle3", answer: ["dammråtta"] }
-   ];
+	let currentRiddle = 0;
+	let correctAnswers = 0;
 
-   let currentRiddle = 0;
-   let correctAnswers = 0;
+	function resetRoom3State(): void {
+		rum3StartButton.classList.remove("hidden");
+		riddleContainer.classList.add("hidden");
 
-   // -----------------------------
-   // Show specific riddle
-   // -----------------------------
-   function showRiddle(index: number): void {
-      riddles.forEach(r => {
-         const el = document.getElementById(r.id);
-         if (el) el.classList.add("hidden");
-      });
+		riddles.forEach((r) => {
+			const el = document.getElementById(r.id);
+			if (!el) return;
 
-      const active = document.getElementById(riddles[index].id);
-      if (active) active.classList.remove("hidden");
-   }
+			el.classList.add("hidden");
+			el.classList.remove("correct", "wrong");
 
-   // -----------------------------
-   // Start room
-   // -----------------------------
-   function startRiddle(): void {
-      startTimer();
+			const input = el.querySelector("input") as HTMLInputElement | null;
+			if (input) {
+				input.value = "";
+			}
+		});
 
-      rum3StartButton.classList.add("hidden");
-      riddleContainer.classList.remove("hidden");
-      currentRiddle = 0;
-      correctAnswers = 0;
-      showRiddle(0);
-   }
+		const nextBtn = document.getElementById("room3-next");
+		nextBtn?.classList.add("hidden");
+	}
 
-   // -----------------------------
-   // Normalize player input
-   // -----------------------------
-   function normalize(text: string): string {
-      return text
-         .trim()
-         .toLowerCase()
-         .replace(/[.,!?]/g, "");
-   }
+	resetRoom3State();
 
-   // -----------------------------
-   // Check answer
-   // -----------------------------
-   function checkAnswer(index: number): void {
+	// -----------------------------
+	// Show specific riddle
+	// -----------------------------
+	function showRiddle(index: number): void {
+		riddles.forEach((r) => {
+			const el = document.getElementById(r.id);
+			if (el) el.classList.add("hidden");
+		});
 
-      const riddleEl = document.getElementById(riddles[index].id)!;
-      const input = riddleEl.querySelector("input") as HTMLInputElement;
+		const active = document.getElementById(riddles[index].id);
+		if (active) active.classList.remove("hidden");
+	}
 
-      const playerAnswer = normalize(input.value);
+	// -----------------------------
+	// Start room
+	// -----------------------------
+	function startRiddle(): void {
+	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
+		rum3StartButton.classList.add("hidden");
+		riddleContainer.classList.remove("hidden");
+		currentRiddle = 0;
+		correctAnswers = 0;
+		showRiddle(0);
+	}
 
-      const isCorrect = riddles[index].answer.some(a => normalize(a) === playerAnswer);
+	// -----------------------------
+	// Normalize player input
+	// -----------------------------
+	function normalize(text: string): string {
+		return text
+			.trim()
+			.toLowerCase()
+			.replace(/[.,!?]/g, "");
+	}
 
-      if (isCorrect) {
-         correctAnswers++;
-         riddleEl.classList.add("correct");
-      } else {
-         riddleEl.classList.add("wrong");
-      }
+	// -----------------------------
+	// Check answer
+	// -----------------------------
+	function checkAnswer(index: number): void {
+		const riddleEl = document.getElementById(riddles[index].id)!;
+		const input = riddleEl.querySelector("input") as HTMLInputElement;
 
-      currentRiddle++;
+		const playerAnswer = normalize(input.value);
 
-      if (currentRiddle < riddles.length) {
-         showRiddle(currentRiddle);
-      } else {
-         finishRoom3();
-      }
-   }
+		const isCorrect = riddles[index].answer.some(
+			(a) => normalize(a) === playerAnswer,
+		);
 
-   // -----------------------------
-   // Decide artifact (REAL vs FAKE)
-   // -----------------------------
-   function finishRoom3(): void {
+		if (isCorrect) {
+			correctAnswers++;
+			riddleEl.classList.add("correct");
+		} else {
+			riddleEl.classList.add("wrong");
+		}
 
-      let letter: string;
-      let message: string;
+		currentRiddle++;
 
-      if (correctAnswers >= 2) {
-         letter = "K";
-         message = "🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
-      } else {
-         letter = "Q";
-         message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
-      }
+		if (currentRiddle < riddles.length) {
+			showRiddle(currentRiddle);
+		} else {
+			finishRoom3();
+		}
+	}
 
-      giveArtifact(letter);
-      if (typeof window.completeRoom === "function") {
-         window.completeRoom(3, letter);
-      }
+	// -----------------------------
+	// Decide artifact (REAL vs FAKE)
+	// -----------------------------
+	function finishRoom3(): void {
+	stopTimer();
+	pauseTotalTimer();
+		let letter: string;
+		let message: string;
 
-      // Hide individual riddles (not the container, so the button stays visible)
-      riddles.forEach(r => {
-         const el = document.getElementById(r.id);
-         if (el) el.classList.add("hidden");
-      });
+		if (correctAnswers >= 2) {
+			letter = "K";
+			message =
+				"🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
+		} else {
+			letter = "S";
+			message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
+		}
 
-      // Show message (optional: add a <p id="room3-message"> in HTML if you want)
-      alert(message + " Du få bokstaven: " + letter);
+		giveArtifact(letter);
+		completeRoom(3, letter);
 
-      // Show next button
-      const nextBtn = document.getElementById("room3-next");
-      nextBtn?.classList.remove("hidden");
-   }
-   // -----------------------------
-   // Artifact hook (connect later)
-   // -----------------------------
-   function giveArtifact(letter: string): void {
-      console.log("Artifact received:", letter);
+		// Hide individual riddles (not the container, so the button stays visible)
+		riddles.forEach((r) => {
+			const el = document.getElementById(r.id);
+			if (el) el.classList.add("hidden");
+		});
 
-   }
+		// Show message (optional: add a <p id="room3-message"> in HTML if you want)
+		alert(message + " Du få bokstaven: " + letter);
 
-   // -----------------------------
-   // Event listeners
-   // -----------------------------
-   // -----------------------------
-   // Event listeners
-   // -----------------------------
-   rum3StartButton.addEventListener("click", startRiddle);
+		// Show next button
+		const nextBtn = document.getElementById("room3-next");
+		nextBtn?.classList.remove("hidden");
+	}
+	// -----------------------------
+	// Artifact hook (connect later)
+	// -----------------------------
+	function giveArtifact(letter: string): void {
+		console.log("Artifact received:", letter);
+	}
 
-   riddles.forEach((_, i) => {
-      const btn = document.getElementById(`submit${i + 1}`);
-      btn?.addEventListener("click", () => checkAnswer(i));
-   });
+	// -----------------------------
+	// Event listeners
+	// -----------------------------
+	// -----------------------------
+	// Event listeners
+	// -----------------------------
+	rum3StartButton.onclick = startRiddle;
 
-   const nextBtn = document.getElementById("room3-next");
-   nextBtn?.addEventListener("click", () => {
-      window.dispatchEvent(new Event("ROOM_3_COMPLETED"));
-   });
+	riddles.forEach((_, i) => {
+		const btn = document.getElementById(`submit${i + 1}`);
+		if (btn) {
+			btn.onclick = () => checkAnswer(i);
+		}
+	});
 }

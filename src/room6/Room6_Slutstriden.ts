@@ -1,3 +1,6 @@
+
+import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
+
 /* Rum 6 är finalen
 
 Här får spelaren fem bokstäver som de har samlat från de tidigare rummen.
@@ -37,55 +40,58 @@ De måste lösa det rummet igen för att få rätt bokstav.
 
 
 */
-import { startTimer,resumeTimer } from "../utils";
-
-import { showGameCompleted } from "../the_other_rooms/game_over/game_over"; 
+let shuffleInterval: number | null = null;
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
+const roomTimer = document.getElementById("gameTimerEachRoom");
 
 startBtn?.addEventListener("click", () => {
-  startTimer();
-  resumeTimer();
-  intro?.classList.add("hidden");
+	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 
+	intro?.classList.add("hidden");
 
-  shuffleLetters();
+	shuffleLetters();
 
+	if (shuffleInterval !== null) {
+		clearInterval(shuffleInterval);
+	}
 
-  setInterval(shuffleLetters, 3000);
+	shuffleInterval = window.setInterval(shuffleLetters, 3000);
 });
-  const submitButton = document.getElementById("submit");
+const submitButton = document.getElementById("submit");
 
-submitButton?.addEventListener("click", checkWord);
-
-
+submitButton?.addEventListener("click", () => {
+	checkWord();
+	stopTimer();
+	pauseTotalTimer();
+});
 
 function checkWord() {
-  const message = document.getElementById("message") as HTMLDivElement;
-  const messageBox = message.querySelector(".message-box") as HTMLDivElement;
+	const message = document.getElementById("message") as HTMLDivElement;
+	const messageBox = message.querySelector(".message-box") as HTMLDivElement;
 
-  const boxes = document.querySelectorAll(".box");
-  let word = "";
+	const boxes = document.querySelectorAll(".box");
+	let word = "";
 
-  boxes.forEach((box) => {
-    word += box.textContent;
-  });
+	boxes.forEach((box) => {
+		word += box.textContent;
+	});
 
+	if (word === "VAKNA") {
+		document.querySelectorAll(".room").forEach((room) => {
+			room.classList.add("hidden");
+		});
 
-if (word === "VAKNA") {
-  document.querySelectorAll(".room").forEach((room) => {
-    room.classList.add("hidden");
-  });
+		const completed = document.getElementById("game-completed");
+		completed?.classList.remove("hidden");
+	} else {
+		message.classList.remove("hidden");
 
-  const completed = document.getElementById("game-completed");
-  completed?.classList.remove("hidden");
-} else {
-    message.classList.remove("hidden");
-
-    messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
-    message.classList.remove("success");
-    message.classList.add("error");
-  }
+		messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
+		message.classList.remove("success");
+		message.classList.add("error");
+	}
 }
 const boxes = document.querySelectorAll(".box");
 const letters = document.querySelectorAll(".letter-btn");
@@ -93,28 +99,52 @@ const letters = document.querySelectorAll(".letter-btn");
 let currentIndex = 0;
 
 letters.forEach((letter) => {
-  letter.addEventListener("click", () => {
-    if (currentIndex < boxes.length) {
-      boxes[currentIndex].textContent = letter.textContent;
-      currentIndex++;
+	letter.addEventListener("click", () => {
+		if (currentIndex < boxes.length) {
+			boxes[currentIndex].textContent = letter.textContent;
+			currentIndex++;
 
-    
-      (letter as HTMLButtonElement).disabled = true;
-    }
-  });
+			(letter as HTMLButtonElement).disabled = true;
+		}
+	});
 });
 
-
 function shuffleLetters() {
-  const lettersContainer = document.querySelector(".letters");
-  if (!lettersContainer) return;
+	const lettersContainer = document.querySelector(".letters");
+	if (!lettersContainer) return;
 
-  const lettersArray = Array.from(lettersContainer.children);
+	const lettersArray = Array.from(lettersContainer.children);
 
-  lettersArray.sort(() => Math.random() - 0.5);
+	lettersArray.sort(() => Math.random() - 0.5);
 
-  lettersArray.forEach((letter) => {
-    lettersContainer.appendChild(letter);
-  });
+	lettersArray.forEach((letter) => {
+		lettersContainer.appendChild(letter);
+	});
 }
+export function initRoom6() {
 
+	stopTimer();
+
+	currentIndex = 0;
+
+	const intro = document.getElementById("room6-intro");
+	intro?.classList.remove("hidden");
+
+	const boxes = document.querySelectorAll(".box");
+	boxes.forEach((box) => {
+		box.textContent = "";
+	});
+
+	const letters = document.querySelectorAll(".letter-btn");
+	letters.forEach((btn) => {
+		(btn as HTMLButtonElement).disabled = false;
+	});
+
+	const message = document.getElementById("message");
+	message?.classList.add("hidden");
+
+	if (shuffleInterval !== null) {
+		clearInterval(shuffleInterval);
+		shuffleInterval = null;
+	}
+}
