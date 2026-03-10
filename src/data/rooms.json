@@ -1,0 +1,34 @@
+{
+  "rooms": [
+    {
+      "id": "room1",
+      "namn": "Fallet",
+      "beskrivning": "Spelet går ut på innan man landar på marken välja en nyckel för att låsa upp dörren till nästa rum. Varje nyckel har en bokstav som hjälper dig att lösa slutgiltiga hemligheten."
+    },
+    {
+      "id": "rum2",
+      "namn": "Storleken",
+      "beskrivning": "Alice är för stor! Kan du göra henne mindre så att hon kan gå genom dörren?"
+    },
+    {
+      "id": "rum3",
+      "namn": "Gåtan",
+      "beskrivning": "Framför dig står en stor fet larv på en svamp, han ser på dig med nyfikna ögon. 'Om du vill gå vidare måste du lösa mina 3 gåtor,' säger larven."
+    },
+    {
+      "id": "rum4",
+      "namn": "Kurragömma",
+      "beskrivning": "Klicka på knappen för att starta spelet och fånga katten minst fem gånger. Klicka på katten när den dyker upp för att fånga den."
+    },
+    {
+      "id": "rum5",
+      "namn": "Tebjudningen",
+      "beskrivning": "Välkommen till Tebjudningen! Nu är det dags att hjälpa Alice och Temakaren att fylla på rätt mängd te i varje tekopp."
+    },
+    {
+      "id": "rum6",
+      "namn": "Slutstriden",
+      "beskrivning": "Lös pusslet genom att skriva rätt bokstäver i rutorna. När alla är rätt kan du gå vidare."
+    }
+  ]
+}

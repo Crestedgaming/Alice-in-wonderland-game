@@ -9,6 +9,17 @@ import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
 import { stopTimer, resetTotalTimer } from "./utils";
+import roomsData from "./data/rooms.json";
+
+interface Room {
+	id: string;
+	namn: string;
+	beskrivning: string;
+}
+
+const roomMap = new Map<string, Room>(
+	roomsData.rooms.map(room => [room.id, room])
+);
 
 /*
  * ============================================================
@@ -52,29 +63,8 @@ window.showRoom = function (roomId: string) {
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
-	let title = "";
-	switch (roomId) {
-		case "room1":
-			title = "Fallet";
-			break;
-		case "rum2":
-			title = "Storleken";
-			break;
-		case "rum3":
-			title = "Gåtan";
-			break;
-		case "rum4":
-			title = "Kurragömma";
-			break;
-		case "rum5":
-			title = "Tebjudningen";
-			break;
-		case "rum6":
-			title = "Slutstriden";
-			break;
-		default:
-			title = "Escape Room";
-	}
+	const room = roomMap.get(roomId);
+	const title = room?.namn || "Escape Room";
 	if (navTitle) {
 		navTitle.textContent = title;
 	}
