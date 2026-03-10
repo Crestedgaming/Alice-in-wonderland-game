@@ -1,7 +1,7 @@
 {
   "rooms": [
     {
-      "id": "room1",
+      "id": "rum1",
       "namn": "Fallet",
       "beskrivning": "Spelet går ut på innan man landar på marken välja en nyckel för att låsa upp dörren till nästa rum. Varje nyckel har en bokstav som hjälper dig att lösa slutgiltiga hemligheten."
     },

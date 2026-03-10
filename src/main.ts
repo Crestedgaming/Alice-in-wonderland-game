@@ -42,7 +42,7 @@ window.showRoom = function (roomId: string) {
 	focusCurrentViewTarget(roomId);
 
 	// Initialize Room logic and listeners when showing specific rooms
-	if (roomId === "room1") {
+	if (roomId === "rum1") {
 		initRoom1();
 	}
 	if (roomId === "rum3") {
