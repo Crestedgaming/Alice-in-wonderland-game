@@ -86,4 +86,15 @@ export function resetTotalTimer() {
 	clearInterval(totalInterval);
 	totalRunning = false;
 	totalSeconds = 0;
+	const totalEl = document.getElementById("gameTimerTotal");
+	if (totalEl) {
+		totalEl.textContent = "Total tid: 00:00";
+		
+	}
+		const roomEl = document.getElementById("gameTimerEachRoom");
+
+	if (roomEl) {
+		roomEl.textContent = "Tid i rummet: 00:00";
+	}
+
 }
