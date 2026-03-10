@@ -44,5 +44,26 @@ transform: translateX(-50%);
  
 }
 
+// Secret button
+.highscore-page {
+  position: relative;
+}
+
+#secret-reset {
+  position: absolute;
+  z-index: 9999;
+  cursor: pointer;
+   pointer-events: auto;
+
+  top: 25px;   
+  right: 510px; 
+
+  width: 80px;
+  height: 80px;
+
+  background: transparent;
+  border: none;
+}
+
 
 
