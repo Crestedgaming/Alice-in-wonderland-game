@@ -3,6 +3,7 @@ import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../util
 import { getCollectedArtifacts } from "../footer";
 import { completeRoom } from "../engine/GameManager";
 import { handleGameWin } from "../main";
+import { gameState } from "../engine/GameState";
 
 /* Rum 6 är finalen
 
@@ -87,6 +88,9 @@ word += box.textContent?.trim() || "";
 			loadArtifactsIntoButtons();
 	completeRoom(6, "T");
 	handleGameWin();
+	stopTimer();
+pauseTotalTimer();
+	
 		});
 
 		const completed = document.getElementById("game-completed");
@@ -130,6 +134,7 @@ function shuffleLetters() {
 export function initRoom6() {
 
 	stopTimer();
+		loadArtifactsIntoButtons();
 
 	currentIndex = 0;
 
@@ -156,14 +161,13 @@ export function initRoom6() {
 }
 
 function loadArtifactsIntoButtons() {
-	const artifacts = getCollectedArtifacts();
 	const letterButtons = document.querySelectorAll(".letter-btn");
 
 	letterButtons.forEach((btn, index) => {
-		const letter = artifacts[index];
+		const artifact = gameState.artifacts[index];
 
-		if (letter) {
-			btn.textContent = letter;
+		if (artifact) {
+			btn.textContent = artifact;
 		}
 	});
 }
