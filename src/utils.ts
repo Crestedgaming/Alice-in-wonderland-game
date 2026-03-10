@@ -44,3 +44,46 @@ export function stopTimer() {
 	timerStarted = false;
 	seconds = 0;
 }
+
+// ============================
+// TOTAL GAME TIMER
+// ============================
+
+let totalSeconds = 0;
+let totalInterval: number;
+let totalRunning = false;
+let totalTimerElement: HTMLElement | null = null;
+
+export function startTotalTimer(elementId: string) {
+
+	totalTimerElement = document.getElementById(elementId);
+
+	if (totalRunning) return;
+
+	totalRunning = true;
+
+	totalInterval = window.setInterval(() => {
+
+		totalSeconds++;
+
+		if (totalTimerElement) {
+			const min = Math.floor(totalSeconds / 60);
+			const sec = totalSeconds % 60;
+
+			totalTimerElement.textContent =
+				`Total tid: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+		}
+
+	}, 1000);
+}
+
+export function pauseTotalTimer() {
+	clearInterval(totalInterval);
+	totalRunning = false;
+}
+
+export function resetTotalTimer() {
+	clearInterval(totalInterval);
+	totalRunning = false;
+	totalSeconds = 0;
+}

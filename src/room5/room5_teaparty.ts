@@ -1,4 +1,4 @@
-import { startTimer, stopTimer } from "../utils";
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 // Room 5 timer logic
 let room5TimerId: number | null = null;
 let room5StartTime = 0;
@@ -194,6 +194,7 @@ function startGame() {
 	console.log("TEAPARTY STARTED");
 
 	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 	gameRunning = true;
 	const startScreen = document.getElementById("teaparty-start");
 	const content = document.getElementById("teaparty-content");
@@ -268,6 +269,7 @@ function initGame() {
 
 		if (total === TARGET_TOTAL && allCupsHaveTea) {
 			stopTimer();
+			pauseTotalTimer();
 			if (messageElement) {
 				messageElement.textContent =
 					"Grattis! Alla koppar bidrog och du fyllde exakt rätt mängd te!";

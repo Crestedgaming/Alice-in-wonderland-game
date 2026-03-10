@@ -1,531 +1,720 @@
 <!doctype html>
 <html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>escape-room-game</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>escape-room-game</title>
-</head>
-
-<body>
-  <header>
-    <div>
-      <nav id="gameMenuBar" class="gameMenuBar">
-        <label>
-          <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
-            <span>Börja om</span>
-          </button>
-        </label>
-        <span id="gameTimerTotalt" class="gameMenuBarElement">Total speltid: 00.00</span>
-        <h1 id="rumID" class="gameMenuBarElement">Alice i underlandet</h1>
-        <span id="gameTimerEachRoom" class="gameMenuBarElement">Tid i rummet: 00.00</span>
-        <label>
-          <button id="goToStartBtn" type="button"><span>Gå tillbaka</span></button>
-        </label>
-      </nav>
-      <div class="startGamePage">
-        <div id="start">
-          <button onclick="showRoom('room1')">Fallet</button>
-          <button onclick="showRoom('rum2')">Storleken</button>
-          <button onclick="showRoom('rum3')">Gåtan</button>
-          <button onclick="showRoom('rum4')">Kurragömma</button>
-          <button onclick="showRoom('rum5')">Tebjudningen</button>
-          <button onclick="showRoom('rum6')">Slutstriden</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- Login sida -->
-    <div id="login-page" class="login-page">
-
-      <img src="images/home_page_images/login_background.jpg" alt="" class="login-background-image"
-        aria-hidden="true" />
-
-      <div class="login-box">
-        <h2>Vad heter du?</h2>
-
-        <input type="text" id="username-input" placeholder="Skriv ditt namn..." />
-
-        <button id="login-button" class="menu-btn">
-          Börja äventyret
-        </button>
-      </div>
-
-    </div>
-
-    <!-- STARTSIDA -->
-    <div id="home-page" class="home-page hidden">
-
-      <img src="images/home_page_images/homepage.jpg" alt="" class="background-image" aria-hidden="true" />
-      <div class="main-menu">
-
-        <p id="welcome-text" class="welcome-text"></p>
-
-        <button id="start-button" class="menu-btn start-btn">
-          Starta spel
-        </button>
-
-        <div class="secondary-buttons">
-
-          <button id="highscore-button" class="menu-btn">
-            Highscore
-          </button>
-
-          <button id="about-button" class="menu-btn">
-            Om oss
-          </button>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div id="game">
-      <!--class="hidden"-->
-
-      <!-- Om oss sida -->
-
-      <div id="about-us-page" class="room hidden">
-        <div class="about-container">
-
-          <section id="about-game">
-            <h2>Om spelet</h2>
-            <p>Välkommen till Alice i Underlandet – Escape Room Edition!
-              En dag hittar Alice ett konstigt hål i marken. Hon tittar ner… och plötsligt ramlar hon ner!
-              Nu är hon fast i den märkliga världen Underlandet.
-              För att hjälpa Alice hem igen måste du klara flera rum fyllda av kluriga spel och gåtor.
-              I varje rum finns en hemlig artefakt. När du löser spelet får du en bokstav.
-              Men var försiktig… alla bokstäver kanske inte är rätt!
-              Spelet går på tid. Ju snabbare du löser rummen, desto bättre poäng får du.
-              Den som får minst poäng hamnar högst upp på Highscore-listan!
-
-              Kan du samla rätt bokstäver och hjälpa Alice hitta vägen hem?
-
-              Lycka till!
-            </p>
-          </section>
-          <section id="about-us">
-            <h3>Om oss</h3>
-            <p>Vi är ett team på sex studenter som studerar till Front End Developers på Medieinstitutet.
-              Detta spel skapades som en del av vår kurs i JavaScript, där uppdraget var att bygga ett eget escape
-              room-spel. Under projektet fick vi arbeta tillsammans med idéutveckling, design och programmering för att
-              skapa en interaktiv spelupplevelse i webbläsaren.
-              Efter mycket idéspånande bestämde vi oss för att skapa ett spel inspirerat av Alice i Underlandet – en
-              fantasifull värld fylld av mysterier, kluriga spel och märkliga karaktärer.
-              Projektet har gett oss möjlighet att både utmana våra programmeringskunskaper och samarbeta som
-              utvecklingsteam.</p>
-
-          </section>
-          <section id="about-team">
-            <h3>Teamet</h3>
-            <p>Teamet bakom spelet består av sex studenter från Medieinstitutet som tillsammans arbetat med design,
-              utveckling och testning av spelet.
-              Genom att samarbeta och dela idéer har vi byggt upp spelets olika rum, spelmoment och funktioner.
-              Här är utvecklarna bakom projektet:</p>
-            <div class="team-grid">
-
-              <div class="team-member">
-                <img src="images/team/alex.png" alt="Alex">
-                <h4>Alex</h4>
-                <p>Speldesigner och berättare</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-              <div class="team-member">
-                <img src="images/team/amanda.png" alt="Amanda">
-                <h4>Amanda</h4>
-                <p>Programmerare och teknisk ledare</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-              <div class="team-member">
-                <img src="images/team/marcus.png" alt="Marcus">
-                <h4>Marcus</h4>
-                <p>Grafisk designer och illustratör</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-              <div class="team-member">
-                <img src="images/team/sandra.png" alt="Sandra">
-                <h4>Sandra</h4>
-                <p>Ljuddesigner och kompositör</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-              <div class="team-member">
-                <img src="images/team/mohammed.png" alt="Mohammed">
-                <h4>Mohammed</h4>
-                <p>Testare och kvalitetsansvarig</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-              <div class="team-member">
-                <img src="public/about_bilder/Jennie.jpg" alt="Jennie">
-                <h4>Jennie</h4>
-                <p>Testare och kvalitetsansvarig</p>
-                <p>Github: <a href="https://github.com/amanda-olsson" target="_blank"
-                    rel="noopener noreferrer">amanda-olsson</a></p>
-              </div>
-
-            </div>
-          </section>
-          <section id="teknik">
-
-            <h3>Tekniker</h3>
-
-            <p>Spelet är byggt med moderna webbteknologier.
-              Vi har använt HTML för struktur, CSS/SCSS för design och layout samt JavaScript och TypeScript för att
-              skapa spelets interaktivitet och logik.
-              Genom dessa tekniker har vi kunnat bygga ett webbaserat escape room där spelaren kan lösa olika uppgifter,
-              samla bokstäver och ta sig vidare genom spelets rum.</p>
-
-          </section>
-        </div>
-      </div>
-
-      <!-- rum1 -->
-      <div id="room1" class="room room1 fallContainer hidden">
-        <div id="room1StartPage" class="room1StartPage">
-          <h2>Välkommen till Rum 1!</h2>
-          <p>
-            Spelet går ut på innan man landar på marken välja en nyckel för
-            att låsa upp dörren till nästa rum. Varje nyckel har en bokstav
-            som hjälper dig att lösa slutgiltiga hemligheten.
-          </p>
-          <p></p>
-          <p>Klicka på <b>Starta spelet</b> för att börja.</p>
-          <button id="room1StartButton">Starta spelet</button>
-
-        </div>
-        <div id="room1Container" class="hidden">
-          <div id="fallMessage" class="fallMessage"></div>
-          <div class="backgroundScroll">
-            <img class="backgroundImage" src="/public/Room1_bilder/backgroundRoom1.webp"
-              alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål" />
-            <div class="keyholeContainer">
-              <button id="keyhole" class="keyhole" type="button" aria-label="Lås upp dörren med vald nyckel">
-                <img src="/public/Room1_bilder/keyhole.gif"
-                  alt="Ett nyckelhål till en dörr som blir stor och liten i en loop" />
-              </button>
-            </div>
-            <div id="keys" class="keysContainer">
-              <button id="keyL" class="key1" type="button" aria-label="Välj guldnyckel med lila topp, bokstav L">
-                <img src="/public/Room1_bilder/key1.gif" alt="En guldnyckel med en topp som snurrar i lila färg" />
-              </button>
-              <button id="keyE" class="key2" type="button" aria-label="Välj ljusblå nyckel med klöver, bokstav E">
-                <img src="/public/Room1_bilder/key2.gif"
-                  alt="En ljusblå nyckel med toppen som är formad som en klöver" />
-              </button>
-              <button id="keyV" class="key3" type="button" aria-label="Välj guldnyckel med krona, bokstav V">
-                <img src="/public/Room1_bilder/key3.gif" alt="En guldnyckel med en krona i toppen." />
-              </button>
-              <button id="keyA" class="key4" type="button" aria-label="Välj guldnyckel med stjärna, bokstav A">
-                <img src="/public/Room1_bilder/key4.gif" alt="En guldnyckel med en stjärna i toppen." />
-              </button>
-            </div>
-          </div>
-          <div class="aliceFalling">
-            <img src="/public/Room1_bilder/aliceFalling.png" alt="Alice faller" />
-          </div>
-          <div>
-            <button id="room1-next" class="room1EndButton next-button hidden">Nästa rum</button>
+  <body>
+    <header>
+      <div>
+        <nav id="gameMenuBar" class="gameMenuBar">
+          <label>
+            <button id="resetAndStartGameBtn" class="resetAndStartGameBtn">
+              <span>Börja om</span>
+            </button>
+          </label>
+          <span id="gameTimerTotal" class="gameMenuBarElement"
+            >Total speltid: 00.00</span
+          >
+          <h1 id="rumID" class="gameMenuBarElement">Alice i underlandet</h1>
+          <span id="gameTimerEachRoom" class="gameMenuBarElement"
+            >Tid i rummet: 00.00</span
+          >
+          <label>
+            <button id="goToStartBtn" type="button">
+              <span>Gå tillbaka</span>
+            </button>
+          </label>
+        </nav>
+        <div class="startGamePage">
+          <div id="start">
+            <button onclick="showRoom('room1')">Fallet</button>
+            <button onclick="showRoom('rum2')">Storleken</button>
+            <button onclick="showRoom('rum3')">Gåtan</button>
+            <button onclick="showRoom('rum4')">Kurragömma</button>
+            <button onclick="showRoom('rum5')">Tebjudningen</button>
+            <button onclick="showRoom('rum6')">Slutstriden</button>
           </div>
         </div>
       </div>
-      <!-- Room 2 -->
-      <div id="rum2" class="room hidden room--size">
+    </header>
 
-        <img src="images/Room2_bilder/Rum2bakgrund.jpg" alt="" class="room2-background-image" aria-hidden="true" />
+    <main>
+      <!-- Login sida -->
+      <div id="login-page" class="login-page">
+        <img
+          src="images/home_page_images/login_background.jpg"
+          alt=""
+          class="login-background-image"
+          aria-hidden="true"
+        />
 
-        <button id="room2-start-button" class="start-button-room2">
-          Starta spelet
-        </button>
+        <div class="login-box">
+          <h2>Vad heter du?</h2>
 
-        <div id="room2-overlay" class="room2-overlay"></div>
+          <input
+            type="text"
+            id="username-input"
+            placeholder="Skriv ditt namn..."
+          />
 
-        <div class="size-wall-words">
-          <span class="wall-word wall-word--big">STOR</span>
-          <span class="wall-word wall-word--medium">MELLAN</span>
-          <span class="wall-word wall-word--small">LITEN</span>
+          <button id="login-button" class="menu-btn">Börja äventyret</button>
         </div>
-
-        <img src="images/Room2_bilder/AliceTransparent.png" alt="Alice" class="size-alice" />
-
-        <p class="size-text">
-          Alice är för stor! <br />
-          Kan du göra henne
-          <span class="size-text__smaller">mindre</span>?
-        </p>
-
-        <p class="size-success hidden">
-          <strong>Bra jobbat!</strong><br />
-          Alice är lagom stor<br />
-          och kommer in genom dörren.
-        </p>
-
-        <button id="room2-next" class="next-button hidden">Nästa rum</button>
-
       </div>
 
-      <!-- rum3 -->
-      <div id="rum3" class="room hidden">
+      <!-- STARTSIDA -->
+      <div id="home-page" class="home-page hidden">
+        <img
+          src="images/home_page_images/homepage.jpg"
+          alt=""
+          class="background-image"
+          aria-hidden="true"
+        />
+        <div class="main-menu">
+          <p id="welcome-text" class="welcome-text"></p>
 
-        <h2 class="room3-h2">Rum 3</h2>
+          <button id="start-button" class="menu-btn start-btn">
+            Starta spel
+          </button>
 
-        <p class="room3-description">
-          Framför dig står en stor fet larv på en svamp, han ser på dig med
-          nyfikna ögon. "Om du vill gå vidare måste du lösa mina 3 gåtor,"
-          säger larven.
-        </p>
-        <button id="rum3-start-button" class="start-button-rum3">
-          Starta
-        </button>
+          <div class="secondary-buttons">
+            <button id="highscore-button" class="menu-btn">Highscore</button>
 
-        <div id="riddle-container" class="riddle-container hidden">
-          <div id="riddle1" class="riddle">
+            <button id="about-button" class="menu-btn">Om oss</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="game">
+        <!--class="hidden"-->
+
+        <!-- Om oss sida -->
+
+        <div id="about-us-page" class="room hidden">
+          <div class="about-container">
+            <section id="about-game">
+              <h2>Om spelet</h2>
+              <p>
+                Välkommen till Alice i Underlandet – Escape Room Edition! En dag
+                hittar Alice ett konstigt hål i marken. Hon tittar ner… och
+                plötsligt ramlar hon ner! Nu är hon fast i den märkliga världen
+                Underlandet. För att hjälpa Alice hem igen måste du klara flera
+                rum fyllda av kluriga spel och gåtor. I varje rum finns en
+                hemlig artefakt. När du löser spelet får du en bokstav. Men var
+                försiktig… alla bokstäver kanske inte är rätt! Spelet går på
+                tid. Ju snabbare du löser rummen, desto bättre poäng får du. Den
+                som får minst poäng hamnar högst upp på Highscore-listan! Kan du
+                samla rätt bokstäver och hjälpa Alice hitta vägen hem? Lycka
+                till!
+              </p>
+            </section>
+            <section id="about-us">
+              <h3>Om oss</h3>
+              <p>
+                Vi är ett team på sex studenter som studerar till Front End
+                Developers på Medieinstitutet. Detta spel skapades som en del av
+                vår kurs i JavaScript, där uppdraget var att bygga ett eget
+                escape room-spel. Under projektet fick vi arbeta tillsammans med
+                idéutveckling, design och programmering för att skapa en
+                interaktiv spelupplevelse i webbläsaren. Efter mycket
+                idéspånande bestämde vi oss för att skapa ett spel inspirerat av
+                Alice i Underlandet – en fantasifull värld fylld av mysterier,
+                kluriga spel och märkliga karaktärer. Projektet har gett oss
+                möjlighet att både utmana våra programmeringskunskaper och
+                samarbeta som utvecklingsteam.
+              </p>
+            </section>
+            <section id="about-team">
+              <h3>Teamet</h3>
+              <p>
+                Teamet bakom spelet består av sex studenter från Medieinstitutet
+                som tillsammans arbetat med design, utveckling och testning av
+                spelet. Genom att samarbeta och dela idéer har vi byggt upp
+                spelets olika rum, spelmoment och funktioner. Här är utvecklarna
+                bakom projektet:
+              </p>
+              <div class="team-grid">
+                <div class="team-member">
+                  <img src="images/team/alex.png" alt="Alex" />
+                  <h4>Alex</h4>
+                  <p>Speldesigner och berättare</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+
+                <div class="team-member">
+                  <img src="images/team/amanda.png" alt="Amanda" />
+                  <h4>Amanda</h4>
+                  <p>Programmerare och teknisk ledare</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+
+                <div class="team-member">
+                  <img src="images/team/marcus.png" alt="Marcus" />
+                  <h4>Marcus</h4>
+                  <p>Grafisk designer och illustratör</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+
+                <div class="team-member">
+                  <img src="images/team/sandra.png" alt="Sandra" />
+                  <h4>Sandra</h4>
+                  <p>Ljuddesigner och kompositör</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+
+                <div class="team-member">
+                  <img src="images/team/mohammed.png" alt="Mohammed" />
+                  <h4>Mohammed</h4>
+                  <p>Testare och kvalitetsansvarig</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+
+                <div class="team-member">
+                  <img src="public/about_bilder/Jennie.jpg" alt="Jennie" />
+                  <h4>Jennie</h4>
+                  <p>Testare och kvalitetsansvarig</p>
+                  <p>
+                    Github:
+                    <a
+                      href="https://github.com/amanda-olsson"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >amanda-olsson</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </section>
+            <section id="teknik">
+              <h3>Tekniker</h3>
+
+              <p>
+                Spelet är byggt med moderna webbteknologier. Vi har använt HTML
+                för struktur, CSS/SCSS för design och layout samt JavaScript och
+                TypeScript för att skapa spelets interaktivitet och logik. Genom
+                dessa tekniker har vi kunnat bygga ett webbaserat escape room
+                där spelaren kan lösa olika uppgifter, samla bokstäver och ta
+                sig vidare genom spelets rum.
+              </p>
+            </section>
+          </div>
+        </div>
+
+        <!-- rum1 -->
+        <div id="room1" class="room room1 fallContainer hidden">
+          <div id="room1StartPage" class="room1StartPage">
+            <h2>Välkommen till Rum 1!</h2>
             <p>
-              Gåta 1: Vad är det som har fyra ben på morgonen, två ben på
-              dagen och tre ben på kvällen?
+              Spelet går ut på innan man landar på marken välja en nyckel för
+              att låsa upp dörren till nästa rum. Varje nyckel har en bokstav
+              som hjälper dig att lösa slutgiltiga hemligheten.
             </p>
-            <input type="text" id="answer1" class="answer-input" placeholder="Skriv ditt svar här" />
-            <button id="submit1" class="submit-button">Skicka</button>
+            <p></p>
+            <p>Klicka på <b>Starta spelet</b> för att börja.</p>
+            <button id="room1StartButton">Starta spelet</button>
           </div>
-          <div id="riddle2" class="riddle hidden">
-            <p>
-              Gåta 2: Vem går upp varje morgon utan att ha sovit en blund?
-            </p>
-            <input type="text" id="answer2" class="answer-input" placeholder="Skriv ditt svar här" />
-            <button id="submit2" class="submit-button">Skicka</button>
+          <div id="room1Container" class="hidden">
+            <div id="fallMessage" class="fallMessage"></div>
+            <div class="backgroundScroll">
+              <img
+                class="backgroundImage"
+                src="/public/Room1_bilder/backgroundRoom1.webp"
+                alt="Ett kaninhål som Alice ramlar ner i med en dörr längst ned på bilen, på dörren finns ett nyckelhål"
+              />
+              <div class="keyholeContainer">
+                <button
+                  id="keyhole"
+                  class="keyhole"
+                  type="button"
+                  aria-label="Lås upp dörren med vald nyckel"
+                >
+                  <img
+                    src="/public/Room1_bilder/keyhole.gif"
+                    alt="Ett nyckelhål till en dörr som blir stor och liten i en loop"
+                  />
+                </button>
+              </div>
+              <div id="keys" class="keysContainer">
+                <button
+                  id="keyL"
+                  class="key1"
+                  type="button"
+                  aria-label="Välj guldnyckel med lila topp, bokstav L"
+                >
+                  <img
+                    src="/public/Room1_bilder/key1.gif"
+                    alt="En guldnyckel med en topp som snurrar i lila färg"
+                  />
+                </button>
+                <button
+                  id="keyE"
+                  class="key2"
+                  type="button"
+                  aria-label="Välj ljusblå nyckel med klöver, bokstav E"
+                >
+                  <img
+                    src="/public/Room1_bilder/key2.gif"
+                    alt="En ljusblå nyckel med toppen som är formad som en klöver"
+                  />
+                </button>
+                <button
+                  id="keyV"
+                  class="key3"
+                  type="button"
+                  aria-label="Välj guldnyckel med krona, bokstav V"
+                >
+                  <img
+                    src="/public/Room1_bilder/key3.gif"
+                    alt="En guldnyckel med en krona i toppen."
+                  />
+                </button>
+                <button
+                  id="keyA"
+                  class="key4"
+                  type="button"
+                  aria-label="Välj guldnyckel med stjärna, bokstav A"
+                >
+                  <img
+                    src="/public/Room1_bilder/key4.gif"
+                    alt="En guldnyckel med en stjärna i toppen."
+                  />
+                </button>
+              </div>
+            </div>
+            <div class="aliceFalling">
+              <img
+                src="/public/Room1_bilder/aliceFalling.png"
+                alt="Alice faller"
+              />
+            </div>
+            <div>
+              <button id="room1-next" class="room1EndButton next-button hidden">
+                Nästa rum
+              </button>
+            </div>
           </div>
-          <div id="riddle3" class="riddle hidden">
-            <p>Gåta 3: Vilken råtta äter inte ost?</p>
-            <input type="text" id="answer3" class="answer-input" placeholder="Skriv ditt svar här" />
-            <button id="submit3" class="submit-button">Skicka</button>
-          </div>
-          <button id="room3-next" class="next-button hidden">Nästa rum</button>
         </div>
-      </div>
+        <!-- Room 2 -->
+        <div id="rum2" class="room hidden room--size">
+          <img
+            src="images/Room2_bilder/Rum2bakgrund.jpg"
+            alt=""
+            class="room2-background-image"
+            aria-hidden="true"
+          />
 
-      <!-- rum4 -->
-      <div id="rum4" class="room hidden">
-        <h2 class="game-title">Kurrgömma</h2>
-        <div class="game-container">
-          <img src="public/room4_bilder/cat.png" alt="Cat Image 1" id="cat-image-1" class="cat-image-1" />
-
-          <p id="instructions" class="instructions">
-            Klicka på knappen för att starta spelet och fånga katten minst fem
-            gånger. Klicka på katten när den dyker upp för att fånga den.
-            Lycka till! Om du inte kan använda musen, tryck på space för att
-            fokusera på katten när du ser den och tryck sedan enter för att
-            fånga den.
-          </p>
-          <button id="start-button-cat" class="start-button-cat" aria-label="börja spelet, fånga katten">
+          <button id="room2-start-button" class="start-button-room2">
             Starta spelet
           </button>
 
-          <p id="game-status" class="game-status" aria-live="polite"></p>
+          <div id="room2-overlay" class="room2-overlay"></div>
 
-          <div id="backgroundimg" class="backgroundimg">
-            <img src="public/room4_bilder/background.jpg" alt="" id="background-image" class="background-image"
-              aria-hidden="true" />
-            <img src="public/room4_bilder/cat.png" alt="Fånga katten" id="cat-image" class="cat-image" role="button"
-              tabindex="0" aria-label="Fånga katten" />
+          <div class="size-wall-words">
+            <span class="wall-word wall-word--big">STOR</span>
+            <span class="wall-word wall-word--medium">MELLAN</span>
+            <span class="wall-word wall-word--small">LITEN</span>
           </div>
-          <button id="room4-next" class="next-button hidden">Nästa rum</button>
-        </div>
-      </div>
-      <!-- rum5 -->
-      <div id="rum5" class="room hidden">
-        <div class="teaparty-start" id="teaparty-start">
-          <p id="instructions-teaparty">
-            Välkommen till Tebjudningen! Nu är det dags att hjälpa Alice och Temakaren att fylla på rätt mängd te i
-            varje tekopp.
-            Klicka på starta spelet för att börja.
+
+          <img
+            src="images/Room2_bilder/AliceTransparent.png"
+            alt="Alice"
+            class="size-alice"
+          />
+
+          <p class="size-text">
+            Alice är för stor! <br />
+            Kan du göra henne
+            <span class="size-text__smaller">mindre</span>?
           </p>
-          <button id="start-button-teaparty" aria-label="börja spelet, fyll på te">
-            Starta spelet
+
+          <p class="size-success hidden">
+            <strong>Bra jobbat!</strong><br />
+            Alice är lagom stor<br />
+            och kommer in genom dörren.
+          </p>
+
+          <button id="room2-next" class="next-button hidden">Nästa rum</button>
+        </div>
+
+        <!-- rum3 -->
+        <div id="rum3" class="room hidden">
+          <h2 class="room3-h2">Rum 3</h2>
+
+          <p class="room3-description">
+            Framför dig står en stor fet larv på en svamp, han ser på dig med
+            nyfikna ögon. "Om du vill gå vidare måste du lösa mina 3 gåtor,"
+            säger larven.
+          </p>
+          <button id="rum3-start-button" class="start-button-rum3">
+            Starta
           </button>
-        </div>
 
-        <!-- SPELET -->
-        <div class="teaparty-game" id="teaparty-game">
-          <div class="room--teaparty">
-            <div class="teaparty-wrapper">
-              <img src="public/room5_bilder/teaparty_backgroundpic.jpg" alt="" class="teaparty__background"
-                aria-hidden="true" />
-              <div class="teaparty-content hidden" id="teaparty-content">
-                <h2 class="teaparty__headline">Välkommen till Tebjudningen!</h2>
-
-                <p class="teaparty__description">
-                  Fyll tekopparna genom att klicka på tekannorna så att
-                  totalsumman blir exakt 125 %.
-                </p>
-
-                <!-- TOTAL DISPLAY -->
-                <div class="teaparty__total">
-                  Totalt: <span id="total-percent">0</span>%
-                </div>
-
-                <!-- CUPS CONTAINER -->
-
-                <div class="teaparty__cups">
-                  <!-- CUP 1 -->
-                  <div class="cup" data-cup="0">
-                    <button class="cup__teapot">
-                      <img src="public/room5_bilder/teapot.png" alt="Tekanna" />
-                    </button>
-
-                    <div class="cup__visual">
-                      <div class="cup__liquid">
-                        <div class="cup__fill"></div>
-                      </div>
-
-                      <img src="public/room5_bilder/teacup_outline.png" alt="Tekopp" />
-                    </div>
-
-                    <p class="cup__percent">0%</p>
-                  </div>
-                  <!-- CUP 2 -->
-                  <div class="cup" data-cup="1">
-                    <button class="cup__teapot">
-                      <img src="public/room5_bilder/teapot.png" alt="Tekanna" />
-                    </button>
-
-                    <div class="cup__visual">
-                      <div class="cup__liquid">
-                        <div class="cup__fill"></div>
-                      </div>
-
-                      <img src="public/room5_bilder/teacup_outline.png" alt="Tekopp" />
-                    </div>
-
-                    <p class="cup__percent">0%</p>
-                  </div>
-
-                  <!-- CUP 3 -->
-                  <div class="cup" data-cup="2">
-                    <button class="cup__teapot">
-                      <img src="public/room5_bilder/teapot.png" alt="Tekanna" />
-                    </button>
-
-                    <div class="cup__visual">
-                      <div class="cup__liquid">
-                        <div class="cup__fill"></div>
-                      </div>
-
-                      <img src="public/room5_bilder/teacup_outline.png" alt="Tekopp" />
-                    </div>
-
-                    <p class="cup__percent">0%</p>
-                  </div>
-                </div>
-                <div class="teaparty__message"></div>
-                <button id="next-room5" class="hidden">Nästa rum →</button>
-              </div>
-              <button id="room5-next" class="next-button hidden">Nästa rum</button>
+          <div id="riddle-container" class="riddle-container hidden">
+            <div id="riddle1" class="riddle">
+              <p>
+                Gåta 1: Vad är det som har fyra ben på morgonen, två ben på
+                dagen och tre ben på kvällen?
+              </p>
+              <input
+                type="text"
+                id="answer1"
+                class="answer-input"
+                placeholder="Skriv ditt svar här"
+              />
+              <button id="submit1" class="submit-button">Skicka</button>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- rum6 -->
-
-      <div id="rum6" class="room hidden">
-        <div class="room-intro" id="room6-intro">
-          <div class="room-intro__box">
-            <h2 class="room6-intro-title">
-              Välkommen!
-            </h2>
-            <p class="room6-intro-text">
-              Lös pusslet genom att skriva rätt bokstäver i rutorna. När alla
-              är rätt kan du gå vidare.
-            </p>
-            <button id="room6-start-btn">
-              Starta
+            <div id="riddle2" class="riddle hidden">
+              <p>
+                Gåta 2: Vem går upp varje morgon utan att ha sovit en blund?
+              </p>
+              <input
+                type="text"
+                id="answer2"
+                class="answer-input"
+                placeholder="Skriv ditt svar här"
+              />
+              <button id="submit2" class="submit-button">Skicka</button>
+            </div>
+            <div id="riddle3" class="riddle hidden">
+              <p>Gåta 3: Vilken råtta äter inte ost?</p>
+              <input
+                type="text"
+                id="answer3"
+                class="answer-input"
+                placeholder="Skriv ditt svar här"
+              />
+              <button id="submit3" class="submit-button">Skicka</button>
+            </div>
+            <button id="room3-next" class="next-button hidden">
+              Nästa rum
             </button>
           </div>
         </div>
 
-        <div class="room--final">
-          <div class="puzzle">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+        <!-- rum4 -->
+        <div id="rum4" class="room hidden">
+          <h2 class="game-title">Kurrgömma</h2>
+          <div class="game-container">
+            <img
+              src="public/room4_bilder/cat.png"
+              alt="Cat Image 1"
+              id="cat-image-1"
+              class="cat-image-1"
+            />
+
+            <p id="instructions" class="instructions">
+              Klicka på knappen för att starta spelet och fånga katten minst fem
+              gånger. Klicka på katten när den dyker upp för att fånga den.
+              Lycka till! Om du inte kan använda musen, tryck på space för att
+              fokusera på katten när du ser den och tryck sedan enter för att
+              fånga den.
+            </p>
+            <button
+              id="start-button-cat"
+              class="start-button-cat"
+              aria-label="börja spelet, fånga katten"
+            >
+              Starta spelet
+            </button>
+
+            <p id="game-status" class="game-status" aria-live="polite"></p>
+
+            <div id="backgroundimg" class="backgroundimg">
+              <img
+                src="public/room4_bilder/background.jpg"
+                alt=""
+                id="background-image"
+                class="background-image"
+                aria-hidden="true"
+              />
+              <img
+                src="public/room4_bilder/cat.png"
+                alt="Fånga katten"
+                id="cat-image"
+                class="cat-image"
+                role="button"
+                tabindex="0"
+                aria-label="Fånga katten"
+              />
+            </div>
+            <button id="room4-next" class="next-button hidden">
+              Nästa rum
+            </button>
           </div>
-          <div class="letters">
-            <button class="letter-btn">V</button>
-            <button class="letter-btn">A</button>
-            <button class="letter-btn">K</button>
-            <button class="letter-btn">N</button>
-            <button class="letter-btn">A</button>
+        </div>
+        <!-- rum5 -->
+        <div id="rum5" class="room hidden">
+          <div class="teaparty-start" id="teaparty-start">
+            <p id="instructions-teaparty">
+              Välkommen till Tebjudningen! Nu är det dags att hjälpa Alice och
+              Temakaren att fylla på rätt mängd te i varje tekopp. Klicka på
+              starta spelet för att börja.
+            </p>
+            <button
+              id="start-button-teaparty"
+              aria-label="börja spelet, fyll på te"
+            >
+              Starta spelet
+            </button>
           </div>
 
+          <!-- SPELET -->
+          <div class="teaparty-game" id="teaparty-game">
+            <div class="room--teaparty">
+              <div class="teaparty-wrapper">
+                <img
+                  src="public/room5_bilder/teaparty_backgroundpic.jpg"
+                  alt=""
+                  class="teaparty__background"
+                  aria-hidden="true"
+                />
+                <div class="teaparty-content hidden" id="teaparty-content">
+                  <h2 class="teaparty__headline">
+                    Välkommen till Tebjudningen!
+                  </h2>
 
-          <button class="submit" id="submit">Submit</button>
+                  <p class="teaparty__description">
+                    Fyll tekopparna genom att klicka på tekannorna så att
+                    totalsumman blir exakt 125 %.
+                  </p>
 
-          <div id="message" class="message hidden">
-            <div class="message-box"></div>
+                  <!-- TOTAL DISPLAY -->
+                  <div class="teaparty__total">
+                    Totalt: <span id="total-percent">0</span>%
+                  </div>
+
+                  <!-- CUPS CONTAINER -->
+
+                  <div class="teaparty__cups">
+                    <!-- CUP 1 -->
+                    <div class="cup" data-cup="0">
+                      <button class="cup__teapot">
+                        <img
+                          src="public/room5_bilder/teapot.png"
+                          alt="Tekanna"
+                        />
+                      </button>
+
+                      <div class="cup__visual">
+                        <div class="cup__liquid">
+                          <div class="cup__fill"></div>
+                        </div>
+
+                        <img
+                          src="public/room5_bilder/teacup_outline.png"
+                          alt="Tekopp"
+                        />
+                      </div>
+
+                      <p class="cup__percent">0%</p>
+                    </div>
+                    <!-- CUP 2 -->
+                    <div class="cup" data-cup="1">
+                      <button class="cup__teapot">
+                        <img
+                          src="public/room5_bilder/teapot.png"
+                          alt="Tekanna"
+                        />
+                      </button>
+
+                      <div class="cup__visual">
+                        <div class="cup__liquid">
+                          <div class="cup__fill"></div>
+                        </div>
+
+                        <img
+                          src="public/room5_bilder/teacup_outline.png"
+                          alt="Tekopp"
+                        />
+                      </div>
+
+                      <p class="cup__percent">0%</p>
+                    </div>
+
+                    <!-- CUP 3 -->
+                    <div class="cup" data-cup="2">
+                      <button class="cup__teapot">
+                        <img
+                          src="public/room5_bilder/teapot.png"
+                          alt="Tekanna"
+                        />
+                      </button>
+
+                      <div class="cup__visual">
+                        <div class="cup__liquid">
+                          <div class="cup__fill"></div>
+                        </div>
+
+                        <img
+                          src="public/room5_bilder/teacup_outline.png"
+                          alt="Tekopp"
+                        />
+                      </div>
+
+                      <p class="cup__percent">0%</p>
+                    </div>
+                  </div>
+                  <div class="teaparty__message"></div>
+                  <button id="next-room5" class="hidden">Nästa rum →</button>
+                </div>
+                <button id="room5-next" class="next-button hidden">
+                  Nästa rum
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- rum6 -->
+
+        <div id="rum6" class="room hidden">
+          <div class="room-intro" id="room6-intro">
+            <div class="room-intro__box">
+              <h2 class="room6-intro-title">Välkommen!</h2>
+              <p class="room6-intro-text">
+                Lös pusslet genom att skriva rätt bokstäver i rutorna. När alla
+                är rätt kan du gå vidare.
+              </p>
+              <button id="room6-start-btn">Starta</button>
+            </div>
+          </div>
+
+          <div class="room--final">
+            <div class="puzzle">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+            </div>
+            <div class="letters">
+              <button class="letter-btn">V</button>
+              <button class="letter-btn">A</button>
+              <button class="letter-btn">K</button>
+              <button class="letter-btn">N</button>
+              <button class="letter-btn">A</button>
+            </div>
+
+            <button class="submit" id="submit">Submit</button>
+
+            <div id="message" class="message hidden">
+              <div class="message-box"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!--Highscore-->
-    <div id="highscore-page" class="room hidden highscore-page">
-      <h2 class="hs-heading"> Highscore</h2>
-      <ul id="highscore-list" class="highscore-list"></ul>
-    </div>
+      <!--Highscore-->
+      <div id="highscore-page" class="room hidden highscore-page">
+        <h2 class="hs-heading">Highscore</h2>
+        <ul id="highscore-list" class="highscore-list"></ul>
+      </div>
 
-    <!-- Spelet är klart sida -->
-    <div id="game-completed" class="room hidden game-completed">
-      <div class="game-completed__overlay">
-        <div class="game-completed__box">
-          <h2>🎉 Spelet är avklarat! 🎉</h2>
-          <p>
-            Du lyckades samla alla bokstäver och lösa slutstriden.
-          </p>
-          <button id="restart-game">Spela igen</button>
+      <!-- Spelet är klart sida -->
+      <div id="game-completed" class="room hidden game-completed">
+        <div class="game-completed__overlay">
+          <div class="game-completed__box">
+            <h2>🎉 Spelet är avklarat! 🎉</h2>
+            <p>Du lyckades samla alla bokstäver och lösa slutstriden.</p>
+            <button id="restart-game">Spela igen</button>
+          </div>
         </div>
       </div>
-    </div>
-
-  </main>
-  <footer>
-    <div id="showArtifacts" class="showArtifacts">
-      <div id="progressBar" class="progressBar" role="progressbar" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"
-        aria-label="Rooms completed">
-        <div id="myBar" class="myBar"></div>
+    </main>
+    <footer>
+      <div id="showArtifacts" class="showArtifacts">
+        <div
+          id="progressBar"
+          class="progressBar"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="6"
+          aria-valuenow="0"
+          aria-label="Rooms completed"
+        >
+          <div id="myBar" class="myBar"></div>
+        </div>
+        <ul>
+          <li id="artefact1" class="artefacts">
+            <span
+              ><img src="./public/images/rabbitIcon.png" alt="Artefakt 1"
+            /></span>
+          </li>
+          <li id="artefact2" class="artefacts">
+            <span
+              ><img src="./public/images/rabbitIcon.png" alt="Artefakt 2"
+            /></span>
+          </li>
+          <li id="artefact3" class="artefacts">
+            <span
+              ><img src="./public/images/rabbitIcon.png" alt="Artefakt 3"
+            /></span>
+          </li>
+          <li id="artefact4" class="artefacts">
+            <span
+              ><img src="./public/images/rabbitIcon.png" alt="Artefakt 4"
+            /></span>
+          </li>
+          <li id="artefact5" class="artefacts">
+            <span
+              ><img src="./public/images/rabbitIcon.png" alt="Artefakt 5"
+            /></span>
+          </li>
+        </ul>
       </div>
-      <ul>
-        <li id="artefact1" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 1" /></span>
-        </li>
-        <li id="artefact2" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 2" /></span>
-        </li>
-        <li id="artefact3" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 3" /></span>
-        </li>
-        <li id="artefact4" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 4" /></span>
-        </li>
-        <li id="artefact5" class="artefacts"><span><img src="./public/images/rabbitIcon.png" alt="Artefakt 5" /></span>
-        </li>
-      </ul>
-    </div>
-  </footer>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+    </footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

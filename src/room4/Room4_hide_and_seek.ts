@@ -1,4 +1,4 @@
-import { startTimer, stopTimer } from "../utils";
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 
 import "../mainstyles/main.scss";
 import { completeRoom } from "../engine/GameManager";
@@ -13,6 +13,7 @@ let catFocused = false;
 
 const startGame = () => {
 startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 	console.log("Game started");
 	gameRunning = true;
 
@@ -50,6 +51,7 @@ function catchCat() {
 
 	if (catCaughtCount === 5) {
 		stopTimer();
+    pauseTotalTimer();
 		console.log("Game over! Cat caught 5 times!");
 		gameRunning = false;
 		catImage.classList.add("hidden");

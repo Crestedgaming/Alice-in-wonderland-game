@@ -1,5 +1,5 @@
 import { completeRoom } from "../engine/GameManager";
-import { startTimer, stopTimer } from "../utils";
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 
 type Room1Elements = {
 	landing: HTMLElement | null;
@@ -159,6 +159,7 @@ function bindKeyhole(
 		);
 
 		stopTimer();
+		pauseTotalTimer();
 const finalMs = 0;
 		saveRoom1Result(selectedKey, finalMs);
 
@@ -232,6 +233,7 @@ export function initRoom1(): void {
 	elements.startButton.onclick = () => {
 		showGame(elements.landing, elements.content);
 		startTimer("gameTimerEachRoom");
+		startTotalTimer("gameTimerTotal");
 		attachRoom1Listeners(elements);
 		startRoom1GameLogic();
 	};

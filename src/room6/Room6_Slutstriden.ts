@@ -1,5 +1,5 @@
 
-import { startTimer, stopTimer } from "../utils";
+import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
 
 /* Rum 6 är finalen
 
@@ -47,6 +47,7 @@ const roomTimer = document.getElementById("gameTimerEachRoom");
 
 startBtn?.addEventListener("click", () => {
 	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 
 	intro?.classList.add("hidden");
 
@@ -63,6 +64,7 @@ const submitButton = document.getElementById("submit");
 submitButton?.addEventListener("click", () => {
 	checkWord();
 	stopTimer();
+	pauseTotalTimer();
 });
 
 function checkWord() {

@@ -1,5 +1,5 @@
 // Room 2 timer logic
-import { startTimer, stopTimer } from "../utils";
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 
 
 
@@ -113,6 +113,7 @@ const overlay = document.getElementById("room2-overlay");
 
 room2StartButton?.addEventListener("click", () => {
 	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 	// göm overlay + start-knappen
 	overlay?.classList.add("hidden");
 	room2StartButton.classList.add("hidden");
@@ -157,6 +158,7 @@ function updateSize() {
 
 	if (sizeLevel === 0) {
 	stopTimer();
+		pauseTotalTimer();
 		console.log("Alice är lagom!");
 		successText.classList.remove("hidden");
 		if (!room2Completed) {
