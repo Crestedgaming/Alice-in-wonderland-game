@@ -2,6 +2,7 @@
 import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
 import { getCollectedArtifacts } from "../footer";
 import { completeRoom } from "../engine/GameManager";
+import { handleGameWin } from "../main";
 
 /* Rum 6 är finalen
 
@@ -66,8 +67,7 @@ const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", () => {
 	checkWord();
-	stopTimer();
-	pauseTotalTimer();
+	
 });
 
 function checkWord() {
@@ -78,7 +78,7 @@ function checkWord() {
 	let word = "";
 
 	boxes.forEach((box) => {
-		word += box.textContent;
+word += box.textContent?.trim() || "";
 	});
 
 	if (word === "SALTET") {
@@ -86,6 +86,7 @@ function checkWord() {
 			room.classList.add("hidden");
 			loadArtifactsIntoButtons();
 	completeRoom(6, "T");
+	handleGameWin();
 		});
 
 		const completed = document.getElementById("game-completed");

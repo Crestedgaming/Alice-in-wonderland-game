@@ -19,10 +19,6 @@ body {
     min-height: 100vh;
 }
 
-
-
-
-
 .room--final {
 
     .box-placeholder {
@@ -231,17 +227,35 @@ body {
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
-    max-width: 450px;
+    
 
-    .game-completed__box h2 {
-        color: #f2e6ce;
-    }
-
+ 
 
 
 }
 
-.game-completed__box button {
+.game-completed__box {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    gap: 1.5rem;
+}
+.game-completed__title {
+    font-family: 'Henny Penny', cursive;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+    color: #f2e6ce;
+}
+
+.game-completed__text {
+    font-family:"Bricolage Grotesque", sans-serif;
+    font-size: 1.5rem;
+    color: #f2e6ce;
+    text-align: center;
+}
+
+.main-btn {
     margin-top: 1rem;
     padding: 0.6rem 1.5rem;
     border: none;
