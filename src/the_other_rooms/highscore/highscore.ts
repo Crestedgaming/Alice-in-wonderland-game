@@ -59,4 +59,12 @@ highScoreBtn.addEventListener('click', () => {
 }
 highScoreBtn();
 
+// Secret button
+const secretReset = document.getElementById("secret-reset");
+
+secretReset?.addEventListener("click", () => {
+  localStorage.removeItem("highscores");
+  displayHighscores();
+});
+
 
