@@ -4,10 +4,11 @@ import "./the_other_rooms/landing_page/login";
 import { initRoom4 } from "./room4/Room4_hide_and_seek";
 import { initRoom3 } from "./room3/Room3_the_riddle";
 import { initRoom1 } from "./room1/Room1_theFall";
-import "./room6/Room6_Slutstriden";
+import { initRoom6 	} from "./room6/Room6_Slutstriden";	
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
+import { stopTimer, resetTotalTimer } from "./utils";
 
 /*
  * ============================================================
@@ -21,6 +22,8 @@ interface CustomWindow extends Window {
 declare const window: CustomWindow;
 
 window.showRoom = function (roomId: string) {
+
+		stopTimer();
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});
@@ -44,6 +47,9 @@ window.showRoom = function (roomId: string) {
 	if (roomId === "rum5") {
 		initRoom5();
 	}
+	if (roomId === "rum6") {
+	initRoom6();
+}
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
@@ -108,6 +114,8 @@ function focusCurrentViewTarget(roomId: string): void {
 }
 
 function resetGameUIState(): void {
+	stopTimer();
+	resetTotalTimer();
 	resetRoomProgress();
 
 	document.querySelectorAll(".room").forEach((room) => {

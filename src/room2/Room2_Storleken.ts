@@ -1,3 +1,8 @@
+// Room 2 timer logic
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+
+
+
 import { completeRoom } from "../engine/GameManager";
 
 /*
@@ -107,6 +112,8 @@ const room2StartButton = document.querySelector<HTMLButtonElement>(
 const overlay = document.getElementById("room2-overlay");
 
 room2StartButton?.addEventListener("click", () => {
+	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 	// göm overlay + start-knappen
 	overlay?.classList.add("hidden");
 	room2StartButton.classList.add("hidden");
@@ -150,12 +157,13 @@ function updateSize() {
 	alice.style.left = `${offset}vw`;
 
 	if (sizeLevel === 0) {
+	stopTimer();
+		pauseTotalTimer();
 		console.log("Alice är lagom!");
 		successText.classList.remove("hidden");
-
 		if (!room2Completed) {
 			room2Completed = true;
-			completeRoom(2, "E");
+			completeRoom(2, "A");
 		}
 	}
 }

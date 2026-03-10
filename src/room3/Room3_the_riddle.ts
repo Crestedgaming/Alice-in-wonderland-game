@@ -1,8 +1,9 @@
 // Room 3 – The Caterpillar Riddles
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 import { completeRoom } from "../engine/GameManager";
-import { startTimer } from "../utils";
 
 export function initRoom3(): void {
+		
 	// --- Get fresh DOM references every time room opens ---
 	const rum3StartButton = document.getElementById(
 		"rum3-start-button",
@@ -63,8 +64,8 @@ export function initRoom3(): void {
 	// Start room
 	// -----------------------------
 	function startRiddle(): void {
-		startTimer();
-
+	startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 		rum3StartButton.classList.add("hidden");
 		riddleContainer.classList.remove("hidden");
 		currentRiddle = 0;
@@ -115,6 +116,8 @@ export function initRoom3(): void {
 	// Decide artifact (REAL vs FAKE)
 	// -----------------------------
 	function finishRoom3(): void {
+	stopTimer();
+	pauseTotalTimer();
 		let letter: string;
 		let message: string;
 
@@ -123,7 +126,7 @@ export function initRoom3(): void {
 			message =
 				"🐛 Larven blåser en perfekt rökring... 'Du börjar förstå vem du är.'";
 		} else {
-			letter = "Q";
+			letter = "S";
 			message = "🐛 Larven ler snett... 'Rätt och fel är bara ord.'";
 		}
 

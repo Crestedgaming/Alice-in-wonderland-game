@@ -1,6 +1,7 @@
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+
 import "../mainstyles/main.scss";
 import { completeRoom } from "../engine/GameManager";
-import { startTimer } from "../utils";
 
 let catCaughtCount = 0;
 let gameRunning = false;
@@ -11,7 +12,8 @@ let catFocused = false;
 //////////////////
 
 const startGame = () => {
-	startTimer();
+startTimer("gameTimerEachRoom");
+	startTotalTimer("gameTimerTotal");
 	console.log("Game started");
 	gameRunning = true;
 
@@ -48,11 +50,12 @@ function catchCat() {
 	console.log("Cat clicked!");
 
 	if (catCaughtCount === 5) {
+		stopTimer();
+    pauseTotalTimer();
 		console.log("Game over! Cat caught 5 times!");
 		gameRunning = false;
 		catImage.classList.add("hidden");
 		completeRoom(4, "N");
-
 		/* Add artefact here when cat is caught 5 times */
 	}
 }
