@@ -11,6 +11,7 @@ Jag har jobbat vidare med timern, nu ska tiden pausas när ett spel är klart oc
 ## Namn: Jennie Modd
 
 - Närvarande: Ja
+--- Ordnade med CSS:en på about-us sidan då den hade dels försvunnit och all centrering fungerade inte. Gjorde felsökning och rättade till det.
 
 ## Namn: Markus Jönsson
 
