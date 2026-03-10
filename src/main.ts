@@ -1,10 +1,12 @@
 import "./mainstyles/main.scss";
 import "./the_other_rooms/landing_page/home_page";
 import "./the_other_rooms/landing_page/login";
+import "./the_other_rooms/highscore/highscore";
+import "./the_other_rooms/about/_about.scss"
 import { initRoom4 } from "./room4/Room4_hide_and_seek";
 import { initRoom3 } from "./room3/Room3_the_riddle";
 import { initRoom1 } from "./room1/Room1_theFall";
-import { initRoom6 	} from "./room6/Room6_Slutstriden";	
+import { initRoom6 } from "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
@@ -24,8 +26,7 @@ interface CustomWindow extends Window {
 declare const window: CustomWindow;
 
 window.showRoom = function (roomId: string) {
-
-		stopTimer();
+	stopTimer();
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});
@@ -34,7 +35,7 @@ window.showRoom = function (roomId: string) {
 	focusCurrentViewTarget(roomId);
 
 	// Initialize Room logic and listeners when showing specific rooms
-	if (roomId === "room1") {
+	if (roomId === "rum1") {
 		initRoom1();
 	}
 	if (roomId === "rum3") {
@@ -50,34 +51,13 @@ window.showRoom = function (roomId: string) {
 		initRoom5();
 	}
 	if (roomId === "rum6") {
-	initRoom6();
-}
+		initRoom6();
+	}
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
-	let title = "";
-	switch (roomId) {
-		case "room1":
-			title = "Fallet";
-			break;
-		case "rum2":
-			title = "Storleken";
-			break;
-		case "rum3":
-			title = "Gåtan";
-			break;
-		case "rum4":
-			title = "Kurragömma";
-			break;
-		case "rum5":
-			title = "Tebjudningen";
-			break;
-		case "rum6":
-			title = "Slutstriden";
-			break;
-		default:
-			title = "Escape Room";
-	}
+	const room = roomMap.get(roomId);
+	const title = room?.namn || "Escape Room";
 	if (navTitle) {
 		navTitle.textContent = title;
 	}
@@ -101,9 +81,32 @@ if (resetBtn) {
 	});
 }
 
+const goToStartBtn = document.getElementById("goToStartBtn");
+if (goToStartBtn) {
+	goToStartBtn.addEventListener("click", () => {
+		goBackToHome();
+	});
+}
+
 (window as any).goToStart = function () {
 	resetGameUIState();
 };
+
+function goBackToHome(): void {
+	stopTimer();
+	resetRoomProgress();
+
+	document.querySelectorAll(".room").forEach((room) => {
+		room.classList.add("hidden");
+	});
+
+	const homePage = document.getElementById("home-page");
+	const start = document.getElementById("start");
+
+	// Go back to home page (start game page)
+	homePage?.classList.remove("hidden");
+	start?.classList.remove("hidden");
+}
 
 function focusCurrentViewTarget(roomId: string): void {
 	const room = document.getElementById(roomId);
@@ -130,13 +133,13 @@ function resetGameUIState(): void {
 	const header = document.querySelector("header");
 	const footer = document.querySelector("footer");
 
-	// Reset should take the player to the real start page menu.
-	loginPage?.classList.add("hidden");
-	homePage?.classList.remove("hidden");
-	header?.removeAttribute("hidden");
-	footer?.removeAttribute("hidden");
+	// Reset should take the player back to the login page.
+	loginPage?.classList.remove("hidden");
+	homePage?.classList.add("hidden");
+	header?.setAttribute("hidden", "");
+	footer?.setAttribute("hidden", "");
 
-	// Keep the room-picker hidden when returning to start page.
+	// Keep the room-picker hidden when returning to login.
 	start?.classList.add("hidden");
 }
 

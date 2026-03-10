@@ -141,7 +141,7 @@ let step = 0;
 function updateSize() {
 	if (!alice || !successText) return;
 
-	// göm success-text som standard
+	// göm success-text 
 	successText.classList.add("hidden");
 
 	let height = 90;
