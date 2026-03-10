@@ -4,7 +4,7 @@ import "./the_other_rooms/landing_page/login";
 import { initRoom4 } from "./room4/Room4_hide_and_seek";
 import { initRoom3 } from "./room3/Room3_the_riddle";
 import { initRoom1 } from "./room1/Room1_theFall";
-import { initRoom6 	} from "./room6/Room6_Slutstriden";	
+import { initRoom6 } from "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
@@ -22,8 +22,7 @@ interface CustomWindow extends Window {
 declare const window: CustomWindow;
 
 window.showRoom = function (roomId: string) {
-
-		stopTimer();
+	stopTimer();
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
 	});
@@ -48,8 +47,8 @@ window.showRoom = function (roomId: string) {
 		initRoom5();
 	}
 	if (roomId === "rum6") {
-	initRoom6();
-}
+		initRoom6();
+	}
 
 	// Set navBarTitle to current room's title
 	const navTitle = document.getElementById("rumID");
@@ -92,6 +91,16 @@ window.showRoom = function (roomId: string) {
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
+		resetGameUIState();
+		if (typeof window.goToStart === "function") {
+			window.goToStart();
+		}
+	});
+}
+
+const goToStartBtn = document.getElementById("goToStartBtn");
+if (goToStartBtn) {
+	goToStartBtn.addEventListener("click", () => {
 		resetGameUIState();
 		if (typeof window.goToStart === "function") {
 			window.goToStart();
