@@ -8,7 +8,9 @@ import { initRoom6 	} from "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
-import { stopTimer, resetTotalTimer } from "./utils";
+
+import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
+import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
 
 /*
  * ============================================================
@@ -137,3 +139,36 @@ function resetGameUIState(): void {
 	// Keep the room-picker hidden when returning to start page.
 	start?.classList.add("hidden");
 }
+
+/* ============================================================
+ * ************************Logik för Vinst**********************
+ * ============================================================*/
+
+
+export function handleGameWin() {
+	pauseTotalTimer();
+	const finalScore = getTotalTime();
+    saveNewHighscore(finalScore);
+	document.querySelectorAll(".room").forEach((room) => {
+		room.classList.add("hidden");
+	});
+	
+	const completed = document.getElementById("game-completed");
+	if (completed) {
+		completed.classList.remove("hidden");
+	}	
+	displayHighscores();
+}
+
+document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+
+    if (target.id === "show-highscore-from-win") {
+        window.showRoom("highscore-page");
+    }
+});
+
+
+
+    
+    

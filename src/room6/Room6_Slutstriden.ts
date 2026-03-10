@@ -1,5 +1,6 @@
 
 import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
+import { handleGameWin } from "../main";
 
 /* Rum 6 är finalen
 
@@ -63,8 +64,7 @@ const submitButton = document.getElementById("submit");
 
 submitButton?.addEventListener("click", () => {
 	checkWord();
-	stopTimer();
-	pauseTotalTimer();
+	
 });
 
 function checkWord() {
@@ -75,13 +75,16 @@ function checkWord() {
 	let word = "";
 
 	boxes.forEach((box) => {
-		word += box.textContent;
+word += box.textContent?.trim() || "";
 	});
 
 	if (word === "VAKNA") {
-		document.querySelectorAll(".room").forEach((room) => {
-			room.classList.add("hidden");
-		});
+	stopTimer();
+
+	if (shuffleInterval !== null) {
+            clearInterval(shuffleInterval);
+        }
+		handleGameWin();
 
 		const completed = document.getElementById("game-completed");
 		completed?.classList.remove("hidden");
