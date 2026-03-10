@@ -29,7 +29,7 @@ const ROOM1_KEYS = [
 	{ buttonId: "keyA", letter: "A" },
 ];
 
-const ROOM1_FALL_DURATION_MS = 12000;
+const ROOM1_FALL_DURATION_MS = 20000;
 const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
 
 function getRoom1Elements(): Room1Elements {
