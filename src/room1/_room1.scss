@@ -271,8 +271,8 @@ $shadow-brown: #4b1f1f;
 /* End button */
 #room1-next {
 	position: absolute;
-	bottom: 15vh;
-	right: 5vw;
+	 bottom: 10vh;
+    left: 60%;
 	padding: 10px 20px;
 	font-size: 1.2rem;
 	@include room1Button;
