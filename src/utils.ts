@@ -98,3 +98,7 @@ export function resetTotalTimer() {
 	}
 
 }
+
+export function getTotalTime(): number {
+    return totalSeconds;
+}
