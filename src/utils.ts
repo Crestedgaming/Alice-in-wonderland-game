@@ -15,46 +15,86 @@
 let seconds = 0;
 let timerStarted = false;
 let timerInterval: number;
+let timerElement: HTMLElement | null = null;
 
-export function startTimer() {
-  if (timerStarted) return;
+export function startTimer(elementId: string) {
+	if (timerStarted) return;
 
-  timerStarted = true;
+	timerStarted = true;
 
-  timerInterval = setInterval(updateTimer, 1000);
+	timerElement = document.getElementById(elementId);
+
+	timerInterval = setInterval(updateTimer, 1000);
 }
 
 function updateTimer() {
-  seconds++;
+	seconds++;
 
-  const timerElement = document.getElementById("falletTimerTotalt");
+	if (timerElement) {
+		const minutes = Math.floor(seconds / 60);
+		const secs = seconds % 60;
 
-  if (timerElement) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-
-    timerElement.textContent =
-      `Tid i rummet: ${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-  }
-}
-
-export function pauseTimer() {
-  clearInterval(timerInterval);
-}
-
-export function resumeTimer() {
-  timerInterval = setInterval(updateTimer, 1000);
+		timerElement.textContent =
+			`Tid i rummet: ${String(minutes).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+	}
 }
 
 export function stopTimer() {
-  clearInterval(timerInterval);
-  timerStarted = false;
+	clearInterval(timerInterval);
+	timerStarted = false;
+	seconds = 0;
 }
 
-export function goToNextRoom(currentRoomId: string, nextRoomId: string) {
-  const currentRoom = document.getElementById(currentRoomId);
-  const nextRoom = document.getElementById(nextRoomId);
+// ============================
+// TOTAL GAME TIMER
+// ============================
 
-  currentRoom?.classList.add("hidden");
-  nextRoom?.classList.remove("hidden");
+let totalSeconds = 0;
+let totalInterval: number;
+let totalRunning = false;
+let totalTimerElement: HTMLElement | null = null;
+
+export function startTotalTimer(elementId: string) {
+
+	totalTimerElement = document.getElementById(elementId);
+
+	if (totalRunning) return;
+
+	totalRunning = true;
+
+	totalInterval = window.setInterval(() => {
+
+		totalSeconds++;
+
+		if (totalTimerElement) {
+			const min = Math.floor(totalSeconds / 60);
+			const sec = totalSeconds % 60;
+
+			totalTimerElement.textContent =
+				`Total tid: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
+		}
+
+	}, 1000);
+}
+
+export function pauseTotalTimer() {
+	clearInterval(totalInterval);
+	totalRunning = false;
+}
+
+export function resetTotalTimer() {
+	clearInterval(totalInterval);
+	totalRunning = false;
+	totalSeconds = 0;
+	const totalEl = document.getElementById("gameTimerTotal");
+	if (totalEl) {
+		totalEl.textContent = "Total tid: 00:00";
+		
+	}
+		const roomEl = document.getElementById("gameTimerEachRoom");
+
+	if (roomEl) {
+		roomEl.textContent = "Tid i rummet: 00:00";
+	}
+
 }
