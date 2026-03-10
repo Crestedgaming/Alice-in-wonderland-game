@@ -91,16 +91,29 @@ if (resetBtn) {
 const goToStartBtn = document.getElementById("goToStartBtn");
 if (goToStartBtn) {
 	goToStartBtn.addEventListener("click", () => {
-		resetGameUIState();
-		if (typeof window.goToStart === "function") {
-			window.goToStart();
-		}
+		goBackToHome();
 	});
 }
 
 (window as any).goToStart = function () {
 	resetGameUIState();
 };
+
+function goBackToHome(): void {
+	stopTimer();
+	resetRoomProgress();
+
+	document.querySelectorAll(".room").forEach((room) => {
+		room.classList.add("hidden");
+	});
+
+	const homePage = document.getElementById("home-page");
+	const start = document.getElementById("start");
+
+	// Go back to home page (start game page)
+	homePage?.classList.remove("hidden");
+	start?.classList.remove("hidden");
+}
 
 function focusCurrentViewTarget(roomId: string): void {
 	const room = document.getElementById(roomId);
