@@ -128,8 +128,23 @@
   color: white;
   margin: 0;
   font-family: 'Bricolage Grotesque', sans-serif;
+  margin-bottom: 10px;
 }
 
+/* GITHUB-LÄNK */
+
+#about-team a {
+  color: #f2e6ce;
+  text-decoration: none;
+  font-weight: 500;
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+#about-team a:hover {
+  color: white;
+  border-bottom-color: white;
+}
 /* ---------------- */
 /* TEKNIK */
 /* ---------------- */
@@ -151,3 +166,4 @@
   max-width: 600px;
   font-family: 'Bricolage Grotesque', sans-serif;
 }
+
