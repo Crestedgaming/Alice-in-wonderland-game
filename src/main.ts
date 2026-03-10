@@ -137,12 +137,12 @@ function resetGameUIState(): void {
 	const header = document.querySelector("header");
 	const footer = document.querySelector("footer");
 
-	// Reset should take the player to the real start page menu.
-	loginPage?.classList.add("hidden");
-	homePage?.classList.remove("hidden");
-	header?.removeAttribute("hidden");
-	footer?.removeAttribute("hidden");
+	// Reset should take the player back to the login page.
+	loginPage?.classList.remove("hidden");
+	homePage?.classList.add("hidden");
+	header?.setAttribute("hidden", "");
+	footer?.setAttribute("hidden", "");
 
-	// Keep the room-picker hidden when returning to start page.
+	// Keep the room-picker hidden when returning to login.
 	start?.classList.add("hidden");
 }
