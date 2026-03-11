@@ -31,17 +31,17 @@ transform: translateX(-50%);
 
 
 .highscore-list { 
+  position: absolute;
     font-family: "Bricolage Grotesque", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 1.5rem;
-  color: white;
-  margin-bottom: 10px;
-  margin-top: 350px;
-  list-style: none;
+  color: #732f2f;
+list-style: none;
   z-index: 20;
-   text-align: center;
- 
+ left: 45%;
+    top: 480px;
+transform: translateX(-50%);
 }
 
 // Secret button
