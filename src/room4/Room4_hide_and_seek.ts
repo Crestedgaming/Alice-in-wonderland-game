@@ -1,7 +1,6 @@
-import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
-
 import "../mainstyles/main.scss";
 import { completeRoom } from "../engine/GameManager";
+import { startTimer } from "../utils";
 
 let catCaughtCount = 0;
 let gameRunning = false;
@@ -12,8 +11,7 @@ let catFocused = false;
 //////////////////
 
 const startGame = () => {
-startTimer("gameTimerEachRoom");
-	startTotalTimer("gameTimerTotal");
+	startTimer();
 	console.log("Game started");
 	gameRunning = true;
 
@@ -45,17 +43,17 @@ function catchCat() {
 	if (!gameRunning || !catImage) return;
 
 	catImage.classList.add("hidden");
+  catImage.classList.remove("outline-focus-cat");
 	catCaughtCount++;
 	catFocused = false;
 	console.log("Cat clicked!");
 
 	if (catCaughtCount === 5) {
-		stopTimer();
-    pauseTotalTimer();
 		console.log("Game over! Cat caught 5 times!");
 		gameRunning = false;
 		catImage.classList.add("hidden");
 		completeRoom(4, "N");
+
 		/* Add artefact here when cat is caught 5 times */
 	}
 }
@@ -144,30 +142,14 @@ function startSetup() {
 startSetup();
 
 export function initRoom4() {
-	catCaughtCount = 0;
-	gameRunning = false;
-	catFocused = false;
-
 	// Show room4 and start the game
 	const room4 = document.getElementById("rum4");
 	if (room4) {
 		room4.classList.remove("hidden");
 	}
-
-	const instructions = document.getElementById("instructions");
-	const introCat = document.getElementById("cat-image-1");
-	const playCat = document.getElementById("cat-image");
-	const nextButton = document.getElementById("room4-next");
-
-	instructions?.classList.remove("hidden");
-	introCat?.classList.remove("hidden");
-	playCat?.classList.add("hidden");
-	nextButton?.classList.add("hidden");
-
 	// Start the game if there is a start button
 	const startButton = document.getElementById("start-button-cat");
 	if (startButton) {
-		startButton.classList.remove("hidden");
 		startButton.onclick = startGame;
 	}
 }
