@@ -12,6 +12,9 @@ The game contains six connected rooms with different puzzle mechanics. As player
 - Final room challenge after completing the full sequence
 - Local asset-driven gameplay and browser-based state
 - Hidden cheat button allowing the player to reset the highscore
+- Go back button to return to room selection without resetting progress
+- Room metadata loaded from JSON for easy updates
+- Accessibility improvements including extended time in Room 1 (20 seconds)
 
 Room order:
 
@@ -71,7 +74,7 @@ Room files:
 Assets and data:
 
 - `public/`: Room images and other static assets
-- `src/data/rooms.json`: Present but currently empty
+- `src/data/rooms.json`: Room metadata including names and descriptions
 - `src/data/artifacts.json`: Present but currently empty
 
 ## Manual Test Checklist
@@ -82,11 +85,20 @@ Assets and data:
    - The footer progress bar increases correctly.
    - Artifact letters appear as expected.
    - The final completion state appears after Room 6.
+4. Test the "Go back" button to return to room selection.
+5. Test the "Restart" button to reset the game to login screen.
+
+## Accessibility Features
+
+- Room 1 fall duration set to 20 seconds to allow sufficient time for players with different abilities
+- Clear instructions and messaging in all rooms
+- Support for keyboard navigation and screen readers
 
 ## Notes
 
 - Some rooms include randomized behavior (for example shuffled letters or random positions).
 - Runtime data such as Room 1 results can be stored in browser `localStorage`.
+- Room names and descriptions are centralized in `src/data/rooms.json` for easy maintenance.
 
 ## Team
 
