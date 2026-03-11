@@ -204,7 +204,7 @@ function startGame() {
 }
 
 function initGame() {
-	// 🔒 Begränsa allt till rum5
+	// Begränsa allt till rum5
 	const room = document.getElementById("rum5");
 	if (!room) return;
 
