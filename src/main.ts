@@ -1,6 +1,7 @@
 import "./mainstyles/main.scss";
 import "./the_other_rooms/landing_page/home_page";
 import "./the_other_rooms/landing_page/login";
+import "./the_other_rooms/highscore/highscore";
 import "./the_other_rooms/about/_about.scss"
 import { initRoom4 } from "./room4/Room4_hide_and_seek";
 import { initRoom3 } from "./room3/Room3_the_riddle";
@@ -9,18 +10,9 @@ import { initRoom6 } from "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
-import { stopTimer, resetTotalTimer } from "./utils";
-import roomsData from "./data/rooms.json";
 
-interface Room {
-	id: string;
-	namn: string;
-	beskrivning: string;
-}
-
-const roomMap = new Map<string, Room>(
-	roomsData.rooms.map(room => [room.id, room])
-);
+import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
+import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
 
 /*
  * ============================================================
@@ -125,6 +117,13 @@ function focusCurrentViewTarget(roomId: string): void {
 	const firstButton = room.querySelector("button") as HTMLButtonElement | null;
 	firstButton?.focus();
 }
+const returnHomeFromRoom6 = document.getElementById("return-home-from-room6");
+
+if (returnHomeFromRoom6) {
+	returnHomeFromRoom6.addEventListener("click", () => {
+		goBackToHome();
+	});
+}
 
 function resetGameUIState(): void {
 	stopTimer();
@@ -150,3 +149,36 @@ function resetGameUIState(): void {
 	// Keep the room-picker hidden when returning to login.
 	start?.classList.add("hidden");
 }
+
+/* ============================================================
+ * ************************Logik för Vinst**********************
+ * ============================================================*/
+
+
+export function handleGameWin() {
+	pauseTotalTimer();
+	const finalScore = getTotalTime();
+    saveNewHighscore(finalScore);
+	document.querySelectorAll(".room").forEach((room) => {
+		room.classList.add("hidden");
+	});
+	
+	const completed = document.getElementById("game-completed");
+	if (completed) {
+		completed.classList.remove("hidden");
+	}	
+	displayHighscores();
+}
+
+document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+
+    if (target.id === "show-highscore-from-win") {
+        window.showRoom("highscore-page");
+    }
+});
+
+
+
+    
+    
