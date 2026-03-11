@@ -43,7 +43,6 @@ function catchCat() {
 	if (!gameRunning || !catImage) return;
 
 	catImage.classList.add("hidden");
-  catImage.classList.remove("outline-focus-cat");
 	catCaughtCount++;
 	catFocused = false;
 	console.log("Cat clicked!");
@@ -100,8 +99,9 @@ function showCatRandom() {
 		catImage.style.left = `${randomX}px`;
 		catImage.style.top = `${randomY}px`;
 		catImage.classList.remove("hidden");
-
-		// add shake animation
+   catImage.classList.remove("outline-focus-cat");
+		
+   // add shake animation
 		catImage.classList.remove("shake"); // reset animation
 		void catImage.offsetWidth; // trigger reflow
 		catImage.classList.add("shake"); // start shake
