@@ -42,7 +42,7 @@ pointer-events: none;
 
 
 .start-button-cat {
-  position: absolute;
+  position: fixed;
   font-family: "Henny Penny", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -50,7 +50,7 @@ pointer-events: none;
   background: #732F2F;
   border: dotted 8px #f2e6ce;
   border-radius: 10px;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px 20px;
@@ -66,9 +66,9 @@ pointer-events: none;
   border-color: #732F2F;
 }
 .cat-image-1 {
-  position: absolute;
+  position: fixed;
   z-index: 10;
-  left: 32%;
+  left: 25%;
   top: 25%;
   transform: translate(-50%, -20%);
 }
@@ -85,14 +85,14 @@ pointer-events: none;
   font-size: 1.2rem;
   line-height: 1.5;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   width: 600px;
   box-sizing: border-box;
   padding: 20px;
   background: #732F2F;
   border-radius: 10px;
   border: dotted 8px #f2e6ce;
-  top: 35%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -20%);
 }
