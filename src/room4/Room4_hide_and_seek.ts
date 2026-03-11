@@ -156,3 +156,4 @@ export function initRoom4() {
 
 // Make function available globally if needed
 (window as any).initRoom4 = initRoom4;
+
