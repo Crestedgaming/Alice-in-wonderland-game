@@ -1,150 +1,140 @@
+import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+import { handleGameWin } from "../main";
+import { gameState } from "../engine/GameState";
 
-import { startTimer, stopTimer ,startTotalTimer, pauseTotalTimer } from "../utils";
-
-/* Rum 6 är finalen
-
-Här får spelaren fem bokstäver som de har samlat från de tidigare rummen.
-Men bokstäverna ligger inte i rätt ordning.
-
-*** Spelarens uppgift är att:
-
- Titta på bokstäverna
- Tänka efter
- Ordna dem i rätt ordning
- Skriva det korrekta 5-bokstavsordet
-
- *** Hur det ska kännas
-
-När spelaren kommer in i rummet:
-
-De känner igen bokstäverna.
-De inser att det är något ord de måste lista ut.
-Det finns en timer som räknar ner.
-
-Efter en viss tid låses en hint upp.
-Hinten hjälper spelaren genom att ge en ledtråd om ordet.
-
-Men:
-
-Om spelaren använder hint kan det påverka poängen.
-Hinten är en hjälp – men det är fortfarande spelaren som måste tänka
-
- *** Om spelaren skriver fel ord
-
-Det finns inga extra försök i Rum 6.
-Om spelaren bekräftar ett felaktigt ord:
-
-Spelet identifierar vilken bokstav som är fel.
-Spelaren skickas tillbaka till det rum där den felaktiga bokstaven hämtades.
-De måste lösa det rummet igen för att få rätt bokstav.
-
-
-*/
-let shuffleInterval: number | null = null;
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
-const roomTimer = document.getElementById("gameTimerEachRoom");
+const submitButton = document.getElementById("submit");
+
+const boxes = document.querySelectorAll(".box");
+const letters = document.querySelectorAll(".letter-btn");
+
+let currentIndex = 0;
 
 startBtn?.addEventListener("click", () => {
 	startTimer("gameTimerEachRoom");
 	startTotalTimer("gameTimerTotal");
-
 	intro?.classList.add("hidden");
-
 	shuffleLetters();
-
-	if (shuffleInterval !== null) {
-		clearInterval(shuffleInterval);
-	}
-
-	shuffleInterval = window.setInterval(shuffleLetters, 3000);
 });
-const submitButton = document.getElementById("submit");
+
+letters.forEach((letter, index) => {
+	letter.addEventListener("click", () => {
+		const btn = letter as HTMLButtonElement;
+
+		if (currentIndex < boxes.length && btn.textContent) {
+
+			const box = boxes[currentIndex] as HTMLElement;
+
+			box.textContent = btn.textContent;
+			box.classList.remove("box-placeholder");
+
+			
+			box.setAttribute("data-letter-index", index.toString());
+
+			currentIndex++;
+			btn.disabled = true;
+		}
+	});
+});
+
+boxes.forEach((box) => {
+	box.addEventListener("click", () => {
+
+		const index = box.getAttribute("data-letter-index");
+		if (index === null) return;
+
+		const button = letters[Number(index)] as HTMLButtonElement;
+
+		button.disabled = false;
+
+		box.textContent = "_";
+		box.classList.add("box-placeholder");
+		box.removeAttribute("data-letter-index");
+
+		currentIndex = Math.max(0, currentIndex - 1);
+	});
+});
+function shuffleLetters() {
+	const lettersContainer = document.querySelector(".letters");
+	if (!lettersContainer) return;
+
+	const lettersArray = Array.from(lettersContainer.children);
+	const shuffled = lettersArray.sort(() => Math.random() - 0.5);
+
+	shuffled.forEach((letter) => {
+		lettersContainer.appendChild(letter);
+	});
+}
 
 submitButton?.addEventListener("click", () => {
 	checkWord();
-	stopTimer();
-	pauseTotalTimer();
 });
 
 function checkWord() {
 	const message = document.getElementById("message") as HTMLDivElement;
 	const messageBox = message.querySelector(".message-box") as HTMLDivElement;
 
-	const boxes = document.querySelectorAll(".box");
 	let word = "";
 
 	boxes.forEach((box) => {
-		word += box.textContent;
+		word += box.textContent?.trim() || "";
 	});
 
 	if (word === "VAKNA") {
+
 		document.querySelectorAll(".room").forEach((room) => {
 			room.classList.add("hidden");
 		});
 
+		stopTimer();
+		pauseTotalTimer();
+		handleGameWin();
+
 		const completed = document.getElementById("game-completed");
 		completed?.classList.remove("hidden");
+
 	} else {
 		message.classList.remove("hidden");
+		messageBox.innerHTML = "";
+stopTimer();
+		pauseTotalTimer();
+		const errorText = document.createElement("p");
+		errorText.textContent = "Fel ord 😭 Försök igen.";
+		messageBox.appendChild(errorText);
+		const errorTextH3 = document.createElement("h3");
+		errorTextH3.textContent = "Testa rum 1 eller rum 3, eller båda, för att få rätt artefakt.";
+		messageBox.appendChild(errorTextH3);
 
-		messageBox.textContent = "Fel ord 😭 Du måste tillbaka.";
-		message.classList.remove("success");
-		message.classList.add("error");
+		const returnHomeBtn = document.createElement("button");
+		returnHomeBtn.textContent = "Återgå till start";
+		messageBox.appendChild(returnHomeBtn);
+
+		returnHomeBtn.addEventListener("click", () => {
+			window.showRoom("rum1");
+		});
 	}
 }
-const boxes = document.querySelectorAll(".box");
-const letters = document.querySelectorAll(".letter-btn");
 
-let currentIndex = 0;
-
-letters.forEach((letter) => {
-	letter.addEventListener("click", () => {
-		if (currentIndex < boxes.length) {
-			boxes[currentIndex].textContent = letter.textContent;
-			currentIndex++;
-
-			(letter as HTMLButtonElement).disabled = true;
-		}
-	});
-});
-
-function shuffleLetters() {
-	const lettersContainer = document.querySelector(".letters");
-	if (!lettersContainer) return;
-
-	const lettersArray = Array.from(lettersContainer.children);
-
-	lettersArray.sort(() => Math.random() - 0.5);
-
-	lettersArray.forEach((letter) => {
-		lettersContainer.appendChild(letter);
-	});
-}
 export function initRoom6() {
 
 	stopTimer();
 
 	currentIndex = 0;
 
-	const intro = document.getElementById("room6-intro");
 	intro?.classList.remove("hidden");
 
-	const boxes = document.querySelectorAll(".box");
 	boxes.forEach((box) => {
-		box.textContent = "";
+		box.textContent = "_";
+		box.classList.add("box-placeholder");
 	});
 
-	const letters = document.querySelectorAll(".letter-btn");
-	letters.forEach((btn) => {
+	letters.forEach((btn, index) => {
+		const artifact = gameState.artifacts[index];
+		if (artifact) btn.textContent = artifact;
 		(btn as HTMLButtonElement).disabled = false;
 	});
 
 	const message = document.getElementById("message");
 	message?.classList.add("hidden");
-
-	if (shuffleInterval !== null) {
-		clearInterval(shuffleInterval);
-		shuffleInterval = null;
-	}
 }

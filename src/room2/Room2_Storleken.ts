@@ -107,31 +107,30 @@ import { completeRoom } from "../engine/GameManager";
 
 // start knapp
 const room2StartButton = document.querySelector<HTMLButtonElement>(
-	"#room2-start-button",
+  "#room2-start-button"
 );
 const overlay = document.getElementById("room2-overlay");
 
+/* =========================
+   STARTKNAPP
+   ========================= */
+
 room2StartButton?.addEventListener("click", () => {
-	startTimer("gameTimerEachRoom");
-	startTotalTimer("gameTimerTotal");
-	// göm overlay + start-knappen
-	overlay?.classList.add("hidden");
-	room2StartButton.classList.add("hidden");
+  startTimer("gameTimerEachRoom");
+  startTotalTimer("gameTimerTotal");
+  overlay?.classList.add("hidden");
+  room2StartButton.classList.add("hidden");
 });
 
 /* =========================
-   RUM 2 - DIN LOGIK
+   RUM 2 - LOGIK
    ========================= */
 
-const alice = document.querySelector(".size-alice") as HTMLElement | null;
+const alice = document.querySelector<HTMLElement>(".size-alice");
+const mindre = document.querySelector<HTMLElement>(".size-text__smaller");
+const successText = document.querySelector<HTMLElement>(".size-success");
+const vaggord = document.querySelectorAll<HTMLElement>(".wall-word");
 
-const mindre = document.querySelector(
-	".size-text__smaller",
-) as HTMLElement | null;
-
-const successText = document.querySelector(
-	".size-success",
-) as HTMLElement | null;
 let room2Completed = false;
 
 // 3 = jättestor, 0 = lagom
@@ -139,76 +138,108 @@ let sizeLevel = 3;
 let step = 0;
 
 function updateSize() {
-	if (!alice || !successText) return;
+  if (!alice || !successText) return;
 
-	// göm success-text som standard
-	successText.classList.add("hidden");
+  successText.classList.add("hidden");
 
-	let height = 90;
+  let height = 90;
 
-	if (sizeLevel === 3) height = 95;
-	if (sizeLevel === 2) height = 75;
-	if (sizeLevel === 1) height = 65;
-	if (sizeLevel === 0) height = 45;
+  if (sizeLevel === 3) height = 95;
+  if (sizeLevel === 2) height = 75;
+  if (sizeLevel === 1) height = 65;
+  if (sizeLevel === 0) height = 45;
 
-	const offset = 10 + step * 12;
+  const offset = 10 + step * 12;
 
-	alice.style.height = `${height}vh`;
-	alice.style.left = `${offset}vw`;
+  alice.style.height = `${height}vh`;
+  alice.style.left = `${offset}vw`;
 
-	if (sizeLevel === 0) {
-	stopTimer();
-		pauseTotalTimer();
-		console.log("Alice är lagom!");
-		successText.classList.remove("hidden");
-		if (!room2Completed) {
-			room2Completed = true;
-			completeRoom(2, "A");
-		}
-	}
+  if (sizeLevel === 0) {
+    stopTimer();
+    pauseTotalTimer();
+    console.log("Alice är lagom!");
+    successText.classList.remove("hidden");
+
+    if (!room2Completed) {
+      room2Completed = true;
+      completeRoom(2, "A");
+    }
+  }
 }
 
-// klick på ordet "mindre"
+function makeAliceSmaller() {
+  if (sizeLevel > 0) {
+    sizeLevel--;
+    step++;
+    updateSize();
+  }
+}
+
+function handleKeyboardActivate(
+  event: KeyboardEvent,
+  callback: () => void
+) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    callback();
+  }
+}
+
+// klick + tangentbord på ordet "mindre"
 if (mindre) {
-	mindre.addEventListener("click", () => {
-		if (sizeLevel > 0) {
-			sizeLevel--;
-			step++;
-			updateSize();
-		}
-	});
+  mindre.addEventListener("click", makeAliceSmaller);
+
+  mindre.addEventListener("keydown", (event: KeyboardEvent) => {
+    handleKeyboardActivate(event, makeAliceSmaller);
+  });
 }
 
-// väggord försvinner när man klickar
-const vaggord = document.querySelectorAll(".wall-word");
-
+// väggord försvinner när man klickar eller trycker Enter/Space
 vaggord.forEach((ord) => {
-	ord.addEventListener("click", () => {
-		(ord as HTMLElement).style.display = "none";
+  const hideWord = () => {
+    ord.style.display = "none";
 
-		// kolla hur många som är kvar
-		const remaining = document.querySelectorAll(
-			".wall-word:not([style*='display: none'])",
-		);
+    const remaining = document.querySelectorAll(
+      ".wall-word:not([style*='display: none'])"
+    );
 
-		if (remaining.length === 0 && mindre) {
-			mindre.classList.add("pulse");
-		}
-	});
+    if (remaining.length === 0 && mindre) {
+      mindre.classList.add("pulse");
+      mindre.focus();
+    }
+  };
+
+  ord.addEventListener("click", hideWord);
+
+  ord.addEventListener("keydown", (event: KeyboardEvent) => {
+    handleKeyboardActivate(event, hideWord);
+  });
 });
 
 // startläge
 updateSize();
 
 export function initRoom2() {
-	room2Completed = false;
-	sizeLevel = 3;
-	step = 0;
-	overlay?.classList.remove("hidden");
-	room2StartButton?.classList.remove("hidden");
-	const nextButton = document.getElementById("room2-next");
-	nextButton?.classList.add("hidden");
-	updateSize();
+  room2Completed = false;
+  sizeLevel = 3;
+  step = 0;
+
+  overlay?.classList.remove("hidden");
+  room2StartButton?.classList.remove("hidden");
+
+  const nextButton = document.getElementById("room2-next");
+  nextButton?.classList.add("hidden");
+
+  // visa väggorden igen när rummet startas om
+  vaggord.forEach((ord) => {
+    ord.style.display = "";
+  });
+
+  if (mindre) {
+    mindre.classList.remove("pulse");
+  }
+
+  updateSize();
 }
 
 export {};

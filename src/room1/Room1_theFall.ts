@@ -1,5 +1,10 @@
 import { completeRoom } from "../engine/GameManager";
-import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+import {
+	startTimer,
+	stopTimer,
+	startTotalTimer,
+	pauseTotalTimer,
+} from "../utils";
 
 type Room1Elements = {
 	landing: HTMLElement | null;
@@ -24,10 +29,8 @@ const ROOM1_KEYS = [
 	{ buttonId: "keyA", letter: "A" },
 ];
 
-const ROOM1_FALL_DURATION_MS = 12000;
+const ROOM1_FALL_DURATION_MS = 20000;
 const ROOM1_RESULTS_STORAGE_KEY = "room1Results";
-
-
 
 function getRoom1Elements(): Room1Elements {
 	return {
@@ -73,8 +76,6 @@ function showGame(
 	landing?.classList.add("hidden");
 	content?.classList.remove("hidden");
 }
-
-
 
 function saveRoom1Result(letter: string, timeMs: number): void {
 	const result: Room1Result = {
@@ -160,12 +161,12 @@ function bindKeyhole(
 
 		stopTimer();
 		pauseTotalTimer();
-const finalMs = 0;
+		const finalMs = 0;
 		saveRoom1Result(selectedKey, finalMs);
 
 		completeRoom(1, selectedKey);
 		if (typeof window.updateFooterContext === "function") {
-			window.updateFooterContext("room1", true);
+			window.updateFooterContext("rum1", true);
 		}
 	};
 }
@@ -197,7 +198,7 @@ function startFallingAnimation(scrollContainer: HTMLElement): void {
 
 function startRoom1GameLogic(): void {
 	const scrollContainer = document.querySelector(
-		"#room1 .backgroundScroll",
+		"#rum1 .backgroundScroll",
 	) as HTMLElement | null;
 
 	if (scrollContainer) {
