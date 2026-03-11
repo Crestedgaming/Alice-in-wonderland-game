@@ -11,6 +11,7 @@ The game contains six connected rooms with different puzzle mechanics. As player
 - Artifact letter collection across the game
 - Final room challenge after completing the full sequence
 - Local asset-driven gameplay and browser-based state
+- Hidden cheat button allowing the player to reset the highscore
 
 Room order:
 
