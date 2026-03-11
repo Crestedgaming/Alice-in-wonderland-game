@@ -14,6 +14,23 @@ import { resetRoomProgress } from "./footer";
 import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
 import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
 
+
+//rumknappar 
+const roomButtons = [
+  { id: "start-room1", room: "rum1" },
+  { id: "start-room2", room: "rum2" },
+  { id: "start-room3", room: "rum3" },
+  { id: "start-room4", room: "rum4" },
+  { id: "start-room5", room: "rum5" },
+  { id: "start-room6", room: "rum6" },
+];
+
+roomButtons.forEach(({ id, room }) => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => window.showRoom(room));
+  }
+});
 /*
  * ============================================================
  * ************************Startsida***************************
