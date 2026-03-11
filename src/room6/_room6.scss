@@ -35,6 +35,7 @@
         transition: background 0.2s;
         cursor: pointer;
 
+
     }
 
     .box-placeholder:hover {
@@ -51,6 +52,9 @@
         align-items: center;
         justify-content: center;
         cursor: default;
+        font-family: 'Henny Penny',
+            cursive,
+            sans-serif;
     }
 
     .puzzle {
@@ -78,6 +82,10 @@
         color: white;
         cursor: pointer;
         transition: all 0.2s ease;
+        font-family: 'Henny Penny',
+            cursive,
+            sans-serif;
+        ;
     }
 
 }
@@ -164,6 +172,9 @@
     justify-content: center;
     cursor: pointer;
     transition: transform 160ms ease, opacity 200ms ease;
+    font-family: 'Henny Penny',
+        cursive,
+        sans-serif;
 }
 
 #room6-start-btn {
@@ -228,13 +239,39 @@
         width: 400px;
         min-height: 180px;
         margin-bottom: 75px;
-
+        flex-direction: column;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
 
+
+}
+
+.message-box button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: #f2e6ce;
+    color: #732f2f;
+    font-family: 'Henny Penny', cursive, sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    cursor: pointer;
+
+}
+
+.return-home-from-room6:hover,
+.return-home-from-room6:focus {
+    background-color: #f2e6ce;
+    color: #732f2f;
+    transform: scale(1.05);
+    outline: none;
 }
 
 .game-completed {

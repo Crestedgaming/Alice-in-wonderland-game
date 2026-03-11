@@ -117,6 +117,13 @@ function focusCurrentViewTarget(roomId: string): void {
 	const firstButton = room.querySelector("button") as HTMLButtonElement | null;
 	firstButton?.focus();
 }
+const returnHomeFromRoom6 = document.getElementById("return-home-from-room6");
+
+if (returnHomeFromRoom6) {
+	returnHomeFromRoom6.addEventListener("click", () => {
+		goBackToHome();
+	});
+}
 
 function resetGameUIState(): void {
 	stopTimer();

@@ -122,11 +122,24 @@ function checkWord() {
 
 	} else {
 		message.classList.remove("hidden");
-		messageBox.textContent = "Fel ord 😭 Försök igen.";
+		messageBox.innerHTML = "";
+		const errorText = document.createElement("p");
+		errorText.textContent = "Fel ord 😭 Försök igen.";
+		messageBox.appendChild(errorText);
 		message.classList.remove("success");
 		message.classList.add("error");
+		const returnHomeBtn = document.createElement("button");
+		returnHomeBtn.textContent = "Återgå till start";
+		messageBox.appendChild(returnHomeBtn);
+		returnHomeBtn.addEventListener("click", () => {
+			    window.showRoom("home-page");
+
+		});
 	}
+
 }
+
+
 
 /* ---------------- INIT ROOM ---------------- */
 
