@@ -229,3 +229,13 @@ body {
   z-index: 9;
 }
 
+//Tillgänglighet
+
+.wall-word:focus-visible,
+.size-text__smaller:focus-visible,
+.start-button-room2:focus-visible,
+#room2-next:focus-visible {
+  outline: 3px solid #f8cd6f;
+  outline-offset: 3px;
+}
+
