@@ -16,7 +16,7 @@ joabbad
 
 - Närvarande: Ja
 
----Finsliipade CCS:en igår på about us, sidan är så gott som klar. 
+---Mergade min bransch, lite kodkonflikt som behövde lösas. Finputs på CSS:en i rum 5. 
 
 ## Namn: Markus Jönsson
 
