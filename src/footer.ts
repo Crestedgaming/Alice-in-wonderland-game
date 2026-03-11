@@ -1,4 +1,4 @@
-const TOTAL_ROOMS = 6;
+const TOTAL_ROOMS = 5;
 // Tracks which room numbers are completed in the current run.
 const doneRooms = new Set<number>();
 const collectedArtifacts = new Map<number, string>();
@@ -11,7 +11,6 @@ const artifactSlots = [
 	document.getElementById("artefact3"),
 	document.getElementById("artefact4"),
 	document.getElementById("artefact5"),
-	document.getElementById("artefact6"), // Added for Room 6
 ];
 
 // Updates artifact slot highlight to reflect completed rooms.
