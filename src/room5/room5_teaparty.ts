@@ -1,4 +1,9 @@
-import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
+import {
+	startTimer,
+	stopTimer,
+	startTotalTimer,
+	pauseTotalTimer,
+} from "../utils";
 
 /**
  * ============================================================

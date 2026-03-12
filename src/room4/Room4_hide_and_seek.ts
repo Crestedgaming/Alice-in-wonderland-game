@@ -99,9 +99,9 @@ function showCatRandom() {
 		catImage.style.left = `${randomX}px`;
 		catImage.style.top = `${randomY}px`;
 		catImage.classList.remove("hidden");
-   catImage.classList.remove("outline-focus-cat");
-		
-   // add shake animation
+		catImage.classList.remove("outline-focus-cat");
+
+		// add shake animation
 		catImage.classList.remove("shake"); // reset animation
 		void catImage.offsetWidth; // trigger reflow
 		catImage.classList.add("shake"); // start shake
@@ -156,4 +156,3 @@ export function initRoom4() {
 
 // Make function available globally if needed
 (window as any).initRoom4 = initRoom4;
-
