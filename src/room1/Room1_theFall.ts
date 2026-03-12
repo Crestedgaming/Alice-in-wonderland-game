@@ -118,7 +118,11 @@ function bindKeySelection(message: HTMLElement | null): void {
 			return;
 		}
 
-		button.onclick = () => {
+		// Set accessible label
+		button.setAttribute("aria-label", `En nyckel med bokstaven ${letter}`);
+		button.setAttribute("tabindex", "0");
+
+		const handleKeySelection = () => {
 			window.selectedKey = letter;
 			const keyIcon = button.querySelector("img") as HTMLImageElement | null;
 
@@ -132,6 +136,16 @@ function bindKeySelection(message: HTMLElement | null): void {
 
 			setRoom1Message(message, `Du har valt nyckeln med bokstaven ${letter}!`);
 		};
+
+		button.onclick = handleKeySelection;
+
+		// Keyboard support
+		button.addEventListener("keydown", (event) => {
+			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
+				handleKeySelection();
+			}
+		});
 	});
 }
 
@@ -144,7 +158,14 @@ function bindKeyhole(
 		return;
 	}
 
-	keyhole.onclick = () => {
+	// Set accessible label
+	keyhole.setAttribute(
+		"aria-label",
+		"Nyckelhål - klicka för att låsa upp dörren",
+	);
+	keyhole.setAttribute("tabindex", "0");
+
+	const handleKeyhole = () => {
 		const selectedKey = window.selectedKey;
 		if (!selectedKey) {
 			setRoom1Message(
@@ -169,6 +190,16 @@ function bindKeyhole(
 			window.updateFooterContext("rum1", true);
 		}
 	};
+
+	keyhole.onclick = handleKeyhole;
+
+	// Keyboard support
+	keyhole.addEventListener("keydown", (event) => {
+		if (event.key === "Enter" || event.key === " ") {
+			event.preventDefault();
+			handleKeyhole();
+		}
+	});
 }
 
 function attachRoom1Listeners(elements: Room1Elements): void {

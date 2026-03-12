@@ -30,6 +30,8 @@ Reference: https://www.flaticon.com/legal
 | Font Awesome 4.7.0 (CDN)          | https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css     | SIL OFL 1.1 / MIT / CC BY 4.0 |
 | Google Fonts: Henny Penny         | https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap                      | SIL Open Font License         |
 | Google Fonts: Bricolage Grotesque | https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800 | SIL Open Font License         |
+| Uicons                            | https://www.flaticon.com/uicons                                                        | Flaticon License              |
+| Background Music: "Fairy Tale"    | https://www.freepik.com/audio/tune/fairy-tale                                         | Freepik Audio License         |
 
 License references:
 

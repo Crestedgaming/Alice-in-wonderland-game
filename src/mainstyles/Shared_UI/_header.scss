@@ -87,3 +87,43 @@ header {
 		}
 	}
 }
+
+/* Music toggle button styling */
+.musicToggleBtn {
+	padding: 8px 14px;
+	font-size: 1.4rem;
+	min-width: 50px;
+	background: transparent;
+	border: 2px inset $cream;
+	cursor: pointer;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease-in-out;
+
+	i {
+		font-size: 1.4rem;
+		color: $cream;
+	}
+
+	&:hover {
+		background: $cream;
+		transform: scale(1.2);
+
+		i {
+			color: $brand-red;
+		}
+	}
+
+	&:focus,
+	&:focus-visible {
+		background: $cream;
+		border-color: #732f2e;
+		outline: 2px solid $brand-red;
+
+		i {
+			color: $brand-red;
+		}
+	}
+}
