@@ -1,6 +1,6 @@
 
 
-# Daily Stand Up/Sprint Planning: Onsdag 2026-03-12
+# Daily Stand Up/Sprint Planning: Torsdag 2026-03-12
 ![alt text](/dokumentation/vecka-5/assets/sprint-planning.png)
 
 Dagens scrum master: Alex Minh Truong (egentligen alla)
