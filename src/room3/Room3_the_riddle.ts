@@ -133,6 +133,8 @@ export function initRoom3(): void {
 		giveArtifact(letter);
 		completeRoom(3, letter);
 
+	riddleContainer.classList.add("hidden");
+
 		// Hide individual riddles (not the container, so the button stays visible)
 		riddles.forEach((r) => {
 			const el = document.getElementById(r.id);
