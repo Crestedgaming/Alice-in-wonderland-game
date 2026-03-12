@@ -12,8 +12,15 @@ import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
 import { initMusicController } from "./music/musicController";
 
-import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
+import { pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
 import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
+import roomsData from "./data/rooms.json";
+
+
+// Create a map of room data for quick lookup
+const roomMap = new Map(
+	roomsData.rooms.map((room: any) => [room.id, room])
+);
 
 
 //rumknappar 
@@ -29,7 +36,7 @@ const roomButtons = [
 roomButtons.forEach(({ id, room }) => {
   const btn = document.getElementById(id);
   if (btn) {
-    btn.addEventListener("click", () => window.showRoom(room));
+    btn.addEventListener("click", () => showRoom(room));
   }
 });
 
@@ -40,13 +47,7 @@ initMusicController();
  * ************************Startsida***************************
  * ============================================================*/
 
-interface CustomWindow extends Window {
-	showRoom: (roomId: string) => void;
-}
-
-declare const window: CustomWindow;
-
-window.showRoom = function (roomId: string) {
+export function showRoom(roomId: string) {
 	stopTimer();
 	document.querySelectorAll(".room").forEach((room) => {
 		room.classList.add("hidden");
@@ -90,15 +91,12 @@ window.showRoom = function (roomId: string) {
 		showArtifacts.setAttribute("aria-label", artifactsLabel);
 		showArtifacts.setAttribute("data-current-room", roomId);
 	}
-};
+}
 
 const resetBtn = document.getElementById("resetAndStartGameBtn");
 if (resetBtn) {
 	resetBtn.addEventListener("click", () => {
 		resetGameUIState();
-		if (typeof window.goToStart === "function") {
-			window.goToStart();
-		}
 	});
 }
 
@@ -195,7 +193,7 @@ document.addEventListener("click", (event) => {
     const target = event.target as HTMLElement;
 
     if (target.id === "show-highscore-from-win") {
-        window.showRoom("highscore-page");
+        showRoom("highscore-page");
     }
 });
 

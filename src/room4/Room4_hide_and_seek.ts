@@ -11,7 +11,7 @@ let catFocused = false;
 //////////////////
 
 const startGame = () => {
-	startTimer();
+	startTimer("gameTimerEachRoom");
 	console.log("Game started");
 	gameRunning = true;
 

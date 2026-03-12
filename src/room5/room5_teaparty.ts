@@ -1,41 +1,5 @@
 import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
-// Room 5 timer logic
-let room5TimerId: number | null = null;
-let room5StartTime = 0;
-let room5ElapsedMs = 0;
 
-function updateRoom5TimerDisplay(timerEl: HTMLElement | null, elapsedMs: number) {
-	if (!timerEl) return;
-	const totalSec = Math.floor(elapsedMs / 1000);
-	const min = Math.floor(totalSec / 60);
-	const sec = totalSec % 60;
-	timerEl.textContent = `Tid i rummet: ${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-}
-
-function startRoom5Timer(timerEl: HTMLElement | null) {
-	if (room5TimerId !== null) {
-		clearInterval(room5TimerId);
-	}
-	room5StartTime = Date.now();
-	room5ElapsedMs = 0;
-	updateRoom5TimerDisplay(timerEl, 0);
-	room5TimerId = window.setInterval(() => {
-		room5ElapsedMs = Date.now() - room5StartTime;
-		updateRoom5TimerDisplay(timerEl, room5ElapsedMs);
-	}, 250);
-}
-
-function stopRoom5Timer(timerEl: HTMLElement | null): number {
-	if (room5TimerId !== null) {
-		clearInterval(room5TimerId);
-		room5TimerId = null;
-	}
-	if (room5StartTime > 0) {
-		room5ElapsedMs = Date.now() - room5StartTime;
-	}
-	updateRoom5TimerDisplay(timerEl, room5ElapsedMs);
-	return room5ElapsedMs;
-}
 /**
  * ============================================================
  * 🎩 ROOM 5 – Hattmakarens Tebjudning

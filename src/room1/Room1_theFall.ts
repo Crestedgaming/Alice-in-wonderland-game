@@ -48,13 +48,6 @@ function getRoom1Elements(): Room1Elements {
 	};
 }
 
-function formatMs(ms: number): string {
-	const totalSec = Math.floor(ms / 1000);
-	const min = Math.floor(totalSec / 60);
-	const sec = totalSec % 60;
-	return `${String(min).padStart(2, "0")}:${String(sec).padStart(2, "0")}`;
-}
-
 function setRoom1Message(messageEl: HTMLElement | null, text: string): void {
 	if (messageEl) {
 		messageEl.innerHTML = `<p>${text}</p>`;
@@ -152,7 +145,6 @@ function bindKeySelection(message: HTMLElement | null): void {
 function bindKeyhole(
 	keyhole: HTMLButtonElement | null,
 	message: HTMLElement | null,
-	roomTimer: HTMLElement | null,
 ): void {
 	if (!keyhole) {
 		return;
@@ -205,7 +197,7 @@ function bindKeyhole(
 function attachRoom1Listeners(elements: Room1Elements): void {
 	resetRoom1State(elements.endButton);
 	bindKeySelection(elements.message);
-	bindKeyhole(elements.keyhole, elements.message, elements.roomTimer);
+	bindKeyhole(elements.keyhole, elements.message);
 }
 
 function startFallingAnimation(scrollContainer: HTMLElement): void {
