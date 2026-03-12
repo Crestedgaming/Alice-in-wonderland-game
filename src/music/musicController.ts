@@ -21,7 +21,13 @@ export function initMusicController(): void {
 	toggleBtn.setAttribute("aria-label", "Slå på musik");
 
 	// Start playing (muted)
-	audioElement.play();
+	const playPromise = audioElement.play();
+
+	if (playPromise !== undefined) {
+		playPromise.catch(() => {
+			// Autoplay was prevented, audio will play when user toggles it on
+		});
+	}
 
 	toggleBtn.addEventListener("click", () => {
 		audioElement.muted = !audioElement.muted;
@@ -33,6 +39,8 @@ export function initMusicController(): void {
 		} else {
 			icon?.setAttribute("class", "fa fa-volume-up");
 			toggleBtn.setAttribute("aria-label", "Slå av musik");
+			// Ensure audio is playing when unmuted
+			audioElement.play();
 		}
 	});
 }
