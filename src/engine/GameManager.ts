@@ -1,5 +1,6 @@
 import { gameState } from "./GameState";
 import { finishRoom, resetRoomProgress } from "../footer";
+import { showRoom as displayRoom } from "../main";
 
 /**
  * Room ID to room element ID mapping for display
@@ -51,7 +52,7 @@ function showRoom(roomId: number): void {
 		console.error(`Invalid room ID: ${roomId}`);
 		return;
 	}
-	(window as any).showRoom(roomElementId);
+	displayRoom(roomElementId);
 }
 
 /**
