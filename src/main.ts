@@ -10,6 +10,7 @@ import { initRoom6 } from "./room6/Room6_Slutstriden";
 import { initRoom5 } from "./room5/room5_teaparty";
 import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
+import { initMusicController } from "./music/musicController";
 
 import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
 import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
@@ -31,6 +32,9 @@ roomButtons.forEach(({ id, room }) => {
     btn.addEventListener("click", () => window.showRoom(room));
   }
 });
+
+// Initialize music controller
+initMusicController();
 /*
  * ============================================================
  * ************************Startsida***************************

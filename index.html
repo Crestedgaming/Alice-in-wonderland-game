@@ -28,6 +28,14 @@
             <span>Gå tillbaka</span>
           </button>
         </label>
+        <button
+          id="musicToggleBtn"
+          type="button"
+          class="musicToggleBtn"
+          aria-label="Slå på musik"
+          title="Slå på/av bakgrundsmusik"
+        ><i class="fi fi-rs-volume-slash"></i>
+        </button>
       </nav>
       <div class="startGamePage">
         <div id="start">
@@ -549,6 +557,9 @@
       </ul>
     </div>
   </footer>
+  <audio id="backgroundMusic" loop preload="auto" aria-label="Bakgrundsmusik">
+    <source src="/public/audio/background-music.mp3" type="audio/mpeg" />
+  </audio>
   <script type="module" src="/src/main.ts"></script>
 </body>
 
