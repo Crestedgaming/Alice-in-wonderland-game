@@ -30,6 +30,10 @@ Room order:
 
 ## How the Game Works
 
+### Wireframe
+
+![Wireframe showing the game flow: login, landing page, about us, six rooms, and highscore screen](/public/assets/wireframe.png)
+
 ### Game Flow
 
 1. **Login** — The player enters their name and clicks "Börja äventyret" (Start Adventure). The name is saved in `localStorage`.
