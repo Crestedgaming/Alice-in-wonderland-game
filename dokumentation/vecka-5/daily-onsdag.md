@@ -8,11 +8,14 @@ Dagens scrum master: Markus Jönssson
     Sjuk
 
 ## Namn: Mohammed Amin Yasin
-4- Närvarande: Ja
+- Närvarande: Ja
 
 joabbad
-.nadiadus r evo emag hccio nadis ortni-moormmoetni i gnilyts dem gaj edabboj tm tmas .te tealeps tuls åp saredner ed tta ed aredner hcomanrotkafitra agirvö ed almas tta dem 
-## Namn: Jennie Modd
+.nadiadus r evo emag hccio nadis ortni-moormmoetni i gnilyts dem gaj edabboj tm tmas .te tealeps tuls åp saredner ed tta ed aredner hcomanrotkafitra agirvö ed almas tta dem.
+
+  "Jobbade med att samla de övriga artifaktorna och rendera de att de renderas på slutspelet. Samt jobbade jag med stylings i intro-room sidan och game over sidan." (Alex fick lite hjälp av Ai för att reda ut texten).
+
+  ## Namn: Jennie Modd
 
 - Närvarande: Ja
 
@@ -22,11 +25,6 @@ joabbad
 
 - Närvarande: Ja
   --- Fixat det absolut sista i mitt rum´s styling samt kollat över kontrast problem och löst dessa.
-
-## Namn: Mohammed Amin Yasin
-
-- Närvarande: Ja
-
 
 ## Namn: Sandra Hellström
 
