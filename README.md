@@ -114,6 +114,16 @@ Assets and data:
 4. Test the "Go back" button to return to room selection.
 5. Test the "Restart" button to reset the game to login screen.
 
+### Testing the Cheat Button (Highscore Reset)
+
+A hidden cheat button is available on the highscore page to reset the leaderboard for testing purposes:
+
+- After completing the game and viewing the highscore/leaderboard page
+- Look for a barely visible "." button on the page (it's intentionally hidden as a secret cheat)
+- Click it to clear all stored highscores from localStorage
+- After clearing, the highscore list will show "Ingen har spelat än 😢" (Nobody has played yet 😢)
+- This is useful for development and QA testing when you want a fresh leaderboard
+
 ## Accessibility Features
 
 - Room 1 fall duration set to 20 seconds to allow sufficient time for players with different abilities
