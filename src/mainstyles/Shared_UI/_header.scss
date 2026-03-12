@@ -102,9 +102,21 @@ header {
 	justify-content: center;
 	transition: all 0.3s ease-in-out;
 
+	i {
+		font-size: 1.4rem;
+		color: $cream;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	&:hover {
 		background: $cream;
 		transform: scale(1.2);
+
+		i {
+			color: $brand-red;
+		}
 	}
 
 	&:focus,
@@ -112,5 +124,9 @@ header {
 		background: $cream;
 		border-color: #732f2e;
 		outline: 2px solid $brand-red;
+
+		i {
+			color: $brand-red;
+		}
 	}
 }

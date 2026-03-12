@@ -16,10 +16,15 @@ export function initMusicController(): void {
 
 	toggleBtn.addEventListener("click", () => {
 		audioElement.muted = !audioElement.muted;
-		toggleBtn.textContent = audioElement.muted ? "🔇" : "🔊";
-		toggleBtn.setAttribute(
-			"aria-label",
-			audioElement.muted ? "Slå på musik" : "Slå av musik"
-		);
+		const icon = toggleBtn.querySelector("i");
+
+		if (audioElement.muted) {
+			icon?.setAttribute("class", "fi fi-rs-volume-slash");
+			toggleBtn.setAttribute("aria-label", "Slå på musik");
+		} else {
+			icon?.setAttribute("class", "fi fi-rs-volume");
+			toggleBtn.setAttribute("aria-label", "Slå av musik");
+		}
 	});
 }
+
