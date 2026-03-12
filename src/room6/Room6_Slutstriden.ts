@@ -1,7 +1,11 @@
 import { startTimer, stopTimer, startTotalTimer, pauseTotalTimer } from "../utils";
 import { handleGameWin } from "../main";
 import { gameState } from "../engine/GameState";
-
+declare global {
+	interface Window {
+		showRoom(roomId: string): void;
+	}
+}
 const startBtn = document.getElementById("room6-start-btn");
 const intro = document.getElementById("room6-intro");
 const submitButton = document.getElementById("submit");
@@ -110,9 +114,9 @@ stopTimer();
 		returnHomeBtn.textContent = "Återgå till start";
 		messageBox.appendChild(returnHomeBtn);
 
-		returnHomeBtn.addEventListener("click", () => {
-			window.showRoom("rum1");
-		});
+	returnHomeBtn.addEventListener("click", () => {
+	(window as any).showRoom("rum1");
+});
 	}
 }
 
