@@ -119,6 +119,13 @@
     border: dotted 8px #f2e6ce;
 }
 
+#riddle-container.hidden {
+	display: none;
+	height: 0;
+	padding: 0;
+	margin: 0;
+}
+
 .riddle-text {
     font-size: 18px;
     color: #f2e6ce;
