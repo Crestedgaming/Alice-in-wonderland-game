@@ -15,6 +15,9 @@ The game contains six connected rooms with different puzzle mechanics. As player
 - Go back button to return to room selection without resetting progress
 - Room metadata loaded from JSON for easy updates
 - Accessibility improvements including extended time in Room 1 (20 seconds)
+- Background music with toggle control in the header (muted by default)
+- Keyboard navigation support for Room 1 and Room 4
+- Continuous integration and deployment to GitHub Pages
 
 Room order:
 
@@ -51,6 +54,29 @@ Install and run:
 - `npm run dev`: Start development server
 - `npm run build`: Run TypeScript build and create production bundle
 - `npm run preview`: Preview the production build locally
+
+## Deployment
+
+The project is set up for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Deploy automatically
+
+Simply push to the `main` branch:
+
+```bash
+git add .
+git commit -m "Your message"
+git push origin main
+```
+
+Your game will be live at: https://Medieinstitutet.github.io/fed25d-js-intro-grupparbete-shikadi-shadowstep/
+
+The deployment workflow:
+
+- Runs on every push to `main`
+- Builds the project with `npm run build`
+- Deploys the `dist/` folder to GitHub Pages
+- Usually takes 1-2 minutes
 
 ## Project Structure
 
@@ -91,11 +117,16 @@ Assets and data:
 ## Accessibility Features
 
 - Room 1 fall duration set to 20 seconds to allow sufficient time for players with different abilities
+- Keyboard navigation in Room 1 and Room 4:
+  - **Room 1**: Tab to select keys, Enter or Space to confirm
+  - **Room 4**: Space to focus cat, Enter to catch it
+- Background music toggle button in header with aria-labels for screen readers (muted by default)
 - Clear instructions and messaging in all rooms
-- Support for keyboard navigation and screen readers
+- Support for keyboard navigation and screen readers across the game
 
 ## Notes
 
+- Background music ("Fairy Tale" by Freepik) plays in the background, muted by default. Use the speaker icon in the header to toggle.
 - Some rooms include randomized behavior (for example shuffled letters or random positions).
 - Runtime data such as Room 1 results can be stored in browser `localStorage`.
 - Room names and descriptions are centralized in `src/data/rooms.json` for easy maintenance.
