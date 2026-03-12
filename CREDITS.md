@@ -31,6 +31,7 @@ Reference: https://www.flaticon.com/legal
 | Google Fonts: Henny Penny         | https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap                      | SIL Open Font License         |
 | Google Fonts: Bricolage Grotesque | https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800 | SIL Open Font License         |
 | Uicons                            | https://www.flaticon.com/uicons                                                        | Flaticon License              |
+| Background Music: "Fairy Tale"    | https://www.freepik.com/audio/tune/fairy-tale                                         | Freepik Audio License         |
 
 License references:
 

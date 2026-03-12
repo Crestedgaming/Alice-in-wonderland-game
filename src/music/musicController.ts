@@ -20,6 +20,9 @@ export function initMusicController(): void {
 	icon?.setAttribute("class", "fa fa-volume-off");
 	toggleBtn.setAttribute("aria-label", "Slå på musik");
 
+	// Start playing (muted)
+	audioElement.play();
+
 	toggleBtn.addEventListener("click", () => {
 		audioElement.muted = !audioElement.muted;
 		const icon = toggleBtn.querySelector("i");
