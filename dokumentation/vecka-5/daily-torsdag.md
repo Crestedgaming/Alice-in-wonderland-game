@@ -1,6 +1,7 @@
-![Vår sprintplannering](https://file%2B.vscode-resource.vscode-cdn.net/Users/alex/Desktop/Ska%CC%88rmavbild%202026-03-12%20kl.%2015.36.25.png?version%3D1773326209375)
+
 
 # Daily Stand Up/Sprint Planning: Onsdag 2026-03-12
+![alt text](/dokumentation/vecka-5/assets/sprint-planning.png)
 
 Dagens scrum master: Alex Minh Truong (egentligen alla)
 
