@@ -128,7 +128,7 @@ A hidden cheat button is available on the highscore page to reset the leaderboar
 
 The HTML has been validated using the [W3C Nu HTML Checker](https://validator.w3.org/nu/) with no errors or warnings.
 
-![W3C HTML Validation result showing no errors or warnings](dokumentation/html-validation.png)
+![W3C HTML Validation result showing no errors or warnings](/public/assets/HTML-validator.png)
 
 ## Accessibility Features
 
