@@ -28,6 +28,41 @@ Room order:
 5. Tebjudningen
 6. Slutstriden
 
+## How the Game Works
+
+### Game Flow
+
+1. **Login** — The player enters their name and clicks "Börja äventyret" (Start Adventure). The name is saved in `localStorage`.
+2. **Home Page** — A welcome screen with options to start the game, view the highscore leaderboard, or read about the team.
+3. **Room Selection** — Six rooms are displayed. The player picks a room to enter.
+4. **Play Rooms** — Each room has a unique puzzle. Completing a room awards an artifact letter and updates the progress bar in the footer.
+5. **Final Room** — In Room 6 the player must spell the secret word **VAKNA** using the collected artifact letters.
+6. **Game Complete** — If the word is correct the total time is saved as a highscore and the leaderboard is shown.
+
+### Room Puzzles
+
+| Room | Name                           | Puzzle                                                                                                                                              |
+| ---- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Fallet (The Fall)              | Alice is falling. Pick one of four keys (L, E, V, A) and use it on the keyhole before landing. The chosen key becomes the artifact letter.          |
+| 2    | Storleken (The Size)           | Alice is too tall. Click the word "mindre" (smaller) repeatedly to shrink her until she fits through the door.                                      |
+| 3    | Gåtan (The Riddle)             | A caterpillar asks three riddles. Answer at least two correctly to earn the right artifact letter.                                                  |
+| 4    | Kurragömma (Hide and Seek)     | Catch the Cheshire Cat five times by clicking it as it appears at random positions.                                                                 |
+| 5    | Tebjudningen (The Tea Party)   | Fill three teacups to a combined total of exactly 125 %. Each click adds 25 % to a cup. All cups must contain some tea. Overflow resets everything. |
+| 6    | Slutstriden (The Final Battle) | Use the collected artifact letters to spell the secret word. A wrong answer lets the player revisit earlier rooms to collect different letters.     |
+
+### Progress and Artifacts
+
+- Each completed room stores an artifact letter in the game state.
+- The footer progress bar fills as rooms are completed.
+- Artifacts from all six rooms are needed to spell the final answer in Room 6.
+- Choosing the wrong key in Room 1 or failing riddles in Room 3 gives a different (incorrect) letter, so those rooms may need to be replayed.
+
+### Scoring
+
+- The score is based on total elapsed time — lower is better.
+- Only the player's best time is kept on the leaderboard (top 10).
+- Highscores are stored in `localStorage`.
+
 ## Tech Stack
 
 - TypeScript
