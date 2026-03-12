@@ -225,6 +225,9 @@ function startRoom1GameLogic(): void {
 	) as HTMLElement | null;
 
 	if (scrollContainer) {
+		// Reset scroll position to top before starting animation
+		scrollContainer.scrollTop = 0;
+
 		const backgroundImage = scrollContainer.querySelector(
 			".backgroundImage",
 		) as HTMLImageElement | null;
