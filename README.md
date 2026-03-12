@@ -124,6 +124,12 @@ A hidden cheat button is available on the highscore page to reset the leaderboar
 - After clearing, the highscore list will show "Ingen har spelat än 😢" (Nobody has played yet 😢)
 - This is useful for development and QA testing when you want a fresh leaderboard
 
+## HTML Validation
+
+The HTML has been validated using the [W3C Nu HTML Checker](https://validator.w3.org/nu/) with no errors or warnings.
+
+![W3C HTML Validation result showing no errors or warnings](dokumentation/html-validation.png)
+
 ## Accessibility Features
 
 - Room 1 fall duration set to 20 seconds to allow sufficient time for players with different abilities
