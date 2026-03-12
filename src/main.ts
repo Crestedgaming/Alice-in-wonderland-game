@@ -12,7 +12,7 @@ import { initRoom2 } from "./room2/Room2_Storleken";
 import { resetRoomProgress } from "./footer";
 import { initMusicController } from "./music/musicController";
 
-import { startTotalTimer, pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
+import { pauseTotalTimer, resetTotalTimer, getTotalTime, stopTimer } from "./utils";
 import { saveNewHighscore, displayHighscores } from "./the_other_rooms/highscore/highscore";
 
 
